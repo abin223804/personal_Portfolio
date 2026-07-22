@@ -150,7 +150,7 @@ export const InteractiveTerminal: React.FC = () => {
   };
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("abin.chandran@example.com");
+    navigator.clipboard.writeText("abinschandran@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -158,7 +158,7 @@ export const InteractiveTerminal: React.FC = () => {
   return (
     <section className="py-20 bg-obsidian-surface border-t border-obsidian-border/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono mb-3">
@@ -174,7 +174,7 @@ export const InteractiveTerminal: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* Left: Interactive UNIX Terminal */}
           <div className="lg:col-span-7 bg-obsidian-bg border border-obsidian-border rounded-2xl overflow-hidden shadow-2xl">
             {/* Terminal Window Top Bar */}
@@ -243,7 +243,7 @@ export const InteractiveTerminal: React.FC = () => {
                   <Mail className="w-4 h-4 text-copper" />
                   <div>
                     <div className="text-[11px] text-titanium font-mono">Email Address</div>
-                    <div className="text-xs font-mono font-semibold text-ivory">abin.chandran@example.com</div>
+                    <div className="text-xs font-mono font-semibold text-ivory">abinschandran@gmail.com</div>
                   </div>
                 </div>
                 <button
