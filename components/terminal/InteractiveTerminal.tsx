@@ -96,7 +96,7 @@ export const InteractiveTerminal: React.FC = () => {
         response = (
           <div className="text-xs font-mono text-titanium space-y-1">
             <div className="text-emerald-400 font-bold">Contact Channel Details:</div>
-            <div>Email: <span className="text-ivory">abin.chandran@example.com</span></div>
+            <div>Email: <span className="text-ivory">abin.chandran@gamail.com</span></div>
             <div>Location: Remote / Open to Global Consultation</div>
             <div>Status: <span className="text-emerald-400 font-bold">Available for Solution Advisory</span></div>
           </div>
