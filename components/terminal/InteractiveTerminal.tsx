@@ -101,7 +101,7 @@ export const InteractiveTerminal: React.FC = () => {
           ...prev,
           {
             command: cmdStr,
-            output: <div className="text-xs font-mono text-amber-400 animate-pulse">[HTTP POST] Transmitting packet to abinschandran@gmail.com...</div>,
+            output: <div className="text-xs font-mono text-amber-400 animate-pulse">[HTTP POST] Transmitting packet to abinschandran1@gmail.com...</div>,
           },
         ]);
 
@@ -112,12 +112,12 @@ export const InteractiveTerminal: React.FC = () => {
 
         response = success ? (
           <div className="text-xs font-mono text-emerald-400 space-y-0.5">
-            <div>✓ HTTP 200 OK — Packet delivered directly to abinschandran@gmail.com!</div>
+            <div>✓ HTTP 200 OK — Packet delivered directly to abinschandran1@gmail.com!</div>
             <div className="text-titanium text-[11px]">Thank you for connecting. I will review and reply shortly.</div>
           </div>
         ) : (
           <div className="text-xs font-mono text-rose-400">
-            ✕ Transmission failed. Please try the inquiry form on the right or email abinschandran@gmail.com directly.
+            ✕ Transmission failed. Please try the inquiry form on the right or email abinschandran1@gmail.com directly.
           </div>
         );
 
@@ -160,7 +160,7 @@ export const InteractiveTerminal: React.FC = () => {
       response = (
         <div className="text-xs font-mono text-titanium space-y-1">
           <div className="text-emerald-400 font-bold">Contact Channel Details:</div>
-          <div>Email: <span className="text-ivory">abinschandran@gmail.com</span></div>
+          <div>Email: <span className="text-ivory">abinschandran1@gmail.com</span></div>
           <div>Location: Remote / Open to Global Consultation</div>
           <div>Status: <span className="text-emerald-400 font-bold">Available for Solution Advisory</span></div>
           <div className="pt-1 text-copper">Tip: Type <span className="font-bold">send hello</span> to dispatch an email right now!</div>
@@ -232,7 +232,7 @@ export const InteractiveTerminal: React.FC = () => {
   };
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("abinschandran@gmail.com");
+    navigator.clipboard.writeText("abinschandran1@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -336,7 +336,7 @@ export const InteractiveTerminal: React.FC = () => {
                   <Mail className="w-4 h-4 text-copper" />
                   <div>
                     <div className="text-[11px] text-titanium font-mono">Direct Email</div>
-                    <div className="text-xs font-mono font-semibold text-ivory">abinschandran@gmail.com</div>
+                    <div className="text-xs font-mono font-semibold text-ivory">abinschandran1@gmail.com</div>
                   </div>
                 </div>
                 <button
@@ -351,12 +351,12 @@ export const InteractiveTerminal: React.FC = () => {
               {/* Status alerts */}
               {formStatus === "success" && (
                 <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-                  ✓ Inquiry transmitted directly to abinschandran@gmail.com!
+                  ✓ Inquiry transmitted directly to abinschandran1@gmail.com!
                 </div>
               )}
               {formStatus === "error" && (
                 <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-mono">
-                  ✕ Transmission failed. Please email abinschandran@gmail.com directly.
+                  ✕ Transmission failed. Please email abinschandran1@gmail.com directly.
                 </div>
               )}
 

@@ -113,7 +113,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="mailto:abinschandran@gmail.com"
+                  href="mailto:abinschandran1@gmail.com"
                   className="hover:text-copper transition-colors flex items-center gap-1.5"
                 >
                   <Mail className="w-3.5 h-3.5" />
