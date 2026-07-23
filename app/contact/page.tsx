@@ -15,8 +15,8 @@ export default function ContactPage() {
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
-          { name: "Home", item: "https://abinschandran.com" },
-          { name: "Contact", item: "https://abinschandran.com/contact" },
+          { name: "Home", item: "https://abnschandran.in" },
+          { name: "Contact", item: "https://abnschandran.in/contact" },
         ]}
       />
 

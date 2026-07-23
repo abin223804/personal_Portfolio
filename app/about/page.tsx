@@ -16,8 +16,8 @@ export default function AboutPage() {
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
-          { name: "Home", item: "https://abinschandran.com" },
-          { name: "About", item: "https://abinschandran.com/about" },
+          { name: "Home", item: "https://abnschandran.in" },
+          { name: "About", item: "https://abnschandran.in/about" },
         ]}
       />
 

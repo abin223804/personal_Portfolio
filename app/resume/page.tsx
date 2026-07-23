@@ -17,8 +17,8 @@ export default function ResumePage() {
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
-          { name: "Home", item: "https://abinschandran.com" },
-          { name: "Resume", item: "https://abinschandran.com/resume" },
+          { name: "Home", item: "https://abnschandran.in" },
+          { name: "Resume", item: "https://abnschandran.in/resume" },
         ]}
       />
 

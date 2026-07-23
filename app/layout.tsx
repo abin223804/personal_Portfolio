@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { AppShell } from "./AppShell";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://abinschandran.com"),
+  metadataBase: new URL("https://abnschandran.in"),
   title: {
     default: "Abin S Chandran | Solution Architect & Full Stack Developer",
     template: "%s | Abin S Chandran - Solution Architect",
@@ -13,8 +13,12 @@ export const metadata: Metadata = {
   description:
     "Official portfolio of Abin S Chandran — Solution Architect & Full Stack Developer with 5+ years experience engineering multi-region cloud platforms, sub-10ms microservices, and zero-downtime distributed systems.",
   keywords: [
-    "Solution Architect",
     "Abin S Chandran",
+    "abnschandran",
+    "abnschandran.in",
+    "abischandran",
+    "Abin Chandran",
+    "Solution Architect",
     "Full Stack Developer",
     "Backend Engineer",
     "Cloud Solutions Engineer",
@@ -26,7 +30,7 @@ export const metadata: Metadata = {
     "Kafka Event Sourcing",
     "System Design Specialist"
   ],
-  authors: [{ name: "Abin S Chandran" }],
+  authors: [{ name: "Abin S Chandran", url: "https://abnschandran.in" }],
   creator: "Abin S Chandran",
   publisher: "Abin S Chandran",
   robots: {
@@ -43,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://abinschandran.com",
+    url: "https://abnschandran.in",
     siteName: "Abin S Chandran Portfolio",
     title: "Abin S Chandran | Solution Architect & Full Stack Engineer",
     description:

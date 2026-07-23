@@ -46,15 +46,15 @@ export default async function CaseStudyPage({ params }: Props) {
         projectData={{
           title: project.title,
           description: project.summary,
-          url: `https://abinschandran.com/projects/${project.slug}`,
+          url: `https://abnschandran.in/projects/${project.slug}`,
         }}
       />
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
-          { name: "Home", item: "https://abinschandran.com" },
-          { name: "Projects", item: "https://abinschandran.com/projects" },
-          { name: project.title, item: `https://abinschandran.com/projects/${project.slug}` },
+          { name: "Home", item: "https://abnschandran.in" },
+          { name: "Projects", item: "https://abnschandran.in/projects" },
+          { name: project.title, item: `https://abnschandran.in/projects/${project.slug}` },
         ]}
       />
 

@@ -17,9 +17,9 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, br
     "@type": "Person",
     "name": "Abin S Chandran",
     "jobTitle": "Solution Architect",
-    "alternateName": ["Abin Chandran", "Abin S C"],
+    "alternateName": ["Abin Chandran", "Abin S C", "abnschandran", "abischandran"],
     "description": "Solution Architect & Full Stack Developer with 5+ years of experience specializing in high-throughput cloud architectures, microservices, and enterprise platforms.",
-    "url": "https://abinschandran.com",
+    "url": "https://abnschandran.in",
     "sameAs": [
       "https://github.com/abin223804",
       "https://www.linkedin.com/in/abinschandran/"
@@ -49,7 +49,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, br
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Abin S Chandran - Solution Architect & Full Stack Developer",
-    "url": "https://abinschandran.com",
+    "url": "https://abnschandran.in",
     "publisher": {
       "@type": "Person",
       "name": "Abin S Chandran"

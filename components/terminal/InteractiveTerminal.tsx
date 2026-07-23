@@ -58,7 +58,7 @@ export const InteractiveTerminal: React.FC = () => {
           from_name: data.name || "Portfolio Visitor",
           replyto: data.email || undefined,
           name: data.name || "Anonymous Visitor",
-          email: data.email || "cli-visitor@abinschandran.com",
+          email: data.email || "cli-visitor@abnschandran.in",
           message: data.message,
           channel: data.channel
         })
