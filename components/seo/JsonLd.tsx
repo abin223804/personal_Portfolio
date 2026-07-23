@@ -21,9 +21,8 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, br
     "description": "Solution Architect & Full Stack Developer with 5+ years of experience specializing in high-throughput cloud architectures, microservices, and enterprise platforms.",
     "url": "https://abinschandran.com",
     "sameAs": [
-      "https://github.com/abinschandran",
-      "https://linkedin.com/in/abinschandran",
-      "https://twitter.com/abinschandran"
+      "https://github.com/abin223804",
+      "https://www.linkedin.com/in/abinschandran/"
     ],
     "knowsAbout": [
       "Solution Architecture",
@@ -68,7 +67,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, br
         "@type": "Person",
         "name": "Abin S Chandran"
       },
-      "codeRepository": "https://github.com/abinschandran"
+      "codeRepository": "https://github.com/abin223804"
     };
 
     return (

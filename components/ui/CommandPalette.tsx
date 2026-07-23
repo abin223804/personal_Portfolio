@@ -44,14 +44,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       id: "github",
       title: "Open GitHub Profile",
       category: "External Links",
-      external: "https://github.com/abinschandran",
+      external: "https://github.com/abin223804",
       icon: Github,
     },
     {
       id: "linkedin",
       title: "Connect on LinkedIn",
       category: "External Links",
-      external: "https://linkedin.com/in/abinschandran",
+      external: "https://www.linkedin.com/in/abinschandran/",
       icon: Linkedin,
     },
   ];

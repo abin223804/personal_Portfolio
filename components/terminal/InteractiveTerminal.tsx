@@ -114,7 +114,7 @@ export const InteractiveTerminal: React.FC = () => {
       case "linkedin":
         response = (
           <div className="text-xs font-mono text-titanium">
-            LinkedIn Profile: <a href="https://linkedin.com/in/abinschandran" target="_blank" rel="noreferrer" className="text-copper underline">https://linkedin.com/in/abinschandran</a>
+            LinkedIn Profile: <a href="https://www.linkedin.com/in/abinschandran/" target="_blank" rel="noreferrer" className="text-copper underline">https://www.linkedin.com/in/abinschandran/</a>
           </div>
         );
         break;
@@ -122,7 +122,7 @@ export const InteractiveTerminal: React.FC = () => {
       case "github":
         response = (
           <div className="text-xs font-mono text-titanium">
-            GitHub Profile: <a href="https://github.com/abinschandran" target="_blank" rel="noreferrer" className="text-copper underline">https://github.com/abinschandran</a>
+            GitHub Profile: <a href="https://github.com/abin223804" target="_blank" rel="noreferrer" className="text-copper underline">https://github.com/abin223804</a>
           </div>
         );
         break;

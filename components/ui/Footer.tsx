@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs text-titanium">
               <li>
                 <a
-                  href="https://github.com/abinschandran"
+                  href="https://github.com/abin223804"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-copper transition-colors flex items-center gap-1.5"
@@ -101,7 +101,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://linkedin.com/in/abinschandran"
+                  href="https://www.linkedin.com/in/abinschandran/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-copper transition-colors flex items-center gap-1.5"
