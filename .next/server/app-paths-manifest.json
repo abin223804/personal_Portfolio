@@ -3,9 +3,9 @@
   "/sitemap.xml/route": "app/sitemap.xml/route.js",
   "/robots.txt/route": "app/robots.txt/route.js",
   "/page": "app/page.js",
-  "/resume/page": "app/resume/page.js",
+  "/contact/page": "app/contact/page.js",
   "/about/page": "app/about/page.js",
-  "/projects/page": "app/projects/page.js",
   "/projects/[slug]/page": "app/projects/[slug]/page.js",
-  "/contact/page": "app/contact/page.js"
+  "/resume/page": "app/resume/page.js",
+  "/projects/page": "app/projects/page.js"
 }

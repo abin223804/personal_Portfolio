@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Abin S Chandran", url: "https://abnschandran.in" }],
   creator: "Abin S Chandran",
   publisher: "Abin S Chandran",
+  verification: {
+    google: "dr73ZHeq1GhA-68VOowLZW6RCxrJc7wfeUIaKJvbH5E",
+  },
   robots: {
     index: true,
     follow: true,

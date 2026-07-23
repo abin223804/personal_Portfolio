@@ -3,9 +3,9 @@
   "/sitemap.xml/route": "/sitemap.xml",
   "/robots.txt/route": "/robots.txt",
   "/page": "/",
-  "/resume/page": "/resume",
+  "/contact/page": "/contact",
   "/about/page": "/about",
-  "/projects/page": "/projects",
   "/projects/[slug]/page": "/projects/[slug]",
-  "/contact/page": "/contact"
+  "/resume/page": "/resume",
+  "/projects/page": "/projects"
 }
