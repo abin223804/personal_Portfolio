@@ -1,11 +1,11 @@
 {
-  "/sitemap.xml/route": "/sitemap.xml",
   "/_not-found/page": "/_not-found",
   "/robots.txt/route": "/robots.txt",
-  "/contact/page": "/contact",
-  "/about/page": "/about",
+  "/sitemap.xml/route": "/sitemap.xml",
   "/page": "/",
-  "/projects/[slug]/page": "/projects/[slug]",
+  "/projects/page": "/projects",
+  "/contact/page": "/contact",
   "/resume/page": "/resume",
-  "/projects/page": "/projects"
+  "/about/page": "/about",
+  "/projects/[slug]/page": "/projects/[slug]"
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Terminal, CornerDownLeft, Copy, Check, Send, Mail, MapPin, Phone, Github, Linkedin } from "lucide-react";
+import { Terminal, CornerDownLeft, Copy, Check, Send, Mail, Github, Linkedin, Loader2, Sparkles } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
 
 interface HistoryItem {
@@ -21,12 +21,19 @@ export const InteractiveTerminal: React.FC = () => {
             Abin S Chandran Architecture CLI Shell v5.2.0 [x86_64-apple-darwin]
           </div>
           <div className="text-titanium">
-            Type <span className="text-amber-400 font-bold">help</span> to see available commands or click quick chips below.
+            Type <span className="text-amber-400 font-bold">help</span> to see available commands, or type <span className="text-emerald-400 font-bold">send &lt;your message&gt;</span> to email Abin directly.
           </div>
         </div>
       ),
     },
   ]);
+
+  // Form states
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [scope, setScope] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">("idle");
 
   const inputRef = useRef<HTMLInputElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -35,108 +42,153 @@ export const InteractiveTerminal: React.FC = () => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history]);
 
-  const handleCommand = (cmdStr: string) => {
-    const trimmed = cmdStr.trim().toLowerCase();
+  // Pure Client-side Email Dispatcher via AJAX
+  const sendEmailFromFrontend = async (data: { name?: string; email?: string; message: string; channel: string }) => {
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/abinschandran@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          _subject: `Portfolio Contact via ${data.channel} from ${data.name || 'Visitor'}`,
+          Sender_Name: data.name || "Anonymous Visitor",
+          Sender_Email: data.email || "CLI Channel (No email provided)",
+          Message: data.message,
+          Channel: data.channel,
+          _template: "table"
+        })
+      });
+      return res.ok;
+    } catch (err) {
+      console.error("Frontend email transmission error:", err);
+      return false;
+    }
+  };
+
+  const handleCommand = async (cmdStr: string) => {
+    const trimmed = cmdStr.trim();
+    const lower = trimmed.toLowerCase();
     let response: React.ReactNode = null;
 
-    switch (trimmed) {
-      case "help":
-        response = (
-          <div className="space-y-1 text-xs font-mono text-titanium">
-            <div className="text-ivory font-bold mb-1">Available System Commands:</div>
-            <div><span className="text-amber-400 font-bold">about</span> - Brief architectural summary & philosophy</div>
-            <div><span className="text-amber-400 font-bold">skills</span> - Core technical competencies matrix</div>
-            <div><span className="text-amber-400 font-bold">projects</span> - Production case studies list</div>
-            <div><span className="text-amber-400 font-bold">contact</span> - Direct email & contact info</div>
-            <div><span className="text-amber-400 font-bold">resume</span> - Career experience overview link</div>
-            <div><span className="text-amber-400 font-bold">linkedin</span> - Open LinkedIn profile link</div>
-            <div><span className="text-amber-400 font-bold">github</span> - Open GitHub repository profile</div>
-            <div><span className="text-amber-400 font-bold">konami</span> - Trigger secret architecture mode</div>
-            <div><span className="text-amber-400 font-bold">clear</span> - Reset terminal screen history</div>
+    if (lower === "help") {
+      response = (
+        <div className="space-y-1 text-xs font-mono text-titanium">
+          <div className="text-ivory font-bold mb-1">Available System Commands:</div>
+          <div><span className="text-emerald-400 font-bold">send &lt;msg&gt;</span> - Transmit direct email to Abin&apos;s inbox</div>
+          <div><span className="text-amber-400 font-bold">about</span> - Brief architectural summary &amp; philosophy</div>
+          <div><span className="text-amber-400 font-bold">skills</span> - Core technical competencies matrix</div>
+          <div><span className="text-amber-400 font-bold">projects</span> - Production case studies list</div>
+          <div><span className="text-amber-400 font-bold">contact</span> - Direct email &amp; contact info</div>
+          <div><span className="text-amber-400 font-bold">resume</span> - Career experience overview link</div>
+          <div><span className="text-amber-400 font-bold">linkedin</span> - Open LinkedIn profile link</div>
+          <div><span className="text-amber-400 font-bold">github</span> - Open GitHub repository profile</div>
+          <div><span className="text-amber-400 font-bold">clear</span> - Reset terminal screen history</div>
+        </div>
+      );
+    } else if (lower.startsWith("send ") || lower.startsWith("msg ")) {
+      const msgText = trimmed.replace(/^(send|msg)\s+/i, "").trim();
+      if (!msgText) {
+        response = <div className="text-xs font-mono text-rose-400">Usage: send &lt;your message here&gt;</div>;
+      } else {
+        // Append initial sending log
+        setHistory((prev) => [
+          ...prev,
+          {
+            command: cmdStr,
+            output: <div className="text-xs font-mono text-amber-400 animate-pulse">[HTTP POST] Transmitting packet to abinschandran@gmail.com...</div>,
+          },
+        ]);
+
+        const success = await sendEmailFromFrontend({
+          message: msgText,
+          channel: "CLI Terminal Command"
+        });
+
+        response = success ? (
+          <div className="text-xs font-mono text-emerald-400 space-y-0.5">
+            <div>✓ HTTP 200 OK — Packet delivered directly to abinschandran@gmail.com!</div>
+            <div className="text-titanium text-[11px]">Thank you for connecting. I will review and reply shortly.</div>
           </div>
-        );
-        break;
-
-      case "about":
-        response = (
-          <div className="text-xs font-mono text-titanium space-y-2">
-            <div className="text-ivory font-bold">Abin S Chandran | Solution Architect</div>
-            <p>5+ years of experience designing multi-region cloud platforms, microservices, and zero-downtime financial engines. Focused on high-availability, clean domain boundaries, and sub-10ms latencies.</p>
-          </div>
-        );
-        break;
-
-      case "skills":
-        response = (
-          <div className="text-xs font-mono text-titanium space-y-1">
-            <div className="text-copper font-bold">Core Stack & Architectures:</div>
-            <div>• Systems: Microservices, Event Sourcing (Kafka), gRPC, Envoy Gateway</div>
-            <div>• Backend: Node.js, TypeScript, Go (Golang), Python (FastAPI)</div>
-            <div>• Frontend: Next.js 15, React 19, Tailwind CSS, Framer Motion</div>
-            <div>• Infrastructure: AWS (EKS/Lambda), Kubernetes, Docker, Terraform, Redis, Postgres/pgvector</div>
-          </div>
-        );
-        break;
-
-      case "projects":
-        response = (
-          <div className="text-xs font-mono text-titanium space-y-1">
-            <div className="text-ivory font-bold">Featured Production Case Studies:</div>
-            {PROJECTS.map((p) => (
-              <div key={p.slug}>
-                - <span className="text-copper font-semibold">{p.title}</span> ({p.category})
-              </div>
-            ))}
-          </div>
-        );
-        break;
-
-      case "contact":
-      case "email":
-        response = (
-          <div className="text-xs font-mono text-titanium space-y-1">
-            <div className="text-emerald-400 font-bold">Contact Channel Details:</div>
-            <div>Email: <span className="text-ivory">abin.chandran@gamail.com</span></div>
-            <div>Location: Remote / Open to Global Consultation</div>
-            <div>Status: <span className="text-emerald-400 font-bold">Available for Solution Advisory</span></div>
-          </div>
-        );
-        break;
-
-      case "resume":
-        response = (
-          <div className="text-xs font-mono text-titanium">
-            Direct Web Resume path: <a href="/resume" className="text-copper underline font-bold">/resume</a>
-          </div>
-        );
-        break;
-
-      case "linkedin":
-        response = (
-          <div className="text-xs font-mono text-titanium">
-            LinkedIn Profile: <a href="https://www.linkedin.com/in/abinschandran/" target="_blank" rel="noreferrer" className="text-copper underline">https://www.linkedin.com/in/abinschandran/</a>
-          </div>
-        );
-        break;
-
-      case "github":
-        response = (
-          <div className="text-xs font-mono text-titanium">
-            GitHub Profile: <a href="https://github.com/abin223804" target="_blank" rel="noreferrer" className="text-copper underline">https://github.com/abin223804</a>
-          </div>
-        );
-        break;
-
-      case "clear":
-        setHistory([]);
-        return;
-
-      default:
-        response = (
+        ) : (
           <div className="text-xs font-mono text-rose-400">
-            command not found: &quot;{cmdStr}&quot;. Type <span className="text-amber-400 font-bold">help</span> for valid commands.
+            ✕ Transmission failed. Please try the inquiry form on the right or email abinschandran@gmail.com directly.
           </div>
         );
+
+        // Replace the sending state output
+        setHistory((prev) => [
+          ...prev.slice(0, prev.length - 1),
+          { command: cmdStr, output: response },
+        ]);
+        return;
+      }
+    } else if (lower === "about") {
+      response = (
+        <div className="text-xs font-mono text-titanium space-y-2">
+          <div className="text-ivory font-bold">Abin S Chandran | Solution Architect</div>
+          <p>5+ years of experience designing multi-region cloud platforms, microservices, and zero-downtime financial engines. Focused on high-availability, clean domain boundaries, and sub-10ms latencies.</p>
+        </div>
+      );
+    } else if (lower === "skills") {
+      response = (
+        <div className="text-xs font-mono text-titanium space-y-1">
+          <div className="text-copper font-bold">Core Stack &amp; Architectures:</div>
+          <div>• Systems: Microservices, Event Sourcing (Kafka), gRPC, Envoy Gateway</div>
+          <div>• Backend: Node.js, TypeScript, Go (Golang), Python (FastAPI)</div>
+          <div>• Frontend: Next.js 15, React 19, Tailwind CSS, Framer Motion</div>
+          <div>• Infrastructure: AWS (EKS/Lambda), Kubernetes, Docker, Terraform, Redis, Postgres/pgvector</div>
+        </div>
+      );
+    } else if (lower === "projects") {
+      response = (
+        <div className="text-xs font-mono text-titanium space-y-1">
+          <div className="text-ivory font-bold">Featured Production Case Studies:</div>
+          {PROJECTS.map((p) => (
+            <div key={p.slug}>
+              - <span className="text-copper font-semibold">{p.title}</span> ({p.category})
+            </div>
+          ))}
+        </div>
+      );
+    } else if (lower === "contact" || lower === "email") {
+      response = (
+        <div className="text-xs font-mono text-titanium space-y-1">
+          <div className="text-emerald-400 font-bold">Contact Channel Details:</div>
+          <div>Email: <span className="text-ivory">abinschandran@gmail.com</span></div>
+          <div>Location: Remote / Open to Global Consultation</div>
+          <div>Status: <span className="text-emerald-400 font-bold">Available for Solution Advisory</span></div>
+          <div className="pt-1 text-copper">Tip: Type <span className="font-bold">send hello</span> to dispatch an email right now!</div>
+        </div>
+      );
+    } else if (lower === "resume") {
+      response = (
+        <div className="text-xs font-mono text-titanium">
+          Direct Web Resume path: <a href="/resume" className="text-copper underline font-bold">/resume</a>
+        </div>
+      );
+    } else if (lower === "linkedin") {
+      response = (
+        <div className="text-xs font-mono text-titanium">
+          LinkedIn Profile: <a href="https://www.linkedin.com/in/abinschandran/" target="_blank" rel="noreferrer" className="text-copper underline">https://www.linkedin.com/in/abinschandran/</a>
+        </div>
+      );
+    } else if (lower === "github") {
+      response = (
+        <div className="text-xs font-mono text-titanium">
+          GitHub Profile: <a href="https://github.com/abin223804" target="_blank" rel="noreferrer" className="text-copper underline">https://github.com/abin223804</a>
+        </div>
+      );
+    } else if (lower === "clear") {
+      setHistory([]);
+      return;
+    } else {
+      response = (
+        <div className="text-xs font-mono text-rose-400">
+          command not found: &quot;{cmdStr}&quot;. Type <span className="text-amber-400 font-bold">help</span> or <span className="text-emerald-400 font-bold">send &lt;msg&gt;</span>.
+        </div>
+      );
     }
 
     setHistory((prev) => [...prev, { command: cmdStr, output: response }]);
@@ -147,6 +199,32 @@ export const InteractiveTerminal: React.FC = () => {
     if (!input.trim()) return;
     handleCommand(input);
     setInput("");
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!scope.trim()) return;
+
+    setIsSubmitting(true);
+    setFormStatus("idle");
+
+    const success = await sendEmailFromFrontend({
+      name: name.trim() || undefined,
+      email: email.trim() || undefined,
+      message: scope.trim(),
+      channel: "Architectural Inquiry Form"
+    });
+
+    setIsSubmitting(false);
+
+    if (success) {
+      setFormStatus("success");
+      setName("");
+      setEmail("");
+      setScope("");
+    } else {
+      setFormStatus("error");
+    }
   };
 
   const copyEmail = () => {
@@ -163,13 +241,13 @@ export const InteractiveTerminal: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono mb-3">
             <Terminal className="w-3.5 h-3.5" />
-            <span>Interactive CLI & Contact Channel</span>
+            <span>Interactive CLI &amp; Contact Channel</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-ivory tracking-tight">
             Consult Solution Architect
           </h2>
           <p className="text-titanium text-sm mt-2 font-sans">
-            Type commands in the UNIX terminal shell below or submit a traditional query via the fallback contact form.
+            Type <code className="text-emerald-400 font-mono bg-obsidian-bg px-1.5 py-0.5 rounded border border-obsidian-border">send &lt;message&gt;</code> in the terminal shell or submit a direct query via the inquiry form.
           </p>
         </div>
 
@@ -191,13 +269,21 @@ export const InteractiveTerminal: React.FC = () => {
             {/* Quick Command Chips */}
             <div className="bg-obsidian-surface px-4 py-2 border-b border-obsidian-border flex flex-wrap gap-2 text-[11px] font-mono">
               <span className="text-titanium">Quick commands:</span>
-              {["help", "about", "skills", "projects", "contact", "clear"].map((c) => (
+              {[
+                { label: "help", cmd: "help" },
+                { label: "about", cmd: "about" },
+                { label: "skills", cmd: "skills" },
+                { label: "projects", cmd: "projects" },
+                { label: "contact", cmd: "contact" },
+                { label: "send hello", cmd: "send Hello Abin! Let's connect." },
+                { label: "clear", cmd: "clear" },
+              ].map((item) => (
                 <button
-                  key={c}
-                  onClick={() => handleCommand(c)}
+                  key={item.label}
+                  onClick={() => handleCommand(item.cmd)}
                   className="px-2 py-0.5 rounded bg-obsidian-card hover:bg-copper/20 hover:text-copper border border-obsidian-border text-titanium transition-colors"
                 >
-                  {c}
+                  {item.label}
                 </button>
               ))}
             </div>
@@ -224,7 +310,7 @@ export const InteractiveTerminal: React.FC = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type command ('help', 'contact', etc)..."
+                placeholder="Type command or 'send hello world'..."
                 className="w-full bg-transparent text-xs text-ivory placeholder-titanium focus:outline-none"
               />
               <button type="submit" className="p-1.5 rounded-lg bg-copper text-white hover:bg-copper-light transition-colors">
@@ -235,14 +321,17 @@ export const InteractiveTerminal: React.FC = () => {
 
           {/* Right: Traditional Fallback Contact Form & Direct Links */}
           <div className="lg:col-span-5 bg-obsidian-bg border border-obsidian-border rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl">
-            <h3 className="text-lg font-bold text-ivory font-sans">Direct Architectural Inquiry</h3>
+            <h3 className="text-lg font-bold text-ivory font-sans flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-copper" />
+              <span>Direct Architectural Inquiry</span>
+            </h3>
 
             <div className="space-y-4">
               <div className="p-3.5 rounded-xl bg-obsidian-surface border border-obsidian-border flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-copper" />
                   <div>
-                    <div className="text-[11px] text-titanium font-mono">Email Address</div>
+                    <div className="text-[11px] text-titanium font-mono">Direct Email</div>
                     <div className="text-xs font-mono font-semibold text-ivory">abinschandran@gmail.com</div>
                   </div>
                 </div>
@@ -255,33 +344,72 @@ export const InteractiveTerminal: React.FC = () => {
                 </button>
               </div>
 
+              {/* Status alerts */}
+              {formStatus === "success" && (
+                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+                  ✓ Inquiry transmitted directly to abinschandran@gmail.com!
+                </div>
+              )}
+              {formStatus === "error" && (
+                <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-mono">
+                  ✕ Transmission failed. Please email abinschandran@gmail.com directly.
+                </div>
+              )}
+
               {/* Form Input */}
-              <div className="space-y-3 font-sans">
+              <form onSubmit={handleFormSubmit} className="space-y-3 font-sans">
                 <div>
                   <label className="block text-xs font-mono text-titanium mb-1">Your Name / Organization</label>
                   <input
                     type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     placeholder="Jane Doe (Lead Architect @ SaaS Corp)"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper transition-colors"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-xs font-mono text-titanium mb-1">Architecture / Project Scope</label>
-                  <textarea
-                    rows={3}
-                    placeholder="Describe your microservices overhaul, cloud migration, or consulting requirement..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper"
+                  <label className="block text-xs font-mono text-titanium mb-1">Your Email Address</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="jane@company.com"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper transition-colors"
                   />
                 </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-titanium mb-1">Architecture / Project Scope *</label>
+                  <textarea
+                    required
+                    rows={3}
+                    value={scope}
+                    onChange={(e) => setScope(e.target.value)}
+                    placeholder="Describe your microservices overhaul, cloud migration, or consulting requirement..."
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper transition-colors"
+                  />
+                </div>
+
                 <button
-                  type="button"
-                  onClick={() => alert("Thank you! Your message has been logged to the architecture queue.")}
-                  className="w-full py-3 rounded-xl bg-copper hover:bg-copper-light text-white text-xs font-mono font-bold transition-all shadow-lg shadow-copper/20 flex items-center justify-center gap-2"
+                  type="submit"
+                  disabled={isSubmitting || !scope.trim()}
+                  className="w-full py-3 rounded-xl bg-copper hover:bg-copper-light disabled:opacity-50 text-white text-xs font-mono font-bold transition-all shadow-lg shadow-copper/20 flex items-center justify-center gap-2"
                 >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Transmit Inquiry</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      <span>Transmitting Packet...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-3.5 h-3.5" />
+                      <span>Transmit Inquiry to Inbox</span>
+                    </>
+                  )}
                 </button>
-              </div>
+              </form>
             </div>
 
           </div>
