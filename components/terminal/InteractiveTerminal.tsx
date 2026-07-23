@@ -42,27 +42,31 @@ export const InteractiveTerminal: React.FC = () => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history]);
 
-  // Pure Client-side Email Dispatcher via AJAX
+  // Pure Client-side Web3Forms Email Dispatcher
   const sendEmailFromFrontend = async (data: { name?: string; email?: string; message: string; channel: string }) => {
     try {
-      const res = await fetch("https://formsubmit.co/ajax/abinschandran@gmail.com", {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "";
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
         body: JSON.stringify({
-          _subject: `Portfolio Contact via ${data.channel} from ${data.name || 'Visitor'}`,
-          Sender_Name: data.name || "Anonymous Visitor",
-          Sender_Email: data.email || "CLI Channel (No email provided)",
-          Message: data.message,
-          Channel: data.channel,
-          _template: "table"
+          access_key: accessKey,
+          subject: `Portfolio Contact via ${data.channel} from ${data.name || 'Visitor'}`,
+          from_name: data.name || "Portfolio Visitor",
+          replyto: data.email || undefined,
+          name: data.name || "Anonymous Visitor",
+          email: data.email || "cli-visitor@abinschandran.com",
+          message: data.message,
+          channel: data.channel
         })
       });
-      return res.ok;
+      const result = await res.json();
+      return result.success;
     } catch (err) {
-      console.error("Frontend email transmission error:", err);
+      console.error("Web3Forms email transmission error:", err);
       return false;
     }
   };
