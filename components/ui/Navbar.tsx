@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Command, Terminal, FileText, Cpu, Briefcase, User, Sparkles } from "lucide-react";
+import { Command, Terminal, FileText, Cpu, Briefcase, User, Sparkles, Layers } from "lucide-react";
 
 interface NavbarProps {
   onOpenCommandPalette: () => void;
@@ -28,10 +28,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
 
   const navItems = [
     { name: "Overview", href: "/", icon: Cpu },
+    { name: "Services", href: "/services", icon: Layers },
     { name: "Projects", href: "/projects", icon: Briefcase },
-    { name: "Architecture", href: "/about", icon: User },
+    { name: "About", href: "/about", icon: User },
     { name: "Resume", href: "/resume", icon: FileText },
-    { name: "Terminal CLI", href: "/contact", icon: Terminal },
+    { name: "Contact CLI", href: "/contact", icon: Terminal },
   ];
 
   return (
@@ -62,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
             </span>
             <span className="text-[11px] font-mono text-titanium flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Solution Architect
+              Freelance Developer &amp; Architect
             </span>
           </div>
         </Link>
@@ -70,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
         {/* Navigation Links */}
         <nav className="hidden md:flex items-center gap-1 bg-obsidian-surface/80 p-1.5 rounded-full border border-obsidian-border/80 shadow-lg backdrop-blur-md">
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             const Icon = item.icon;
             return (
               <Link
@@ -108,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
             className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-copper to-copper-dark hover:from-copper-light hover:to-copper text-white text-xs font-semibold shadow-lg shadow-copper/20 hover:shadow-copper/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Consult Architect</span>
+            <span>Start a Project</span>
           </Link>
         </div>
       </div>

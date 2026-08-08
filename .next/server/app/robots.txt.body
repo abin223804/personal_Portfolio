@@ -1,5 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /api/private/
-
-Sitemap: https://abnschandran.in/sitemap.xml

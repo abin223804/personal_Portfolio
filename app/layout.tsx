@@ -1,38 +1,62 @@
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AppShell } from "./AppShell";
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://abnschandran.in"),
   title: {
-    default: "Abin S Chandran | Solution Architect & Full Stack Developer",
-    template: "%s | Abin S Chandran - Solution Architect",
+    default: "Freelance Software Developer & Solution Architect | Abin S Chandran",
+    template: "%s | Abin S Chandran - Freelance Software Developer",
   },
   description:
-    "Official portfolio of Abin S Chandran — Solution Architect & Full Stack Developer with 5+ years experience engineering multi-region cloud platforms, sub-10ms microservices, and zero-downtime distributed systems.",
+    "Freelance Software Developer & Solution Architect based in Kerala, India, serving clients worldwide. Specializing in Web & Mobile App Development with Node.js, React, Next.js, Express, Flutter, PostgreSQL, REST APIs, and SaaS platforms.",
   keywords: [
     "Abin S Chandran",
-    "abnschandran",
-    "abnschandran.in",
-    "abischandran",
-    "Abin Chandran",
-    "Solution Architect",
-    "Full Stack Developer",
-    "Backend Engineer",
-    "Cloud Solutions Engineer",
-    "Microservices Architecture",
-    "Distributed Systems",
-    "Next.js Architect",
-    "Go Engineer",
-    "AWS Certified Architect",
-    "Kafka Event Sourcing",
-    "System Design Specialist"
+    "freelance software developer",
+    "freelance full stack developer",
+    "freelance Flutter developer",
+    "freelance mobile app developer",
+    "Flutter app developer India",
+    "freelance software developer India",
+    "freelance full stack developer India",
+    "full stack developer Kerala",
+    "freelance Flutter developer Kerala",
+    "software developer Kerala",
+    "freelance Node.js developer",
+    "freelance React developer",
+    "freelance Next.js developer",
+    "Node.js developer for hire",
+    "React developer for hire",
+    "Next.js developer for hire",
+    "Flutter developer for hire",
+    "custom web application development",
+    "custom mobile app development",
+    "SaaS development India",
+    "REST API development",
+    "admin dashboard development",
+    "Solution Architect"
   ],
   authors: [{ name: "Abin S Chandran", url: "https://abnschandran.in" }],
   creator: "Abin S Chandran",
   publisher: "Abin S Chandran",
+  alternates: {
+    canonical: "https://abnschandran.in",
+  },
   verification: {
     google: "dr73ZHeq1GhA-68VOowLZW6RCxrJc7wfeUIaKJvbH5E",
   },
@@ -51,24 +75,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://abnschandran.in",
-    siteName: "Abin S Chandran Portfolio",
-    title: "Abin S Chandran | Solution Architect & Full Stack Engineer",
+    siteName: "Abin S Chandran - Freelance Software Developer",
+    title: "Freelance Software Developer & Solution Architect | Abin S Chandran",
     description:
-      "Engineering resilient cloud architectures, high-throughput backend microservices, and ultra-fast web platforms.",
+      "Hire Abin S Chandran — Freelance Software Developer & Solution Architect in Kerala, India. Building custom web & Flutter mobile applications, SaaS platforms, Node.js APIs, and React/Next.js frontends.",
     images: [
       {
         url: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&auto=format&fit=crop&q=80",
         width: 1200,
         height: 630,
-        alt: "Abin S Chandran Solution Architect Portfolio",
+        alt: "Abin S Chandran Freelance Software Developer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abin S Chandran | Solution Architect & Full Stack Developer",
+    title: "Freelance Software Developer & Solution Architect | Abin S Chandran",
     description:
-      "Designing intelligent digital architectures, high-concurrency microservices, and enterprise web solutions.",
+      "Building high-performance custom web & Flutter mobile applications, Node.js backends, React/Next.js frontends, and SaaS platforms.",
     creator: "@abinschandran",
   },
 };
@@ -79,15 +103,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
         <JsonLd type="Person" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+        <JsonLd type="ProfessionalService" />
       </head>
       <body className="bg-obsidian-bg text-ivory antialiased selection:bg-copper/30 selection:text-white">
         <AppShell>{children}</AppShell>

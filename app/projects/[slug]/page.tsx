@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PROJECTS } from "@/data/projects";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { ConversionCtaSection } from "@/components/cta/ConversionCtaSection";
 import { ArrowLeft, Cpu, ShieldCheck, CheckCircle2, Server, ExternalLink, Calendar, User, Building2 } from "lucide-react";
 
 interface Props {
@@ -24,9 +25,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.title} | Abin S Chandran Case Study`,
     description: project.summary,
+    alternates: {
+      canonical: `https://abnschandran.in/projects/${project.slug}`,
+    },
     openGraph: {
       title: project.title,
       description: project.summary,
+      url: `https://abnschandran.in/projects/${project.slug}`,
     },
   };
 }
@@ -106,7 +111,7 @@ export default async function CaseStudyPage({ params }: Props) {
         {/* Technical Stack Badges */}
         <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 shadow-xl space-y-3">
           <h3 className="text-xs font-mono uppercase tracking-wider text-ivory font-semibold">
-            Technology Stack & Tools Used
+            Technology Stack &amp; Tools Used
           </h3>
           <div className="flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
@@ -125,7 +130,7 @@ export default async function CaseStudyPage({ params }: Props) {
           
           <div className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-bold text-ivory font-mono border-b border-obsidian-border pb-3">
-              Architectural Overview & System Boundaries
+              Architectural Overview &amp; System Boundaries
             </h2>
             <p className="text-sm leading-relaxed">{project.architectureOverview}</p>
           </div>
@@ -145,7 +150,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-ivory font-mono">Critical Architectural Decisions & Trade-Offs</h3>
+            <h3 className="text-lg font-bold text-ivory font-mono">Critical Architectural Decisions &amp; Trade-Offs</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {project.architecturalDecisions.map((dec) => (
                 <div key={dec.title} className="p-5 rounded-xl bg-obsidian-card border border-obsidian-border space-y-3">
@@ -179,10 +184,14 @@ export default async function CaseStudyPage({ params }: Props) {
             href="/contact"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-copper hover:bg-copper-light text-white text-xs font-mono font-bold shadow-lg shadow-copper/20"
           >
-            <span>Consult on Similar Architecture</span>
+            <span>Consult on Similar Software Project</span>
           </Link>
         </div>
 
+      </div>
+
+      <div className="mt-16">
+        <ConversionCtaSection />
       </div>
     </div>
   );

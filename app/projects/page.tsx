@@ -2,12 +2,22 @@ import React from "react";
 import type { Metadata } from "next";
 import { ProjectGrid } from "@/components/projects/ProjectGrid";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { ConversionCtaSection } from "@/components/cta/ConversionCtaSection";
 import { Briefcase } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Case Studies & Systems Portfolio",
+  title: "Case Studies & Full-Stack Projects | Abin S Chandran",
   description:
-    "Explore enterprise case studies by Solution Architect Abin S Chandran covering multi-region API gateways, real-time ledger settlement engines, RAG vector pipelines, and micro-frontend design systems.",
+    "Explore full-stack software development case studies by Abin S Chandran covering enterprise cloud gateways, real-time FinTech settlement engines, AI knowledge mesh RAG pipelines, and micro-frontend design systems.",
+  alternates: {
+    canonical: "https://abnschandran.in/projects",
+  },
+  openGraph: {
+    title: "Case Studies & Full-Stack Projects | Abin S Chandran",
+    description:
+      "Detailed technical case studies showcasing system architecture designs, performance metrics, trade-offs, and operational outcomes.",
+    url: "https://abnschandran.in/projects",
+  },
 };
 
 export default function ProjectsPage() {
@@ -28,15 +38,19 @@ export default function ProjectsPage() {
             <span>Complete Architectural Archive</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-ivory tracking-tight">
-            Production Case Studies & Systems
+            Production Case Studies &amp; Software Projects
           </h1>
-          <p className="text-titanium text-sm sm:text-base leading-relaxed max-w-3xl">
-            Detailed technical case studies showcasing system architecture designs, performance metrics, trade-offs, and operational outcomes across 5+ years of engineering experience.
+          <p className="text-titanium text-sm sm:text-base leading-relaxed max-w-3xl font-sans">
+            Detailed technical case studies showcasing full-stack application architecture, Node.js APIs, performance benchmarks, trade-offs, and operational outcomes across 5+ years of software engineering.
           </p>
         </div>
       </div>
 
       <ProjectGrid />
+
+      <div className="mt-12">
+        <ConversionCtaSection />
+      </div>
     </div>
   );
 }

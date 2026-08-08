@@ -11,6 +11,7 @@ export const ProjectGrid: React.FC<{ limit?: number }> = ({ limit }) => {
 
   const categories = [
     "All",
+    "Mobile & Cross-Platform",
     "Cloud Architecture",
     "Distributed Systems",
     "Full Stack Enterprise",

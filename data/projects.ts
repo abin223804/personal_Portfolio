@@ -2,7 +2,7 @@ export interface CaseStudy {
   slug: string;
   title: string;
   subtitle: string;
-  category: "Cloud Architecture" | "Distributed Systems" | "Full Stack Enterprise" | "Frontend & Design System";
+  category: "Cloud Architecture" | "Distributed Systems" | "Full Stack Enterprise" | "Frontend & Design System" | "Mobile & Cross-Platform";
   period: string;
   role: string;
   client: string;
@@ -17,6 +17,52 @@ export interface CaseStudy {
 }
 
 export const PROJECTS: CaseStudy[] = [
+  {
+    slug: "flutter-mobile-saas-app",
+    title: "PulseFit - Cross-Platform Mobile SaaS App",
+    subtitle: "End-to-End Flutter iOS & Android App with Node.js REST API Backend",
+    category: "Mobile & Cross-Platform",
+    period: "2024 - 2025",
+    role: "Lead Full-Stack Mobile Architect",
+    client: "HealthTech Startup",
+    summary: "Built a high-performance cross-platform Flutter mobile app for iOS and Android, backed by a Node.js Express REST API, PostgreSQL database, JWT authentication, and automated Stripe subscription billing.",
+    metrics: [
+      { label: "Platform Target", value: "iOS & Android", detail: "Single Flutter codebase" },
+      { label: "API Response Time", value: "14ms P99", detail: "Node.js REST API backend" },
+      { label: "App Store SLA", value: "100%", detail: "Passed Apple & Google review" },
+      { label: "Active User Rating", value: "4.9 / 5.0", detail: "60fps smooth animations" }
+    ],
+    techStack: ["Flutter", "Dart", "Node.js", "Express.js", "PostgreSQL", "Redis", "Stripe API", "Firebase FCM", "Docker"],
+    architectureOverview: "PulseFit features a Flutter mobile frontend utilizing BLoC pattern for state management and local Hive storage for offline data synchronization. The frontend communicates with a scalable Node.js & Express REST API hosted on AWS, backed by PostgreSQL and Redis caching for instant user telemetry sync.",
+    keyChallenges: [
+      "Maintaining 60fps rendering performance during real-time data sync bursts on low-spec Android devices.",
+      "Offline-first state synchronization without creating duplicate server records.",
+      "Cross-platform Stripe payment sheet integration across iOS and Android."
+    ],
+    architecturalDecisions: [
+      {
+        title: "BLoC Pattern & Offline Hive Local Cache",
+        reasoning: "Users lose network connectivity in gym environments. Implementing BLoC with local Hive key-value storage allowed seamless offline data logging with background queue sync.",
+        impact: "Zero data loss for offline users and instant sub-10ms UI state transitions."
+      },
+      {
+        title: "Node.js JWT & Webhook Subscription Engine",
+        reasoning: "Handling recurring in-app subscriptions required secure server-side validation. Built a Node.js webhook worker to verify Stripe and Apple/Google receipts.",
+        impact: "100% accurate billing reconciliation and automated entitlement updates."
+      }
+    ],
+    fullNarrative: `
+### Background & Engineering Vision
+Building a modern subscription mobile product requires both a fluid, high-frame-rate user interface and a secure, low-latency backend. As Lead Mobile Architect, I engineered PulseFit using Flutter for cross-platform efficiency coupled with a Node.js REST API.
+
+### Mobile Architecture & Integration
+1. **Flutter Mobile Frontend**: Built with Dart using strict BLoC state management, custom animation controllers, and responsive layout builders for phone and tablet form factors.
+2. **Node.js REST Backend**: Express.js backend API with JWT authentication, rate limiting, and PostgreSQL relational database schemas.
+3. **Push Notifications & Analytics**: Firebase Cloud Messaging (FCM) triggers automated re-engagement notifications based on user activity events.
+4. **App Store Deployment**: Automated CI/CD pipelines via GitHub Actions building signed release APK/AAB and IPA binaries for Play Store and App Store release.
+`,
+    featured: true,
+  },
   {
     slug: "omniscale-cloud-gateway",
     title: "OmniScale Enterprise Cloud Gateway",

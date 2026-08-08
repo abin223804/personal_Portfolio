@@ -6,9 +6,18 @@ import { CAREER_TIMELINE } from "@/data/timeline";
 import { SKILL_PILLARS } from "@/data/skills";
 
 export const metadata: Metadata = {
-  title: "Career Resume & Verified Experience",
+  title: "Career Resume & Technical Experience | Abin S Chandran",
   description:
-    "Official resume for Abin S Chandran — Solution Architect & Full Stack Developer with 5+ years of production experience across microservices, cloud platforms, and enterprise software engineering.",
+    "Official resume of Abin S Chandran — Freelance Full-Stack Developer & Solution Architect with 5+ years experience across Node.js, React, Next.js, microservices, cloud infrastructure, and enterprise software engineering.",
+  alternates: {
+    canonical: "https://abnschandran.in/resume",
+  },
+  openGraph: {
+    title: "Career Resume & Technical Experience | Abin S Chandran",
+    description:
+      "Explore 5+ years of verified software development experience, core technical stack competencies, and career trajectory.",
+    url: "https://abnschandran.in/resume",
+  },
 };
 
 export default function ResumePage() {
@@ -32,11 +41,11 @@ export default function ResumePage() {
               <span>Verified Career Resume</span>
             </div>
             <h1 className="text-3xl font-extrabold text-ivory tracking-tight">Abin S Chandran</h1>
-            <p className="text-copper font-mono text-sm mt-1">Solution Architect & Full Stack Developer (5+ Yrs)</p>
+            <p className="text-copper font-mono text-sm mt-1">Freelance Full-Stack Developer &amp; Solution Architect (5+ Yrs)</p>
             <div className="flex flex-wrap gap-4 text-xs font-mono text-titanium mt-3">
-              <span>Location: Remote / Global</span>
+              <span>Location: Kerala, India (Remote Worldwide)</span>
               <span>•</span>
-              <span>Status: Active Architectural Advisory</span>
+              <span>Status: Available for Freelance &amp; Consulting</span>
             </div>
           </div>
 
@@ -54,7 +63,7 @@ export default function ResumePage() {
         <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 sm:p-8 space-y-3 font-sans shadow-xl">
           <h2 className="text-sm font-mono uppercase tracking-wider text-copper font-semibold">Executive Summary</h2>
           <p className="text-xs sm:text-sm text-titanium leading-relaxed">
-            Solution Architect and Senior Full Stack Developer with 5+ years of engineering excellence building high-concurrency microservice architectures, multi-region AWS Kubernetes pipelines, zero-downtime financial settlement engines, and enterprise web applications. Proven track record of optimizing system latencies (sub-10ms P99), driving 35% infrastructure cost reductions, and achieving 99.99% operational SLAs.
+            Freelance Full-Stack Software Developer &amp; Solution Architect with 5+ years of production engineering experience building scalable Node.js &amp; Express REST API backends, modern React 19 &amp; Next.js 15 web applications, high-concurrency event-driven microservices, and custom SaaS platforms. Proven track record of delivering 40+ software systems, optimizing SQL database queries (sub-10ms latencies), driving infrastructure cost savings, and delivering 99.99% operational SLAs for startups and global business clients.
           </p>
         </div>
 
@@ -101,7 +110,7 @@ export default function ResumePage() {
         {/* Core Skills & Tools Overview */}
         <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 sm:p-8 space-y-4 shadow-xl">
           <h2 className="text-base font-bold text-ivory font-mono border-b border-obsidian-border pb-3">
-            Core Competencies & Technology Stack
+            Core Competencies &amp; Technology Stack
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {SKILL_PILLARS.map((p) => (

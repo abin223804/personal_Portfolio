@@ -13,6 +13,17 @@ export interface SkillPillar {
 
 export const SKILL_PILLARS: SkillPillar[] = [
   {
+    title: "Mobile & Flutter Application Engineering",
+    description: "Building cross-platform iOS & Android mobile applications with native performance, clean architecture, and seamless backend integration.",
+    iconName: "Smartphone",
+    skills: [
+      { name: "Flutter & Dart", level: 92, experienceYears: "3+ yrs", realWorldUsage: "Cross-platform mobile apps for iOS & Android with native performance", tags: ["Flutter", "Dart", "iOS", "Android"] },
+      { name: "Mobile State & Architecture", level: 90, experienceYears: "3+ yrs", realWorldUsage: "Clean architecture, BLoC / Provider state management, & offline storage", tags: ["BLoC", "Provider", "Clean Architecture"] },
+      { name: "Mobile Backend & API Integration", level: 95, experienceYears: "5+ yrs", realWorldUsage: "Connecting Flutter frontends with Node.js REST APIs, OAuth2, & Webhooks", tags: ["REST APIs", "Node.js", "Firebase"] },
+      { name: "App Store & Play Store Deployment", level: 88, experienceYears: "3+ yrs", realWorldUsage: "Building, signing, and deploying production release builds to Apple App Store & Google Play Store", tags: ["App Store", "Play Store", "CI/CD"] }
+    ]
+  },
+  {
     title: "System & Solution Architecture",
     description: "Designing scalable, decoupled, high-availability multi-region architectures with low latency and clean boundaries.",
     iconName: "Cpu",

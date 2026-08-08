@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Terminal, CornerDownLeft, Copy, Check, Send, Mail, Github, Linkedin, Loader2, Sparkles } from "lucide-react";
+import { Terminal, CornerDownLeft, Copy, Check, Send, Mail, Github, Linkedin, Loader2, Sparkles, MessageSquare, ExternalLink } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 interface HistoryItem {
   command: string;
@@ -21,7 +22,7 @@ export const InteractiveTerminal: React.FC = () => {
             Abin S Chandran Architecture CLI Shell v5.2.0 [x86_64-apple-darwin]
           </div>
           <div className="text-titanium">
-            Type <span className="text-amber-400 font-bold">help</span> to see available commands, or type <span className="text-emerald-400 font-bold">send &lt;your message&gt;</span> to email Abin directly.
+            Type <span className="text-amber-400 font-bold">help</span> to see available commands, type <span className="text-emerald-400 font-bold">whatsapp</span> to chat on WhatsApp, or type <span className="text-emerald-400 font-bold">send &lt;your message&gt;</span> to email Abin directly.
           </div>
         </div>
       ),
@@ -80,6 +81,7 @@ export const InteractiveTerminal: React.FC = () => {
       response = (
         <div className="space-y-1 text-xs font-mono text-titanium">
           <div className="text-ivory font-bold mb-1">Available System Commands:</div>
+          <div><span className="text-emerald-400 font-bold">whatsapp</span> - Open direct WhatsApp chat to discuss project</div>
           <div><span className="text-emerald-400 font-bold">send &lt;msg&gt;</span> - Transmit direct email to Abin&apos;s inbox</div>
           <div><span className="text-amber-400 font-bold">about</span> - Brief architectural summary &amp; philosophy</div>
           <div><span className="text-amber-400 font-bold">skills</span> - Core technical competencies matrix</div>
@@ -89,6 +91,20 @@ export const InteractiveTerminal: React.FC = () => {
           <div><span className="text-amber-400 font-bold">linkedin</span> - Open LinkedIn profile link</div>
           <div><span className="text-amber-400 font-bold">github</span> - Open GitHub repository profile</div>
           <div><span className="text-amber-400 font-bold">clear</span> - Reset terminal screen history</div>
+        </div>
+      );
+    } else if (lower === "whatsapp" || lower === "chat") {
+      const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919000000000";
+      const cleanNumber = rawNumber.replace(/[^0-9]/g, "");
+      const msg = "Hi Abin, I found your portfolio and I'd like to discuss a software development project.";
+      const waUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(msg)}`;
+      response = (
+        <div className="text-xs font-mono text-emerald-400 space-y-1">
+          <div>Direct WhatsApp Chat:</div>
+          <a href={waUrl} target="_blank" rel="noopener noreferrer" className="underline font-bold text-ivory flex items-center gap-1.5 pt-1">
+            <span>Discuss Your Project on WhatsApp</span>
+            <ExternalLink className="w-3.5 h-3.5 text-copper" />
+          </a>
         </div>
       );
     } else if (lower.startsWith("send ") || lower.startsWith("msg ")) {
@@ -117,7 +133,7 @@ export const InteractiveTerminal: React.FC = () => {
           </div>
         ) : (
           <div className="text-xs font-mono text-rose-400">
-            ✕ Transmission failed. Please try the inquiry form on the right or email abinschandran1@gmail.com directly.
+            ✕ Transmission failed. Please try WhatsApp or the inquiry form on the right.
           </div>
         );
 
@@ -131,18 +147,18 @@ export const InteractiveTerminal: React.FC = () => {
     } else if (lower === "about") {
       response = (
         <div className="text-xs font-mono text-titanium space-y-2">
-          <div className="text-ivory font-bold">Abin S Chandran | Solution Architect</div>
-          <p>5+ years of experience designing multi-region cloud platforms, microservices, and zero-downtime financial engines. Focused on high-availability, clean domain boundaries, and sub-10ms latencies.</p>
+          <div className="text-ivory font-bold">Abin S Chandran | Freelance Software Developer</div>
+          <p>5+ years of experience building full-stack web applications, Node.js REST APIs, Next.js SaaS platforms, and custom admin dashboards.</p>
         </div>
       );
     } else if (lower === "skills") {
       response = (
         <div className="text-xs font-mono text-titanium space-y-1">
           <div className="text-copper font-bold">Core Stack &amp; Architectures:</div>
-          <div>• Systems: Microservices, Event Sourcing (Kafka), gRPC, Envoy Gateway</div>
-          <div>• Backend: Node.js, TypeScript, Go (Golang), Python (FastAPI)</div>
+          <div>• Systems: Microservices, REST APIs, GraphQL, Event Sourcing</div>
+          <div>• Backend: Node.js, Express.js, TypeScript, Go (Golang), Python</div>
           <div>• Frontend: Next.js 15, React 19, Tailwind CSS, Framer Motion</div>
-          <div>• Infrastructure: AWS (EKS/Lambda), Kubernetes, Docker, Terraform, Redis, Postgres/pgvector</div>
+          <div>• Databases: PostgreSQL, MongoDB, Redis, pgvector</div>
         </div>
       );
     } else if (lower === "projects") {
@@ -161,9 +177,8 @@ export const InteractiveTerminal: React.FC = () => {
         <div className="text-xs font-mono text-titanium space-y-1">
           <div className="text-emerald-400 font-bold">Contact Channel Details:</div>
           <div>Email: <span className="text-ivory">abinschandran1@gmail.com</span></div>
-          <div>Location: Remote / Open to Global Consultation</div>
-          <div>Status: <span className="text-emerald-400 font-bold">Available for Solution Advisory</span></div>
-          <div className="pt-1 text-copper">Tip: Type <span className="font-bold">send hello</span> to dispatch an email right now!</div>
+          <div>WhatsApp: <span className="text-emerald-400 font-bold">Available for Instant Project Discussion</span></div>
+          <div>Location: Kerala, India (Remote Worldwide)</div>
         </div>
       );
     } else if (lower === "resume") {
@@ -190,7 +205,7 @@ export const InteractiveTerminal: React.FC = () => {
     } else {
       response = (
         <div className="text-xs font-mono text-rose-400">
-          command not found: &quot;{cmdStr}&quot;. Type <span className="text-amber-400 font-bold">help</span> or <span className="text-emerald-400 font-bold">send &lt;msg&gt;</span>.
+          command not found: &quot;{cmdStr}&quot;. Type <span className="text-amber-400 font-bold">help</span> or <span className="text-emerald-400 font-bold">whatsapp</span>.
         </div>
       );
     }
@@ -238,20 +253,20 @@ export const InteractiveTerminal: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-obsidian-surface border-t border-obsidian-border/80 relative">
+    <section className="py-20 bg-obsidian-surface border-t border-obsidian-border/80 relative" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono mb-3">
             <Terminal className="w-3.5 h-3.5" />
-            <span>Interactive CLI &amp; Contact Channel</span>
+            <span>Interactive CLI &amp; Direct Channel</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-ivory tracking-tight">
-            Consult Solution Architect
+            Consult Freelance Developer
           </h2>
           <p className="text-titanium text-sm mt-2 font-sans">
-            Type <code className="text-emerald-400 font-mono bg-obsidian-bg px-1.5 py-0.5 rounded border border-obsidian-border">send &lt;message&gt;</code> in the terminal shell or submit a direct query via the inquiry form.
+            Start a project discussion on WhatsApp, use the UNIX CLI shell, or submit a direct inquiry form below.
           </p>
         </div>
 
@@ -274,12 +289,12 @@ export const InteractiveTerminal: React.FC = () => {
             <div className="bg-obsidian-surface px-4 py-2 border-b border-obsidian-border flex flex-wrap gap-2 text-[11px] font-mono">
               <span className="text-titanium">Quick commands:</span>
               {[
+                { label: "whatsapp", cmd: "whatsapp" },
                 { label: "help", cmd: "help" },
                 { label: "about", cmd: "about" },
                 { label: "skills", cmd: "skills" },
                 { label: "projects", cmd: "projects" },
                 { label: "contact", cmd: "contact" },
-                { label: "send hello", cmd: "send Hello Abin! Let's connect." },
                 { label: "clear", cmd: "clear" },
               ].map((item) => (
                 <button
@@ -297,7 +312,7 @@ export const InteractiveTerminal: React.FC = () => {
               {history.map((h, i) => (
                 <div key={i} className="space-y-1">
                   <div className="flex items-center gap-2 text-xs">
-                    <span className="text-emerald-400 font-bold">asc@architect:~$</span>
+                    <span className="text-emerald-400 font-bold">asc@developer:~$</span>
                     <span className="text-ivory font-bold">{h.command}</span>
                   </div>
                   <div className="pl-4">{h.output}</div>
@@ -308,13 +323,13 @@ export const InteractiveTerminal: React.FC = () => {
 
             {/* Terminal Command Input Bar */}
             <form onSubmit={handleSubmit} className="border-t border-obsidian-border p-3 bg-obsidian-card flex items-center gap-2 font-mono">
-              <span className="text-emerald-400 font-bold text-xs pl-2">asc@architect:~$</span>
+              <span className="text-emerald-400 font-bold text-xs pl-2">asc@developer:~$</span>
               <input
                 ref={inputRef}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type command or 'send hello world'..."
+                placeholder="Type command like 'whatsapp' or 'send hello'..."
                 className="w-full bg-transparent text-xs text-ivory placeholder-titanium focus:outline-none"
               />
               <button type="submit" className="p-1.5 rounded-lg bg-copper text-white hover:bg-copper-light transition-colors">
@@ -323,12 +338,26 @@ export const InteractiveTerminal: React.FC = () => {
             </form>
           </div>
 
-          {/* Right: Traditional Fallback Contact Form & Direct Links */}
+          {/* Right: Traditional Contact Form & WhatsApp CTA */}
           <div className="lg:col-span-5 bg-obsidian-bg border border-obsidian-border rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl">
             <h3 className="text-lg font-bold text-ivory font-sans flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-copper" />
-              <span>Direct Architectural Inquiry</span>
+              <span>Direct Project Consultation</span>
             </h3>
+
+            {/* WhatsApp Featured Banner */}
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 space-y-2">
+              <div className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-2">
+                <MessageSquare className="w-4 h-4" />
+                <span>Instant Project Discussion</span>
+              </div>
+              <p className="text-xs text-titanium leading-relaxed font-sans">
+                Prefer immediate messaging? Start a project discussion directly on WhatsApp.
+              </p>
+              <div className="pt-1">
+                <WhatsAppButton variant="primary" size="md" className="w-full" />
+              </div>
+            </div>
 
             <div className="space-y-4">
               <div className="p-3.5 rounded-xl bg-obsidian-surface border border-obsidian-border flex items-center justify-between">
@@ -356,7 +385,7 @@ export const InteractiveTerminal: React.FC = () => {
               )}
               {formStatus === "error" && (
                 <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-mono">
-                  ✕ Transmission failed. Please email abinschandran1@gmail.com directly.
+                  ✕ Transmission failed. Please use WhatsApp or email abinschandran1@gmail.com directly.
                 </div>
               )}
 
@@ -368,7 +397,7 @@ export const InteractiveTerminal: React.FC = () => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Jane Doe (Lead Architect @ SaaS Corp)"
+                    placeholder="Jane Doe (Founder / Lead Architect)"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper transition-colors"
                   />
                 </div>
@@ -385,13 +414,13 @@ export const InteractiveTerminal: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-titanium mb-1">Architecture / Project Scope *</label>
+                  <label className="block text-xs font-mono text-titanium mb-1">Project Scope *</label>
                   <textarea
                     required
                     rows={3}
                     value={scope}
                     onChange={(e) => setScope(e.target.value)}
-                    placeholder="Describe your microservices overhaul, cloud migration, or consulting requirement..."
+                    placeholder="Describe your web application, Node.js API, or Next.js SaaS requirement..."
                     className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper transition-colors"
                   />
                 </div>

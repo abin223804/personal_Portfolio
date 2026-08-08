@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Cpu, Server, Layout, Cloud, Database, Shield, LayoutGrid, List, CheckCircle2 } from "lucide-react";
+import { Cpu, Server, Layout, Cloud, Database, Shield, LayoutGrid, List, CheckCircle2, Smartphone } from "lucide-react";
 import { SKILL_PILLARS } from "@/data/skills";
 
 export const SkillMatrixBento: React.FC = () => {
@@ -9,6 +9,7 @@ export const SkillMatrixBento: React.FC = () => {
   const [selectedPillarIndex, setSelectedPillarIndex] = useState<number>(0);
 
   const iconsMap: Record<string, React.ElementType> = {
+    Smartphone,
     Cpu,
     Server,
     Layout,

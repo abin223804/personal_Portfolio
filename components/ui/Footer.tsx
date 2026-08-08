@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Github, Linkedin, Mail, ArrowUpRight, Terminal, ShieldCheck, Cpu } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, Terminal, ShieldCheck, Cpu, MapPin } from "lucide-react";
 
 export const Footer: React.FC = () => {
   const [utcTime, setUtcTime] = useState<string>("");
@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-obsidian-border/60">
-          {/* Column 1: Brand & Philosophy */}
+          {/* Column 1: Brand & Positioning */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-obsidian-surface border border-obsidian-border flex items-center justify-center">
@@ -35,47 +35,55 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-titanium text-xs leading-relaxed max-w-md">
-              Solution Architect & Full Stack Developer with 5+ years of experience engineering high-throughput distributed systems, zero-downtime multi-region cloud pipelines, and ultra-responsive enterprise interfaces.
+              Freelance Full-Stack Software Developer &amp; Solution Architect based in Kerala, India. Engineering custom web applications, Node.js REST APIs, Next.js SaaS platforms, and performance optimizations for startups and global businesses.
             </p>
             <div className="flex items-center gap-4 text-xs text-titanium font-mono pt-2">
               <span className="flex items-center gap-1.5 text-emerald-400">
                 <ShieldCheck className="w-4 h-4" />
-                99.99% Architecture Availability
+                99.99% Architecture SLA
               </span>
               <span>•</span>
-              <span>Location: Remote / Global</span>
+              <span className="flex items-center gap-1 text-ivory">
+                <MapPin className="w-3.5 h-3.5 text-copper" />
+                Kerala, India &amp; Remote Worldwide
+              </span>
             </div>
           </div>
 
           {/* Column 2: Quick Links */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-ivory">
-              Navigation
+              Navigation &amp; Services
             </h4>
             <ul className="space-y-2 text-xs text-titanium">
               <li>
                 <Link href="/" className="hover:text-copper transition-colors">
-                  System Overview
+                  Overview
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-copper transition-colors">
+                  Freelance Services
                 </Link>
               </li>
               <li>
                 <Link href="/projects" className="hover:text-copper transition-colors">
-                  Featured Case Studies
+                  Case Studies &amp; Projects
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-copper transition-colors">
-                  Architecture Philosophy
+                  About &amp; Philosophy
                 </Link>
               </li>
               <li>
                 <Link href="/resume" className="hover:text-copper transition-colors">
-                  Career Experience & Resume
+                  Career Resume
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-copper transition-colors">
-                  Interactive CLI Terminal
+                  Contact &amp; CLI Shell
                 </Link>
               </li>
             </ul>
@@ -84,7 +92,7 @@ export const Footer: React.FC = () => {
           {/* Column 3: Connect & Socials */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-ivory">
-              Connect & Code
+              Connect &amp; Legal
             </h4>
             <ul className="space-y-2 text-xs text-titanium">
               <li>
@@ -116,8 +124,8 @@ export const Footer: React.FC = () => {
                   href="mailto:abinschandran1@gmail.com"
                   className="hover:text-copper transition-colors flex items-center gap-1.5"
                 >
-                  <Mail className="w-3.5 h-3.5" />
-                  <span>Direct Architecture Query</span>
+                  <Mail className="w-3.5 h-3.5 text-copper" />
+                  <span>abinschandran1@gmail.com</span>
                 </a>
               </li>
               <li>
@@ -132,7 +140,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-titanium">
           <div>
-            © {new Date().getFullYear()} Abin S Chandran. All Systems Operational.
+            © {new Date().getFullYear()} Abin S Chandran. Freelance Software Development Services.
           </div>
 
           <div className="flex items-center gap-6">
@@ -141,7 +149,7 @@ export const Footer: React.FC = () => {
               <span>UTC: {utcTime || "Syncing..."}</span>
             </span>
             <span className="hidden sm:inline text-obsidian-border">|</span>
-            <span className="hidden sm:inline">Edge Latency: &lt;12ms</span>
+            <span className="hidden sm:inline">Location: Kerala, India</span>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import path from "path";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: path.join(__dirname, "./"),
+  allowedDevOrigins: ["localhost:3000", "10.164.212.215:3000", "10.164.212.215"],
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -14,7 +15,6 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    // Allows native View Transitions API integration
     viewTransition: true,
   },
 };
