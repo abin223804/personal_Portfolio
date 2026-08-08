@@ -15,7 +15,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   size = "md",
   message = "Hi Abin, I found your portfolio and I'd like to discuss a software development project.",
 }) => {
-  const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919000000000";
+  const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918086223804";
   const cleanNumber = rawNumber.replace(/[^0-9]/g, "");
   const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
 
