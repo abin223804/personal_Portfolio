@@ -58,7 +58,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "name": "Abin S Chandran - Freelance Web & Mobile Software Development Services",
     "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&auto=format&fit=crop&q=80",
     "url": "https://abnschandran.in",
-    "telephone": "+91-8086223804",
+    "telephone": "+918086223804",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
