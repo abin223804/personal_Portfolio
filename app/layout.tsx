@@ -81,10 +81,10 @@ export const metadata: Metadata = {
       "Hire Abin S Chandran — Freelance Software Developer & Solution Architect in Kerala, India. Building custom web & Flutter mobile applications, SaaS platforms, Node.js APIs, and React/Next.js frontends.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&auto=format&fit=crop&q=80",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Abin S Chandran Freelance Software Developer Portfolio",
+        alt: "Abin S Chandran - Freelance Software Developer & Solution Architect | Kerala, India",
       },
     ],
   },
@@ -94,6 +94,7 @@ export const metadata: Metadata = {
     description:
       "Building high-performance custom web & Flutter mobile applications, Node.js backends, React/Next.js frontends, and SaaS platforms.",
     creator: "@abinschandran",
+    images: ["/og-image.png"],
   },
 };
 

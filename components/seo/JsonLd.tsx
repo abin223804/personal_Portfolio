@@ -49,14 +49,25 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
       "PostgreSQL & MongoDB",
       "Solution Architecture",
       "Performance Optimization"
-    ]
+    ],
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://abnschandran.in/photo.png",
+      "width": 400,
+      "height": 400
+    }
   };
 
   const professionalServiceSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Abin S Chandran - Freelance Web & Mobile Software Development Services",
-    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&auto=format&fit=crop&q=80",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://abnschandran.in/og-image.png",
+      "width": 1200,
+      "height": 630
+    },
     "url": "https://abnschandran.in",
     "telephone": "+918086223804",
     "priceRange": "$$",
@@ -98,6 +109,14 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "publisher": {
       "@type": "Person",
       "name": "Abin S Chandran"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://abnschandran.in/projects?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
     }
   };
 
