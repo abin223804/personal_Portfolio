@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     canonical: "https://abnschandran.in",
   },
   verification: {
-    google: "dr73ZHeq1GhA-68VOowLZW6RCxrJc7wfeUIaKJvbH5E",
+    google: "o2PH_EuuRlmvBR8o39-8fmzi_UcgjWqvb-oGk_wAvHI",
   },
   robots: {
     index: true,
