@@ -40,6 +40,7 @@ export const InteractiveTerminal: React.FC = () => {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (history.length <= 1) return; // Don't scroll on initial welcome message render
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history]);
 
