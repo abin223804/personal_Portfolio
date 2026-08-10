@@ -57,6 +57,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://abnschandran.in",
   },
+  icons: {
+    icon: "/photo.png",
+    apple: "/apple-touch-icon.png",
+  },
   verification: {
     google: "o2PH_EuuRlmvBR8o39-8fmzi_UcgjWqvb-oGk_wAvHI",
   },
