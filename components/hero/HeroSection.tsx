@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Cpu, ShieldCheck, Terminal, Layers, Sparkles, Server, Zap, Database, MapPin, Briefcase, Smartphone } from "lucide-react";
 import { BlueprintCanvas } from "./BlueprintCanvas";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
@@ -87,8 +88,47 @@ export const HeroSection: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Interactive System Architecture Card Preview */}
-          <div className="lg:col-span-5 relative">
+          {/* Right Column: Profile Photo + Architecture Card */}
+          <div className="lg:col-span-5 relative space-y-5">
+
+            {/* Profile Photo Card */}
+            <div className="relative mx-auto max-w-md lg:max-w-none bg-obsidian-surface border border-obsidian-border rounded-2xl p-5 shadow-2xl flex items-center gap-5">
+              {/* Photo with ring */}
+              <div className="relative shrink-0">
+                <div className="w-20 h-20 rounded-2xl ring-2 ring-copper/60 ring-offset-2 ring-offset-obsidian-surface overflow-hidden shadow-lg shadow-copper/20">
+                  <Image
+                    src="/photo.png"
+                    alt="Abin S Chandran - Freelance Software Developer Kerala"
+                    width={80}
+                    height={80}
+                    priority
+                    className="object-cover object-top w-full h-full"
+                  />
+                </div>
+                {/* Online indicator */}
+                <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-obsidian-surface shadow" />
+              </div>
+
+              {/* Info */}
+              <div className="min-w-0 flex-1 space-y-1">
+                <p className="text-base font-bold text-ivory font-mono truncate">Abin S Chandran</p>
+                <p className="text-xs text-titanium font-sans truncate">Freelance Software Developer</p>
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-copper">
+                  <MapPin className="w-3 h-3 shrink-0" />
+                  <span>Kerala, India · Remote Worldwide</span>
+                </div>
+              </div>
+
+              {/* Available badge */}
+              <div className="shrink-0 flex flex-col items-end gap-1">
+                <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Available
+                </span>
+              </div>
+            </div>
+
+            {/* Architecture Card */}
             <div className="relative mx-auto max-w-md lg:max-w-none bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 shadow-2xl space-y-5">
               
               {/* Card Window Header */}
