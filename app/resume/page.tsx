@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Official resume of Abin S Chandran — Freelance Full-Stack Developer & Solution Architect with 5+ years experience across Node.js, React, Next.js, microservices, cloud infrastructure, and enterprise software engineering.",
   alternates: {
-    canonical: "https://abnschandran.in/resume",
+    canonical: "https://www.abinschandran.in/resume",
   },
   openGraph: {
     title: "Career Resume & Technical Experience | Abin S Chandran",
     description:
       "Explore 5+ years of verified software development experience, core technical stack competencies, and career trajectory.",
-    url: "https://abnschandran.in/resume",
+    url: "https://www.abinschandran.in/resume",
   },
 };
 
@@ -26,8 +26,8 @@ export default function ResumePage() {
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
-          { name: "Home", item: "https://abnschandran.in" },
-          { name: "Resume", item: "https://abnschandran.in/resume" },
+          { name: "Home", item: "https://www.abinschandran.in" },
+          { name: "Resume", item: "https://www.abinschandran.in/resume" },
         ]}
       />
 

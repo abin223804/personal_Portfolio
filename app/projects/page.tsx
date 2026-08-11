@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Explore full-stack software development case studies by Abin S Chandran covering enterprise cloud gateways, real-time FinTech settlement engines, AI knowledge mesh RAG pipelines, and micro-frontend design systems.",
   alternates: {
-    canonical: "https://abnschandran.in/projects",
+    canonical: "https://www.abinschandran.in/projects",
   },
   openGraph: {
     title: "Case Studies & Full-Stack Projects | Abin S Chandran",
     description:
       "Detailed technical case studies showcasing system architecture designs, performance metrics, trade-offs, and operational outcomes.",
-    url: "https://abnschandran.in/projects",
+    url: "https://www.abinschandran.in/projects",
   },
 };
 
@@ -26,8 +26,8 @@ export default function ProjectsPage() {
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
-          { name: "Home", item: "https://abnschandran.in" },
-          { name: "Projects", item: "https://abnschandran.in/projects" },
+          { name: "Home", item: "https://www.abinschandran.in" },
+          { name: "Projects", item: "https://www.abinschandran.in/projects" },
         ]}
       />
 

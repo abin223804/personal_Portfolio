@@ -27,12 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${service.title} | Abin S Chandran Freelance Developer`,
     description: service.shortDescription,
     alternates: {
-      canonical: `https://abnschandran.in/services/${service.slug}`,
+      canonical: `https://www.abinschandran.in/services/${service.slug}`,
     },
     openGraph: {
       title: `${service.title} | Freelance Development Services`,
       description: service.shortDescription,
-      url: `https://abnschandran.in/services/${service.slug}`,
+      url: `https://www.abinschandran.in/services/${service.slug}`,
     },
   };
 }
@@ -57,15 +57,15 @@ export default async function ServiceDetailPage({ params }: Props) {
         serviceData={{
           title: service.title,
           description: service.shortDescription,
-          url: `https://abnschandran.in/services/${service.slug}`,
+          url: `https://www.abinschandran.in/services/${service.slug}`,
         }}
       />
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
-          { name: "Home", item: "https://abnschandran.in" },
-          { name: "Services", item: "https://abnschandran.in/services" },
-          { name: service.title, item: `https://abnschandran.in/services/${service.slug}` },
+          { name: "Home", item: "https://www.abinschandran.in" },
+          { name: "Services", item: "https://www.abinschandran.in/services" },
+          { name: service.title, item: `https://www.abinschandran.in/services/${service.slug}` },
         ]}
       />
 

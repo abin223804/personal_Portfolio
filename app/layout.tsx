@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://abnschandran.in"),
+  metadataBase: new URL("https://www.abinschandran.in"),
   title: {
     default: "Freelance Software Developer & Solution Architect | Abin S Chandran",
     template: "%s | Abin S Chandran - Freelance Software Developer",
@@ -51,11 +51,11 @@ export const metadata: Metadata = {
     "admin dashboard development",
     "Solution Architect"
   ],
-  authors: [{ name: "Abin S Chandran", url: "https://abnschandran.in" }],
+  authors: [{ name: "Abin S Chandran", url: "https://www.abinschandran.in" }],
   creator: "Abin S Chandran",
   publisher: "Abin S Chandran",
   alternates: {
-    canonical: "https://abnschandran.in",
+    canonical: "https://www.abinschandran.in",
   },
   icons: {
     icon: "/photo.png",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://abnschandran.in",
+    url: "https://www.abinschandran.in",
     siteName: "Abin S Chandran - Freelance Software Developer",
     title: "Freelance Software Developer & Solution Architect | Abin S Chandran",
     description:

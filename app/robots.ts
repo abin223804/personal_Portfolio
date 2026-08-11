@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/private/"],
     },
-    sitemap: "https://abnschandran.in/sitemap.xml",
+    sitemap: "https://www.abinschandran.in/sitemap.xml",
   };
 }

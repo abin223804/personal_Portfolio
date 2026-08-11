@@ -24,9 +24,9 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "@type": "Person",
     "name": "Abin S Chandran",
     "jobTitle": "Freelance Software Developer & Solution Architect",
-    "alternateName": ["Abin Chandran", "Abin S C", "abnschandran", "abischandran"],
+    "alternateName": ["Abin Chandran", "Abin S C", "abinschandran", "abischandran"],
     "description": "Freelance Software Developer & Solution Architect in Kerala, India. Specializing in Web & Mobile App Development with Flutter, Node.js, Express, React, Next.js, REST APIs, SaaS platforms, and custom software for startups and global clients.",
-    "url": "https://abnschandran.in",
+    "url": "https://www.abinschandran.in",
     "sameAs": [
       "https://github.com/abin223804",
       "https://www.linkedin.com/in/abinschandran/"
@@ -52,7 +52,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     ],
     "image": {
       "@type": "ImageObject",
-      "url": "https://abnschandran.in/photo.png",
+      "url": "https://www.abinschandran.in/photo.png",
       "width": 400,
       "height": 400
     }
@@ -64,11 +64,11 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "name": "Abin S Chandran - Freelance Web & Mobile Software Development Services",
     "image": {
       "@type": "ImageObject",
-      "url": "https://abnschandran.in/og-image.png",
+      "url": "https://www.abinschandran.in/og-image.png",
       "width": 1200,
       "height": 630
     },
-    "url": "https://abnschandran.in",
+    "url": "https://www.abinschandran.in",
     "telephone": "+918086223804",
     "priceRange": "$$",
     "address": {
@@ -95,7 +95,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
           "@type": "Service",
           "name": service.title,
           "description": service.shortDescription,
-          "url": `https://abnschandran.in/services/${service.slug}`
+          "url": `https://www.abinschandran.in/services/${service.slug}`
         }
       }))
     }
@@ -105,7 +105,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Abin S Chandran - Freelance Software Developer",
-    "url": "https://abnschandran.in",
+    "url": "https://www.abinschandran.in",
     "publisher": {
       "@type": "Person",
       "name": "Abin S Chandran"
@@ -114,7 +114,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://abnschandran.in/projects?q={search_term_string}"
+        "urlTemplate": "https://www.abinschandran.in/projects?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -162,7 +162,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
         "@type": "Person",
         "name": "Abin S Chandran",
         "jobTitle": "Freelance Software Developer",
-        "url": "https://abnschandran.in"
+        "url": "https://www.abinschandran.in"
       },
       "areaServed": ["Kerala", "India", "Worldwide Remote"]
     };

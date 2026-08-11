@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${project.title} | Abin S Chandran Case Study`,
     description: project.summary,
     alternates: {
-      canonical: `https://abnschandran.in/projects/${project.slug}`,
+      canonical: `https://www.abinschandran.in/projects/${project.slug}`,
     },
     openGraph: {
       title: project.title,
       description: project.summary,
-      url: `https://abnschandran.in/projects/${project.slug}`,
+      url: `https://www.abinschandran.in/projects/${project.slug}`,
     },
   };
 }
@@ -51,15 +51,15 @@ export default async function CaseStudyPage({ params }: Props) {
         projectData={{
           title: project.title,
           description: project.summary,
-          url: `https://abnschandran.in/projects/${project.slug}`,
+          url: `https://www.abinschandran.in/projects/${project.slug}`,
         }}
       />
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
-          { name: "Home", item: "https://abnschandran.in" },
-          { name: "Projects", item: "https://abnschandran.in/projects" },
-          { name: project.title, item: `https://abnschandran.in/projects/${project.slug}` },
+          { name: "Home", item: "https://www.abinschandran.in" },
+          { name: "Projects", item: "https://www.abinschandran.in/projects" },
+          { name: project.title, item: `https://www.abinschandran.in/projects/${project.slug}` },
         ]}
       />
 

@@ -11,13 +11,13 @@ export const metadata: Metadata = {
   description:
     "Explore freelance full-stack web application development, Node.js backend engineering, React/Next.js frontend development, REST APIs, SaaS platforms, and admin dashboards by Abin S Chandran in Kerala, India.",
   alternates: {
-    canonical: "https://abnschandran.in/services",
+    canonical: "https://www.abinschandran.in/services",
   },
   openGraph: {
     title: "Freelance Software Development Services | Abin S Chandran",
     description:
       "Custom web application development, Node.js APIs, Next.js SaaS platforms, and frontend engineering services for startups and global businesses.",
-    url: "https://abnschandran.in/services",
+    url: "https://www.abinschandran.in/services",
   },
 };
 
@@ -27,8 +27,8 @@ export default function ServicesPage() {
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
-          { name: "Home", item: "https://abnschandran.in" },
-          { name: "Services", item: "https://abnschandran.in/services" },
+          { name: "Home", item: "https://www.abinschandran.in" },
+          { name: "Services", item: "https://www.abinschandran.in/services" },
         ]}
       />
 
