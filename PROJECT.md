@@ -400,6 +400,7 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-13
+- **Added**: Code-splitting via `next/dynamic` in `app/page.tsx` for all below-the-fold interactive components (`ArchitecturePlayground`, `SkillMatrixBento`, `PerformanceDashboard`, `CareerTimeline`, `FaqSection`, `ConversionCtaSection`, `InteractiveTerminal`), eliminating ~28 KiB of unused initial JavaScript payload.
 - **Updated**: Color contrast for primary CTA buttons (`WhatsAppButton.tsx` ➔ `bg-emerald-700`, `tailwind.config.ts` ➔ `#D45B41`) guaranteeing > 4.5:1 WCAG AA contrast ratio compliance.
 - **Added**: Next.js build performance optimizations in `next.config.ts` (`optimizePackageImports: ["lucide-react", "framer-motion"]`, `compress: true`, `poweredByHeader: false`) reducing initial JS bundle parsing overhead and improving FCP/Speed Index metrics.
 - **Added**: Explicit `sizes="80px"` responsive layout hint to hero profile image in `HeroSection.tsx` for faster layout calculation and LCP paint.
