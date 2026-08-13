@@ -19,9 +19,9 @@ const config: Config = {
         },
         copper: {
           light: "#FFA07A",
-          DEFAULT: "#E06D53",
+          DEFAULT: "#D45B41",
           dark: "#B84A32",
-          glow: "rgba(224, 109, 83, 0.25)",
+          glow: "rgba(212, 91, 65, 0.25)",
         },
         amber: {
           light: "#FBBF24",
