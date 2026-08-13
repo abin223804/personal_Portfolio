@@ -77,9 +77,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
                   isActive
-                    ? "bg-copper text-white shadow-md shadow-copper/20"
+                    ? "bg-copper text-obsidian-bg shadow-md shadow-copper/20"
                     : "text-titanium hover:text-ivory hover:bg-obsidian-card"
                 }`}
               >
@@ -98,16 +98,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
             className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-obsidian-surface border border-obsidian-border text-titanium hover:text-ivory hover:border-copper/50 transition-all text-xs font-mono group"
             title="Open Command Palette (Cmd + K)"
           >
-            <Command className="w-3.5 h-3.5 text-copper group-hover:rotate-12 transition-transform" />
+            <Command className="w-3.5 h-3.5 text-copper-light group-hover:rotate-12 transition-transform" />
             <span className="hidden sm:inline">Search</span>
-            <kbd className="px-1.5 py-0.5 text-[10px] bg-obsidian-bg rounded border border-obsidian-border text-titanium group-hover:text-copper font-mono">
+            <kbd className="px-1.5 py-0.5 text-[10px] bg-obsidian-bg rounded border border-obsidian-border text-titanium group-hover:text-copper-light font-mono">
               ⌘K
             </kbd>
           </button>
 
           <Link
             href="/contact"
-            className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-copper to-copper-dark hover:from-copper-light hover:to-copper text-white text-xs font-semibold shadow-lg shadow-copper/20 hover:shadow-copper/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+            className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg bg-copper hover:bg-copper-light text-obsidian-bg text-xs font-bold shadow-lg shadow-copper/20 hover:shadow-copper/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Start a Project</span>

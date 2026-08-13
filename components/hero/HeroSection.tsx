@@ -29,7 +29,7 @@ export const HeroSection: React.FC = () => {
                 Freelance Software Developer &amp; Solution Architect
               </span>
               <span className="text-obsidian-border font-mono">•</span>
-              <span className="text-xs font-mono text-copper font-medium">Kerala, India &amp; Remote Worldwide</span>
+              <span className="text-xs font-mono text-copper-light font-semibold">Kerala, India &amp; Remote Worldwide</span>
             </div>
 
             {/* Single Primary SEO H1 Headline */}
@@ -51,7 +51,7 @@ export const HeroSection: React.FC = () => {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-copper hover:bg-copper-light text-white text-xs font-bold font-mono tracking-wide shadow-xl shadow-copper/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-copper hover:bg-copper-light text-obsidian-bg text-xs font-extrabold font-mono tracking-wide shadow-xl shadow-copper/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 <span>Start a Project</span>
                 <ArrowRight className="w-4 h-4" />

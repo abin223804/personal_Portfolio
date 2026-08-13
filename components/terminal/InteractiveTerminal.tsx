@@ -18,7 +18,7 @@ export const InteractiveTerminal: React.FC = () => {
       command: "welcome",
       output: (
         <div className="space-y-2 text-xs font-mono">
-          <div className="text-copper font-bold">
+          <div className="text-copper-light font-extrabold">
             Abin S Chandran Architecture CLI Shell v5.2.0 [x86_64-apple-darwin]
           </div>
           <div className="text-titanium">
@@ -258,7 +258,7 @@ export const InteractiveTerminal: React.FC = () => {
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono mb-3">
             <Terminal className="w-3.5 h-3.5" />
             <span>Interactive CLI &amp; Direct Channel</span>
           </div>
@@ -282,7 +282,7 @@ export const InteractiveTerminal: React.FC = () => {
                 <div className="w-3 h-3 rounded-full bg-emerald-500" />
                 <span className="ml-2 text-xs font-mono text-titanium">asc_shell ~ bash</span>
               </div>
-              <span className="text-[10px] font-mono text-copper">TTY /dev/pts/0</span>
+              <span className="text-[10px] font-mono text-copper-light font-bold">TTY /dev/pts/0</span>
             </div>
 
             {/* Quick Command Chips */}
@@ -433,7 +433,7 @@ export const InteractiveTerminal: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting || !scope.trim()}
-                  className="w-full py-3 rounded-xl bg-copper hover:bg-copper-light disabled:opacity-50 text-white text-xs font-mono font-bold transition-all shadow-lg shadow-copper/20 flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-xl bg-copper hover:bg-copper-light disabled:opacity-50 text-obsidian-bg text-xs font-mono font-extrabold transition-all shadow-lg shadow-copper/20 flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>

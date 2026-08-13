@@ -31,7 +31,7 @@ export const ProjectCard: React.FC<{ project: CaseStudy }> = ({ project }) => {
       <div className="space-y-4 relative z-10">
         {/* Card Category & Period Header */}
         <div className="flex items-center justify-between">
-          <span className="text-[11px] font-mono font-semibold text-copper bg-copper/10 px-3 py-1 rounded-full border border-copper/30">
+          <span className="text-[11px] font-mono font-bold text-copper-light bg-copper/10 px-3 py-1 rounded-full border border-copper/30">
             {project.category}
           </span>
           <span className="text-[11px] font-mono text-titanium">
@@ -88,7 +88,7 @@ export const ProjectCard: React.FC<{ project: CaseStudy }> = ({ project }) => {
 
         <Link
           href={`/projects/${project.slug}`}
-          className="inline-flex items-center gap-1.5 text-xs font-bold font-mono text-copper hover:text-white transition-colors group/link"
+          className="inline-flex items-center gap-1.5 text-xs font-bold font-mono text-copper-light hover:text-white transition-colors group/link"
         >
           <span>Read Case Study</span>
           <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />

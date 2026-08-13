@@ -29,7 +29,7 @@ export const ServicesSection: React.FC<{ limit?: number }> = ({ limit }) => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-obsidian-border pb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Freelance Development Services</span>
             </div>

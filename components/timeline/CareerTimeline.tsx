@@ -15,7 +15,7 @@ export const CareerTimeline: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-obsidian-border pb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono mb-3">
               <Clock className="w-3.5 h-3.5" />
               <span>Career Trajectory & Growth</span>
             </div>
@@ -44,13 +44,13 @@ export const CareerTimeline: React.FC = () => {
                 }`}
               >
                 <div className="flex items-center justify-between text-xs mb-1">
-                  <span className="font-bold text-copper">{m.year}</span>
+                  <span className="font-bold text-copper-light">{m.year}</span>
                   <span className="text-[10px] px-2 py-0.5 rounded bg-obsidian-card border border-obsidian-border">
                     {m.type}
                   </span>
                 </div>
                 <div className="text-xs font-semibold truncate text-ivory">{m.role}</div>
-                <div className="text-[11px] text-titanium/80 truncate mt-0.5">{m.company}</div>
+                <div className="text-[11px] text-titanium-light truncate mt-0.5">{m.company}</div>
               </button>
             );
           })}

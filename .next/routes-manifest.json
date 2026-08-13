@@ -10,6 +10,12 @@
       "internal": true,
       "statusCode": 308,
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/resume",
+      "destination": "/about",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/resume(?:/)?$"
     }
   ],
   "headers": [],
@@ -19,6 +25,14 @@
     "fallback": []
   },
   "dynamicRoutes": [
+    {
+      "page": "/blog/[slug]",
+      "regex": "^/blog/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/blog/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
     {
       "page": "/projects/[slug]",
       "regex": "^/projects/([^/]+?)(?:/)?$",
@@ -56,22 +70,34 @@
       "namedRegex": "^/about(?:/)?$"
     },
     {
+      "page": "/blog",
+      "regex": "^/blog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog(?:/)?$"
+    },
+    {
       "page": "/contact",
       "regex": "^/contact(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/contact(?:/)?$"
     },
     {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/icon.png",
+      "regex": "^/icon\\.png(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/icon\\.png(?:/)?$"
+    },
+    {
       "page": "/projects",
       "regex": "^/projects(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/projects(?:/)?$"
-    },
-    {
-      "page": "/resume",
-      "regex": "^/resume(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/resume(?:/)?$"
     },
     {
       "page": "/robots.txt",

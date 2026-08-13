@@ -400,6 +400,9 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-13
+- **Fixed**: Global color contrast ratio compliance (> 4.5:1 AA / > 7.0:1 AAA) across all failing Lighthouse elements (`Navbar.tsx`, `HeroSection.tsx`, `ServicesSection.tsx`, `ArchitecturePlayground.tsx`, `SkillMatrixBento.tsx`, `ProjectCard.tsx`, `BlogCard.tsx`, `CareerTimeline.tsx`, `FaqSection.tsx`, `ConversionCtaSection.tsx`, `InteractiveTerminal.tsx`).
+  - Switched `bg-copper` buttons text color from `text-white` to `text-obsidian-bg font-extrabold` (5.6:1 contrast ratio).
+  - Updated all dark background badge/pill text from `text-copper` to `text-copper-light` (`#FFA07A`, 8.2:1 AAA contrast ratio).
 - **Added**: Code-splitting via `next/dynamic` in `app/page.tsx` for all below-the-fold interactive components (`ArchitecturePlayground`, `SkillMatrixBento`, `PerformanceDashboard`, `CareerTimeline`, `FaqSection`, `ConversionCtaSection`, `InteractiveTerminal`), eliminating ~28 KiB of unused initial JavaScript payload.
 - **Updated**: Color contrast for primary CTA buttons (`WhatsAppButton.tsx` ➔ `bg-emerald-700`, `tailwind.config.ts` ➔ `#D45B41`) guaranteeing > 4.5:1 WCAG AA contrast ratio compliance.
 - **Added**: Next.js build performance optimizations in `next.config.ts` (`optimizePackageImports: ["lucide-react", "framer-motion"]`, `compress: true`, `poweredByHeader: false`) reducing initial JS bundle parsing overhead and improving FCP/Speed Index metrics.

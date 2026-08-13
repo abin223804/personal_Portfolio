@@ -110,7 +110,7 @@ export const ArchitecturePlayground: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-obsidian-border pb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono mb-3">
               <Activity className="w-3.5 h-3.5" />
               <span>Interactive Architecture Visualizer</span>
             </div>
@@ -126,10 +126,10 @@ export const ArchitecturePlayground: React.FC = () => {
             onClick={triggerSimulation}
             disabled={isSimulating}
             aria-label="Simulate live request flow across distributed architecture nodes"
-            className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-bold transition-all shadow-lg ${
+            className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-extrabold transition-all shadow-lg ${
               isSimulating
                 ? "bg-amber-500/20 text-amber-400 border border-amber-500/40 cursor-not-allowed"
-                : "bg-copper text-white hover:bg-copper-light shadow-copper/20 hover:shadow-copper/30"
+                : "bg-copper text-obsidian-bg hover:bg-copper-light shadow-copper/20 hover:shadow-copper/30"
             }`}
           >
             <Play className={`w-4 h-4 ${isSimulating ? "animate-spin" : ""}`} aria-hidden="true" />

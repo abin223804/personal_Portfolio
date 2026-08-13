@@ -1,13 +1,16 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
   "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/icon.png/route": "app/icon.png/route.js",
   "/page": "app/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/resume/page": "app/resume/page.js",
-  "/projects/[slug]/page": "app/projects/[slug]/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/about/page": "app/about/page.js",
   "/projects/page": "app/projects/page.js",
   "/services/page": "app/services/page.js",
-  "/about/page": "app/about/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/projects/[slug]/page": "app/projects/[slug]/page.js",
   "/services/[slug]/page": "app/services/[slug]/page.js"
 }

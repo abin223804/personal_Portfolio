@@ -28,7 +28,7 @@ export const SkillMatrixBento: React.FC = () => {
         {/* Header & View Toggle */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono mb-3">
               <Cpu className="w-3.5 h-3.5" />
               <span>Technical Expertise Matrix</span>
             </div>
@@ -45,9 +45,9 @@ export const SkillMatrixBento: React.FC = () => {
             <button
               onClick={() => setViewMode("bento")}
               aria-label="Switch to Interactive Bento View"
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
                 viewMode === "bento"
-                  ? "bg-copper text-white shadow-md shadow-copper/20"
+                  ? "bg-copper text-obsidian-bg shadow-md shadow-copper/20"
                   : "text-titanium hover:text-ivory"
               }`}
             >
@@ -57,9 +57,9 @@ export const SkillMatrixBento: React.FC = () => {
             <button
               onClick={() => setViewMode("list")}
               aria-label="Switch to Structured List View"
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
                 viewMode === "list"
-                  ? "bg-copper text-white shadow-md shadow-copper/20"
+                  ? "bg-copper text-obsidian-bg shadow-md shadow-copper/20"
                   : "text-titanium hover:text-ivory"
               }`}
             >
@@ -88,9 +88,9 @@ export const SkillMatrixBento: React.FC = () => {
                         : "bg-obsidian-bg border-obsidian-border text-titanium hover:border-copper/40 hover:text-ivory"
                     }`}
                   >
-                    <Icon className={`w-4 h-4 mb-2 ${isSelected ? "text-copper" : "text-titanium"}`} />
+                    <Icon className={`w-4 h-4 mb-2 ${isSelected ? "text-copper-light" : "text-titanium"}`} />
                     <div className="text-xs font-semibold truncate">{pillar.title}</div>
-                    <div className="text-[10px] text-titanium/80 mt-1">{pillar.skills.length} core skills</div>
+                    <div className="text-[10px] text-titanium-light mt-1">{pillar.skills.length} core skills</div>
                   </button>
                 );
               })}

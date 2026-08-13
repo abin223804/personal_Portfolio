@@ -18,7 +18,7 @@ export const ConversionCtaSection: React.FC = () => {
             
             {/* Left Column: Heading & Pitch */}
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Ready to Build Your Project?</span>
               </div>
@@ -38,11 +38,11 @@ export const ConversionCtaSection: React.FC = () => {
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5 text-ivory">
-                  <CheckCircle2 className="w-4 h-4 text-copper" />
+                  <CheckCircle2 className="w-4 h-4 text-copper-light" />
                   Remote Worldwide &amp; India
                 </span>
                 <span>•</span>
-                <span className="text-copper font-semibold">Fixed-Scope or Milestone Rates</span>
+                <span className="text-copper-light font-semibold">Fixed-Scope or Milestone Rates</span>
               </div>
             </div>
 
@@ -52,7 +52,7 @@ export const ConversionCtaSection: React.FC = () => {
 
               <Link
                 href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-copper hover:bg-copper-light text-white text-xs font-bold font-mono tracking-wide shadow-xl shadow-copper/25 transition-all transform hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-copper hover:bg-copper-light text-obsidian-bg text-xs font-extrabold font-mono tracking-wide shadow-xl shadow-copper/25 transition-all transform hover:-translate-y-0.5"
               >
                 <span>Start a Project</span>
                 <ArrowRight className="w-4 h-4" />
