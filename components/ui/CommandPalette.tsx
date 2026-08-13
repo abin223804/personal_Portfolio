@@ -119,6 +119,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           />
           <button
             onClick={onClose}
+            aria-label="Close Command Palette"
             className="p-1 rounded-lg hover:bg-obsidian-border text-titanium hover:text-ivory transition-colors"
           >
             <X className="w-4 h-4" />

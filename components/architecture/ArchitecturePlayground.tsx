@@ -125,13 +125,14 @@ export const ArchitecturePlayground: React.FC = () => {
           <button
             onClick={triggerSimulation}
             disabled={isSimulating}
+            aria-label="Simulate live request flow across distributed architecture nodes"
             className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-bold transition-all shadow-lg ${
               isSimulating
                 ? "bg-amber-500/20 text-amber-400 border border-amber-500/40 cursor-not-allowed"
                 : "bg-copper text-white hover:bg-copper-light shadow-copper/20 hover:shadow-copper/30"
             }`}
           >
-            <Play className={`w-4 h-4 ${isSimulating ? "animate-spin" : ""}`} />
+            <Play className={`w-4 h-4 ${isSimulating ? "animate-spin" : ""}`} aria-hidden="true" />
             <span>{isSimulating ? `Processing Step ${currentStep + 1}/${nodes.length}...` : "Simulate Live Request Flow"}</span>
           </button>
         </div>
@@ -147,6 +148,7 @@ export const ArchitecturePlayground: React.FC = () => {
               <button
                 key={node.id}
                 onClick={() => setActiveNodeId(node.id)}
+                aria-label={`Inspect architectural node: ${node.name}`}
                 className={`p-4 rounded-xl border text-left transition-all duration-300 relative group ${
                   isActive
                     ? "bg-obsidian-card border-copper shadow-xl shadow-copper/15 ring-1 ring-copper/50"

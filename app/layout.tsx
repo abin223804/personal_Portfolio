@@ -62,7 +62,10 @@ export const metadata: Metadata = {
     canonical: "https://www.abinschandran.in",
   },
   icons: {
-    icon: "/photo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
+    ],
     apple: "/apple-touch-icon.png",
   },
   verification: {

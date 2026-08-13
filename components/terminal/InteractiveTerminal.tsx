@@ -371,6 +371,7 @@ export const InteractiveTerminal: React.FC = () => {
                 </div>
                 <button
                   onClick={copyEmail}
+                  aria-label="Copy email address to clipboard"
                   className="p-1.5 rounded-lg bg-obsidian-card hover:bg-copper/20 text-titanium hover:text-copper transition-colors"
                   title="Copy email"
                 >
@@ -393,8 +394,9 @@ export const InteractiveTerminal: React.FC = () => {
               {/* Form Input */}
               <form onSubmit={handleFormSubmit} className="space-y-3 font-sans">
                 <div>
-                  <label className="block text-xs font-mono text-titanium mb-1">Your Name / Organization</label>
+                  <label htmlFor="contact-name" className="block text-xs font-mono text-titanium mb-1">Your Name / Organization</label>
                   <input
+                    id="contact-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -404,8 +406,9 @@ export const InteractiveTerminal: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-titanium mb-1">Your Email Address</label>
+                  <label htmlFor="contact-email" className="block text-xs font-mono text-titanium mb-1">Your Email Address</label>
                   <input
+                    id="contact-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -415,8 +418,9 @@ export const InteractiveTerminal: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-titanium mb-1">Project Scope *</label>
+                  <label htmlFor="contact-scope" className="block text-xs font-mono text-titanium mb-1">Project Scope *</label>
                   <textarea
+                    id="contact-scope"
                     required
                     rows={3}
                     value={scope}

@@ -36,6 +36,7 @@ export const CareerTimeline: React.FC = () => {
               <button
                 key={m.year}
                 onClick={() => setActiveIdx(idx)}
+                aria-label={`Select timeline milestone: ${m.year} ${m.role}`}
                 className={`p-4 rounded-xl border text-left font-mono transition-all duration-200 relative ${
                   isActive
                     ? "bg-obsidian-surface border-copper text-ivory ring-1 ring-copper/50 shadow-xl shadow-copper/15"

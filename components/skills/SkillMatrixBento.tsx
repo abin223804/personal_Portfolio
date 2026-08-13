@@ -44,24 +44,26 @@ export const SkillMatrixBento: React.FC = () => {
           <div className="flex items-center gap-1 bg-obsidian-bg p-1 rounded-xl border border-obsidian-border self-start">
             <button
               onClick={() => setViewMode("bento")}
+              aria-label="Switch to Interactive Bento View"
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
                 viewMode === "bento"
                   ? "bg-copper text-white shadow-md shadow-copper/20"
                   : "text-titanium hover:text-ivory"
               }`}
             >
-              <LayoutGrid className="w-3.5 h-3.5" />
+              <LayoutGrid className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Interactive Bento</span>
             </button>
             <button
               onClick={() => setViewMode("list")}
+              aria-label="Switch to Structured List View"
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
                 viewMode === "list"
                   ? "bg-copper text-white shadow-md shadow-copper/20"
                   : "text-titanium hover:text-ivory"
               }`}
             >
-              <List className="w-3.5 h-3.5" />
+              <List className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Structured List (SEO)</span>
             </button>
           </div>
@@ -79,6 +81,7 @@ export const SkillMatrixBento: React.FC = () => {
                   <button
                     key={pillar.title}
                     onClick={() => setSelectedPillarIndex(idx)}
+                    aria-label={`Select skill category: ${pillar.title}`}
                     className={`p-3.5 rounded-xl border text-left font-mono transition-all duration-200 ${
                       isSelected
                         ? "bg-obsidian-card border-copper text-ivory ring-1 ring-copper/50 shadow-lg shadow-copper/10"

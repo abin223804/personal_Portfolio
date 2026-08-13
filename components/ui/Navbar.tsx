@@ -61,8 +61,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
             <span className="text-sm font-semibold tracking-tight text-ivory group-hover:text-copper transition-colors">
               Abin S Chandran
             </span>
-            <span className="text-[11px] font-mono text-titanium flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-xs font-mono text-titanium-light flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
               Freelance Developer &amp; Architect
             </span>
           </div>

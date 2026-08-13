@@ -400,6 +400,10 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-13
+- **Added**: Comprehensive WAI-ARIA accessibility attributes (`aria-label`, `aria-expanded`, `aria-controls`, `role="region"`, `htmlFor`, `id`, `aria-hidden`) across `Navbar.tsx`, `CommandPalette.tsx`, `FaqSection.tsx`, `SkillMatrixBento.tsx`, `CareerTimeline.tsx`, `ArchitecturePlayground.tsx`, and `InteractiveTerminal.tsx`.
+- **Updated**: Text contrast ratios and font dimensions for small metadata text in `Navbar.tsx` (`text-titanium-light`, `text-xs`) to ensure 100/100 WCAG AA compliance in Lighthouse audits.
+- **Added**: Google Search Snippet Favicon configuration (`public/favicon.ico`, `public/icon.png`, `app/favicon.ico`, `app/icon.png`) generated from profile photo (`photo.png`).
+- **Updated**: Metadata icons configuration in `app/layout.tsx` specifying explicit `sizes="any"` for `.ico` and `sizes="192x192"` for `.png` to ensure proper crawling by Googlebot-Image and display in search result snippets.
 - **Completed**: Comprehensive SEO, Performance, Accessibility, UX, and Conversion Audit (Overall Rating: 97.6/100).
 - **Added**: Accessibility ARIA attributes across `Navbar.tsx`, `Footer.tsx`, and `InteractiveTerminal.tsx`.
 - **Added**: `Organization` Schema.org JSON-LD structured data in `JsonLd.tsx`.
