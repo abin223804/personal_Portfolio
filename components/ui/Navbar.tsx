@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Command, Terminal, FileText, Cpu, Briefcase, User, Sparkles, Layers } from "lucide-react";
+import { Command, Terminal, FileText, Cpu, Briefcase, User, Sparkles, Layers, BookOpen } from "lucide-react";
 
 interface NavbarProps {
   onOpenCommandPalette: () => void;
@@ -30,6 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
     { name: "Overview", href: "/", icon: Cpu },
     { name: "Services", href: "/services", icon: Layers },
     { name: "Projects", href: "/projects", icon: Briefcase },
+    { name: "Blog", href: "/blog", icon: BookOpen },
     { name: "About", href: "/about", icon: User },
     { name: "Resume", href: "/resume", icon: FileText },
     { name: "Contact CLI", href: "/contact", icon: Terminal },

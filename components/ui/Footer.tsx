@@ -72,6 +72,11 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="hover:text-copper transition-colors">
+                  Engineering Tech Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="hover:text-copper transition-colors">
                   About &amp; Philosophy
                 </Link>

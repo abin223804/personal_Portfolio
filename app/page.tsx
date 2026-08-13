@@ -5,6 +5,7 @@ import { ArchitecturePlayground } from "@/components/architecture/ArchitecturePl
 import { SkillMatrixBento } from "@/components/skills/SkillMatrixBento";
 import { PerformanceDashboard } from "@/components/dashboard/PerformanceDashboard";
 import { ProjectGrid } from "@/components/projects/ProjectGrid";
+import { HomeBlogSection } from "@/components/blog/HomeBlogSection";
 import { CareerTimeline } from "@/components/timeline/CareerTimeline";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { ConversionCtaSection } from "@/components/cta/ConversionCtaSection";
@@ -19,6 +20,7 @@ export default function Home() {
       <SkillMatrixBento />
       <PerformanceDashboard />
       <ProjectGrid limit={2} />
+      <HomeBlogSection />
       <CareerTimeline />
       <FaqSection />
       <ConversionCtaSection />

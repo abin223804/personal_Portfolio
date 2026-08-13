@@ -3,7 +3,7 @@ import { SERVICES } from "@/data/services";
 import { FAQS } from "@/data/faq";
 
 interface JsonLdProps {
-  type?: "Person" | "CreativeWork" | "WebSite" | "BreadcrumbList" | "ProfessionalService" | "Service" | "FAQPage";
+  type?: "Person" | "CreativeWork" | "WebSite" | "BreadcrumbList" | "ProfessionalService" | "Service" | "FAQPage" | "BlogPosting";
   projectData?: {
     title: string;
     description: string;
@@ -15,10 +15,19 @@ interface JsonLdProps {
     description: string;
     url: string;
   };
+  articleData?: {
+    title: string;
+    description: string;
+    url: string;
+    datePublished: string;
+    authorName: string;
+    image?: string;
+    keywords?: string[];
+  };
   breadcrumbs?: { name: string; item: string }[];
 }
 
-export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, serviceData, breadcrumbs }) => {
+export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, serviceData, articleData, breadcrumbs }) => {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -213,6 +222,36 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    );
+  }
+
+  if (type === "BlogPosting" && articleData) {
+    const blogPostingSchema = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": articleData.title,
+      "description": articleData.description,
+      "url": articleData.url,
+      "datePublished": articleData.datePublished,
+      "author": {
+        "@type": "Person",
+        "name": articleData.authorName,
+        "url": "https://www.abinschandran.in"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Abin S Chandran",
+        "url": "https://www.abinschandran.in"
+      },
+      "image": articleData.image || "https://www.abinschandran.in/og-image.png",
+      "keywords": articleData.keywords ? articleData.keywords.join(", ") : undefined
+    };
+
+    return (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
       />
     );
   }

@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Search, FileText, Briefcase, User, Terminal, ArrowRight, X, Cpu, Github, Linkedin, Sparkles } from "lucide-react";
+import { Search, FileText, Briefcase, User, Terminal, ArrowRight, X, Cpu, Github, Linkedin, Sparkles, BookOpen } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
+import { BLOG_POSTS } from "@/data/blog";
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -30,9 +31,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   const actions = [
     { id: "home", title: "Go to System Overview (Home)", category: "Navigation", href: "/", icon: Cpu },
     { id: "projects", title: "Browse All Projects & Case Studies", category: "Navigation", href: "/projects", icon: Briefcase },
+    { id: "blog", title: "Read Tech Blog & Engineering Guides", category: "Navigation", href: "/blog", icon: BookOpen },
     { id: "about", title: "Read Architecture Philosophy", category: "Navigation", href: "/about", icon: User },
     { id: "resume", title: "View & Download Resume", category: "Navigation", href: "/resume", icon: FileText },
     { id: "contact", title: "Open Interactive CLI Terminal", category: "Navigation", href: "/contact", icon: Terminal },
+    ...BLOG_POSTS.map((b) => ({
+      id: `blog-${b.slug}`,
+      title: `Article: ${b.title}`,
+      category: "Tech Blog",
+      href: `/blog/${b.slug}`,
+      icon: BookOpen,
+    })),
     ...PROJECTS.map((p) => ({
       id: `project-${p.slug}`,
       title: `Case Study: ${p.title}`,
