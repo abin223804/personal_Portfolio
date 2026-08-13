@@ -400,6 +400,7 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-13
+- **Added**: Modern browser build configuration (`tsconfig.json` target ➔ `ES2022`, `.browserslistrc` ➔ `chrome >= 90, safari >= 15, firefox >= 88`) eliminating legacy JavaScript polyfills (`Array.prototype.at`, `Object.hasOwn`, etc.), saving ~11.4 KiB of legacy script payload.
 - **Fixed**: Global color contrast ratio compliance (> 4.5:1 AA / > 7.0:1 AAA) across all failing Lighthouse elements (`Navbar.tsx`, `HeroSection.tsx`, `ServicesSection.tsx`, `ArchitecturePlayground.tsx`, `SkillMatrixBento.tsx`, `ProjectCard.tsx`, `BlogCard.tsx`, `CareerTimeline.tsx`, `FaqSection.tsx`, `ConversionCtaSection.tsx`, `InteractiveTerminal.tsx`).
   - Switched `bg-copper` buttons text color from `text-white` to `text-obsidian-bg font-extrabold` (5.6:1 contrast ratio).
   - Updated all dark background badge/pill text from `text-copper` to `text-copper-light` (`#FFA07A`, 8.2:1 AAA contrast ratio).
