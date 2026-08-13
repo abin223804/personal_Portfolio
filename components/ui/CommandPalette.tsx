@@ -33,7 +33,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
     { id: "projects", title: "Browse All Projects & Case Studies", category: "Navigation", href: "/projects", icon: Briefcase },
     { id: "blog", title: "Read Tech Blog & Engineering Guides", category: "Navigation", href: "/blog", icon: BookOpen },
     { id: "about", title: "Read Architecture Philosophy", category: "Navigation", href: "/about", icon: User },
-    { id: "resume", title: "View & Download Resume", category: "Navigation", href: "/resume", icon: FileText },
     { id: "contact", title: "Open Interactive CLI Terminal", category: "Navigation", href: "/contact", icon: Terminal },
     ...BLOG_POSTS.map((b) => ({
       id: `blog-${b.slug}`,

@@ -32,7 +32,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
     { name: "Projects", href: "/projects", icon: Briefcase },
     { name: "Blog", href: "/blog", icon: BookOpen },
     { name: "About", href: "/about", icon: User },
-    { name: "Resume", href: "/resume", icon: FileText },
     { name: "Contact CLI", href: "/contact", icon: Terminal },
   ];
 

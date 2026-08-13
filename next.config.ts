@@ -17,6 +17,15 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/resume",
+        destination: "/about",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

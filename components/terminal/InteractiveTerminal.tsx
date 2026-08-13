@@ -88,7 +88,6 @@ export const InteractiveTerminal: React.FC = () => {
           <div><span className="text-amber-400 font-bold">skills</span> - Core technical competencies matrix</div>
           <div><span className="text-amber-400 font-bold">projects</span> - Production case studies list</div>
           <div><span className="text-amber-400 font-bold">contact</span> - Direct email &amp; contact info</div>
-          <div><span className="text-amber-400 font-bold">resume</span> - Career experience overview link</div>
           <div><span className="text-amber-400 font-bold">linkedin</span> - Open LinkedIn profile link</div>
           <div><span className="text-amber-400 font-bold">github</span> - Open GitHub repository profile</div>
           <div><span className="text-amber-400 font-bold">clear</span> - Reset terminal screen history</div>
