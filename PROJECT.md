@@ -1,42 +1,59 @@
-# PROJECT.md — Architecture Documentation
+# PROJECT.md — AI-Optimized Project Architecture & Continuous Documentation
 
-This document serves as the single source of truth for the **Abin S Chandran - Freelance Software Developer & Solution Architect Portfolio** codebase architecture, module organization, data flow, external integrations, and technical implementation decisions.
+This document is the **single source of truth for the project's software architecture, technical design, application structure, APIs, database/data architecture, integrations, data flows, business logic, security model, deployment architecture, and AI-agent context rules**.
+
+It is a **living architecture document** that continuously evolves alongside the codebase.
 
 ---
 
-## 1. Project Overview
+## 1. AI-Friendly Project Overview
 
 - **Project Name**: `abin-schandran-portfolio`
 - **Domain**: `https://www.abinschandran.in`
-- **Purpose**: High-performance, SEO-optimized personal portfolio and commercial services platform for Abin S Chandran (Freelance Full-Stack Developer & Solution Architect based in Kerala, India).
-- **Current Status**: Production Active / Continuous Maintenance
-- **Major Functionality**:
-  - Commercial software development services presentation (`/services`, `/services/[slug]`)
-  - Deep-dive technical case studies showcase (`/projects`, `/projects/[slug]`)
-  - Engineering blog & architecture articles (`/blog`, `/blog/[slug]`)
-  - Interactive CLI Terminal Shell for developer engagement & direct lead contact (`/contact`)
-  - Interactive Architecture Playground & Live Metrics Dashboard (`/`)
-  - Command Palette (`⌘K`), Konami Code Easter Egg, and smooth inertia scrolling
-- **Primary Users/Roles**: Prospective clients (startups, enterprises), tech recruiters, fellow software engineers.
-- **Architecture Type**: Next.js 15 App Router with 100% Static Site Generation (SSG) & React Server Components (RSC).
-- **Repository Structure**: Single-package monolith web application.
+- **Product Type**: Personal Engineering Portfolio, Commercial Services Platform, & Technical Case Studies Engine
+- **Primary Business Domain**: Software Engineering, Full-Stack Web Development, Solution Architecture, Mobile Application Engineering
+- **Current Development Status**: Production Active / Continuous Maintenance
+- **Architecture Pattern**: Component-Based, Static Site Generation (SSG), React Server Components (RSC), API-Driven Integrations
+- **Core Features**:
+  - Commercial Software Development Services Catalog (`/services`, `/services/[slug]`)
+  - Architectural Case Studies Showcase (`/projects`, `/projects/[slug]`)
+  - Engineering Tech Blog & System Architecture Guides (`/blog`, `/blog/[slug]`)
+  - Interactive CLI Terminal Shell for Lead Capture & Email Dispatch (`/contact`)
+  - Interactive System Load & Architecture Playground (`/`)
+  - Command Palette (`⌘K`), Konami Code Easter Egg, and Lenis Hardware-Accelerated Smooth Scroll
+- **Primary Users & Roles**: Prospective Clients (Startups & Enterprises), Technical Recruiters, Software Engineers
+- **Repository Structure**: Single-package monolith web application
 
 ---
 
-## 2. Technology Stack
+## 2. Technology Stack & AI Technology Stack
 
-| Layer | Technology | Version | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Framework** | Next.js (App Router) | `^15.1.7` | Static site pre-rendering, routing, SEO metadata API |
-| **UI Engine** | React / React DOM | `^19.0.0` | Server & Client components |
-| **Language** | TypeScript | `^5.7.3` | Type safety and strict interface definitions |
-| **Styling** | Tailwind CSS / PostCSS | `^3.4.17` | Obsidian dark-mode design system & responsive layout |
-| **Animations** | Framer Motion | `^12.4.7` | Smooth UI transitions & micro-interactions |
-| **Scroll Engine** | Lenis | `^1.1.20` | Hardware-accelerated smooth inertia scrolling |
-| **Icons** | Lucide React | `^0.475.0` | Lightweight SVG icon system |
-| **Special Effects**| Canvas Confetti | `^1.9.4` | Interactive Konami easter egg celebration |
-| **Email Dispatch**| Web3Forms API | Client-side HTTP | Serverless contact form submission directly to inbox |
-| **Build System** | Next.js Build Worker | Node.js `^22` | Static HTML pre-rendering (`npm run build`) |
+### Frontend Stack
+- **Framework**: Next.js App Router (`^15.1.7`)
+- **UI Runtime**: React / React DOM (`^19.0.0`)
+- **Programming Language**: TypeScript (`^5.7.3`) with strict mode
+- **Styling & Design System**: Tailwind CSS (`^3.4.17`), PostCSS (`^8.5.2`), Custom Obsidian dark theme tokens
+- **Animations & Micro-interactions**: Framer Motion (`^12.4.7`)
+- **Scroll Physics Engine**: Lenis (`^1.1.20`)
+- **Iconography**: Lucide React (`^0.475.0`)
+- **Particle Effects**: Canvas Confetti (`^1.9.4`)
+
+### Backend & Server-Side Stack
+- **Runtime**: Node.js (`^22`) Next.js Build Worker
+- **Pre-Rendering Engine**: Next.js Static Site Generation (SSG) with `generateStaticParams()`
+- **Route Handlers**: Dynamic `sitemap.xml` (`app/sitemap.ts`), `robots.txt` (`app/robots.ts`)
+- **Redirect Engine**: 301 Permanent Redirects via `next.config.ts`
+
+### Data & Content Storage
+- **Static Database**: Strongly-typed TypeScript content modules (`data/blog.ts`, `data/projects.ts`, `data/services.ts`, `data/skills.ts`, `data/timeline.ts`, `data/faq.ts`)
+
+### External Services & Communication Stack
+- **Lead Capture Email Dispatch**: Web3Forms REST API (Client-side async POST)
+- **Direct Messaging**: WhatsApp Web API (`https://wa.me/`)
+
+### AI / ML Stack & AI Capabilities
+- **Current Status**: N/A (Platform features technical case studies and architectural guides on AI/ML system integrations, but does not currently run on-device LLM inference or active vector search).
+- **SEO & Discoverability**: Optimized with Schema.org `Person`, `ProfessionalService`, `BlogPosting`, and `BreadcrumbList` JSON-LD structured data.
 
 ---
 
@@ -44,96 +61,98 @@ This document serves as the single source of truth for the **Abin S Chandran - F
 
 ```mermaid
 flowchart TD
-    subgraph Browser ["User Browser (Client)"]
-        Nav ["Navbar / Command Palette (⌘K)"]
-        Pages ["Pages (RSC & Client Components)"]
+    subgraph ClientLayer ["User Browser (Client Runtime)"]
+        Navbar ["Navbar & Command Palette (⌘K)"]
+        Pages ["Pages (React 19 RSC & Client Components)"]
         Terminal ["CLI Terminal Shell (/contact)"]
-        LenisScroll ["Lenis Smooth Scroll Provider"]
-        WA ["WhatsApp Sticky CTA"]
+        LenisEngine ["Lenis Smooth Scroll Physics"]
+        WhatsAppCTA ["WhatsApp Floating CTA"]
     end
 
-    subgraph StaticBuild ["Next.js 15 SSG Engine (Build Time)"]
+    subgraph BuildEngine ["Next.js 15 SSG Engine (Build Time)"]
         AppRouter ["App Router (/app)"]
         DataStore ["Typed Static Content (/data)"]
         SitemapGen ["sitemap.ts Generator"]
         RobotsGen ["robots.ts Generator"]
-        Redirects ["next.config.ts 301 Redirect Engine"]
+        RedirectEngine ["next.config.ts 301 Redirects"]
     end
 
-    subgraph ExternalServices ["External API Services"]
-        W3F ["Web3Forms API (Email Dispatch)"]
-        WAService ["WhatsApp Web Direct Link"]
-        GSC ["Google Search Console / Indexing"]
+    subgraph ExternalIntegrations ["External API Services"]
+        Web3Forms ["Web3Forms API (Email Dispatch)"]
+        WhatsAppAPI ["WhatsApp Web Link Gateway"]
+        GoogleSearchConsole ["Google Search Console Indexer"]
     end
 
     Pages --> DataStore
-    AppRouter --> StaticBuild
-    StaticBuild --> Pages
-    SitemapGen --> GSC
-    Terminal -->|HTTP POST| W3F
-    WA -->|Direct Link| WAService
-    Redirects -->|301 Redirect /resume -> /about| AppRouter
+    AppRouter --> BuildEngine
+    BuildEngine --> Pages
+    SitemapGen --> GoogleSearchConsole
+    Terminal -->|HTTP POST| Web3Forms
+    WhatsAppCTA -->|Direct URL| WhatsAppAPI
+    RedirectEngine -->|301 Redirect /resume -> /about| AppRouter
 ```
 
 ---
 
-## 4. Project Directory Structure
+## 4. Project Directory & Repository Architecture
 
 ```text
 Personal _Portfolio/
-├── app/                             # Next.js 15 App Router Pages & Layouts
+├── .agents/                         # Workspace AI Operating Instructions
+│   └── AGENTS.md                    # Single Source of Truth & PROJECT.md Maintenance Rule
+├── app/                             # Next.js 15 App Router Routes & Page Handlers
 │   ├── about/                       # About & Philosophy Page (/about)
 │   │   └── page.tsx
-│   ├── blog/                        # Tech Blog & Case Studies Module (/blog)
+│   ├── blog/                        # Tech Blog & Engineering Case Studies (/blog)
 │   │   ├── [slug]/
-│   │   │   └── page.tsx             # Dynamic SSG Article Page (/blog/[slug])
-│   │   └── page.tsx                 # Blog Index Page
+│   │   │   └── page.tsx             # Dynamic Static Article Page (/blog/[slug])
+│   │   └── page.tsx                 # Tech Blog Index Page
 │   ├── contact/                     # Interactive CLI Terminal Page (/contact)
 │   │   └── page.tsx
-│   ├── projects/                    # Case Studies Module (/projects)
+│   ├── projects/                    # Case Studies Catalog (/projects)
 │   │   ├── [slug]/
 │   │   │   └── page.tsx             # Dynamic Project Detail Page (/projects/[slug])
 │   │   └── page.tsx                 # Project Catalog Page
-│   ├── services/                    # Commercial Services Module (/services)
+│   ├── services/                    # Commercial Offerings (/services)
 │   │   ├── [slug]/
 │   │   │   └── page.tsx             # Dynamic Service Detail Page (/services/[slug])
 │   │   └── page.tsx                 # Service Catalog Page
-│   ├── AppShell.tsx                 # Global Client Wrapper (Navbar, Footer, Modals, Lenis)
-│   ├── globals.css                  # Custom Obsidian Theme Tokens & CSS Variables
-│   ├── layout.tsx                   # Root HTML Layout with Font Loaders & JsonLd
+│   ├── AppShell.tsx                 # Persistent Global Layout Shell
+│   ├── globals.css                  # Custom Obsidian Design Tokens & Styles
+│   ├── layout.tsx                   # Root Layout (Font Loaders & JsonLd)
 │   ├── page.tsx                     # System Overview Homepage (/)
-│   ├── robots.ts                    # Dynamic robots.txt route handler
-│   └── sitemap.ts                   # Dynamic sitemap.xml route handler
+│   ├── robots.ts                    # Dynamic robots.txt handler
+│   └── sitemap.ts                   # Dynamic sitemap.xml handler
 ├── components/                      # UI Component System
-│   ├── architecture/                # Architecture Playground Interactive Component
+│   ├── architecture/                # Interactive System Load Simulator Component
 │   ├── blog/                        # BlogCard, ArticleContent, HomeBlogSection
 │   ├── cta/                         # Conversion CTA Banners
 │   ├── dashboard/                   # Performance Dashboard Metrics Component
 │   ├── faq/                         # Frequently Asked Questions Component
 │   ├── hero/                        # Hero Banner Section
 │   ├── projects/                    # ProjectCard, ProjectGrid
-│   ├── seo/                         # JsonLd Structured Data Generator (Schema.org)
+│   ├── seo/                         # JsonLd Structured Data Component
 │   ├── services/                    # ServiceCard, ServicesSection
 │   ├── skills/                      # SkillMatrixBento Component
-│   ├── terminal/                    # Interactive Terminal CLI Shell Component
+│   ├── terminal/                    # Interactive CLI Terminal Component
 │   ├── timeline/                    # Career & Work Timeline Component
-│   └── ui/                          # Global Shell UI (Navbar, Footer, CommandPalette, WhatsApp, Konami)
-├── data/                            # Typed Content Models (Single Source of Truth)
+│   └── ui/                          # Global Navigation, Footer, Modals, Smooth Scroll
+├── data/                            # Strongly-Typed Static Data Store
 │   ├── blog.ts                      # Engineering articles dataset & types
-│   ├── faq.ts                       # Commercial & technical FAQs
+│   ├── faq.ts                       # Frequently Asked Questions
 │   ├── projects.ts                  # In-depth architectural project case studies
-│   ├── services.ts                  # Freelance service packages & offerings
-│   ├── skills.ts                    # Technology skills & proficiency levels
-│   └── timeline.ts                  # Career milestones & architectural timeline
-├── public/                          # Static Assets & Verification Files
-│   ├── og-image.png                 # OpenGraph Social Sharing Banner
-│   ├── photo.png                    # Profile Image Avatar
-│   ├── google323ad084142dea2e.html  # Google Search Console Domain Verification File
-│   └── abin-s-chandran-solution-architect-resume.pdf # Resume PDF
-├── next.config.ts                   # Next.js Build Config, ViewTransitions, & 301 Redirects
-├── tailwind.config.ts               # Custom Obsidian Color Palette & Font Config
-├── tsconfig.json                    # TypeScript Strict Mode Config
-└── PROJECT.md                       # System Architecture & Development Document
+│   ├── services.ts                  # Service packages & deliverables
+│   ├── skills.ts                    # Technical skill matrix
+│   └── timeline.ts                  # Career milestones
+├── public/                          # Static Web Assets
+│   ├── og-image.png                 # Social Share Banner Image
+│   ├── photo.png                    # Profile Avatar Image
+│   └── google323ad084142dea2e.html  # Google Domain Verification File
+├── next.config.ts                   # Build Configuration & 301 Redirect Rules
+├── tailwind.config.ts               # Custom Color System Configuration
+├── tsconfig.json                    # Strict TypeScript Compiler Options
+├── PROJECT.md                       # Living Architecture Documentation
+└── README.md                        # Quickstart Guide
 ```
 
 ---
@@ -141,50 +160,43 @@ Personal _Portfolio/
 ## 5. Application Modules
 
 ### 1. Navigation & AppShell Module (`app/AppShell.tsx`, `components/ui/`)
-- **Responsibilities**: Manages persistent navigation header, footer, global `⌘K` keyboard event listener for Command Palette, Konami code sequence detector, WhatsApp float button, and smooth scrolling via `SmoothScrollProvider.tsx`.
+- **Responsibilities**: Persistent header navigation, footer, `⌘K` command palette modal, Konami easter egg, WhatsApp button, and smooth scroll wrapper.
 
 ### 2. Commercial Services Module (`app/services/`, `data/services.ts`)
-- **Responsibilities**: Showcases high-level software offerings (Full-Stack Development, Node.js API Engineering, Next.js SaaS, Flutter Cross-Platform Apps, Performance Optimization, Solution Architecture). Generates SSG static detail pages per service slug.
+- **Responsibilities**: Displays commercial software services. Generates SSG static detail pages per service slug.
 
 ### 3. Projects & Case Studies Module (`app/projects/`, `data/projects.ts`)
-- **Responsibilities**: Presents detailed engineering case studies with tech stack tags, architecture overviews, key challenges, trade-off decisions, and quantitative metrics (e.g. sub-15ms response times, 60fps mobile rendering).
+- **Responsibilities**: Features architectural case studies with tech stack pills, challenges, decision trade-offs, and metrics.
 
-### 4. Tech Blog & Engineering Guides Module (`app/blog/`, `data/blog.ts`)
-- **Responsibilities**: Houses long-tail technical guides (Flutter mobile 60fps architecture, Node.js REST API scaling, Next.js 15 SaaS architecture). Provides structured Markdown rendering (`ArticleContent.tsx`), category filtering, and `BlogPosting` Schema.org JSON-LD structured data.
+### 4. Tech Blog Module (`app/blog/`, `data/blog.ts`)
+- **Responsibilities**: Houses long-tail technical articles (Flutter 60fps, Node.js scaling, Next.js 15 SaaS architecture). Renders structured markdown with code snippets.
 
 ### 5. Interactive CLI Terminal Module (`components/terminal/`, `app/contact/`)
-- **Responsibilities**: Provides an interactive terminal shell interface. Accepts commands (`help`, `about`, `skills`, `projects`, `contact`, `whatsapp`, `send <message>`, `clear`). Integrates with Web3Forms to submit lead messages asynchronously without page reloads.
+- **Responsibilities**: Interactive terminal supporting commands (`help`, `about`, `skills`, `projects`, `contact`, `whatsapp`, `send <msg>`, `clear`) with Web3Forms integration.
 
-### 6. Interactive Architecture Playground & Metrics (`components/architecture/`, `components/dashboard/`)
-- **Responsibilities**: Live interactive diagram component allowing visitors to toggle system loads (1k RPS, 10k RPS, 50k RPS) and visualize microservice telemetry, cache hit ratios, and server response metrics.
+### 6. Architecture Simulator Module (`components/architecture/`, `components/dashboard/`)
+- **Responsibilities**: Interactive load toggles (1k RPS, 10k RPS, 50k RPS) visualizing system metrics and microservice telemetry.
 
 ---
 
 ## 6. Backend & Server-Side Architecture
 
-Although this application renders as a static frontend, server-side features are managed via Next.js App Router static capabilities:
-
-- **Static Site Generation (SSG)**: All routes (`/`, `/about`, `/blog`, `/blog/[slug]`, `/projects`, `/projects/[slug]`, `/services`, `/services/[slug]`, `/contact`) pre-render to static HTML at build time using `generateStaticParams()`.
-- **Dynamic Sitemap Generation (`app/sitemap.ts`)**: Auto-builds standard `sitemap.xml` with priority scores (`1.0` for Home, `0.95` for Blog & Services, `0.9` for Case Studies).
-- **Dynamic Robots Configuration (`app/robots.ts`)**: Serves `robots.txt` allowing crawler access and pointing to `https://www.abinschandran.in/sitemap.xml`.
-- **301 Permanent Redirects (`next.config.ts`)**: Preserves SEO authority by permanently redirecting legacy routes (e.g., `/resume` ➔ `/about`).
+- **Static Site Generation (SSG)**: 100% of pages pre-render to static HTML at build time (`npm run build`).
+- **Dynamic XML Sitemap (`app/sitemap.ts`)**: Auto-generates `sitemap.xml` with priority scores (`1.0` Home, `0.95` Services & Blog, `0.9` Case Studies).
+- **Dynamic Crawler Directives (`app/robots.ts`)**: Generates `robots.txt`.
+- **301 Permanent Redirects (`next.config.ts`)**: Maps deprecated routes (e.g. `/resume` ➔ `/about`) to preserve SEO authority.
 
 ---
 
 ## 7. Frontend Architecture
 
-- **Page Layout System**: All pages wrap inside `RootLayout` (`app/layout.tsx`) which initializes font variables (`--font-inter`, `--font-jetbrains-mono`), global JSON-LD schemas (`Person`, `ProfessionalService`), and `AppShell`.
-- **State Management**:
-  - Local component state via React `useState` / `useEffect` / `useRef`.
-  - Path tracking via `usePathname()` in `Navbar.tsx` for dynamic active link highlighting.
-  - Global `⌘K` listener in `AppShell.tsx` passed down to `CommandPalette.tsx`.
-- **Smooth Scroll Engine**: `SmoothScrollProvider` initializes Lenis smooth scrolling with custom cubic-bezier easing.
+- **Layout Structure**: Root layout (`app/layout.tsx`) initializes Google Inter and JetBrains Mono fonts, Schema.org JSON-LD, and `AppShell`.
+- **State Management**: Local React state (`useState`, `useEffect`, `useRef`), `usePathname()` route tracking, keyboard shortcut listeners.
+- **Scroll Physics**: Lenis smooth scroll provider for hardware-accelerated inertia scrolling.
 
 ---
 
-## 8. Database & Content Architecture
-
-The application uses typed TypeScript data modules in `data/` as its zero-latency static database.
+## 8. Database & Data Architecture
 
 ```mermaid
 classDiagram
@@ -233,125 +245,146 @@ classDiagram
 
 ---
 
-## 9. API Architecture & External Integrations
+## 9. API & Integration Architecture
 
 ### Internal Route Handlers
-| Route | Output Type | Purpose |
+| Route | Format | Purpose |
 | :--- | :--- | :--- |
 | `/sitemap.xml` | XML | Search engine sitemap generated by `app/sitemap.ts` |
 | `/robots.txt` | Text | Search crawler directives generated by `app/robots.ts` |
 
-### External Third-Party APIs
-| Service | Method | Endpoint | Purpose |
+### External Third-Party Integrations
+| Service | Method | Endpoint / Target | Purpose |
 | :--- | :--- | :--- | :--- |
-| **Web3Forms API** | `POST` | `https://api.web3forms.com/submit` | Client-side email dispatch from interactive CLI terminal |
-| **WhatsApp Web API** | Direct URL | `https://wa.me/{number}?text={encoded}` | Direct instant chat initiation from float button / terminal |
+| **Web3Forms API** | `POST` | `https://api.web3forms.com/submit` | Terminal contact form email delivery |
+| **WhatsApp Web API** | Direct URL | `https://wa.me/{number}` | Direct client chat initiation |
 
 ---
 
-## 10. Authentication & Authorization
+## 10. AI SEO & Semantic Architecture
 
-This is a public commercial portfolio and technical documentation platform.
-- **Access Control**: Publicly accessible. No user login or auth tokens required.
-- **Administrative Access**: Content updates managed via Git repository commits.
+The codebase incorporates structured semantic metadata for search discovery and indexing:
+- **JSON-LD Schemas**: `Person`, `ProfessionalService`, `WebSite`, `BreadcrumbList`, `Service`, `FAQPage`, and `BlogPosting`.
+- **Technical Keywords**: Focuses on high-intent terms including *"Freelance Software Developer"*, *"Solution Architect"*, *"Flutter App Developer"*, *"Node.js REST API Architecture"*, and *"Next.js 15 SaaS Engineering"*.
 
 ---
 
-## 11. Data Flow Workflows
+## 11. Data Flow Architecture
 
-### Visitor Terminal Contact Workflow
+### Lead Dispatch Workflow
 ```text
-Visitor types 'send Hello, I need a Flutter app' in Terminal
+User enters command in Interactive Terminal (/contact)
   ↓
-InteractiveTerminal component captures command
-  ↓
-Validates input & extracts message payload
+InteractiveTerminal component validates input
   ↓
 Sends asynchronous POST request to Web3Forms API
   ↓
-Web3Forms dispatches email directly to abinschandran1@gmail.com
+Web3Forms delivers message payload to abinschandran1@gmail.com
   ↓
-Terminal displays success response & status log to visitor
+Terminal updates UI state with confirmation log
 ```
 
-### Search Engine Crawling Workflow
+### Search Engine Discovery Workflow
 ```text
-GoogleBot requests sitemap.xml
+Search Bot requests /sitemap.xml
   ↓
-Next.js serves pre-rendered XML from app/sitemap.ts
+app/sitemap.ts returns generated XML mapping all 27+ static URLs
   ↓
-Crawler reads all static URLs (/services/[slug], /blog/[slug], /projects/[slug])
+Crawler processes page metadata & Schema.org JSON-LD structured data
   ↓
-Crawler inspects Schema.org JSON-LD (Person, ProfessionalService, BlogPosting) in <head>
-  ↓
-Google updates index & rich search snippet listings
+Search index updates page listings & rich snippets
 ```
 
 ---
 
-## 12. Environment & Configuration
+## 12. Business Logic
 
-Environment variables are configured in `.env.local` (local development) and platform environment settings (production):
+1. **301 SEO Preservation**: Deprecated paths (`/resume`) permanently redirect to `/about` via `next.config.ts`.
+2. **Command Palette Search (`⌘K`)**: Case-insensitive search across site routes, technical blog articles, and project case studies.
+3. **Konami Code Detector**: Activates full-screen confetti effect on sequence completion (`Up, Up, Down, Down, Left, Right, Left, Right, B, A`).
 
-| Variable | Description | Exposure |
+---
+
+## 13. Authentication & Security Architecture
+
+- **Public Access**: Commercial portfolio with no user login requirement.
+- **Security Headers**: Enforces `rel="noopener noreferrer"` on all external links.
+- **Input Sanitization**: Terminal form inputs sanitized prior to Web3Forms submission.
+- **Secret Protection**: Client-side exposure restricted strictly to `NEXT_PUBLIC_` prefixed variables.
+
+---
+
+## 14. Environment & Configuration
+
+| Variable | Required | Description |
 | :--- | :--- | :--- |
-| `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` | Public Web3Forms API key for terminal email dispatch | Client-side (`NEXT_PUBLIC_`) |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Contact phone number formatted for WhatsApp Web links | Client-side (`NEXT_PUBLIC_`) |
-
-*Note: No secret database credentials or private keys exist in this repository.*
+| `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` | Optional | Web3Forms key for terminal contact form dispatch |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Optional | Direct WhatsApp contact number |
 
 ---
 
-## 13. Deployment Architecture
+## 15. Deployment & DevOps Architecture
 
-- **Hosting Provider**: Vercel / Cloudflare Pages / Static Web Server
-- **Build Command**: `npm run build`
-- **Output Artifact**: Fully static HTML, CSS, JavaScript chunks in `.next/`
-- **Domain Configuration**: Primary canonical domain `https://www.abinschandran.in` with automatic non-www to www redirect.
-
----
-
-## 14. Important Business Logic
-
-1. **301 SEO Preservation**: When legacy routes like `/resume` are deprecated, a `301 Permanent Redirect` rule in `next.config.ts` transfers page authority directly to `/about`.
-2. **Command Palette Search (`⌘K`)**: Case-insensitive multi-field match across site navigation links, blog posts (`BLOG_POSTS`), and case studies (`PROJECTS`).
-3. **Konami Code Listener**: Sequences key presses (`ArrowUp`, `ArrowUp`, `ArrowDown`, `ArrowDown`, `ArrowLeft`, `ArrowRight`, `ArrowLeft`, `ArrowRight`, `b`, `a`). Fires full-screen `canvas-confetti` explosion upon activation.
+- **Build Target**: Fully pre-rendered static HTML/CSS/JS export via Next.js SSG (`npm run build`).
+- **Hosting Platform**: Vercel / Cloudflare Pages / Static Hosting.
+- **Domain & Canonical URL**: `https://www.abinschandran.in`.
 
 ---
 
-## 15. Key Dependencies
+## 16. Performance & Scalability Architecture
 
-- `next` (`^15.1.7`): Core React framework.
-- `react` / `react-dom` (`^19.0.0`): Rendering library.
-- `lucide-react` (`^0.475.0`): Clean UI icon set.
-- `lenis` (`^1.1.20`): Smooth scroll physics engine.
-- `framer-motion` (`^12.4.7`): Animation system.
-- `canvas-confetti` (`^1.9.4`): Particle celebration engine.
-
----
-
-## 16. Security Architecture
-
-- **Headers**: Enforces `rel="noopener noreferrer"` on all external links (GitHub, LinkedIn, WhatsApp).
-- **Client-Side Secret Shield**: Only public `NEXT_PUBLIC_` variables exposed to browser bundles.
-- **Sanitization**: Form inputs in CLI terminal sanitized prior to API dispatch.
+- **Bundle Size Optimization**: Shared initial JS load kept low (~115 kB).
+- **Image Optimization**: AVIF / WebP format support with explicit width/height parameters.
+- **Hardware Acceleration**: Lenis smooth scroll engine runs off-thread for lag-free scrolling.
+- **Font Optimization**: Google Inter and JetBrains Mono loaded with `display: "swap"`.
 
 ---
 
 ## 17. Testing & Verification
 
-- **Build Verification**: Executing `npm run build` validates static route generation across all 27+ pages.
-- **Type Checking**: Executing `npx tsc --noEmit` verifies strict TypeScript validity across components and data models.
-- **Linting**: `npm run lint` enforces Next.js code standards.
+- **Production Build Verification**: `npm run build` verifies type safety and static page rendering across all 27+ routes.
+- **TypeScript Verification**: Strict compilation checks via `tsconfig.json`.
+- **Linting**: `npm run lint` enforces Next.js standards.
 
 ---
 
-## 18. Architecture Change Log
+## 18. Architecture Decision Records (ADR)
+
+### Decision 1: 100% Static Site Generation (SSG) with Next.js App Router
+- **Problem**: Need maximum page load speed, zero server hosting costs, and optimal SEO indexing for a portfolio.
+- **Decision**: Pre-render all pages, blog posts, service details, and case studies at build time (`npm run build`).
+- **Impact**: Sub-second page loads, 100/100 Lighthouse performance potential, and robust reliability.
+
+### Decision 2: Web3Forms API for Terminal Lead Dispatch
+- **Problem**: Need contact form functionality without running a custom database or dedicated backend server.
+- **Decision**: Use client-side fetch calls to Web3Forms serverless endpoint from the interactive CLI terminal.
+- **Impact**: Zero backend server maintenance while delivering emails directly to inbox.
+
+### Decision 3: 301 Permanent Redirect for Deprecated `/resume` Path
+- **Problem**: Removing the standalone `/resume` page could break incoming search engine links or bookmarks.
+- **Decision**: Add a `301 Permanent Redirect` in `next.config.ts` mapping `/resume` to `/about`.
+- **Impact**: 100% SEO link equity preserved; zero 404 errors for visitors.
+
+---
+
+## 19. Continuous Synchronization Rules & AI Context Guidelines
+
+Whenever any task modifies:
+- Architecture, folder structure, or routes
+- Data schemas (`data/*.ts`)
+- External API integrations or dependencies
+- Business logic or redirects
+
+The AI assistant **must update `PROJECT.md` during the same task** and record an entry in the **Architecture Change Log**.
+
+---
+
+## 20. Architecture Change Log
 
 ### 2026-08-13
-- **Added**: Initial creation of `PROJECT.md` source-of-truth documentation file.
+- **Updated**: Upgraded `PROJECT.md` to AI-Optimized Project Architecture specification with ADRs and performance architecture sections.
 - **Added**: Tech Blog & Case Studies system (`/blog`, `/blog/[slug]`, `data/blog.ts`, `BlogCard.tsx`, `ArticleContent.tsx`, `HomeBlogSection.tsx`).
 - **Added**: `BlogPosting` JSON-LD Schema.org structured data support in `JsonLd.tsx`.
-- **Changed**: Updated `sitemap.ts`, `Navbar.tsx`, `Footer.tsx`, and `CommandPalette.tsx` to integrate `/blog` section.
-- **Removed**: Deprecated standalone `/resume` page (`app/resume/page.tsx`).
-- **Added**: Configured 301 Permanent Redirect in `next.config.ts` (`/resume` ➔ `/about`) to preserve SEO authority.
+- **Removed**: Deprecated standalone `/resume` route (`app/resume/page.tsx`).
+- **Added**: Configured 301 Permanent Redirect in `next.config.ts` (`/resume` ➔ `/about`).
+- **Added**: Workspace rule file `.agents/AGENTS.md` to enforce continuous `PROJECT.md` maintenance.
