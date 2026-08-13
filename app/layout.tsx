@@ -24,11 +24,14 @@ export const metadata: Metadata = {
     template: "%s | Abin S Chandran - Freelance Software Developer",
   },
   description:
-    "Freelance Software Developer & Solution Architect based in Kerala, India, serving clients worldwide. Specializing in Web & Mobile App Development with Node.js, React, Next.js, Express, Flutter, PostgreSQL, REST APIs, and SaaS platforms.",
+    "Freelance Software Developer & Solution Architect based in Kerala, India. Specializing in AI-Powered Web Applications, AI-Integrated Node.js REST APIs, Next.js SaaS platforms, Flutter Mobile Apps, PostgreSQL, and custom software for global clients.",
   keywords: [
     "Abin S Chandran",
     "freelance software developer",
     "freelance full stack developer",
+    "AI-powered web application developer",
+    "AI-integrated mobile app developer",
+    "AI-powered SaaS developer India",
     "freelance Flutter developer",
     "freelance mobile app developer",
     "Flutter app developer India",
@@ -45,6 +48,7 @@ export const metadata: Metadata = {
     "Next.js developer for hire",
     "Flutter developer for hire",
     "custom web application development",
+    "AI-integrated REST API development",
     "custom mobile app development",
     "SaaS development India",
     "REST API development",

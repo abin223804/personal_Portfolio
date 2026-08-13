@@ -263,9 +263,11 @@ classDiagram
 
 ## 10. AI SEO & Semantic Architecture
 
-The codebase incorporates structured semantic metadata for search discovery and indexing:
+The codebase incorporates structured semantic metadata for search discovery, indexing, and high-intent keyword targeting:
 - **JSON-LD Schemas**: `Person`, `ProfessionalService`, `WebSite`, `BreadcrumbList`, `Service`, `FAQPage`, and `BlogPosting`.
-- **Technical Keywords**: Focuses on high-intent terms including *"Freelance Software Developer"*, *"Solution Architect"*, *"Flutter App Developer"*, *"Node.js REST API Architecture"*, and *"Next.js 15 SaaS Engineering"*.
+- **Targeted Dual-Keyword Strategy**:
+  - **AI-Powered**: Applied to top-level commercial offerings, H1 headlines, metadata descriptions, and client-facing pages (e.g. *"AI-Powered Web Applications"*, *"AI-Powered SaaS Platforms"*) targeting non-technical founders & business owners.
+  - **AI-Integrated**: Applied to technical architecture specifications, backend API details, JSON-LD schemas, and case study tech stacks (e.g. *"AI-Integrated Node.js REST APIs"*, *"AI-Integrated Microservices Architecture"*) targeting CTOs, engineering leaders, & technical recruiters.
 
 ---
 
@@ -382,6 +384,7 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-13
+- **Updated**: Implemented dual **AI-Powered** (commercial headlines/meta) and **AI-Integrated** (technical architecture/JSON-LD) SEO positioning across `layout.tsx`, `JsonLd.tsx`, and `PROJECT.md`.
 - **Updated**: Upgraded `PROJECT.md` to AI-Optimized Project Architecture specification with ADRs and performance architecture sections.
 - **Added**: Tech Blog & Case Studies system (`/blog`, `/blog/[slug]`, `data/blog.ts`, `BlogCard.tsx`, `ArticleContent.tsx`, `HomeBlogSection.tsx`).
 - **Added**: `BlogPosting` JSON-LD Schema.org structured data support in `JsonLd.tsx`.

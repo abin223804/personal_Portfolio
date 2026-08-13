@@ -34,7 +34,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "name": "Abin S Chandran",
     "jobTitle": "Freelance Software Developer & Solution Architect",
     "alternateName": ["Abin Chandran", "Abin S C", "abinschandran", "abischandran"],
-    "description": "Freelance Software Developer & Solution Architect in Kerala, India. Specializing in Web & Mobile App Development with Flutter, Node.js, Express, React, Next.js, REST APIs, SaaS platforms, and custom software for startups and global clients.",
+    "description": "Freelance Software Developer & Solution Architect in Kerala, India. Specializing in AI-Powered Web Applications, AI-Integrated Node.js REST APIs, Next.js SaaS platforms, Flutter Mobile Apps, and custom enterprise software.",
     "url": "https://www.abinschandran.in",
     "sameAs": [
       "https://github.com/abin223804",
@@ -47,6 +47,8 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     },
     "knowsAbout": [
       "Freelance Software Development",
+      "AI-Powered Web Applications",
+      "AI-Integrated Node.js REST APIs",
       "Full-Stack Web Development",
       "Flutter Mobile App Development",
       "Dart & Cross-Platform iOS/Android Apps",
