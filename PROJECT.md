@@ -51,9 +51,11 @@ It is a **living architecture document** that continuously evolves alongside the
 - **Lead Capture Email Dispatch**: Web3Forms REST API (Client-side async POST)
 - **Direct Messaging**: WhatsApp Web API (`https://wa.me/`)
 
-### AI / ML Stack & AI Capabilities
-- **Current Status**: N/A (Platform features technical case studies and architectural guides on AI/ML system integrations, but does not currently run on-device LLM inference or active vector search).
-- **SEO & Discoverability**: Optimized with Schema.org `Person`, `ProfessionalService`, `BlogPosting`, and `BreadcrumbList` JSON-LD structured data.
+### AI / ML Stack & Booming Technologies Matrix
+- **Frontier LLM Integration**: OpenAI (GPT-4o), Anthropic Claude, Google Gemini API endpoints with JSON mode and function calling.
+- **RAG & Vector Storage**: `pgvector` extension for PostgreSQL, embedding retrieval pipelines, and semantic search integration.
+- **AI Agent Frameworks**: LangChain, prompt engineering, multi-step tool execution pipelines.
+- **SEO & Discoverability**: Schema.org `Person`, `ProfessionalService`, `BlogPosting`, and `BreadcrumbList` JSON-LD structured data.
 
 ---
 
@@ -384,6 +386,7 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-13
+- **Added**: AI, LLMs & Booming Technologies Stack pillar in `data/skills.ts` featuring OpenAI, Gemini, LangChain, RAG pipelines, and `pgvector`.
 - **Updated**: Implemented dual **AI-Powered** (commercial headlines/meta) and **AI-Integrated** (technical architecture/JSON-LD) SEO positioning across `layout.tsx`, `JsonLd.tsx`, and `PROJECT.md`.
 - **Updated**: Upgraded `PROJECT.md` to AI-Optimized Project Architecture specification with ADRs and performance architecture sections.
 - **Added**: Tech Blog & Case Studies system (`/blog`, `/blog/[slug]`, `data/blog.ts`, `BlogCard.tsx`, `ArticleContent.tsx`, `HomeBlogSection.tsx`).
