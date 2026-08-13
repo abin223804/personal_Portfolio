@@ -400,6 +400,8 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-13
+- **Added**: Next.js build performance optimizations in `next.config.ts` (`optimizePackageImports: ["lucide-react", "framer-motion"]`, `compress: true`, `poweredByHeader: false`) reducing initial JS bundle parsing overhead and improving FCP/Speed Index metrics.
+- **Added**: Explicit `sizes="80px"` responsive layout hint to hero profile image in `HeroSection.tsx` for faster layout calculation and LCP paint.
 - **Added**: Comprehensive WAI-ARIA accessibility attributes (`aria-label`, `aria-expanded`, `aria-controls`, `role="region"`, `htmlFor`, `id`, `aria-hidden`) across `Navbar.tsx`, `CommandPalette.tsx`, `FaqSection.tsx`, `SkillMatrixBento.tsx`, `CareerTimeline.tsx`, `ArchitecturePlayground.tsx`, and `InteractiveTerminal.tsx`.
 - **Updated**: Text contrast ratios and font dimensions for small metadata text in `Navbar.tsx` (`text-titanium-light`, `text-xs`) to ensure 100/100 WCAG AA compliance in Lighthouse audits.
 - **Added**: Google Search Snippet Favicon configuration (`public/favicon.ico`, `public/icon.png`, `app/favicon.ico`, `app/icon.png`) generated from profile photo (`photo.png`).

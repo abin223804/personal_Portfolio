@@ -98,9 +98,10 @@ export const HeroSection: React.FC = () => {
                 <div className="w-20 h-20 rounded-2xl ring-2 ring-copper/60 ring-offset-2 ring-offset-obsidian-surface overflow-hidden shadow-lg shadow-copper/20">
                   <Image
                     src="/photo.png"
-                    alt="Abin S Chandran - Freelance Software Developer Kerala"
+                    alt="Abin S Chandran - Freelance Software Developer & Solution Architect"
                     width={80}
                     height={80}
+                    sizes="80px"
                     priority
                     className="object-cover object-top w-full h-full"
                   />
