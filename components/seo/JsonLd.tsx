@@ -258,6 +258,23 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     );
   }
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Abin S Chandran - Freelance Software Development & Solution Architecture",
+    "url": "https://www.abinschandran.in",
+    "logo": "https://www.abinschandran.in/photo.png",
+    "sameAs": [
+      "https://github.com/abin223804",
+      "https://www.linkedin.com/in/abinschandran/"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Kerala",
+      "addressCountry": "India"
+    }
+  };
+
   return (
     <>
       <script
@@ -267,6 +284,10 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
     </>
   );

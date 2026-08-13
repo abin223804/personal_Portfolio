@@ -330,9 +330,10 @@ export const InteractiveTerminal: React.FC = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type command like 'whatsapp' or 'send hello'..."
+                aria-label="Terminal CLI command prompt input"
                 className="w-full bg-transparent text-xs text-ivory placeholder-titanium focus:outline-none"
               />
-              <button type="submit" className="p-1.5 rounded-lg bg-copper text-white hover:bg-copper-light transition-colors">
+              <button type="submit" aria-label="Execute Terminal Command" className="p-1.5 rounded-lg bg-copper text-white hover:bg-copper-light transition-colors">
                 <CornerDownLeft className="w-3.5 h-3.5" />
               </button>
             </form>

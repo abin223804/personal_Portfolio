@@ -69,7 +69,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-obsidian-surface/80 p-1.5 rounded-full border border-obsidian-border/80 shadow-lg backdrop-blur-md">
+        <nav aria-label="Main Navigation" className="hidden md:flex items-center gap-1 bg-obsidian-surface/80 p-1.5 rounded-full border border-obsidian-border/80 shadow-lg backdrop-blur-md">
           {navItems.map((item) => {
             const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             const Icon = item.icon;
@@ -94,6 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
         <div className="flex items-center gap-3">
           <button
             onClick={onOpenCommandPalette}
+            aria-label="Open Command Palette (Cmd + K)"
             className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-obsidian-surface border border-obsidian-border text-titanium hover:text-ivory hover:border-copper/50 transition-all text-xs font-mono group"
             title="Open Command Palette (Cmd + K)"
           >

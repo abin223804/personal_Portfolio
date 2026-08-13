@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-ivory">
               Navigation &amp; Services
             </h4>
-            <ul className="space-y-2 text-xs text-titanium">
+            <ul aria-label="Footer navigation links" className="space-y-2 text-xs text-titanium">
               <li>
                 <Link href="/" className="hover:text-copper transition-colors">
                   Overview
