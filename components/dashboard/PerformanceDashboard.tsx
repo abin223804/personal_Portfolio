@@ -70,9 +70,9 @@ export const PerformanceDashboard: React.FC = () => {
                 </div>
 
                 <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-ivory font-mono tracking-tight group-hover:text-copper transition-colors">
+                  <div className="text-2xl sm:text-3xl font-extrabold text-ivory font-mono tracking-tight group-hover:text-copper transition-all duration-500">
                     {m.prefix}
-                    {isVisible ? m.value : 0}
+                    {m.value}
                     {m.suffix}
                   </div>
                   <div className="text-xs font-bold text-ivory font-mono mt-1">{m.label}</div>

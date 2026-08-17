@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/hero/HeroSection";
 import { ServicesSection } from "@/components/services/ServicesSection";
 import { ProjectGrid } from "@/components/projects/ProjectGrid";
 import { HomeBlogSection } from "@/components/blog/HomeBlogSection";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 // Dynamically import below-the-fold interactive components to eliminate unused initial JS payload
 const ArchitecturePlayground = dynamic(
@@ -31,6 +32,11 @@ const InteractiveTerminal = dynamic(
 export default function Home() {
   return (
     <>
+      <JsonLd type="FAQPage" />
+      <JsonLd
+        type="BreadcrumbList"
+        breadcrumbs={[{ name: "Home", item: "https://www.abinschandran.in" }]}
+      />
       <HeroSection />
       <ServicesSection limit={6} />
       <ArchitecturePlayground />

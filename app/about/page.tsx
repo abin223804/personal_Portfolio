@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="pt-28 pb-20 min-h-screen bg-obsidian-bg">
+      <JsonLd type="AboutPage" />
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[

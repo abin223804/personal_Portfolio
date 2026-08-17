@@ -399,6 +399,12 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 
 ## 20. Architecture Change Log
 
+### 2026-08-17
+- **Fixed**: Server-Side Rendering (SSR) for `PerformanceDashboard.tsx` metric values. Eliminated client-only conditional rendering (`isVisible ? m.value : 0`) so verified metrics (`5+ Yrs`, `40+ Systems`, `15+ Core Tools`, `99.99% SLA`, `50k+ RPS`, `100% Success`) are directly present in initial SSR HTML, preventing search engine crawlers from indexing "0" values.
+- **Added**: Server-rendered `FAQPage` and `BreadcrumbList` Schema.org structured data directly inside `app/page.tsx` Server Component to guarantee instant indexing for Google Rich Results without relying on dynamic client imports.
+- **Added**: `AboutPage` / `ProfilePage` Schema.org structured data support in `components/seo/JsonLd.tsx` and integrated on `app/about/page.tsx`.
+- **Updated**: Standardized canonical entity name `Abin S Chandran` across all components (including `InteractiveTerminal.tsx`) and enhanced `sameAs` entity authority links to GitHub (`abin223804`) and LinkedIn (`abinschandran`) to resolve name collision risks.
+
 ### 2026-08-13
 - **Added**: Modern browser build configuration (`tsconfig.json` target ➔ `ES2022`, `.browserslistrc` ➔ `chrome >= 90, safari >= 15, firefox >= 88`) eliminating legacy JavaScript polyfills (`Array.prototype.at`, `Object.hasOwn`, etc.), saving ~11.4 KiB of legacy script payload.
 - **Fixed**: Global color contrast ratio compliance (> 4.5:1 AA / > 7.0:1 AAA) across all failing Lighthouse elements (`Navbar.tsx`, `HeroSection.tsx`, `ServicesSection.tsx`, `ArchitecturePlayground.tsx`, `SkillMatrixBento.tsx`, `ProjectCard.tsx`, `BlogCard.tsx`, `CareerTimeline.tsx`, `FaqSection.tsx`, `ConversionCtaSection.tsx`, `InteractiveTerminal.tsx`).
@@ -423,3 +429,4 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 - **Removed**: Deprecated standalone `/resume` route (`app/resume/page.tsx`).
 - **Added**: Configured 301 Permanent Redirect in `next.config.ts` (`/resume` ➔ `/about`).
 - **Added**: Workspace rule file `.agents/AGENTS.md` to enforce continuous `PROJECT.md` maintenance.
+

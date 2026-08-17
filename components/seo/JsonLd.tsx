@@ -3,7 +3,7 @@ import { SERVICES } from "@/data/services";
 import { FAQS } from "@/data/faq";
 
 interface JsonLdProps {
-  type?: "Person" | "CreativeWork" | "WebSite" | "BreadcrumbList" | "ProfessionalService" | "Service" | "FAQPage" | "BlogPosting";
+  type?: "Person" | "CreativeWork" | "WebSite" | "BreadcrumbList" | "ProfessionalService" | "Service" | "FAQPage" | "BlogPosting" | "AboutPage" | "ProfilePage";
   projectData?: {
     title: string;
     description: string;
@@ -130,6 +130,49 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
       "query-input": "required name=search_term_string"
     }
   };
+
+  if (type === "AboutPage" || type === "ProfilePage") {
+    const aboutPageSchema = {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "name": "About Abin S Chandran | Freelance Software Developer in Kerala, India",
+      "url": "https://www.abinschandran.in/about",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Abin S Chandran",
+        "jobTitle": "Freelance Software Developer & Solution Architect",
+        "description": "Freelance Software Developer & Solution Architect based in Kerala, India with 5+ years of experience building custom web applications, Node.js REST APIs, Next.js SaaS platforms, and Flutter mobile apps.",
+        "url": "https://www.abinschandran.in",
+        "sameAs": [
+          "https://github.com/abin223804",
+          "https://www.linkedin.com/in/abinschandran/"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "Kerala",
+          "addressCountry": "India"
+        },
+        "knowsAbout": [
+          "Freelance Software Development",
+          "AI-Powered Web Applications",
+          "Node.js Backend Architecture",
+          "React.js & Next.js 15 Frontend Development",
+          "Flutter Mobile App Development",
+          "PostgreSQL & MongoDB",
+          "RESTful API Integration",
+          "SaaS Application Architecture",
+          "Solution Architecture"
+        ]
+      }
+    };
+
+    return (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+    );
+  }
 
   if (type === "ProfessionalService") {
     return (

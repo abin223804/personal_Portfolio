@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { HelpCircle, ChevronDown, ChevronUp, Sparkles } from "lucide-react";
 import { FAQS } from "@/data/faq";
-import { JsonLd } from "@/components/seo/JsonLd";
 
 export const FaqSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -14,7 +13,6 @@ export const FaqSection: React.FC = () => {
 
   return (
     <section className="py-20 bg-obsidian-surface border-y border-obsidian-border/80 relative" id="faq">
-      <JsonLd type="FAQPage" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         

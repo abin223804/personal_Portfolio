@@ -22,7 +22,7 @@ export const InteractiveTerminal: React.FC = () => {
             Abin S Chandran Architecture CLI Shell v5.2.0 [x86_64-apple-darwin]
           </div>
           <div className="text-titanium">
-            Type <span className="text-amber-400 font-bold">help</span> to see available commands, type <span className="text-emerald-400 font-bold">whatsapp</span> to chat on WhatsApp, or type <span className="text-emerald-400 font-bold">send &lt;your message&gt;</span> to email Abin directly.
+            Type <span className="text-amber-400 font-bold">help</span> to see available commands, type <span className="text-emerald-400 font-bold">whatsapp</span> to chat on WhatsApp, or type <span className="text-emerald-400 font-bold">send &lt;your message&gt;</span> to email Abin S Chandran directly.
           </div>
         </div>
       ),
