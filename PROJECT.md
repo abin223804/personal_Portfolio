@@ -400,6 +400,8 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-17
+- **Added**: Google Images SEO & Entity recognition optimization. Created semantic image assets (`public/abin-s-chandran.png`, `public/abin-schandran.png`), added rich `ImageObject` Schema.org structured data, and embedded semantic headshots in `HeroSection.tsx` and `app/about/page.tsx` with keyword-targeted alt and title tags targeting `Abin`, `Abin S`, `Abin S Chandran`, and `software developer`.
+- **Added**: Google Image Sitemap extensions in `app/sitemap.ts` (`images: [...]`) to explicitly index canonical headshots across all main routes.
 - **Fixed**: Server-Side Rendering (SSR) for `PerformanceDashboard.tsx` metric values. Eliminated client-only conditional rendering (`isVisible ? m.value : 0`) so verified metrics (`5+ Yrs`, `40+ Systems`, `15+ Core Tools`, `99.99% SLA`, `50k+ RPS`, `100% Success`) are directly present in initial SSR HTML, preventing search engine crawlers from indexing "0" values.
 - **Added**: Server-rendered `FAQPage` and `BreadcrumbList` Schema.org structured data directly inside `app/page.tsx` Server Component to guarantee instant indexing for Google Rich Results without relying on dynamic client imports.
 - **Added**: `AboutPage` / `ProfilePage` Schema.org structured data support in `components/seo/JsonLd.tsx` and integrated on `app/about/page.tsx`.

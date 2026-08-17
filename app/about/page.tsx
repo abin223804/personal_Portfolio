@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { User, Cpu, ShieldCheck, Zap, Layers, CheckCircle2, Lock, ArrowRight, MapPin, Briefcase } from "lucide-react";
 import { JsonLd } from "@/components/seo/JsonLd";
 import Link from "next/link";
@@ -16,6 +17,14 @@ export const metadata: Metadata = {
     description:
       "Full-stack software engineering background, solution architecture philosophy, Node.js & React stack, based in Kerala, India, serving remote clients worldwide.",
     url: "https://www.abinschandran.in/about",
+    images: [
+      {
+        url: "/abin-s-chandran.png",
+        width: 400,
+        height: 400,
+        alt: "Abin S Chandran (Abin, Abin S) - Freelance Software Developer Photo",
+      },
+    ],
   },
 };
 
@@ -33,26 +42,49 @@ export default function AboutPage() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
-        {/* Header */}
+        {/* Header with Photo & Bio */}
         <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 sm:p-10 shadow-2xl space-y-6">
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono">
-              <User className="w-3.5 h-3.5" />
-              <span>About &amp; Background</span>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-4 border-b border-obsidian-border/80">
+            <div className="flex items-center gap-4">
+              <div className="relative shrink-0">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl ring-2 ring-copper/60 ring-offset-2 ring-offset-obsidian-surface overflow-hidden shadow-xl shadow-copper/20">
+                  <Image
+                    src="/abin-s-chandran.png"
+                    alt="Abin S Chandran (Abin, Abin S, Abin S Chandran) - Freelance Software Developer & Solution Architect"
+                    title="Abin S Chandran - Freelance Software Developer (Abin)"
+                    width={96}
+                    height={96}
+                    priority
+                    className="object-cover object-top w-full h-full"
+                  />
+                </div>
+                <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-obsidian-surface shadow" />
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-extrabold text-ivory font-mono">Abin S Chandran</h2>
+                <p className="text-xs sm:text-sm text-copper font-mono">Freelance Software Developer &amp; Architect</p>
+                <div className="flex items-center gap-1 text-[11px] font-mono text-titanium mt-0.5">
+                  <MapPin className="w-3 h-3 text-copper shrink-0" />
+                  <span>Kerala, India · Remote Worldwide</span>
+                </div>
+              </div>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-obsidian-bg border border-obsidian-border text-titanium text-xs font-mono">
-              <MapPin className="w-3.5 h-3.5 text-copper" />
-              <span>Kerala, India (Remote Worldwide)</span>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono">
+                <User className="w-3.5 h-3.5" />
+                <span>About &amp; Background</span>
+              </div>
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-ivory tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-ivory tracking-tight leading-tight">
             Freelance Software Development &amp; Solution Architecture
           </h1>
 
           {/* Genuine Keyword-Natural SEO Paragraph */}
           <p className="text-sm sm:text-base text-titanium leading-relaxed font-sans">
-            My name is <strong className="text-ivory">Abin S Chandran</strong>, a <strong className="text-ivory">Freelance Full-Stack Developer and Solution Architect</strong> with over 5 years of professional experience building custom web applications, high-concurrency microservices, and enterprise digital platforms. Based in <strong className="text-ivory">Kerala, India</strong>, I serve startups, small businesses, and growing companies locally across India and remotely worldwide. My core tech stack includes <strong className="text-copper">Node.js, Express.js, JavaScript, TypeScript, React 19, Next.js 15, PostgreSQL, MongoDB, REST APIs, and AWS Cloud</strong>.
+            My name is <strong className="text-ivory">Abin S Chandran</strong> (also known as <strong className="text-ivory">Abin</strong> or <strong className="text-ivory">Abin S</strong>), a <strong className="text-ivory">Freelance Full-Stack Developer and Solution Architect</strong> with over 5 years of professional experience building custom web applications, high-concurrency microservices, and enterprise digital platforms. Based in <strong className="text-ivory">Kerala, India</strong>, I serve startups, small businesses, and growing companies locally across India and remotely worldwide. My core tech stack includes <strong className="text-copper">Node.js, Express.js, JavaScript, TypeScript, React 19, Next.js 15, PostgreSQL, MongoDB, REST APIs, and AWS Cloud</strong>.
           </p>
         </div>
 

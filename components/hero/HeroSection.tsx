@@ -97,8 +97,9 @@ export const HeroSection: React.FC = () => {
               <div className="relative shrink-0">
                 <div className="w-20 h-20 rounded-2xl ring-2 ring-copper/60 ring-offset-2 ring-offset-obsidian-surface overflow-hidden shadow-lg shadow-copper/20">
                   <Image
-                    src="/photo.png"
-                    alt="Abin S Chandran - Freelance Software Developer & Solution Architect"
+                    src="/abin-s-chandran.png"
+                    alt="Abin S Chandran (Abin, Abin S, Abin S Chandran) - Freelance Software Developer & Solution Architect"
+                    title="Abin S Chandran - Freelance Software Developer (Abin, Abin S)"
                     width={80}
                     height={80}
                     sizes="80px"

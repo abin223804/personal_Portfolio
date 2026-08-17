@@ -27,6 +27,12 @@ export const metadata: Metadata = {
     "Freelance Software Developer & Solution Architect based in Kerala, India. Specializing in AI-Powered Web Applications, AI-Integrated Node.js REST APIs, Next.js SaaS platforms, Flutter Mobile Apps, PostgreSQL, and custom software for global clients.",
   keywords: [
     "Abin S Chandran",
+    "Abin",
+    "Abin S",
+    "Abin Chandran",
+    "Abin software developer",
+    "Abin S software developer",
+    "Abin S Chandran software developer",
     "freelance software developer",
     "freelance full stack developer",
     "AI-powered web application developer",
@@ -89,13 +95,19 @@ export const metadata: Metadata = {
     siteName: "Abin S Chandran - Freelance Software Developer",
     title: "Freelance Software Developer & Solution Architect | Abin S Chandran",
     description:
-      "Hire Abin S Chandran — Freelance Software Developer & Solution Architect in Kerala, India. Building custom web & Flutter mobile applications, SaaS platforms, Node.js APIs, and React/Next.js frontends.",
+      "Hire Abin S Chandran (Abin, Abin S) — Freelance Software Developer & Solution Architect in Kerala, India. Building custom web & Flutter mobile applications, SaaS platforms, Node.js APIs, and React/Next.js frontends.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Abin S Chandran - Freelance Software Developer & Solution Architect | Kerala, India",
+        alt: "Abin S Chandran (Abin, Abin S) - Freelance Software Developer & Solution Architect | Kerala, India",
+      },
+      {
+        url: "/abin-s-chandran.png",
+        width: 400,
+        height: 400,
+        alt: "Abin S Chandran (Abin, Abin S) - Freelance Software Developer Profile Headshot",
       },
     ],
   },
@@ -105,7 +117,7 @@ export const metadata: Metadata = {
     description:
       "Building high-performance custom web & Flutter mobile applications, Node.js backends, React/Next.js frontends, and SaaS platforms.",
     creator: "@abinschandran",
-    images: ["/og-image.png"],
+    images: ["/og-image.png", "/abin-s-chandran.png"],
   },
 };
 

@@ -31,9 +31,27 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://www.abinschandran.in/#person",
     "name": "Abin S Chandran",
+    "givenName": "Abin",
+    "familyName": "Chandran",
+    "additionalName": "S",
+    "alternateName": [
+      "Abin",
+      "Abin S",
+      "Abin Chandran",
+      "Abin S Chandran",
+      "Abin S C",
+      "Abin S. Chandran",
+      "Abin SC",
+      "abinschandran",
+      "abischandran",
+      "Abin Software Developer",
+      "Abin S Software Developer",
+      "Abin S Chandran Software Developer",
+      "Abin Freelance Developer"
+    ],
     "jobTitle": "Freelance Software Developer & Solution Architect",
-    "alternateName": ["Abin Chandran", "Abin S C", "abinschandran", "abischandran"],
     "description": "Freelance Software Developer & Solution Architect in Kerala, India. Specializing in AI-Powered Web Applications, AI-Integrated Node.js REST APIs, Next.js SaaS platforms, Flutter Mobile Apps, and custom enterprise software.",
     "url": "https://www.abinschandran.in",
     "sameAs": [
@@ -63,10 +81,17 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     ],
     "image": {
       "@type": "ImageObject",
-      "url": "https://www.abinschandran.in/photo.png",
+      "@id": "https://www.abinschandran.in/#primaryimage",
+      "url": "https://www.abinschandran.in/abin-s-chandran.png",
+      "contentUrl": "https://www.abinschandran.in/abin-s-chandran.png",
+      "caption": "Abin S Chandran (Abin, Abin S) - Freelance Software Developer & Solution Architect",
+      "name": "Abin S Chandran - Freelance Software Developer Photo",
+      "description": "Profile photo of Abin S Chandran (Abin, Abin S), Freelance Software Developer & Solution Architect based in Kerala, India.",
+      "representativeOfPage": true,
       "width": 400,
       "height": 400
-    }
+    },
+    "mainEntityOfPage": "https://www.abinschandran.in"
   };
 
   const professionalServiceSchema = {
@@ -139,10 +164,35 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
       "url": "https://www.abinschandran.in/about",
       "mainEntity": {
         "@type": "Person",
+        "@id": "https://www.abinschandran.in/#person",
         "name": "Abin S Chandran",
+        "givenName": "Abin",
+        "familyName": "Chandran",
+        "additionalName": "S",
+        "alternateName": [
+          "Abin",
+          "Abin S",
+          "Abin Chandran",
+          "Abin S Chandran",
+          "Abin S C",
+          "Abin Software Developer",
+          "Abin S Software Developer"
+        ],
         "jobTitle": "Freelance Software Developer & Solution Architect",
         "description": "Freelance Software Developer & Solution Architect based in Kerala, India with 5+ years of experience building custom web applications, Node.js REST APIs, Next.js SaaS platforms, and Flutter mobile apps.",
         "url": "https://www.abinschandran.in",
+        "image": {
+          "@type": "ImageObject",
+          "@id": "https://www.abinschandran.in/#primaryimage",
+          "url": "https://www.abinschandran.in/abin-s-chandran.png",
+          "contentUrl": "https://www.abinschandran.in/abin-s-chandran.png",
+          "caption": "Abin S Chandran (Abin, Abin S) - Freelance Software Developer & Solution Architect",
+          "name": "Abin S Chandran - Profile Photo",
+          "description": "Profile photo of Abin S Chandran (Abin), Freelance Software Developer based in Kerala, India.",
+          "representativeOfPage": true,
+          "width": 400,
+          "height": 400
+        },
         "sameAs": [
           "https://github.com/abin223804",
           "https://www.linkedin.com/in/abinschandran/"
