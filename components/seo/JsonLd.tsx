@@ -56,7 +56,10 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "url": "https://www.abinschandran.in",
     "sameAs": [
       "https://github.com/abin223804",
-      "https://www.linkedin.com/in/abinschandran/"
+      "https://www.linkedin.com/in/abinschandran/",
+      "https://hashnode.com/@abinschandran",
+      "https://medium.com/@abinschandran",
+      "https://dev.to/abin223804"
     ],
     "address": {
       "@type": "PostalAddress",
@@ -195,7 +198,10 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
         },
         "sameAs": [
           "https://github.com/abin223804",
-          "https://www.linkedin.com/in/abinschandran/"
+          "https://www.linkedin.com/in/abinschandran/",
+          "https://hashnode.com/@abinschandran",
+          "https://medium.com/@abinschandran",
+          "https://dev.to/abin223804"
         ],
         "address": {
           "@type": "PostalAddress",
@@ -359,7 +365,10 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "logo": "https://www.abinschandran.in/photo.png",
     "sameAs": [
       "https://github.com/abin223804",
-      "https://www.linkedin.com/in/abinschandran/"
+      "https://www.linkedin.com/in/abinschandran/",
+      "https://hashnode.com/@abinschandran",
+      "https://medium.com/@abinschandran",
+      "https://dev.to/abin223804"
     ],
     "address": {
       "@type": "PostalAddress",

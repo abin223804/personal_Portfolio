@@ -402,6 +402,7 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-19
+- **Added**: Updated Schema.org `sameAs` entity authority arrays across `Person`, `ProfilePage`, and `Organization` schemas in `components/seo/JsonLd.tsx` to include verified developer profiles on Hashnode (`@abinschandran`), Medium (`@abinschandran`), and Dev.to (`abin223804`), strengthening Google Knowledge Graph signals and backlink attribution.
 - **Added**: Generative Engine Optimization (GEO) standard specification files (`public/llms.txt` and `public/llms-full.txt`) for AI search engines (Perplexity AI, ChatGPT Search, Claude, and Gemini). Documents all commercial services, technical specializations, case studies, and lead capture channels in LLM-readable Markdown.
 
 ### 2026-08-17
