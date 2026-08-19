@@ -1,0 +1,73 @@
+# Abin S Chandran — Freelance Software Developer & Solution Architect
+
+> High-performance custom web applications, AI-integrated Node.js REST APIs, Flutter cross-platform mobile apps, and scalable SaaS platforms engineered for global clients.
+
+## Overview & Entity Profile
+- **Full Name**: Abin S Chandran (Abin, Abin S)
+- **Title**: Freelance Software Developer & Solution Architect
+- **Location**: Kerala, India (Serving Global Remote Clients)
+- **Official Domain**: https://www.abinschandran.in
+- **GitHub**: https://github.com/abin223804
+- **LinkedIn**: https://www.linkedin.com/in/abinschandran/
+- **Availability**: Open for freelance projects, technical consulting, full-stack web/mobile development, and architecture contracts.
+
+---
+
+## Core Technical Competencies & Specializations
+
+### 1. AI-Powered Web Applications & AI-Integrated Systems
+- **AI Integrations**: Gemini API (Flash/Pro), OpenAI (GPT-4o), Anthropic Claude, LangChain, function calling, structured JSON output.
+- **RAG Pipelines**: Vector databases with PostgreSQL `pgvector`, embedding generation, cosine similarity search, and hybrid semantic retrieval.
+- **AI Backend Architecture**: Streaming LLM responses, token budgeting, prompt injection sanitization, and fallback orchestration.
+
+### 2. Full-Stack Web Development & Modern Frontend
+- **Frontend Frameworks**: Next.js 15 (App Router, Server Components, SSG/SSR), React 19, TypeScript.
+- **Styling & UI**: Tailwind CSS, Framer Motion, Lenis smooth scrolling, responsive design, dark mode tokens.
+- **Accessibility & SEO**: WCAG AA/AAA contrast compliance, WAI-ARIA semantics, Schema.org JSON-LD, Open Graph, Core Web Vitals optimization.
+
+### 3. Backend Engineering & High-Throughput REST APIs
+- **Backend Stack**: Node.js, Express.js, TypeScript, RESTful API design, OpenAPI/Swagger 3.0.
+- **Databases & Cache**: PostgreSQL, MongoDB, Redis caching, schema indexing, aggregation pipelines.
+- **Concurrency & Performance**: Sub-20ms P99 latency, rate limiting, connection pooling, idempotent payment webhooks.
+
+### 4. Cross-Platform Mobile Engineering (Flutter & Dart)
+- **Mobile Stack**: Flutter, Dart, iOS & Android unified codebases, 60fps rendering, Impeller engine optimization.
+- **State Management**: BLoC pattern, Provider, Hive local offline-first storage, background queue synchronization.
+- **Integrations**: Stripe mobile sheets, Firebase FCM push notifications, App Store & Google Play deployments.
+
+---
+
+## Commercial Software Development Services
+- [Full-Stack Web & Mobile Development](https://www.abinschandran.in/services/full-stack-development): End-to-end custom web and mobile engineering from database architecture to responsive React/Next.js and Flutter frontends.
+- [Flutter & Mobile App Development](https://www.abinschandran.in/services/flutter-development): Cross-platform iOS and Android mobile apps with clean architecture and Node.js backend integrations.
+- [Node.js & Express Backend Development](https://www.abinschandran.in/services/nodejs-development): High-concurrency microservices, event queues, and scalable REST API architectures.
+- [React & Next.js Frontend Development](https://www.abinschandran.in/services/react-nextjs-development): SEO-optimized, pixel-perfect user interfaces with React 19 and Next.js 15.
+- [REST API Development & Integrations](https://www.abinschandran.in/services/api-development-integration): Payment gateway integrations (Stripe, Razorpay), webhook queues, and OpenAPI endpoints.
+- [Custom SaaS Product Development](https://www.abinschandran.in/services/saas-development): Multi-tenant database design, automated subscription billing, and role-based access controls.
+- [Admin Dashboards & Internal Tools](https://www.abinschandran.in/services/admin-dashboard-development): Data-rich operational dashboards, analytics tables, and real-time management panels.
+- [Application Maintenance & Performance Optimization](https://www.abinschandran.in/services/performance-optimization): Database indexing, query acceleration, bundle size reduction, and bug patching.
+
+---
+
+## Featured Architectural Case Studies
+- [PulseFit Mobile SaaS App](https://www.abinschandran.in/projects/flutter-mobile-saas-app): Cross-platform Flutter iOS/Android app with Node.js REST API, offline BLoC caching, and Stripe subscriptions.
+- [OmniScale Enterprise Cloud Gateway](https://www.abinschandran.in/projects/omniscale-cloud-gateway): High-throughput multi-region API router managing 50k+ RPS with sub-15ms latency.
+- [AuraStore AI E-Commerce Platform](https://www.abinschandran.in/projects/aurastore-ecommerce-platform): AI-powered visual search, automated product recommendations, and real-time inventory engine.
+- [DataPulse Real-Time Telemetry Dashboard](https://www.abinschandran.in/projects/datapulse-realtime-dashboard): Enterprise analytics dashboard processing 100k events/sec with WebSocket data streaming.
+
+---
+
+## Engineering Guides & Tech Blog
+- [Flutter High-Performance Mobile App Architecture](https://www.abinschandran.in/blog/flutter-high-performance-mobile-app-architecture): Practical 60fps guide covering BLoC state management, isolate offloading, and low-latency API caching.
+- [Scaling Node.js REST APIs to 50k+ RPS](https://www.abinschandran.in/blog/scaling-nodejs-apis-50k-rps-architecture): Cluster mode, Redis multi-tier caching, connection pooling, and payload compression.
+- [Building Production SaaS with Next.js 15 & PostgreSQL](https://www.abinschandran.in/blog/building-production-saas-nextjs-15-postgresql): Multi-tenant architecture, Server Actions, Stripe subscription webhooks, and pgvector RAG.
+
+---
+
+## Contact & Direct Hire Channels
+- **Interactive Terminal & Lead Dispatch**: https://www.abinschandran.in/contact
+- **Direct WhatsApp Chat**: https://wa.me/918086223804
+- **Official Email**: abinschandran1@gmail.com
+- **Website Homepage**: https://www.abinschandran.in
+
+For full unabridged technical specs and architectural documentation, see: https://www.abinschandran.in/llms-full.txt

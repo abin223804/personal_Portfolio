@@ -147,6 +147,8 @@ Personal _Portfolio/
 │   ├── skills.ts                    # Technical skill matrix
 │   └── timeline.ts                  # Career milestones
 ├── public/                          # Static Web Assets
+│   ├── llms.txt                     # Generative Engine Optimization (GEO) Summary
+│   ├── llms-full.txt                # Complete AI Architectural & Service Catalog Spec
 │   ├── og-image.png                 # Social Share Banner Image
 │   ├── photo.png                    # Profile Avatar Image
 │   └── google323ad084142dea2e.html  # Google Domain Verification File
@@ -398,6 +400,9 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ---
 
 ## 20. Architecture Change Log
+
+### 2026-08-19
+- **Added**: Generative Engine Optimization (GEO) standard specification files (`public/llms.txt` and `public/llms-full.txt`) for AI search engines (Perplexity AI, ChatGPT Search, Claude, and Gemini). Documents all commercial services, technical specializations, case studies, and lead capture channels in LLM-readable Markdown.
 
 ### 2026-08-17
 - **Added**: Google Images SEO & Entity recognition optimization. Created semantic image assets (`public/abin-s-chandran.png`, `public/abin-schandran.png`), added rich `ImageObject` Schema.org structured data, and embedded semantic headshots in `HeroSection.tsx` and `app/about/page.tsx` with keyword-targeted alt and title tags targeting `Abin`, `Abin S`, `Abin S Chandran`, and `software developer`.
