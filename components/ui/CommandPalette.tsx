@@ -29,6 +29,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   if (!isOpen) return null;
 
   const actions = [
+    { id: "crm-saas", title: "Launch Live CRM SaaS Platform (crm.abinschandran.in)", category: "Live SaaS Products", external: "https://crm.abinschandran.in/", icon: Sparkles },
     { id: "home", title: "Go to System Overview (Home)", category: "Navigation", href: "/", icon: Cpu },
     { id: "projects", title: "Browse All Projects & Case Studies", category: "Navigation", href: "/projects", icon: Briefcase },
     { id: "blog", title: "Read Tech Blog & Engineering Guides", category: "Navigation", href: "/blog", icon: BookOpen },

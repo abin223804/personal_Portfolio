@@ -82,6 +82,7 @@ export const InteractiveTerminal: React.FC = () => {
       response = (
         <div className="space-y-1 text-xs font-mono text-titanium">
           <div className="text-ivory font-bold mb-1">Available System Commands:</div>
+          <div><span className="text-emerald-400 font-bold">crm</span> - Open live CRM SaaS platform (crm.abinschandran.in)</div>
           <div><span className="text-emerald-400 font-bold">whatsapp</span> - Open direct WhatsApp chat to discuss project</div>
           <div><span className="text-emerald-400 font-bold">send &lt;msg&gt;</span> - Transmit direct email to Abin&apos;s inbox</div>
           <div><span className="text-amber-400 font-bold">about</span> - Brief architectural summary &amp; philosophy</div>
@@ -91,6 +92,16 @@ export const InteractiveTerminal: React.FC = () => {
           <div><span className="text-amber-400 font-bold">linkedin</span> - Open LinkedIn profile link</div>
           <div><span className="text-amber-400 font-bold">github</span> - Open GitHub repository profile</div>
           <div><span className="text-amber-400 font-bold">clear</span> - Reset terminal screen history</div>
+        </div>
+      );
+    } else if (lower === "crm" || lower === "saas") {
+      response = (
+        <div className="text-xs font-mono text-emerald-400 space-y-1">
+          <div>Live CRM SaaS Platform:</div>
+          <a href="https://crm.abinschandran.in/" target="_blank" rel="noopener noreferrer" className="underline font-bold text-ivory flex items-center gap-1.5 pt-1">
+            <span>Launch crm.abinschandran.in</span>
+            <ExternalLink className="w-3.5 h-3.5 text-copper" />
+          </a>
         </div>
       );
     } else if (lower === "whatsapp" || lower === "chat") {
@@ -289,6 +300,7 @@ export const InteractiveTerminal: React.FC = () => {
             <div className="bg-obsidian-surface px-4 py-2 border-b border-obsidian-border flex flex-wrap gap-2 text-[11px] font-mono">
               <span className="text-titanium">Quick commands:</span>
               {[
+                { label: "crm (live saas)", cmd: "crm" },
                 { label: "whatsapp", cmd: "whatsapp" },
                 { label: "help", cmd: "help" },
                 { label: "about", cmd: "about" },

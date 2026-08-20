@@ -22,14 +22,32 @@ export const HeroSection: React.FC = () => {
           {/* Left Column: Headline, Bio & CTAs (Crawlable SEO text) */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Status Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-surface border border-obsidian-border shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-mono text-titanium">
-                Freelance Software Developer &amp; Solution Architect
-              </span>
-              <span className="text-obsidian-border font-mono">•</span>
-              <span className="text-xs font-mono text-copper-light font-semibold">Kerala, India &amp; Remote Worldwide</span>
+            {/* Live Product SaaS Banner */}
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://crm.abinschandran.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/15 via-obsidian-surface to-copper/15 border border-emerald-500/30 hover:border-emerald-400/60 shadow-lg transition-all group"
+                title="Launch Live CRM SaaS Platform (crm.abinschandran.in)"
+              >
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-xs font-mono font-bold text-emerald-400">
+                  Live SaaS Product:
+                </span>
+                <span className="text-xs font-mono text-ivory group-hover:text-copper-light transition-colors flex items-center gap-1 font-semibold">
+                  crm.abinschandran.in
+                  <span className="text-[11px] text-copper group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+                </span>
+              </a>
+
+              {/* Status Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-obsidian-surface border border-obsidian-border shadow-md">
+                <span className="text-xs font-mono text-copper-light font-semibold">Kerala, India &amp; Remote Worldwide</span>
+              </div>
             </div>
 
             {/* Single Primary SEO H1 Headline with prominent Entity Name */}

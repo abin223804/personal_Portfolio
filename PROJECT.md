@@ -402,6 +402,12 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 ## 20. Architecture Change Log
 
 ### 2026-08-20
+- **Added**: Live CRM SaaS platform integration (`https://crm.abinschandran.in/`) across the web application:
+  - **Navbar**: Added responsive `Live CRM ↗` navigation button with animated active status indicator.
+  - **Hero Section**: Embedded `Live SaaS Product: crm.abinschandran.in ↗` live announcement banner.
+  - **Command Palette (`⌘K`)**: Added direct quick-launch action `Launch Live CRM SaaS Platform`.
+  - **Footer**: Added direct `Live CRM SaaS Platform` navigation link with status pulse.
+  - **CLI Terminal**: Added `crm` & `saas` interactive commands and quick-command action chip in `InteractiveTerminal.tsx`.
 - **Updated**: Front-loaded entity name `Abin S Chandran (Abin)` in `app/layout.tsx` title tags, template titles, and OpenGraph descriptions to maximize exact-match query relevance when searching for `Abin` or `Abin S Chandran`.
 - **Updated**: Embedded `Abin S Chandran` directly into the crawlable H1 semantic heading and `Abin` into the introductory bio in `HeroSection.tsx` for on-page entity authority weighting.
 - **Added**: `disambiguatingDescription` in `components/seo/JsonLd.tsx` for Schema.org `Person` definition to establish Google Knowledge Graph entity disambiguation.

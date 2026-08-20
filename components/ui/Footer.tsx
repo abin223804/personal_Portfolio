@@ -57,6 +57,18 @@ export const Footer: React.FC = () => {
             </h4>
             <ul aria-label="Footer navigation links" className="space-y-2 text-xs text-titanium">
               <li>
+                <a
+                  href="https://crm.abinschandran.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors flex items-center gap-1.5"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Live CRM SaaS Platform</span>
+                  <ArrowUpRight className="w-3 h-3 text-emerald-400" />
+                </a>
+              </li>
+              <li>
                 <Link href="/" className="hover:text-copper transition-colors">
                   Overview
                 </Link>
