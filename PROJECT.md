@@ -401,6 +401,11 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 
 ## 20. Architecture Change Log
 
+### 2026-08-20
+- **Updated**: Front-loaded entity name `Abin S Chandran (Abin)` in `app/layout.tsx` title tags, template titles, and OpenGraph descriptions to maximize exact-match query relevance when searching for `Abin` or `Abin S Chandran`.
+- **Updated**: Embedded `Abin S Chandran` directly into the crawlable H1 semantic heading and `Abin` into the introductory bio in `HeroSection.tsx` for on-page entity authority weighting.
+- **Added**: `disambiguatingDescription` in `components/seo/JsonLd.tsx` for Schema.org `Person` definition to establish Google Knowledge Graph entity disambiguation.
+
 ### 2026-08-19
 - **Added**: Updated Schema.org `sameAs` entity authority arrays across `Person`, `ProfilePage`, and `Organization` schemas in `components/seo/JsonLd.tsx` to include verified developer profiles on Hashnode (`@abinschandran`), Medium (`@abinschandran`), and Dev.to (`abin223804`), strengthening Google Knowledge Graph signals and backlink attribution.
 - **Added**: Generative Engine Optimization (GEO) standard specification files (`public/llms.txt` and `public/llms-full.txt`) for AI search engines (Perplexity AI, ChatGPT Search, Claude, and Gemini). Documents all commercial services, technical specializations, case studies, and lead capture channels in LLM-readable Markdown.

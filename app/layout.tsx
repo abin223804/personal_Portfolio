@@ -20,11 +20,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.abinschandran.in"),
   title: {
-    default: "Freelance Software Developer & Solution Architect | Abin S Chandran",
-    template: "%s | Abin S Chandran - Freelance Software Developer",
+    default: "Abin S Chandran (Abin) | Freelance Software Developer & Solution Architect",
+    template: "%s | Abin S Chandran (Abin) - Freelance Software Developer",
   },
   description:
-    "Freelance Software Developer & Solution Architect based in Kerala, India. Specializing in AI-Powered Web Applications, AI-Integrated Node.js REST APIs, Next.js SaaS platforms, Flutter Mobile Apps, PostgreSQL, and custom software for global clients.",
+    "Official portfolio of Abin (Abin S Chandran) — Freelance Software Developer & Solution Architect in Kerala, India. Specializing in AI-Powered Web Applications, Node.js REST APIs, Next.js SaaS platforms, Flutter Mobile Apps, and custom software.",
   keywords: [
     "Abin S Chandran",
     "Abin",

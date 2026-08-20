@@ -32,17 +32,17 @@ export const HeroSection: React.FC = () => {
               <span className="text-xs font-mono text-copper-light font-semibold">Kerala, India &amp; Remote Worldwide</span>
             </div>
 
-            {/* Single Primary SEO H1 Headline */}
+            {/* Single Primary SEO H1 Headline with prominent Entity Name */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-ivory leading-[1.15]">
-              Freelance Software Developer{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-copper via-amber-400 to-copper-light">
-                Building Web &amp; Mobile Applications.
+              Abin S Chandran{" "}
+              <span className="block text-2xl sm:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-copper via-amber-400 to-copper-light mt-2">
+                Freelance Software Developer &amp; Solution Architect
               </span>
             </h1>
 
             {/* Supporting Bio Copy */}
             <p className="text-base sm:text-lg text-titanium leading-relaxed max-w-2xl font-sans">
-              I help startups, founders, and businesses build scalable web applications, cross-platform Flutter mobile apps, Node.js REST APIs, Next.js frontends, SaaS products, and custom business software.
+              Hi, I&apos;m <strong className="text-ivory font-semibold">Abin</strong> (Abin S Chandran). I help startups, founders, and businesses build scalable web applications, cross-platform Flutter mobile apps, Node.js REST APIs, Next.js frontends, SaaS products, and custom business software.
             </p>
 
             {/* Action Buttons */}
