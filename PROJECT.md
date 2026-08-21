@@ -401,6 +401,9 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 
 ## 20. Architecture Change Log
 
+### 2026-08-21
+- **Removed**: Live CRM navigation link from header `Navbar.tsx` to streamline the top navigation bar while keeping other discovery channels (Hero banner, Command Palette, CLI terminal, Footer).
+
 ### 2026-08-20
 - **Added**: Live CRM SaaS platform integration (`https://crm.abinschandran.in/`) across the web application:
   - **Navbar**: Added responsive `Live CRM ↗` navigation button with animated active status indicator.

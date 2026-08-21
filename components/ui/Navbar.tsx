@@ -92,19 +92,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
 
         {/* Command Palette & CTA */}
         <div className="flex items-center gap-2.5">
-          {/* Live CRM SaaS Platform Link */}
-          <a
-            href="https://crm.abinschandran.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-all shadow-sm group"
-            title="Open Live CRM SaaS Platform (crm.abinschandran.in)"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Live CRM</span>
-            <span className="text-[10px] text-emerald-400/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform font-bold">↗</span>
-          </a>
-
           <button
             onClick={onOpenCommandPalette}
             aria-label="Open Command Palette (Cmd + K)"
