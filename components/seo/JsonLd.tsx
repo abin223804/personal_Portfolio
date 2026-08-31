@@ -20,9 +20,12 @@ interface JsonLdProps {
     description: string;
     url: string;
     datePublished: string;
+    dateModified?: string;
     authorName: string;
     image?: string;
     keywords?: string[];
+    wordCount?: number;
+    articleSection?: string;
   };
   breadcrumbs?: { name: string; item: string }[];
 }
@@ -335,19 +338,47 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
       "headline": articleData.title,
       "description": articleData.description,
       "url": articleData.url,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": articleData.url
+      },
       "datePublished": articleData.datePublished,
+      "dateModified": articleData.dateModified || articleData.datePublished,
+      "wordCount": articleData.wordCount,
+      "articleSection": articleData.articleSection,
       "author": {
         "@type": "Person",
         "name": articleData.authorName,
-        "url": "https://www.abinschandran.in"
+        "url": "https://www.abinschandran.in",
+        "sameAs": [
+          "https://github.com/abin223804",
+          "https://www.linkedin.com/in/abinschandran/"
+        ]
       },
       "publisher": {
         "@type": "Person",
         "name": "Abin S Chandran",
-        "url": "https://www.abinschandran.in"
+        "url": "https://www.abinschandran.in",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://www.abinschandran.in/abin-s-chandran.png",
+          "width": 400,
+          "height": 400
+        }
       },
-      "image": articleData.image || "https://www.abinschandran.in/og-image.png",
-      "keywords": articleData.keywords ? articleData.keywords.join(", ") : undefined
+      "image": {
+        "@type": "ImageObject",
+        "url": articleData.image || "https://www.abinschandran.in/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "article"]
+      },
+      "keywords": articleData.keywords ? articleData.keywords.join(", ") : undefined,
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true
     };
 
     return (

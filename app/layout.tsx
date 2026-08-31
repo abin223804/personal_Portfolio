@@ -59,7 +59,14 @@ export const metadata: Metadata = {
     "SaaS development India",
     "REST API development",
     "admin dashboard development",
-    "Solution Architect"
+    "Solution Architect",
+    "flutter google maps developer",
+    "flutter map app developer",
+    "flutter app architecture developer",
+    "next js developers kerala",
+    "next js developer kerala",
+    "flutter architecture guide",
+    "high performance flutter developer"
   ],
   authors: [{ name: "Abin S Chandran", url: "https://www.abinschandran.in" }],
   creator: "Abin S Chandran",
@@ -129,6 +136,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
+        {/* Preconnect to Google Fonts for faster font loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* DNS prefetch for external services */}
+        <link rel="dns-prefetch" href="//api.web3forms.com" />
+        <link rel="dns-prefetch" href="//wa.me" />
         <JsonLd type="Person" />
         <JsonLd type="ProfessionalService" />
       </head>

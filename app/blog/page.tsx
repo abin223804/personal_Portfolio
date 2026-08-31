@@ -7,24 +7,28 @@ import { ConversionCtaSection } from "@/components/cta/ConversionCtaSection";
 import { BookOpen, Search, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Engineering Tech Blog & System Architecture Guides | Abin S Chandran",
+  title: "Flutter & Next.js Engineering Blog | Architecture Guides | Abin S Chandran",
   description:
-    "Explore high-performance Flutter mobile app architecture guides, Node.js REST API scaling practices, Next.js 15 SaaS engineering, and full-stack software development articles by Abin S Chandran.",
+    "In-depth Flutter app architecture guides, Google Maps integration tutorials, Node.js REST API scaling, Next.js 15 SaaS development articles by Abin S Chandran — freelance software developer in Kerala, India.",
   keywords: [
-    "Abin S Chandran tech blog",
-    "Flutter app architecture blog",
+    "flutter app architecture guide",
+    "flutter google maps integration",
+    "high performance maps in flutter",
     "Node.js REST API scaling",
     "Next.js 15 SaaS architecture",
+    "next js developers kerala",
+    "flutter developer kerala blog",
     "freelance software developer blog India",
-    "software engineering case studies"
+    "software engineering case studies",
+    "flutter clean architecture blog"
   ],
   alternates: {
     canonical: "https://www.abinschandran.in/blog",
   },
   openGraph: {
-    title: "Engineering Tech Blog & System Architecture Guides | Abin S Chandran",
+    title: "Flutter & Next.js Engineering Blog | Abin S Chandran",
     description:
-      "Deep technical guides on Flutter mobile development, Node.js REST API architecture, Next.js 15 SaaS platforms, and software scalability.",
+      "Deep technical guides on Flutter Google Maps, Clean Architecture, Node.js REST APIs, Next.js 15 SaaS, and production mobile & web development by Abin S Chandran, Kerala.",
     url: "https://www.abinschandran.in/blog",
   },
 };

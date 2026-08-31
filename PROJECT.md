@@ -452,3 +452,17 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 - **Added**: Configured 301 Permanent Redirect in `next.config.ts` (`/resume` ➔ `/about`).
 - **Added**: Workspace rule file `.agents/AGENTS.md` to enforce continuous `PROJECT.md` maintenance.
 
+### 2026-08-31
+- **Added**: 2 new blog articles in `data/blog.ts` targeting top GSC impression queries:
+  - `flutter-google-maps-integration-high-performance-guide` — targets "high-performance maps in flutter" (28 impressions, 0 clicks). Covers `google_maps_flutter`, BitmapDescriptor markers, Geolocator streaming, Polyline routes, permissions. 950 words.
+  - `flutter-app-architecture-guide-clean-architecture-bloc` — targets "architecture of flutter application". Covers 3-layer Clean Architecture, BLoC, Repository, `get_it` DI. 1050 words.
+- **Updated**: `BlogPost` interface with optional `wordCount?: number` field in `data/blog.ts`.
+- **Updated**: `seoKeywords` enriched on all 3 existing blog posts with GSC long-tail terms (`"next js developers kerala"`, `"flutter developer kerala"`, `"node js developer kerala"`).
+- **Updated**: `app/layout.tsx` root metadata keywords with `"flutter google maps developer"`, `"next js developers kerala"`, `"flutter app architecture developer"`.
+- **Updated**: `app/layout.tsx` HTML `<head>` with Google Fonts `preconnect` and external service `dns-prefetch` hints.
+- **Updated**: `app/blog/page.tsx` metadata title and description to front-load Flutter/Kerala/Maps keywords.
+- **Updated**: `components/seo/JsonLd.tsx` `BlogPosting` schema with `dateModified`, `wordCount`, `articleSection`, `mainEntityOfPage`, `speakable`, `author.sameAs`, full `ImageObject` for publisher/image, `inLanguage`, `isAccessibleForFree`.
+- **Updated**: `app/blog/[slug]/page.tsx` passes `dateModified`, `wordCount`, `articleSection` to JsonLd.
+- **Updated**: `app/sitemap.ts` — homepage and blog index `lastModified` use dynamic `new Date()`.
+- **Updated**: `next.config.ts` — added `headers()` with security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, X-DNS-Prefetch-Control) and Cache-Control for static assets, images, and fonts.
+- **Rationale**: Google Search Console showed 33 impressions / 0 clicks. Root cause was zero content matching top impression queries ("high-performance maps in flutter"). New articles close the content gap.

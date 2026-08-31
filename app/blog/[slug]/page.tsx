@@ -81,9 +81,12 @@ export default async function BlogDetailPage({ params }: Props) {
           description: post.excerpt,
           url: `https://www.abinschandran.in/blog/${post.slug}`,
           datePublished: post.date,
+          dateModified: post.date,
           authorName: post.author.name,
           image: post.coverImage ? `https://www.abinschandran.in${post.coverImage}` : undefined,
           keywords: post.seoKeywords,
+          wordCount: post.wordCount,
+          articleSection: post.category,
         }}
       />
       <JsonLd

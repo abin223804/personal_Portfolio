@@ -5,6 +5,7 @@ import { BLOG_POSTS } from "@/data/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.abinschandran.in";
+  const now = new Date();
 
   const projectUrls = PROJECTS.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
@@ -30,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: new Date("2025-08-10"),
+      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 1.0,
       images: [
@@ -51,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date("2025-08-10"),
+      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.95,
       images: [`${baseUrl}/og-image.png`],
