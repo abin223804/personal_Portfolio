@@ -18,11 +18,11 @@ export const InteractiveTerminal: React.FC = () => {
       command: "welcome",
       output: (
         <div className="space-y-2 text-xs font-mono">
-          <div className="text-copper-light font-extrabold">
+          <div className="text-cyan font-extrabold">
             Abin S Chandran Architecture CLI Shell v5.2.0 [x86_64-apple-darwin]
           </div>
           <div className="text-titanium">
-            Type <span className="text-amber-400 font-bold">help</span> to see available commands, type <span className="text-emerald-400 font-bold">whatsapp</span> to chat on WhatsApp, or type <span className="text-emerald-400 font-bold">send &lt;your message&gt;</span> to email Abin S Chandran directly.
+            Type <span className="text-cyan font-bold">help</span> to see available commands, type <span className="text-emerald-400 font-bold">whatsapp</span> to chat on WhatsApp, or type <span className="text-cyan font-bold">send &lt;your message&gt;</span> to email Abin S Chandran directly.
           </div>
         </div>
       ),
@@ -264,12 +264,12 @@ export const InteractiveTerminal: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-obsidian-surface border-t border-obsidian-border/80 relative" id="contact">
+    <section className="py-20 bg-brand-secondary border-t border-white/[0.08] relative" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan font-semibold text-xs font-mono mb-3">
             <Terminal className="w-3.5 h-3.5" />
             <span>Interactive CLI &amp; Direct Channel</span>
           </div>
@@ -284,20 +284,20 @@ export const InteractiveTerminal: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
           {/* Left: Interactive UNIX Terminal */}
-          <div className="lg:col-span-7 bg-obsidian-bg border border-obsidian-border rounded-2xl overflow-hidden shadow-2xl">
+          <div className="lg:col-span-7 bg-brand-bg border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl">
             {/* Terminal Window Top Bar */}
-            <div className="bg-obsidian-card px-4 py-3 border-b border-obsidian-border flex items-center justify-between">
+            <div className="bg-obsidian-card px-4 py-3 border-b border-white/[0.08] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-rose-500" />
                 <div className="w-3 h-3 rounded-full bg-amber-500" />
                 <div className="w-3 h-3 rounded-full bg-emerald-500" />
                 <span className="ml-2 text-xs font-mono text-titanium">asc_shell ~ bash</span>
               </div>
-              <span className="text-[10px] font-mono text-copper-light font-bold">TTY /dev/pts/0</span>
+              <span className="text-[10px] font-mono text-cyan font-bold">TTY /dev/pts/0</span>
             </div>
 
             {/* Quick Command Chips */}
-            <div className="bg-obsidian-surface px-4 py-2 border-b border-obsidian-border flex flex-wrap gap-2 text-[11px] font-mono">
+            <div className="bg-obsidian-surface px-4 py-2 border-b border-white/[0.08] flex flex-wrap gap-2 text-[11px] font-mono">
               <span className="text-titanium">Quick commands:</span>
               {[
                 { label: "crm (live saas)", cmd: "crm" },
@@ -312,7 +312,7 @@ export const InteractiveTerminal: React.FC = () => {
                 <button
                   key={item.label}
                   onClick={() => handleCommand(item.cmd)}
-                  className="px-2 py-0.5 rounded bg-obsidian-card hover:bg-copper/20 hover:text-copper border border-obsidian-border text-titanium transition-colors"
+                  className="px-2 py-0.5 rounded bg-obsidian-card hover:bg-cyan/15 hover:text-cyan border border-white/[0.08] text-titanium transition-colors"
                 >
                   {item.label}
                 </button>
@@ -334,7 +334,7 @@ export const InteractiveTerminal: React.FC = () => {
             </div>
 
             {/* Terminal Command Input Bar */}
-            <form onSubmit={handleSubmit} className="border-t border-obsidian-border p-3 bg-obsidian-card flex items-center gap-2 font-mono">
+            <form onSubmit={handleSubmit} className="border-t border-white/[0.08] p-3 bg-obsidian-card flex items-center gap-2 font-mono">
               <span className="text-emerald-400 font-bold text-xs pl-2">asc@developer:~$</span>
               <input
                 ref={inputRef}
@@ -345,16 +345,16 @@ export const InteractiveTerminal: React.FC = () => {
                 aria-label="Terminal CLI command prompt input"
                 className="w-full bg-transparent text-xs text-ivory placeholder-titanium focus:outline-none"
               />
-              <button type="submit" aria-label="Execute Terminal Command" className="p-1.5 rounded-lg bg-copper text-white hover:bg-copper-light transition-colors">
+              <button type="submit" aria-label="Execute Terminal Command" className="p-1.5 rounded-lg bg-cyan text-brand-bg hover:bg-cyan-light transition-colors">
                 <CornerDownLeft className="w-3.5 h-3.5" />
               </button>
             </form>
           </div>
 
           {/* Right: Traditional Contact Form & WhatsApp CTA */}
-          <div className="lg:col-span-5 bg-obsidian-bg border border-obsidian-border rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl">
+          <div className="lg:col-span-5 bg-brand-bg border border-white/[0.08] rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl">
             <h3 className="text-lg font-bold text-ivory font-sans flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-copper" />
+              <Sparkles className="w-4 h-4 text-cyan" />
               <span>Direct Project Consultation</span>
             </h3>
 
@@ -373,9 +373,9 @@ export const InteractiveTerminal: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="p-3.5 rounded-xl bg-obsidian-surface border border-obsidian-border flex items-center justify-between">
+              <div className="p-3.5 rounded-xl bg-obsidian-surface border border-white/[0.08] flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-copper" />
+                  <Mail className="w-4 h-4 text-cyan" />
                   <div>
                     <div className="text-[11px] text-titanium font-mono">Direct Email</div>
                     <div className="text-xs font-mono font-semibold text-ivory">abinschandran1@gmail.com</div>
@@ -384,7 +384,7 @@ export const InteractiveTerminal: React.FC = () => {
                 <button
                   onClick={copyEmail}
                   aria-label="Copy email address to clipboard"
-                  className="p-1.5 rounded-lg bg-obsidian-card hover:bg-copper/20 text-titanium hover:text-copper transition-colors"
+                  className="p-1.5 rounded-lg bg-obsidian-card hover:bg-cyan/15 text-titanium hover:text-cyan transition-colors"
                   title="Copy email"
                 >
                   {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
@@ -413,7 +413,7 @@ export const InteractiveTerminal: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Jane Doe (Founder / Lead Architect)"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-white/[0.08] text-xs text-ivory placeholder-titanium focus:outline-none focus:border-cyan transition-colors"
                   />
                 </div>
 
@@ -425,7 +425,7 @@ export const InteractiveTerminal: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="jane@company.com"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-white/[0.08] text-xs text-ivory placeholder-titanium focus:outline-none focus:border-cyan transition-colors"
                   />
                 </div>
 
@@ -438,14 +438,14 @@ export const InteractiveTerminal: React.FC = () => {
                     value={scope}
                     onChange={(e) => setScope(e.target.value)}
                     placeholder="Describe your web application, Node.js API, or Next.js SaaS requirement..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-xs text-ivory placeholder-titanium focus:outline-none focus:border-copper transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-white/[0.08] text-xs text-ivory placeholder-titanium focus:outline-none focus:border-cyan transition-colors"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting || !scope.trim()}
-                  className="w-full py-3 rounded-xl bg-copper hover:bg-copper-light disabled:opacity-50 text-obsidian-bg text-xs font-mono font-extrabold transition-all shadow-lg shadow-copper/20 flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-xl bg-cyan hover:bg-cyan-light disabled:opacity-50 text-brand-bg text-xs font-mono font-extrabold transition-all shadow-lg shadow-cyan/20 flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>

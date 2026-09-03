@@ -73,7 +73,7 @@ export default async function BlogDetailPage({ params }: Props) {
   const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (
-    <div className="pt-28 pb-16 min-h-screen bg-obsidian-bg">
+    <div className="pt-28 pb-16 min-h-screen bg-brand-bg">
       <JsonLd
         type="BlogPosting"
         articleData={{
@@ -102,7 +102,7 @@ export default async function BlogDetailPage({ params }: Props) {
         {/* Back Link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-xs font-mono text-copper hover:text-white transition-colors mb-6 group"
+          className="inline-flex items-center gap-2 text-xs font-mono text-cyan hover:text-white transition-colors mb-6 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span>Back to All Articles</span>
@@ -111,15 +111,15 @@ export default async function BlogDetailPage({ params }: Props) {
         {/* Header Metadata */}
         <div className="space-y-4 mb-8">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono">
+            <span className="px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan text-xs font-mono">
               {post.category}
             </span>
             <span className="text-xs text-titanium font-mono flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5 text-copper" />
+              <Calendar className="w-3.5 h-3.5 text-cyan" />
               {post.date}
             </span>
             <span className="text-xs text-titanium font-mono flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5 text-copper" />
+              <Clock className="w-3.5 h-3.5 text-cyan" />
               {post.readTime}
             </span>
           </div>
@@ -128,14 +128,14 @@ export default async function BlogDetailPage({ params }: Props) {
             {post.title}
           </h1>
 
-          <p className="text-titanium text-base sm:text-lg leading-relaxed font-sans border-l-2 border-copper pl-4 py-1 italic">
+          <p className="text-titanium text-base sm:text-lg leading-relaxed font-sans border-l-2 border-cyan pl-4 py-1 italic">
             {post.subtitle}
           </p>
 
           {/* Author Metadata */}
-          <div className="flex items-center justify-between pt-4 border-t border-obsidian-border">
+          <div className="flex items-center justify-between pt-4 border-t border-white/[0.08]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-obsidian-surface border border-obsidian-border flex items-center justify-center font-mono font-bold text-copper text-sm">
+              <div className="w-10 h-10 rounded-full bg-obsidian-card border border-white/[0.08] flex items-center justify-center font-mono font-bold text-cyan text-sm">
                 ASC
               </div>
               <div>
@@ -146,7 +146,7 @@ export default async function BlogDetailPage({ params }: Props) {
 
             <div className="flex items-center gap-2">
               <span className="text-xs text-titanium font-mono hidden sm:inline">Share Article</span>
-              <div className="p-2 rounded-lg bg-obsidian-surface border border-obsidian-border text-copper hover:text-white transition-colors cursor-pointer">
+              <div className="p-2 rounded-lg bg-obsidian-card border border-white/[0.08] text-cyan hover:text-white transition-colors cursor-pointer">
                 <Share2 className="w-4 h-4" />
               </div>
             </div>
@@ -154,19 +154,19 @@ export default async function BlogDetailPage({ params }: Props) {
         </div>
 
         {/* Main Article Content */}
-        <div className="bg-obsidian-surface/60 border border-obsidian-border rounded-2xl p-6 sm:p-10 shadow-2xl mb-12">
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 sm:p-10 shadow-2xl mb-12">
           <ArticleContent content={post.content} />
 
           {/* Tags */}
-          <div className="pt-8 mt-8 border-t border-obsidian-border flex flex-wrap items-center gap-2">
+          <div className="pt-8 mt-8 border-t border-white/[0.08] flex flex-wrap items-center gap-2">
             <span className="text-xs text-titanium font-mono mr-2 flex items-center gap-1">
-              <Tag className="w-3.5 h-3.5 text-copper" />
+              <Tag className="w-3.5 h-3.5 text-cyan" />
               Topics:
             </span>
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 rounded bg-obsidian-bg border border-obsidian-border text-titanium text-xs font-mono"
+                className="px-2.5 py-1 rounded bg-obsidian-surface border border-white/[0.08] text-titanium text-xs font-mono"
               >
                 {tag}
               </span>
@@ -178,7 +178,7 @@ export default async function BlogDetailPage({ params }: Props) {
         {relatedPosts.length > 0 && (
           <div className="space-y-6 mb-12">
             <h3 className="text-xl font-bold text-ivory flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-copper" />
+              <BookOpen className="w-5 h-5 text-cyan" />
               <span>Related Technical Articles</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

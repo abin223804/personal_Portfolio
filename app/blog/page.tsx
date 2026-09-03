@@ -38,7 +38,7 @@ export default function BlogIndexPage() {
   const regularPosts = BLOG_POSTS.filter((post) => post.slug !== featuredPost.slug);
 
   return (
-    <div className="pt-28 pb-16 min-h-screen bg-obsidian-bg">
+    <div className="pt-28 pb-16 min-h-screen bg-brand-bg">
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
@@ -49,8 +49,8 @@ export default function BlogIndexPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         {/* Header Hero Banner */}
-        <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-8 shadow-2xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono">
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-8 shadow-2xl space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan text-xs font-mono">
             <BookOpen className="w-3.5 h-3.5" />
             <span>Technical Insights &amp; Architecture Guides</span>
           </div>
@@ -68,9 +68,9 @@ export default function BlogIndexPage() {
         {featuredPost && <BlogCard post={featuredPost} featured={true} />}
 
         {/* Category Header */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-obsidian-border">
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/[0.08]">
           <h2 className="text-xl font-bold text-ivory flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-copper" />
+            <Sparkles className="w-5 h-5 text-cyan" />
             <span>Latest Technical Articles</span>
           </h2>
           <span className="text-xs font-mono text-titanium">

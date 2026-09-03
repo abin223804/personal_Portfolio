@@ -22,18 +22,18 @@ export const SkillMatrixBento: React.FC = () => {
   const currentPillar = SKILL_PILLARS[selectedPillarIndex];
 
   return (
-    <section className="py-20 bg-obsidian-surface border-y border-obsidian-border/80 relative">
+    <section className="py-20 bg-brand-secondary border-y border-white/[0.08] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header & View Toggle */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan font-semibold text-xs font-mono mb-3">
               <Cpu className="w-3.5 h-3.5" />
               <span>Technical Expertise Matrix</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-ivory tracking-tight">
-              Capability & Architectural Mindset
+              Capability &amp; Architectural Mindset
             </h2>
             <p className="text-titanium text-sm mt-2 max-w-xl">
               Grouped across system architecture, high-concurrency backends, modern frontend engineering, cloud infrastructure, and databases.
@@ -41,13 +41,13 @@ export const SkillMatrixBento: React.FC = () => {
           </div>
 
           {/* Toggle View Mode */}
-          <div className="flex items-center gap-1 bg-obsidian-bg p-1 rounded-xl border border-obsidian-border self-start">
+          <div className="flex items-center gap-1 bg-brand-bg p-1 rounded-xl border border-white/[0.08] self-start">
             <button
               onClick={() => setViewMode("bento")}
               aria-label="Switch to Interactive Bento View"
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
                 viewMode === "bento"
-                  ? "bg-copper text-obsidian-bg shadow-md shadow-copper/20"
+                  ? "bg-cyan text-brand-bg shadow-md shadow-cyan/20"
                   : "text-titanium hover:text-ivory"
               }`}
             >
@@ -59,7 +59,7 @@ export const SkillMatrixBento: React.FC = () => {
               aria-label="Switch to Structured List View"
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
                 viewMode === "list"
-                  ? "bg-copper text-obsidian-bg shadow-md shadow-copper/20"
+                  ? "bg-cyan text-brand-bg shadow-md shadow-cyan/20"
                   : "text-titanium hover:text-ivory"
               }`}
             >
@@ -73,7 +73,7 @@ export const SkillMatrixBento: React.FC = () => {
         {viewMode === "bento" ? (
           <div className="space-y-8">
             {/* Pillar Selector Tabs */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
               {SKILL_PILLARS.map((pillar, idx) => {
                 const Icon = iconsMap[pillar.iconName] || Cpu;
                 const isSelected = selectedPillarIndex === idx;
@@ -82,28 +82,28 @@ export const SkillMatrixBento: React.FC = () => {
                     key={pillar.title}
                     onClick={() => setSelectedPillarIndex(idx)}
                     aria-label={`Select skill category: ${pillar.title}`}
-                    className={`p-3.5 rounded-xl border text-left font-mono transition-all duration-200 ${
+                    className={`p-3 sm:p-3.5 rounded-xl border text-left font-mono transition-all duration-200 ${
                       isSelected
-                        ? "bg-obsidian-card border-copper text-ivory ring-1 ring-copper/50 shadow-lg shadow-copper/10"
-                        : "bg-obsidian-bg border-obsidian-border text-titanium hover:border-copper/40 hover:text-ivory"
+                        ? "bg-obsidian-hover border-cyan/50 text-ivory ring-1 ring-cyan/40 shadow-lg shadow-cyan/10"
+                        : "bg-obsidian-card border-white/[0.08] text-titanium hover:border-cyan/30 hover:text-ivory"
                     }`}
                   >
-                    <Icon className={`w-4 h-4 mb-2 ${isSelected ? "text-copper-light" : "text-titanium"}`} />
+                    <Icon className={`w-4 h-4 mb-2 ${isSelected ? "text-cyan" : "text-titanium"}`} />
                     <div className="text-xs font-semibold truncate">{pillar.title}</div>
-                    <div className="text-[10px] text-titanium-light mt-1">{pillar.skills.length} core skills</div>
+                    <div className="text-[10px] text-titanium-muted mt-1">{pillar.skills.length} core skills</div>
                   </button>
                 );
               })}
             </div>
 
             {/* Selected Pillar Detailed Bento Grid */}
-            <div className="bg-obsidian-bg border border-obsidian-border rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-obsidian-border pb-4">
+            <div className="bg-brand-bg border border-white/[0.08] rounded-2xl p-5 sm:p-8 shadow-2xl space-y-6">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
                 <div>
                   <h3 className="text-xl font-bold text-ivory font-sans">{currentPillar.title}</h3>
                   <p className="text-xs text-titanium mt-1 font-sans">{currentPillar.description}</p>
                 </div>
-                <span className="text-xs font-mono px-3 py-1 rounded-full bg-copper/10 text-copper border border-copper/30 self-start md:self-auto">
+                <span className="text-xs font-mono px-3 py-1 rounded-full bg-cyan/10 text-cyan border border-cyan/30 self-start md:self-auto font-bold">
                   {currentPillar.skills.length} Technical Skills Verified
                 </span>
               </div>
@@ -112,33 +112,33 @@ export const SkillMatrixBento: React.FC = () => {
                 {currentPillar.skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="p-4 rounded-xl bg-obsidian-surface border border-obsidian-border/80 hover:border-copper/50 transition-all duration-200 space-y-3 group"
+                    className="p-4 rounded-xl bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 hover:bg-brand-elevated transition-all duration-200 space-y-3 group"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-sm font-semibold text-ivory group-hover:text-copper transition-colors">
+                      <span className="font-mono text-sm font-semibold text-ivory group-hover:text-cyan transition-colors">
                         {skill.name}
                       </span>
-                      <span className="text-xs font-mono text-copper bg-copper/10 px-2 py-0.5 rounded">
+                      <span className="text-xs font-mono text-cyan bg-cyan/10 px-2 py-0.5 rounded font-bold">
                         {skill.experienceYears}
                       </span>
                     </div>
 
-                    {/* Skill Progress Bar */}
+                    {/* Skill Progress Bar with subtle Cyan to Violet Gradient */}
                     <div className="space-y-1">
-                      <div className="w-full h-1.5 bg-obsidian-card rounded-full overflow-hidden">
+                      <div className="w-full h-1.5 bg-obsidian-surface rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-gradient-to-r from-copper to-amber-500 rounded-full transition-all duration-500"
+                          className="h-full bg-gradient-to-r from-cyan via-cyan-light to-violet rounded-full transition-all duration-500"
                           style={{ width: `${skill.level}%` }}
                         />
                       </div>
-                      <div className="flex items-center justify-between text-[10px] font-mono text-titanium">
+                      <div className="flex items-center justify-between text-[10px] font-mono text-titanium-muted">
                         <span>Proficiency Benchmark</span>
                         <span>{skill.level}% Mastery</span>
                       </div>
                     </div>
 
                     {/* Real-world usage note */}
-                    <p className="text-xs text-titanium leading-relaxed font-sans border-t border-obsidian-border/40 pt-2">
+                    <p className="text-xs text-titanium leading-relaxed font-sans border-t border-white/[0.08] pt-2">
                       <strong className="text-ivory">Production Impact:</strong> {skill.realWorldUsage}
                     </p>
 
@@ -147,7 +147,7 @@ export const SkillMatrixBento: React.FC = () => {
                       {skill.tags.map((t) => (
                         <span
                           key={t}
-                          className="text-[10px] font-mono px-2 py-0.5 rounded bg-obsidian-card border border-obsidian-border text-titanium"
+                          className="text-[10px] font-mono px-2 py-0.5 rounded bg-obsidian-surface border border-white/[0.08] text-titanium"
                         >
                           #{t}
                         </span>
@@ -164,18 +164,18 @@ export const SkillMatrixBento: React.FC = () => {
             {SKILL_PILLARS.map((pillar) => (
               <div
                 key={pillar.title}
-                className="bg-obsidian-bg border border-obsidian-border rounded-2xl p-6 space-y-4"
+                className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 space-y-4"
               >
                 <h3 className="text-lg font-bold text-ivory font-mono flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-copper" />
+                  <CheckCircle2 className="w-4 h-4 text-cyan" />
                   {pillar.title}
                 </h3>
                 <p className="text-xs text-titanium">{pillar.description}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {pillar.skills.map((s) => (
-                    <div key={s.name} className="p-3 bg-obsidian-surface rounded-xl border border-obsidian-border text-xs">
+                    <div key={s.name} className="p-3 bg-obsidian-surface rounded-xl border border-white/[0.08] text-xs">
                       <div className="font-semibold text-ivory">{s.name}</div>
-                      <div className="text-copper text-[11px] font-mono">{s.experienceYears}</div>
+                      <div className="text-cyan text-[11px] font-mono">{s.experienceYears}</div>
                       <div className="text-titanium text-[11px] mt-1">{s.realWorldUsage}</div>
                     </div>
                   ))}

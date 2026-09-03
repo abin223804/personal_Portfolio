@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="pt-24 pb-16 min-h-screen bg-obsidian-bg">
+    <div className="pt-24 pb-16 min-h-screen bg-brand-bg">
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
@@ -33,15 +33,15 @@ export default function ContactPage() {
       {/* SEO Hero Section */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         {/* Header */}
-        <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 sm:p-10 shadow-2xl space-y-6 mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono">
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 sm:p-10 shadow-2xl space-y-6 mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan text-xs font-mono">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>Available for New Projects</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold text-ivory tracking-tight leading-tight">
             Hire a Freelance Software Developer
-            <span className="block text-copper mt-1">Let&apos;s Build Something Together</span>
+            <span className="block text-cyan mt-1">Let&apos;s Build Something Together</span>
           </h1>
 
           <p className="text-titanium text-sm sm:text-base leading-relaxed max-w-3xl font-sans">
@@ -52,17 +52,17 @@ export default function ContactPage() {
           <div className="flex flex-wrap gap-4 pt-2">
             <a
               href="mailto:abinschandran1@gmail.com"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-copper hover:bg-copper/80 text-white text-xs font-mono font-bold shadow-lg shadow-copper/20 transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan hover:bg-cyan-light text-brand-bg text-xs font-mono font-bold shadow-lg shadow-cyan/20 transition-all"
             >
               <Mail className="w-3.5 h-3.5" />
               abinschandran1@gmail.com
             </a>
-            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-obsidian-card border border-obsidian-border text-titanium text-xs font-mono">
-              <MapPin className="w-3.5 h-3.5 text-copper" />
+            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-obsidian-surface border border-white/[0.08] text-titanium text-xs font-mono">
+              <MapPin className="w-3.5 h-3.5 text-cyan" />
               Kerala, India · Remote Worldwide
             </div>
-            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-obsidian-card border border-obsidian-border text-titanium text-xs font-mono">
-              <Clock className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-obsidian-surface border border-white/[0.08] text-titanium text-xs font-mono">
+              <Clock className="w-3.5 h-3.5 text-cyan" />
               Responds within 24 hours
             </div>
           </div>
@@ -70,28 +70,28 @@ export default function ContactPage() {
 
         {/* Info Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
-          <div className="p-5 rounded-2xl bg-obsidian-surface border border-obsidian-border space-y-3">
-            <Globe className="w-5 h-5 text-copper" />
-            <h2 className="text-sm font-bold text-ivory font-mono">Remote & On-Site</h2>
+          <div className="p-5 rounded-2xl bg-obsidian-card border border-white/[0.08] space-y-3">
+            <Globe className="w-5 h-5 text-cyan" />
+            <h2 className="text-sm font-bold text-ivory font-mono">Remote &amp; On-Site</h2>
             <p className="text-xs text-titanium font-sans leading-relaxed">
               Available for fully remote freelance projects worldwide — India, US, UK, Europe, Australia, and the Middle East.
             </p>
           </div>
-          <div className="p-5 rounded-2xl bg-obsidian-surface border border-obsidian-border space-y-3">
-            <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+          <div className="p-5 rounded-2xl bg-obsidian-card border border-white/[0.08] space-y-3">
+            <CheckCircle2 className="w-5 h-5 text-cyan" />
             <h2 className="text-sm font-bold text-ivory font-mono">What to Expect</h2>
             <ul className="text-xs text-titanium font-sans space-y-1.5">
-              <li className="flex items-center gap-1.5"><span className="text-copper">→</span> Initial discovery call within 24 hrs</li>
-              <li className="flex items-center gap-1.5"><span className="text-copper">→</span> Detailed project scope & roadmap</li>
-              <li className="flex items-center gap-1.5"><span className="text-copper">→</span> Milestone-based delivery & billing</li>
-              <li className="flex items-center gap-1.5"><span className="text-copper">→</span> Regular GitHub & progress updates</li>
+              <li className="flex items-center gap-1.5"><span className="text-cyan">→</span> Initial discovery call within 24 hrs</li>
+              <li className="flex items-center gap-1.5"><span className="text-cyan">→</span> Detailed project scope &amp; roadmap</li>
+              <li className="flex items-center gap-1.5"><span className="text-cyan">→</span> Milestone-based delivery &amp; billing</li>
+              <li className="flex items-center gap-1.5"><span className="text-cyan">→</span> Regular GitHub &amp; progress updates</li>
             </ul>
           </div>
-          <div className="p-5 rounded-2xl bg-obsidian-surface border border-obsidian-border space-y-3">
-            <Terminal className="w-5 h-5 text-copper" />
+          <div className="p-5 rounded-2xl bg-obsidian-card border border-white/[0.08] space-y-3">
+            <Terminal className="w-5 h-5 text-cyan" />
             <h2 className="text-sm font-bold text-ivory font-mono">Interactive Terminal</h2>
             <p className="text-xs text-titanium font-sans leading-relaxed">
-              Try the CLI terminal below — type <code className="text-copper font-mono">help</code> to see available commands and explore my work interactively.
+              Try the CLI terminal below — type <code className="text-cyan font-mono">help</code> to see available commands and explore my work interactively.
             </p>
           </div>
         </div>

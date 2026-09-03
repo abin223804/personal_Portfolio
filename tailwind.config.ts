@@ -9,19 +9,40 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        xs: "375px",
+      },
       colors: {
+        brand: {
+          bg: "#090B10",
+          secondary: "#0F121A",
+          card: "#151923",
+          elevated: "#1B202C",
+        },
         obsidian: {
-          bg: "#0B0D10",
-          surface: "#12151A",
-          card: "#181C24",
-          border: "#252B36",
-          hover: "#2F3644",
+          bg: "#090B10",
+          surface: "#0F121A",
+          card: "#151923",
+          border: "rgba(255, 255, 255, 0.08)",
+          hover: "#1B202C",
+        },
+        cyan: {
+          light: "#70DEFF",
+          DEFAULT: "#55D6FF",
+          dark: "#38B6DF",
+          glow: "rgba(85, 214, 255, 0.25)",
+        },
+        violet: {
+          light: "#A99EFF",
+          DEFAULT: "#8B7CFF",
+          dark: "#6F5CFF",
+          glow: "rgba(139, 124, 255, 0.20)",
         },
         copper: {
-          light: "#FFA07A",
-          DEFAULT: "#D45B41",
-          dark: "#B84A32",
-          glow: "rgba(212, 91, 65, 0.25)",
+          light: "#70DEFF",
+          DEFAULT: "#55D6FF",
+          dark: "#38B6DF",
+          glow: "rgba(85, 214, 255, 0.25)",
         },
         amber: {
           light: "#FBBF24",
@@ -38,12 +59,13 @@ const config: Config = {
         },
         titanium: {
           light: "#CBD5E1",
-          DEFAULT: "#8E9BAE",
-          dark: "#475569",
+          DEFAULT: "#A7AFBD",
+          dark: "#727B8C",
+          muted: "#727B8C",
         },
         ivory: {
-          DEFAULT: "#F3F4F6",
-          muted: "#9CA3AF",
+          DEFAULT: "#F2F5F7",
+          muted: "#A7AFBD",
         },
       },
       fontFamily: {
@@ -76,8 +98,9 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        "grid-pattern": "linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)",
-        "radial-glow": "radial-gradient(circle at 50% 0%, rgba(224, 109, 83, 0.15) 0%, rgba(11, 13, 16, 0) 70%)",
+        "grid-pattern": "linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)",
+        "radial-glow": "radial-gradient(circle at 50% 0%, rgba(85, 214, 255, 0.08) 0%, rgba(139, 124, 255, 0.03) 40%, rgba(9, 11, 16, 0) 70%)",
+        "radial-atmospheric": "radial-gradient(circle at 50% 30%, rgba(85, 214, 255, 0.07) 0%, rgba(139, 124, 255, 0.03) 45%, rgba(9, 11, 16, 0) 75%)",
       },
     },
   },

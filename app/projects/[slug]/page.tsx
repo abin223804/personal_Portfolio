@@ -51,7 +51,7 @@ export default async function CaseStudyPage({ params }: Props) {
   ).slice(0, 2);
 
   return (
-    <div className="pt-28 pb-20 min-h-screen bg-obsidian-bg">
+    <div className="pt-28 pb-20 min-h-screen bg-brand-bg">
       <JsonLd
         type="CreativeWork"
         projectData={{
@@ -73,16 +73,16 @@ export default async function CaseStudyPage({ params }: Props) {
         {/* Back Link */}
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-xs font-mono text-copper hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono text-cyan hover:text-white transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Case Studies</span>
         </Link>
 
         {/* Case Study Title & Overview */}
-        <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 sm:p-10 shadow-2xl space-y-6">
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 sm:p-10 shadow-2xl space-y-6">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-xs font-mono text-copper bg-copper/10 px-3 py-1 rounded-full border border-copper/30 font-semibold">
+            <span className="text-xs font-mono text-cyan bg-cyan/10 px-3 py-1 rounded-full border border-cyan/30 font-semibold">
               {project.category}
             </span>
             <span className="text-xs font-mono text-titanium flex items-center gap-1">
@@ -103,19 +103,19 @@ export default async function CaseStudyPage({ params }: Props) {
           </p>
 
           {/* Metrics Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-4 border-t border-obsidian-border/80">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-4 border-t border-white/[0.08]">
             {project.metrics.map((m) => (
-              <div key={m.label} className="p-4 rounded-xl bg-obsidian-bg border border-obsidian-border space-y-1">
+              <div key={m.label} className="p-4 rounded-xl bg-obsidian-surface border border-white/[0.08] space-y-1">
                 <div className="text-[10px] text-titanium font-mono truncate">{m.label}</div>
-                <div className="text-lg font-bold text-copper font-mono">{m.value}</div>
-                <div className="text-[10px] text-titanium/80">{m.detail}</div>
+                <div className="text-lg font-bold text-cyan font-mono">{m.value}</div>
+                <div className="text-[10px] text-titanium-muted">{m.detail}</div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Technical Stack Badges */}
-        <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 shadow-xl space-y-3">
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 shadow-xl space-y-3">
           <h3 className="text-xs font-mono uppercase tracking-wider text-ivory font-semibold">
             Technology Stack &amp; Tools Used
           </h3>
@@ -123,7 +123,7 @@ export default async function CaseStudyPage({ params }: Props) {
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1 rounded-lg bg-obsidian-card border border-obsidian-border text-ivory font-mono text-xs font-medium"
+                className="px-3 py-1 rounded-lg bg-obsidian-surface border border-white/[0.08] text-titanium font-mono text-xs font-medium"
               >
                 {tech}
               </span>
@@ -132,10 +132,10 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
 
         {/* Narrative & Architecture Blueprint Text (300-500+ words) */}
-        <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 sm:p-10 shadow-2xl space-y-8 font-sans text-titanium leading-relaxed">
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 sm:p-10 shadow-2xl space-y-8 font-sans text-titanium leading-relaxed">
           
           <div className="space-y-3">
-            <h2 className="text-xl sm:text-2xl font-bold text-ivory font-mono border-b border-obsidian-border pb-3">
+            <h2 className="text-xl sm:text-2xl font-bold text-ivory font-mono border-b border-white/[0.08] pb-3">
               Architectural Overview &amp; System Boundaries
             </h2>
             <p className="text-sm leading-relaxed">{project.architectureOverview}</p>
@@ -145,8 +145,8 @@ export default async function CaseStudyPage({ params }: Props) {
             <h3 className="text-lg font-bold text-ivory font-mono">Core Engineering Challenges</h3>
             <div className="space-y-2">
               {project.keyChallenges.map((challenge, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-obsidian-card border border-obsidian-border text-xs text-ivory flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-copper/20 text-copper flex items-center justify-center font-mono text-[10px] shrink-0 mt-0.5">
+                <div key={idx} className="p-3.5 rounded-xl bg-obsidian-surface border border-white/[0.08] text-xs text-ivory flex items-start gap-3">
+                  <span className="w-5 h-5 rounded-full bg-cyan/15 text-cyan flex items-center justify-center font-mono text-[10px] shrink-0 mt-0.5">
                     {idx + 1}
                   </span>
                   <span>{challenge}</span>
@@ -159,10 +159,10 @@ export default async function CaseStudyPage({ params }: Props) {
             <h3 className="text-lg font-bold text-ivory font-mono">Critical Architectural Decisions &amp; Trade-Offs</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {project.architecturalDecisions.map((dec) => (
-                <div key={dec.title} className="p-5 rounded-xl bg-obsidian-card border border-obsidian-border space-y-3">
-                  <h4 className="font-mono text-xs font-bold text-copper">{dec.title}</h4>
+                <div key={dec.title} className="p-5 rounded-xl bg-obsidian-surface border border-white/[0.08] space-y-3">
+                  <h4 className="font-mono text-xs font-bold text-cyan">{dec.title}</h4>
                   <p className="text-xs text-titanium">{dec.reasoning}</p>
-                  <div className="text-[11px] font-mono text-emerald-400 border-t border-obsidian-border/50 pt-2">
+                  <div className="text-[11px] font-mono text-emerald-400 border-t border-white/[0.08] pt-2">
                     Impact: {dec.impact}
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
 
           {/* Full Markdown Narrative */}
-          <div className="prose prose-invert max-w-none text-xs sm:text-sm pt-4 border-t border-obsidian-border">
+          <div className="prose prose-invert max-w-none text-xs sm:text-sm pt-4 border-t border-white/[0.08]">
             <div className="whitespace-pre-line leading-relaxed">{project.fullNarrative}</div>
           </div>
 
@@ -179,8 +179,8 @@ export default async function CaseStudyPage({ params }: Props) {
 
         {/* Related Services Internal Links */}
         {relatedServices.length > 0 && (
-          <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 sm:p-8 space-y-4">
-            <div className="text-xs font-mono text-copper uppercase tracking-wider font-semibold">
+          <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 sm:p-8 space-y-4">
+            <div className="text-xs font-mono text-cyan uppercase tracking-wider font-semibold">
               Relevant Commercial Capabilities
             </div>
             <h3 className="text-lg font-bold text-ivory">
@@ -191,17 +191,17 @@ export default async function CaseStudyPage({ params }: Props) {
                 <Link
                   key={svc.slug}
                   href={`/services/${svc.slug}`}
-                  className="p-4 rounded-xl bg-obsidian-card border border-obsidian-border hover:border-copper/60 transition-colors group flex flex-col justify-between space-y-2"
+                  className="p-4 rounded-xl bg-obsidian-surface border border-white/[0.08] hover:border-cyan/40 transition-colors group flex flex-col justify-between space-y-2"
                 >
                   <div>
-                    <h4 className="font-mono text-xs font-bold text-ivory group-hover:text-copper transition-colors">
+                    <h4 className="font-mono text-xs font-bold text-ivory group-hover:text-cyan transition-colors">
                       {svc.title}
                     </h4>
                     <p className="text-xs text-titanium mt-1 line-clamp-2">
                       {svc.shortDescription}
                     </p>
                   </div>
-                  <span className="text-[11px] font-mono text-copper flex items-center gap-1 font-semibold pt-1">
+                  <span className="text-[11px] font-mono text-cyan flex items-center gap-1 font-semibold pt-1">
                     <span>Explore Service Details</span>
                     <span className="group-hover:translate-x-0.5 transition-transform">→</span>
                   </span>
@@ -222,7 +222,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </Link>
           <Link
             href="/hire-web-developer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-copper hover:bg-copper-light text-obsidian-bg text-xs font-mono font-bold shadow-lg shadow-copper/20"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan hover:bg-cyan-light text-brand-bg text-xs font-mono font-bold shadow-lg shadow-cyan/20"
           >
             <span>Hire Developer for Similar Project</span>
           </Link>

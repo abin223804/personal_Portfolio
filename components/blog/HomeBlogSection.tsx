@@ -10,11 +10,11 @@ export const HomeBlogSection: React.FC = () => {
   const posts = BLOG_POSTS.slice(0, 3);
 
   return (
-    <section className="py-20 bg-obsidian-bg relative overflow-hidden border-t border-obsidian-border/60">
+    <section className="py-20 bg-brand-bg relative overflow-hidden border-t border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan text-xs font-mono">
               <BookOpen className="w-3.5 h-3.5" />
               <span>Engineering Insights</span>
             </div>
@@ -28,7 +28,7 @@ export const HomeBlogSection: React.FC = () => {
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-obsidian-surface border border-obsidian-border text-copper hover:text-white hover:border-copper transition-all text-xs font-mono font-semibold"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-obsidian-card border border-white/[0.08] text-cyan hover:text-white hover:border-cyan/40 hover:bg-brand-elevated transition-all text-xs font-mono font-semibold"
           >
             <span>View All Articles</span>
             <ArrowRight className="w-4 h-4" />

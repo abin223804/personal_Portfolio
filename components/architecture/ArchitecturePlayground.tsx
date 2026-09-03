@@ -104,13 +104,13 @@ export const ArchitecturePlayground: React.FC = () => {
   const activeNode = nodes.find((n) => n.id === activeNodeId) || nodes[1];
 
   return (
-    <section className="py-20 bg-obsidian-bg relative overflow-hidden">
+    <section className="py-20 bg-brand-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-obsidian-border pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-white/[0.08] pb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan font-semibold text-xs font-mono mb-3">
               <Activity className="w-3.5 h-3.5" />
               <span>Interactive Architecture Visualizer</span>
             </div>
@@ -129,7 +129,7 @@ export const ArchitecturePlayground: React.FC = () => {
             className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-extrabold transition-all shadow-lg ${
               isSimulating
                 ? "bg-amber-500/20 text-amber-400 border border-amber-500/40 cursor-not-allowed"
-                : "bg-copper text-obsidian-bg hover:bg-copper-light shadow-copper/20 hover:shadow-copper/30"
+                : "bg-cyan text-brand-bg hover:bg-cyan-light shadow-cyan/20 hover:shadow-cyan/30"
             }`}
           >
             <Play className={`w-4 h-4 ${isSimulating ? "animate-spin" : ""}`} aria-hidden="true" />
@@ -151,31 +151,31 @@ export const ArchitecturePlayground: React.FC = () => {
                 aria-label={`Inspect architectural node: ${node.name}`}
                 className={`p-4 rounded-xl border text-left transition-all duration-300 relative group ${
                   isActive
-                    ? "bg-obsidian-card border-copper shadow-xl shadow-copper/15 ring-1 ring-copper/50"
+                    ? "bg-obsidian-card border-cyan shadow-xl shadow-cyan/15 ring-1 ring-cyan/40"
                     : isPassed
-                    ? "bg-obsidian-surface border-emerald-500/50"
-                    : "bg-obsidian-surface border-obsidian-border hover:border-copper/40"
+                    ? "bg-obsidian-card border-emerald-500/50"
+                    : "bg-obsidian-card border-white/[0.08] hover:border-cyan/40"
                 }`}
               >
                 {/* Node Status Indicator */}
                 <div className="flex items-center justify-between mb-3">
                   <div
                     className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
-                      isActive ? "bg-copper text-white" : "bg-obsidian-border/50 text-titanium group-hover:text-ivory"
+                      isActive ? "bg-cyan text-brand-bg" : "bg-obsidian-surface text-titanium group-hover:text-ivory"
                     }`}
                   >
                     <Icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[10px] font-mono text-titanium">{node.latency}</span>
+                  <span className="text-[10px] font-mono text-titanium-muted">{node.latency}</span>
                 </div>
 
                 <div className="text-xs font-bold text-ivory font-mono truncate">{node.name}</div>
-                <div className="text-[10px] text-titanium font-mono mt-0.5">{node.category}</div>
+                <div className="text-[10px] text-titanium-muted font-mono mt-0.5">{node.category}</div>
 
                 {/* Animated Line Flow Connector */}
                 {index < nodes.length - 1 && (
                   <div className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-20">
-                    <ArrowRight className={`w-3.5 h-3.5 ${isPassed ? "text-emerald-400 animate-pulse" : "text-obsidian-border"}`} />
+                    <ArrowRight className={`w-3.5 h-3.5 ${isPassed ? "text-emerald-400 animate-pulse" : "text-titanium/30"}`} />
                   </div>
                 )}
               </button>
@@ -184,19 +184,19 @@ export const ArchitecturePlayground: React.FC = () => {
         </div>
 
         {/* Active Node Deep-Dive Inspector Panel */}
-        <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-copper/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-cyan/4 rounded-full blur-3xl pointer-events-none" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
             {/* Column 1: Core Details */}
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-copper/20 border border-copper/40 flex items-center justify-center text-copper">
+                <div className="w-8 h-8 rounded-lg bg-cyan/15 border border-cyan/30 flex items-center justify-center text-cyan">
                   <activeNode.icon className="w-4 h-4" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-ivory font-mono">{activeNode.name}</h3>
-                  <span className="text-xs text-copper font-mono">{activeNode.category}</span>
+                  <span className="text-xs text-cyan font-mono">{activeNode.category}</span>
                 </div>
               </div>
 
@@ -212,7 +212,7 @@ export const ArchitecturePlayground: React.FC = () => {
                 {activeNode.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-2.5 py-1 rounded-lg bg-obsidian-card border border-obsidian-border text-ivory font-mono text-xs"
+                    className="px-2.5 py-1 rounded-lg bg-obsidian-surface border border-white/[0.08] text-titanium font-mono text-xs"
                   >
                     {t}
                   </span>

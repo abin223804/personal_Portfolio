@@ -148,52 +148,52 @@ export default function HireWebDeveloperPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Hero Section */}
-        <div className="bg-obsidian-surface border border-obsidian-border rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-copper/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-cyan/4 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-3xl space-y-6 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-copper/10 border border-copper/30 text-copper-light font-semibold text-xs font-mono">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan/10 border border-cyan/30 text-cyan font-semibold text-xs font-mono">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Commercial Engagement &amp; Development</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-ivory tracking-tight leading-[1.15]">
+            <h1 className="text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-extrabold text-ivory tracking-tight leading-[1.12]">
               Hire a Freelance Web Developer &amp; Solution Architect
             </h1>
 
-            <p className="text-titanium text-base sm:text-lg leading-relaxed font-sans">
+            <p className="text-titanium text-sm sm:text-base lg:text-lg leading-relaxed font-sans">
               I&apos;m <strong className="text-ivory font-semibold">Abin S Chandran</strong>, an experienced full-stack engineer and solution architect based in <strong className="text-ivory">Kerala, India</strong>. I help founders, startups, and companies architect and build high-performance custom web applications, Node.js REST APIs, and scalable SaaS platforms.
             </p>
 
             {/* Quick Badges */}
-            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-titanium pt-1">
-              <div className="flex items-center gap-1.5 bg-obsidian-card px-3 py-1.5 rounded-lg border border-obsidian-border">
-                <MapPin className="w-3.5 h-3.5 text-copper" />
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 text-xs font-mono text-titanium pt-1">
+              <div className="flex items-center gap-1.5 bg-obsidian-surface px-3 py-1.5 rounded-lg border border-white/[0.08]">
+                <MapPin className="w-3.5 h-3.5 text-cyan shrink-0" />
                 <span>Kerala, India · Remote Worldwide</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-obsidian-card px-3 py-1.5 rounded-lg border border-obsidian-border">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <div className="flex items-center gap-1.5 bg-obsidian-surface px-3 py-1.5 rounded-lg border border-white/[0.08]">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                 <span className="text-emerald-400">Available for Q3/Q4 Projects</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-obsidian-card px-3 py-1.5 rounded-lg border border-obsidian-border">
-                <Clock className="w-3.5 h-3.5 text-amber-400" />
+              <div className="flex items-center gap-1.5 bg-obsidian-surface px-3 py-1.5 rounded-lg border border-white/[0.08]">
+                <Clock className="w-3.5 h-3.5 text-cyan shrink-0" />
                 <span>&lt; 24-Hour Discovery Response</span>
               </div>
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-4">
-              <WhatsAppButton variant="primary" size="md" />
+            <div className="flex flex-col xs:flex-row flex-wrap items-stretch xs:items-center gap-3 pt-3">
+              <WhatsAppButton variant="primary" size="md" className="justify-center" />
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-copper hover:bg-copper-light text-obsidian-bg text-xs font-bold font-mono shadow-lg shadow-copper/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-cyan hover:bg-cyan-light text-brand-bg text-xs font-bold font-mono shadow-lg shadow-cyan/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center"
               >
                 <span>Book Initial Discovery</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-obsidian-card hover:bg-obsidian-surface border border-obsidian-border hover:border-copper text-ivory text-xs font-mono transition-all"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-obsidian-card hover:bg-obsidian-hover border border-white/[0.14] hover:border-cyan/35 text-ivory text-xs font-mono transition-all text-center"
               >
                 <span>Review Case Studies</span>
               </Link>
@@ -204,7 +204,7 @@ export default function HireWebDeveloperPage() {
         {/* Why Choose Me Bento Grid */}
         <div className="space-y-6">
           <div>
-            <div className="text-xs font-mono text-copper uppercase tracking-wider font-semibold">
+            <div className="text-xs font-mono text-cyan uppercase tracking-wider font-semibold">
               The Engineering Advantage
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-ivory tracking-tight mt-1">
@@ -213,8 +213,8 @@ export default function HireWebDeveloperPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-copper/10 border border-copper/30 flex items-center justify-center text-copper">
+            <div className="bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 hover:bg-brand-elevated rounded-2xl p-6 space-y-3 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center text-cyan">
                 <Cpu className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-bold text-ivory">Direct Senior Expertise</h3>
@@ -223,8 +223,8 @@ export default function HireWebDeveloperPage() {
               </p>
             </div>
 
-            <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-copper/10 border border-copper/30 flex items-center justify-center text-copper">
+            <div className="bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 hover:bg-brand-elevated rounded-2xl p-6 space-y-3 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center text-cyan">
                 <Layers className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-bold text-ivory">Full-Stack Ownership</h3>
@@ -233,8 +233,8 @@ export default function HireWebDeveloperPage() {
               </p>
             </div>
 
-            <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-copper/10 border border-copper/30 flex items-center justify-center text-copper">
+            <div className="bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 hover:bg-brand-elevated rounded-2xl p-6 space-y-3 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center text-cyan">
                 <Zap className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-bold text-ivory">Sub-Second Performance</h3>
@@ -248,7 +248,7 @@ export default function HireWebDeveloperPage() {
         {/* Engagement Models */}
         <div className="space-y-6">
           <div>
-            <div className="text-xs font-mono text-copper uppercase tracking-wider font-semibold">
+            <div className="text-xs font-mono text-cyan uppercase tracking-wider font-semibold">
               Flexible Collaboration
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-ivory tracking-tight mt-1">
@@ -257,97 +257,97 @@ export default function HireWebDeveloperPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-obsidian-surface border border-obsidian-border hover:border-copper/60 rounded-2xl p-6 flex flex-col justify-between space-y-6 transition-colors">
+            <div className="bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 rounded-2xl p-6 flex flex-col justify-between space-y-6 transition-colors">
               <div className="space-y-3">
-                <span className="text-[10px] font-mono text-copper bg-copper/10 border border-copper/30 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-mono text-cyan bg-cyan/10 border border-cyan/30 px-2 py-0.5 rounded font-bold">
                   Most Popular for Startups
                 </span>
                 <h3 className="text-xl font-bold text-ivory">Fixed-Scope MVP Delivery</h3>
                 <p className="text-xs text-titanium leading-relaxed">
                   Ideal for new product concepts requiring a clearly defined launch deadline. We establish specifications, milestone deliverables, and a fixed investment.
                 </p>
-                <div className="space-y-2 pt-3 border-t border-obsidian-border text-xs text-titanium">
+                <div className="space-y-2 pt-3 border-t border-white/[0.08] text-xs text-titanium">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan shrink-0" />
                     <span>Comprehensive architecture blueprint</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan shrink-0" />
                     <span>Database schema &amp; REST API endpoints</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan shrink-0" />
                     <span>Full responsive web frontend &amp; deploy</span>
                   </div>
                 </div>
               </div>
               <Link
                 href="/contact"
-                className="w-full py-2.5 rounded-xl bg-obsidian-card hover:bg-copper hover:text-obsidian-bg text-ivory text-xs font-mono font-bold text-center border border-obsidian-border transition-all"
+                className="w-full py-2.5 rounded-xl bg-obsidian-surface hover:bg-cyan hover:text-brand-bg text-ivory text-xs font-mono font-bold text-center border border-white/[0.08] transition-all"
               >
                 Discuss MVP Project
               </Link>
             </div>
 
-            <div className="bg-obsidian-surface border border-copper/50 rounded-2xl p-6 flex flex-col justify-between space-y-6 shadow-xl shadow-copper/10">
+            <div className="bg-obsidian-card border border-cyan/50 rounded-2xl p-6 flex flex-col justify-between space-y-6 shadow-xl shadow-cyan/10">
               <div className="space-y-3">
-                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-mono text-cyan bg-cyan/10 border border-cyan/30 px-2 py-0.5 rounded font-bold">
                   For Growing Businesses
                 </span>
                 <h3 className="text-xl font-bold text-ivory">Milestone-Based Sprints</h3>
                 <p className="text-xs text-titanium leading-relaxed">
                   Agile bi-weekly sprints for evolving platforms needing continuous feature additions, third-party integrations, or code refactoring.
                 </p>
-                <div className="space-y-2 pt-3 border-t border-obsidian-border text-xs text-titanium">
+                <div className="space-y-2 pt-3 border-t border-white/[0.08] text-xs text-titanium">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan shrink-0" />
                     <span>Sprint planning with direct communication</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan shrink-0" />
                     <span>Weekly staging code releases &amp; demos</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan shrink-0" />
                     <span>Flexible scope adjustments as metrics evolve</span>
                   </div>
                 </div>
               </div>
               <Link
                 href="/contact"
-                className="w-full py-2.5 rounded-xl bg-copper hover:bg-copper-light text-obsidian-bg text-xs font-mono font-bold text-center shadow transition-all"
+                className="w-full py-2.5 rounded-xl bg-cyan hover:bg-cyan-light text-brand-bg text-xs font-mono font-bold text-center shadow transition-all"
               >
                 Book Sprint Capacity
               </Link>
             </div>
 
-            <div className="bg-obsidian-surface border border-obsidian-border hover:border-copper/60 rounded-2xl p-6 flex flex-col justify-between space-y-6 transition-colors">
+            <div className="bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 rounded-2xl p-6 flex flex-col justify-between space-y-6 transition-colors">
               <div className="space-y-3">
-                <span className="text-[10px] font-mono text-titanium bg-obsidian-card border border-obsidian-border px-2 py-0.5 rounded">
+                <span className="text-[10px] font-mono text-titanium bg-obsidian-surface border border-white/[0.08] px-2 py-0.5 rounded">
                   Targeted Consultation
                 </span>
                 <h3 className="text-xl font-bold text-ivory">Architecture &amp; Code Audit</h3>
                 <p className="text-xs text-titanium leading-relaxed">
                   Deep technical audit of existing Node.js, Next.js, or PostgreSQL applications experiencing performance bottlenecks, memory leaks, or scaling issues.
                 </p>
-                <div className="space-y-2 pt-3 border-t border-obsidian-border text-xs text-titanium">
+                <div className="space-y-2 pt-3 border-t border-white/[0.08] text-xs text-titanium">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan shrink-0" />
                     <span>Query indexing &amp; database profiling</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan shrink-0" />
                     <span>Core Web Vitals &amp; bundle size optimization</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan shrink-0" />
                     <span>Actionable remediation code report</span>
                   </div>
                 </div>
               </div>
               <Link
                 href="/contact"
-                className="w-full py-2.5 rounded-xl bg-obsidian-card hover:bg-copper hover:text-obsidian-bg text-ivory text-xs font-mono font-bold text-center border border-obsidian-border transition-all"
+                className="w-full py-2.5 rounded-xl bg-obsidian-surface hover:bg-cyan hover:text-brand-bg text-ivory text-xs font-mono font-bold text-center border border-white/[0.08] transition-all"
               >
                 Request Technical Audit
               </Link>
@@ -356,9 +356,9 @@ export default function HireWebDeveloperPage() {
         </div>
 
         {/* 4-Step Working Process */}
-        <div className="bg-obsidian-surface border border-obsidian-border rounded-3xl p-8 sm:p-10 space-y-8">
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-3xl p-8 sm:p-10 space-y-8">
           <div>
-            <div className="text-xs font-mono text-copper uppercase tracking-wider font-semibold">
+            <div className="text-xs font-mono text-cyan uppercase tracking-wider font-semibold">
               Transparent Engineering Workflow
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-ivory tracking-tight mt-1">
@@ -368,7 +368,7 @@ export default function HireWebDeveloperPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="space-y-3">
-              <div className="w-9 h-9 rounded-lg bg-copper/10 border border-copper/30 font-mono font-bold text-copper flex items-center justify-center text-sm">
+              <div className="w-9 h-9 rounded-lg bg-cyan/10 border border-cyan/30 font-mono font-bold text-cyan flex items-center justify-center text-sm">
                 01
               </div>
               <h3 className="text-base font-bold text-ivory">Discovery &amp; Blueprint</h3>
@@ -378,7 +378,7 @@ export default function HireWebDeveloperPage() {
             </div>
 
             <div className="space-y-3">
-              <div className="w-9 h-9 rounded-lg bg-copper/10 border border-copper/30 font-mono font-bold text-copper flex items-center justify-center text-sm">
+              <div className="w-9 h-9 rounded-lg bg-cyan/10 border border-cyan/30 font-mono font-bold text-cyan flex items-center justify-center text-sm">
                 02
               </div>
               <h3 className="text-base font-bold text-ivory">Architecture &amp; Schema</h3>
@@ -388,7 +388,7 @@ export default function HireWebDeveloperPage() {
             </div>
 
             <div className="space-y-3">
-              <div className="w-9 h-9 rounded-lg bg-copper/10 border border-copper/30 font-mono font-bold text-copper flex items-center justify-center text-sm">
+              <div className="w-9 h-9 rounded-lg bg-cyan/10 border border-cyan/30 font-mono font-bold text-cyan flex items-center justify-center text-sm">
                 03
               </div>
               <h3 className="text-base font-bold text-ivory">Agile Development</h3>
@@ -398,7 +398,7 @@ export default function HireWebDeveloperPage() {
             </div>
 
             <div className="space-y-3">
-              <div className="w-9 h-9 rounded-lg bg-copper/10 border border-copper/30 font-mono font-bold text-copper flex items-center justify-center text-sm">
+              <div className="w-9 h-9 rounded-lg bg-cyan/10 border border-cyan/30 font-mono font-bold text-cyan flex items-center justify-center text-sm">
                 04
               </div>
               <h3 className="text-base font-bold text-ivory">Deployment &amp; Handover</h3>
@@ -412,7 +412,7 @@ export default function HireWebDeveloperPage() {
         {/* FAQs Section */}
         <div className="space-y-6">
           <div>
-            <div className="text-xs font-mono text-copper uppercase tracking-wider font-semibold">
+            <div className="text-xs font-mono text-cyan uppercase tracking-wider font-semibold">
               Clear Answers
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-ivory tracking-tight mt-1">
@@ -424,10 +424,10 @@ export default function HireWebDeveloperPage() {
             {HIRING_FAQS.map((faq, idx) => (
               <div
                 key={idx}
-                className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 space-y-2.5"
+                className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 space-y-2.5"
               >
                 <div className="flex items-start gap-3">
-                  <HelpCircle className="w-4 h-4 text-copper shrink-0 mt-0.5" />
+                  <HelpCircle className="w-4 h-4 text-cyan shrink-0 mt-0.5" />
                   <h3 className="text-sm font-bold text-ivory font-sans">{faq.question}</h3>
                 </div>
                 <p className="text-xs text-titanium leading-relaxed pl-7">{faq.answer}</p>

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="pt-28 pb-16 min-h-screen bg-obsidian-bg">
+    <div className="pt-28 pb-16 min-h-screen bg-brand-bg">
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[
@@ -32,8 +32,8 @@ export default function ProjectsPage() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
-        <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-8 shadow-2xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/10 border border-copper/30 text-copper text-xs font-mono">
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-8 shadow-2xl space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan text-xs font-mono">
             <Briefcase className="w-3.5 h-3.5" />
             <span>Complete Architectural Archive</span>
           </div>

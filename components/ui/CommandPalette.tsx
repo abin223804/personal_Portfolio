@@ -103,12 +103,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
 
       {/* Modal Content */}
       <div
-        className="relative w-full max-w-2xl bg-obsidian-surface border border-obsidian-border rounded-2xl shadow-2xl overflow-hidden z-10 font-sans"
+        className="relative w-full max-w-2xl bg-obsidian-card border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden z-10 font-sans"
         onKeyDown={handleKeyDown}
       >
         {/* Search Header */}
-        <div className="flex items-center gap-3 px-4 py-4 border-b border-obsidian-border bg-obsidian-card/50">
-          <Search className="w-5 h-5 text-copper shrink-0" />
+        <div className="flex items-center gap-3 px-4 py-4 border-b border-white/[0.08] bg-brand-bg/50">
+          <Search className="w-5 h-5 text-cyan shrink-0" />
           <input
             ref={inputRef}
             type="text"
@@ -123,7 +123,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           <button
             onClick={onClose}
             aria-label="Close Command Palette"
-            className="p-1 rounded-lg hover:bg-obsidian-border text-titanium hover:text-ivory transition-colors"
+            className="p-1 rounded-lg hover:bg-obsidian-hover text-titanium hover:text-ivory transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -146,26 +146,26 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   onMouseEnter={() => setSelectedIndex(index)}
                   className={`flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${
                     isSelected
-                      ? "bg-copper/15 border border-copper/40 text-ivory"
-                      : "text-titanium hover:bg-obsidian-card hover:text-ivory border border-transparent"
+                      ? "bg-cyan/15 border border-cyan/40 text-ivory"
+                      : "text-titanium hover:bg-obsidian-hover hover:text-ivory border border-transparent"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                        isSelected ? "bg-copper text-white" : "bg-obsidian-card text-titanium"
+                        isSelected ? "bg-cyan text-brand-bg" : "bg-obsidian-surface text-titanium"
                       }`}
                     >
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="text-xs font-semibold text-ivory">{item.title}</div>
-                      <div className="text-[10px] font-mono text-titanium">{item.category}</div>
+                      <div className="text-[10px] font-mono text-titanium-muted">{item.category}</div>
                     </div>
                   </div>
                   <ArrowRight
                     className={`w-4 h-4 transition-transform ${
-                      isSelected ? "text-copper translate-x-1" : "text-titanium/40 opacity-0"
+                      isSelected ? "text-cyan translate-x-1" : "text-titanium/40 opacity-0"
                     }`}
                   />
                 </div>
@@ -175,19 +175,19 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         </div>
 
         {/* Footer shortcuts */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-obsidian-card/80 border-t border-obsidian-border text-[11px] text-titanium font-mono">
+        <div className="flex items-center justify-between px-4 py-2.5 bg-brand-bg/80 border-t border-white/[0.08] text-[11px] text-titanium-muted font-mono">
           <div className="flex items-center gap-3">
             <span>
-              <kbd className="px-1.5 py-0.5 bg-obsidian-bg rounded border border-obsidian-border text-ivory">↑↓</kbd> navigate
+              <kbd className="px-1.5 py-0.5 bg-obsidian-surface rounded border border-white/[0.08] text-ivory">↑↓</kbd> navigate
             </span>
             <span>
-              <kbd className="px-1.5 py-0.5 bg-obsidian-bg rounded border border-obsidian-border text-ivory">↵</kbd> select
+              <kbd className="px-1.5 py-0.5 bg-obsidian-surface rounded border border-white/[0.08] text-ivory">↵</kbd> select
             </span>
             <span>
-              <kbd className="px-1.5 py-0.5 bg-obsidian-bg rounded border border-obsidian-border text-ivory">ESC</kbd> close
+              <kbd className="px-1.5 py-0.5 bg-obsidian-surface rounded border border-white/[0.08] text-ivory">ESC</kbd> close
             </span>
           </div>
-          <span className="flex items-center gap-1 text-copper">
+          <span className="flex items-center gap-1 text-cyan font-semibold">
             <Sparkles className="w-3 h-3" /> Solution Architect CLI
           </span>
         </div>

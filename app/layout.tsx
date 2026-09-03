@@ -145,7 +145,7 @@ export default function RootLayout({
         <JsonLd type="Person" />
         <JsonLd type="ProfessionalService" />
       </head>
-      <body className="bg-obsidian-bg text-ivory antialiased selection:bg-copper/30 selection:text-white">
+      <body className="bg-brand-bg text-ivory antialiased selection:bg-cyan/25 selection:text-ivory">
         <AppShell>{children}</AppShell>
       </body>
     </html>

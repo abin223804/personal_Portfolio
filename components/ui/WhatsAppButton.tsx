@@ -57,7 +57,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
     primary:
       "bg-emerald-700 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-950/30 border border-emerald-500/40",
     secondary:
-      "bg-obsidian-surface hover:bg-obsidian-card text-emerald-400 border border-emerald-500/40 hover:border-emerald-400 shadow-md",
+      "bg-obsidian-card hover:bg-obsidian-hover text-emerald-400 border border-emerald-500/40 hover:border-emerald-400 shadow-md",
     outline:
       "bg-transparent hover:bg-emerald-500/10 text-emerald-400 border border-emerald-500/50 hover:border-emerald-400",
   }[variant];

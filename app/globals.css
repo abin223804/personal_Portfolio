@@ -3,8 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: #0b0d10;
-  --foreground: #f3f4f6;
+  --background: #090b10;
+  --foreground: #f2f5f7;
+  --color-bg-primary: #090b10;
+  --color-bg-secondary: #0f121a;
+  --color-surface-card: #151923;
+  --color-surface-elevated: #1b202c;
+  --color-text-primary: #f2f5f7;
+  --color-text-secondary: #a7afbd;
+  --color-text-muted: #727b8c;
+  --color-accent-cyan: #55d6ff;
+  --color-accent-cyan-hover: #70deff;
+  --color-accent-violet: #8b7cff;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-accent: rgba(85, 214, 255, 0.35);
+  --font-heading: var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -12,28 +31,79 @@ body {
   background: var(--background);
   font-family: var(--font-inter), Inter, sans-serif;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Obsidian Scrollbar */
+/* Custom Midnight Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0d10;
+  background: #090b10;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #252b36;
+  background: #1b202c;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #e06d53;
+  background: #55d6ff;
 }
 
 /* Smooth selection styling */
 ::selection {
-  background: rgba(224, 109, 83, 0.3);
-  color: #ffffff;
+  background: rgba(85, 214, 255, 0.25);
+  color: #f2f5f7;
+}
+
+/* Accessible focus-visible rings */
+:focus-visible {
+  outline: 2px solid #55d6ff;
+  outline-offset: 2px;
+}
+
+/* Glassmorphic card surface tokens */
+@layer components {
+  .glass-card {
+    background: rgba(21, 25, 35, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card-hover {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card-hover:hover {
+    background: #1b202c;
+    border-color: rgba(85, 214, 255, 0.35);
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6), 0 0 20px -4px rgba(85, 214, 255, 0.12);
+  }
+}
+
+/* Utility to hide scrollbar while preserving touch scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
