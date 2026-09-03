@@ -104,7 +104,12 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
   const professionalServiceSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://www.abinschandran.in/#professionalService",
     "name": "Abin S Chandran - Freelance Web & Mobile Software Development Services",
+    "provider": {
+      "@type": "Person",
+      "@id": "https://www.abinschandran.in/#person"
+    },
     "image": {
       "@type": "ImageObject",
       "url": "https://www.abinschandran.in/og-image.png",

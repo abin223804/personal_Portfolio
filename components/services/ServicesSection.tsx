@@ -2,12 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { Layers, Server, Layout, Zap, Cpu, Activity, ShieldCheck, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { Layers, Server, Layout, Zap, Cpu, Activity, ShieldCheck, ArrowRight, CheckCircle2, Sparkles, Globe, Smartphone } from "lucide-react";
 import { SERVICES } from "@/data/services";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 export const ServicesSection: React.FC<{ limit?: number }> = ({ limit }) => {
   const iconsMap: Record<string, React.ElementType> = {
+    Globe,
     Layers,
     Server,
     Layout,
@@ -15,6 +16,7 @@ export const ServicesSection: React.FC<{ limit?: number }> = ({ limit }) => {
     Cpu,
     Activity,
     ShieldCheck,
+    Smartphone,
   };
 
   const displayedServices = limit ? SERVICES.slice(0, limit) : SERVICES;

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Cpu, ShieldCheck, Terminal, Layers, Sparkles, Server, Zap, Database, MapPin, Briefcase, Smartphone } from "lucide-react";
+import { ArrowRight, Cpu, ShieldCheck, Terminal, Layers, Sparkles, Server, Zap, Database, MapPin, Briefcase, Smartphone, Globe } from "lucide-react";
 import { BlueprintCanvas } from "./BlueprintCanvas";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
@@ -60,7 +60,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Supporting Bio Copy */}
             <p className="text-base sm:text-lg text-titanium leading-relaxed max-w-2xl font-sans">
-              Hi, I&apos;m <strong className="text-ivory font-semibold">Abin</strong> (Abin S Chandran). I help startups, founders, and businesses build scalable web applications, cross-platform Flutter mobile apps, Node.js REST APIs, Next.js frontends, SaaS products, and custom business software.
+              Hi, I&apos;m <strong className="text-ivory font-semibold">Abin</strong> (Abin S Chandran). I help startups, founders, and businesses build scalable full-stack web applications, Node.js REST APIs, Next.js SaaS platforms, and cross-platform Flutter mobile apps.
             </p>
 
             {/* Action Buttons */}
@@ -68,10 +68,10 @@ export const HeroSection: React.FC = () => {
               <WhatsAppButton variant="primary" size="md" />
 
               <Link
-                href="/contact"
+                href="/hire-web-developer"
                 className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-copper hover:bg-copper-light text-obsidian-bg text-xs font-extrabold font-mono tracking-wide shadow-xl shadow-copper/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                <span>Start a Project</span>
+                <span>Hire Web Developer</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
@@ -87,11 +87,11 @@ export const HeroSection: React.FC = () => {
             {/* Core Capability Chips */}
             <div className="pt-6 border-t border-obsidian-border/60 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono text-titanium">
               <div className="flex items-center gap-2 bg-obsidian-surface/40 p-2 rounded-lg border border-obsidian-border/50">
-                <Smartphone className="w-4 h-4 text-emerald-400" />
-                <span>Flutter / Mobile Apps</span>
+                <Globe className="w-4 h-4 text-copper" />
+                <span>Full-Stack &amp; Web Apps</span>
               </div>
               <div className="flex items-center gap-2 bg-obsidian-surface/40 p-2 rounded-lg border border-obsidian-border/50">
-                <Server className="w-4 h-4 text-copper" />
+                <Server className="w-4 h-4 text-emerald-400" />
                 <span>Node.js / Express</span>
               </div>
               <div className="flex items-center gap-2 bg-obsidian-surface/40 p-2 rounded-lg border border-obsidian-border/50">
@@ -99,8 +99,8 @@ export const HeroSection: React.FC = () => {
                 <span>React / Next.js 15</span>
               </div>
               <div className="flex items-center gap-2 bg-obsidian-surface/40 p-2 rounded-lg border border-obsidian-border/50">
-                <Database className="w-4 h-4 text-titanium" />
-                <span>REST &amp; PostgreSQL</span>
+                <Smartphone className="w-4 h-4 text-titanium" />
+                <span>Flutter / Mobile Apps</span>
               </div>
             </div>
 
@@ -173,11 +173,11 @@ export const HeroSection: React.FC = () => {
                 <div className="p-3 rounded-xl bg-obsidian-card border border-copper/30 flex items-center justify-between hover:border-copper transition-colors">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-copper/20 flex items-center justify-center text-copper">
-                      <Smartphone className="w-4 h-4" />
+                      <Globe className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="font-semibold text-ivory text-xs">Flutter Mobile &amp; Next.js 15 UI</div>
-                      <div className="text-[10px] text-titanium">iOS, Android, &amp; Responsive Web UI</div>
+                      <div className="font-semibold text-ivory text-xs">Next.js 15 Web &amp; Flutter Mobile UI</div>
+                      <div className="text-[10px] text-titanium">Responsive Web Apps &amp; Mobile Form Factors</div>
                     </div>
                   </div>
                   <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">

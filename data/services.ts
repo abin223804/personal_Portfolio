@@ -14,6 +14,33 @@ export interface ServiceOffering {
 
 export const SERVICES: ServiceOffering[] = [
   {
+    slug: "web-development",
+    title: "Custom Web Application & Website Development",
+    shortDescription: "High-performance custom web application and website development with Next.js 15, React, Node.js, and PostgreSQL for modern businesses.",
+    fullDescription: "I engineer responsive, blazing-fast web applications and high-conversion business websites tailored to your product goals. Based in Kerala, India and serving clients worldwide, I combine modern Next.js 15 App Router architecture, Node.js REST API backends, Tailwind CSS design systems, and secure PostgreSQL databases to deliver scalable digital platforms that load in milliseconds and rank effectively on search engines.",
+    iconName: "Globe",
+    targetAudience: [
+      "Startups and digital brands needing custom web applications",
+      "Businesses in Kerala, India, and worldwide replacing slow legacy websites",
+      "Founders requiring production-grade web platforms with custom workflows"
+    ],
+    problemsSolved: [
+      "Slow page speeds, poor Core Web Vitals, and lost organic search traffic",
+      "Fragile WordPress or generic templates that cannot scale with business growth",
+      "Lack of secure authentication, database persistence, and API integrations"
+    ],
+    deliverables: [
+      "Custom Next.js 15 and React web application with responsive mobile-first UI",
+      "Scalable Node.js & Express REST API architecture with robust database schemas",
+      "Core Web Vitals optimization (sub-second LCP, zero CLS, 95+ PageSpeed scores)",
+      "SEO architecture with JSON-LD structured data, metadata, and automated sitemaps",
+      "Secure cloud deployment on AWS, Vercel, or containerized Docker platforms"
+    ],
+    techStack: ["Next.js 15", "React", "Node.js", "Express.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "REST APIs"],
+    ctaText: "Hire Freelance Web Developer",
+    featured: true,
+  },
+  {
     slug: "flutter-development",
     title: "Flutter & Mobile Application Development",
     shortDescription: "Cross-platform iOS and Android mobile app development with Flutter, Dart, clean architecture, and seamless Node.js backend integration.",

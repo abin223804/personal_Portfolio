@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PROJECTS } from "@/data/projects";
+import { SERVICES } from "@/data/services";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ConversionCtaSection } from "@/components/cta/ConversionCtaSection";
 import { ArrowLeft, Cpu, ShieldCheck, CheckCircle2, Server, ExternalLink, Calendar, User, Building2 } from "lucide-react";
@@ -43,6 +44,11 @@ export default async function CaseStudyPage({ params }: Props) {
   if (!project) {
     notFound();
   }
+
+  // Find related commercial services based on matching technologies
+  const relatedServices = SERVICES.filter((s) =>
+    s.techStack.some((tech) => project.techStack.includes(tech))
+  ).slice(0, 2);
 
   return (
     <div className="pt-28 pb-20 min-h-screen bg-obsidian-bg">
@@ -171,6 +177,40 @@ export default async function CaseStudyPage({ params }: Props) {
 
         </div>
 
+        {/* Related Services Internal Links */}
+        {relatedServices.length > 0 && (
+          <div className="bg-obsidian-surface border border-obsidian-border rounded-2xl p-6 sm:p-8 space-y-4">
+            <div className="text-xs font-mono text-copper uppercase tracking-wider font-semibold">
+              Relevant Commercial Capabilities
+            </div>
+            <h3 className="text-lg font-bold text-ivory">
+              Need Similar Architecture or Development for Your Team?
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              {relatedServices.map((svc) => (
+                <Link
+                  key={svc.slug}
+                  href={`/services/${svc.slug}`}
+                  className="p-4 rounded-xl bg-obsidian-card border border-obsidian-border hover:border-copper/60 transition-colors group flex flex-col justify-between space-y-2"
+                >
+                  <div>
+                    <h4 className="font-mono text-xs font-bold text-ivory group-hover:text-copper transition-colors">
+                      {svc.title}
+                    </h4>
+                    <p className="text-xs text-titanium mt-1 line-clamp-2">
+                      {svc.shortDescription}
+                    </p>
+                  </div>
+                  <span className="text-[11px] font-mono text-copper flex items-center gap-1 font-semibold pt-1">
+                    <span>Explore Service Details</span>
+                    <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Bottom CTA */}
         <div className="flex justify-between items-center pt-4">
           <Link
@@ -181,10 +221,10 @@ export default async function CaseStudyPage({ params }: Props) {
             <span>Back to Case Studies</span>
           </Link>
           <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-copper hover:bg-copper-light text-white text-xs font-mono font-bold shadow-lg shadow-copper/20"
+            href="/hire-web-developer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-copper hover:bg-copper-light text-obsidian-bg text-xs font-mono font-bold shadow-lg shadow-copper/20"
           >
-            <span>Consult on Similar Software Project</span>
+            <span>Hire Developer for Similar Project</span>
           </Link>
         </div>
 

@@ -78,6 +78,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       images: [`${baseUrl}/abin-s-chandran.png`],
     },
+    {
+      url: `${baseUrl}/hire-web-developer`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+      images: [`${baseUrl}/og-image.png`],
+    },
     ...blogUrls,
     ...serviceUrls,
     ...projectUrls,

@@ -16,6 +16,7 @@ It is a **living architecture document** that continuously evolves alongside the
 - **Architecture Pattern**: Component-Based, Static Site Generation (SSG), React Server Components (RSC), API-Driven Integrations
 - **Core Features**:
   - Commercial Software Development Services Catalog (`/services`, `/services/[slug]`)
+  - Dedicated Commercial Hiring Landing Page (`/hire-web-developer`)
   - Architectural Case Studies Showcase (`/projects`, `/projects/[slug]`)
   - Engineering Tech Blog & System Architecture Guides (`/blog`, `/blog/[slug]`)
   - Interactive CLI Terminal Shell for Lead Capture & Email Dispatch (`/contact`)
@@ -111,6 +112,8 @@ Personal _Portfolio/
 │   │   └── page.tsx                 # Tech Blog Index Page
 │   ├── contact/                     # Interactive CLI Terminal Page (/contact)
 │   │   └── page.tsx
+│   ├── hire-web-developer/          # Commercial Hiring Landing Page (/hire-web-developer)
+│   │   └── page.tsx
 │   ├── projects/                    # Case Studies Catalog (/projects)
 │   │   ├── [slug]/
 │   │   │   └── page.tsx             # Dynamic Project Detail Page (/projects/[slug])
@@ -147,6 +150,11 @@ Personal _Portfolio/
 │   ├── skills.ts                    # Technical skill matrix
 │   └── timeline.ts                  # Career milestones
 ├── public/                          # Static Web Assets
+│   ├── abin-s-chandran.webp         # Optimized WebP Primary Headshot (43 KB)
+│   ├── abin-s-chandran.png          # High-Res Fallback Profile Image
+│   ├── apple-touch-icon.png         # Optimized Mobile Touch Icon (180x180, 52 KB)
+│   ├── icon.png                     # Favicon (192x192)
+│   ├── favicon.ico                  # Browser Favicon
 │   ├── llms.txt                     # Generative Engine Optimization (GEO) Summary
 │   ├── llms-full.txt                # Complete AI Architectural & Service Catalog Spec
 │   ├── og-image.png                 # Social Share Banner Image
@@ -466,3 +474,16 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 - **Updated**: `app/sitemap.ts` — homepage and blog index `lastModified` use dynamic `new Date()`.
 - **Updated**: `next.config.ts` — added `headers()` with security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, X-DNS-Prefetch-Control) and Cache-Control for static assets, images, and fonts.
 - **Rationale**: Google Search Console showed 33 impressions / 0 clicks. Root cause was zero content matching top impression queries ("high-performance maps in flutter"). New articles close the content gap.
+
+### 2026-09-03
+- **Added**: Commercial Web Development hiring route (`/hire-web-developer`, `app/hire-web-developer/page.tsx`) capturing high-intent commercial queries (`"hire web developer Kerala"`, `"freelance full stack developer Kerala"`, `"hire Node.js developer"`). Features structured engagement models (Fixed-Price MVP, Milestone Sprints, Architecture Audits), a 4-phase transparent workflow, hiring FAQs, and direct WhatsApp/CLI conversion triggers.
+- **Added**: Dedicated `web-development` commercial offering in `data/services.ts` (*Custom Web Application & Website Development*) targeting Next.js 15, React, Node.js, Express, and PostgreSQL for modern businesses.
+- **Added**: Bidirectional internal linking between Case Studies (`/projects/[slug]`) and relevant commercial services (`/services/[slug]`) based on shared technology tags.
+- **Added**: High-efficiency WebP asset `public/abin-s-chandran.webp` (43 KB) yielding a **93.5% reduction** in image payload compared to the original 675 KB PNG.
+- **Added**: Optimized retina `public/apple-touch-icon.png` (180x180, 52 KB) and compressed `public/abin-s-chandran.png` fallback.
+- **Removed**: Orphan asset `public/Gemini_Generated_Image_vpso4ovpso4ovpso.jpg` (645 KB) and redundant duplicate `public/abin-schandran.png`.
+- **Updated**: `components/hero/HeroSection.tsx` balancing copy and core capability chips between Web Development, Node.js REST APIs, Next.js 15, and Flutter mobile apps, resolving historical mobile-tilt in search engine evaluation while retaining executive Solution Architect positioning.
+- **Updated**: Schema.org `@id` graph linkage in `components/seo/JsonLd.tsx` binding `ProfessionalService` to `schema.org/Person` (`https://www.abinschandran.in/#person`) for unified Knowledge Graph recognition.
+- **Updated**: Dynamic `sitemap.xml` (`app/sitemap.ts`) including `/hire-web-developer` and `/services/web-development` with weekly change frequency and 0.95 priority.
+- **Rationale**: Executed approved SEO audit recommendations to capture commercial Kerala web development traffic, establish explicit entity linkages, and optimize media asset weights for Core Web Vitals.
+
