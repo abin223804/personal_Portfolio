@@ -485,5 +485,8 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 - **Updated**: `components/hero/HeroSection.tsx` balancing copy and core capability chips between Web Development, Node.js REST APIs, Next.js 15, and Flutter mobile apps, resolving historical mobile-tilt in search engine evaluation while retaining executive Solution Architect positioning.
 - **Updated**: Schema.org `@id` graph linkage in `components/seo/JsonLd.tsx` binding `ProfessionalService` to `schema.org/Person` (`https://www.abinschandran.in/#person`) for unified Knowledge Graph recognition.
 - **Updated**: Dynamic `sitemap.xml` (`app/sitemap.ts`) including `/hire-web-developer` and `/services/web-development` with weekly change frequency and 0.95 priority.
-- **Rationale**: Executed approved SEO audit recommendations to capture commercial Kerala web development traffic, establish explicit entity linkages, and optimize media asset weights for Core Web Vitals.
+- **Added**: Long-form technical guide `scalable-full-stack-web-architecture-nextjs-nodejs-postgresql` in `data/blog.ts` (*Building Scalable Full-Stack Web Applications with Next.js 15, Node.js, and PostgreSQL*). Deep-dives into React 19 Server Components, pgBouncer connection pooling, BullMQ asynchronous worker queues, and REST API latency optimization (~1,180 words) targeting `freelance full stack developer Kerala` and `Next.js Node.js architecture`.
+- **Updated**: `components/ui/CommandPalette.tsx` registered `/hire-web-developer` and `/services` navigation items for quick keyboard access (`⌘K`).
+- **Rationale**: Executed approved SEO audit recommendations to capture commercial Kerala web development traffic, establish explicit entity linkages, balance topical authority toward full-stack web engineering, and optimize media asset weights for Core Web Vitals.
+
 
