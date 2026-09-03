@@ -34,6 +34,7 @@ export const Footer: React.FC = () => {
                   alt="Abin S Chandran Logo"
                   width={32}
                   height={32}
+                  unoptimized
                   className="w-full h-full object-contain"
                 />
               </div>

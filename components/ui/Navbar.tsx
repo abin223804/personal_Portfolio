@@ -102,6 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
               alt="Abin S Chandran Logo"
               width={40}
               height={40}
+              unoptimized
               priority
               className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300"
             />
