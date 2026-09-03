@@ -66,7 +66,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Action Buttons with Ergonomic Touch Targets */}
             <div className="flex flex-col xs:flex-row flex-wrap items-stretch xs:items-center gap-2.5 sm:gap-3 pt-2">
-              <WhatsAppButton variant="primary" size="md" className="justify-center" />
+              <WhatsAppButton variant="primary" size="md" glare={true} className="justify-center" />
 
               <Link
                 href="/hire-web-developer"

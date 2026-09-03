@@ -7,6 +7,7 @@ interface WhatsAppButtonProps {
   className?: string;
   size?: "sm" | "md" | "lg";
   message?: string;
+  glare?: boolean;
 }
 
 export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
@@ -14,6 +15,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   className = "",
   size = "md",
   message = "Hi Abin, I found your portfolio and I'd like to discuss a software development project.",
+  glare = false,
 }) => {
   const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918086223804";
   const cleanNumber = rawNumber.replace(/[^0-9]/g, "");
@@ -45,7 +47,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   }
 
   const baseStyles =
-    "inline-flex items-center justify-center gap-2.5 rounded-xl font-mono text-xs font-bold transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-emerald-500/50";
+    "relative overflow-hidden group inline-flex items-center justify-center gap-2.5 rounded-xl font-mono text-xs font-bold transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-emerald-500/50";
 
   const sizeStyles = {
     sm: "px-4 py-2.5",
@@ -70,8 +72,20 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       aria-label="Discuss your software development project on WhatsApp"
       className={`${baseStyles} ${sizeStyles} ${variantStyles} ${className}`}
     >
-      <WhatsAppIcon />
-      <span>Discuss Your Project</span>
+      {/* Lightweight Glare Passing (Clickable Tempting Effect) - Controlled via glare prop */}
+      {glare && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-xl"
+        >
+          <span className="absolute inset-y-0 -left-full w-full bg-gradient-to-r from-transparent via-white/35 to-transparent animate-glare-sweep group-hover:via-white/50" />
+        </span>
+      )}
+
+      <span className="relative z-10 flex items-center gap-2.5">
+        <WhatsAppIcon />
+        <span>Discuss Your Project</span>
+      </span>
     </a>
   );
 };

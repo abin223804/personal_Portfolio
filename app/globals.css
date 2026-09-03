@@ -96,6 +96,29 @@ body {
   scrollbar-width: none;
 }
 
+/* Lightweight Glare Passing (Clickable Tempting Sheen Effect) */
+@keyframes glare-sweep {
+  0% {
+    transform: translateX(-160%) skewX(-25deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  32% {
+    transform: translateX(260%) skewX(-25deg);
+    opacity: 0.9;
+  }
+  33%, 100% {
+    transform: translateX(260%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+.animate-glare-sweep {
+  animation: glare-sweep 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
