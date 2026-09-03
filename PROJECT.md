@@ -487,6 +487,8 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 - **Updated**: Dynamic `sitemap.xml` (`app/sitemap.ts`) including `/hire-web-developer` and `/services/web-development` with weekly change frequency and 0.95 priority.
 - **Added**: Long-form technical guide `scalable-full-stack-web-architecture-nextjs-nodejs-postgresql` in `data/blog.ts` (*Building Scalable Full-Stack Web Applications with Next.js 15, Node.js, and PostgreSQL*). Deep-dives into React 19 Server Components, pgBouncer connection pooling, BullMQ asynchronous worker queues, and REST API latency optimization (~1,180 words) targeting `freelance full stack developer Kerala` and `Next.js Node.js architecture`.
 - **Updated**: `components/ui/CommandPalette.tsx` registered `/hire-web-developer` and `/services` navigation items for quick keyboard access (`⌘K`).
+- **Updated**: Generative Engine Optimization (GEO) files `public/llms.txt` and `public/llms-full.txt` enriched with `/hire-web-developer`, `/services/web-development`, and latest full-stack architecture technical guides for AI search engines (Perplexity, ChatGPT Search, Gemini).
 - **Rationale**: Executed approved SEO audit recommendations to capture commercial Kerala web development traffic, establish explicit entity linkages, balance topical authority toward full-stack web engineering, and optimize media asset weights for Core Web Vitals.
+
 
 

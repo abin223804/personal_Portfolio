@@ -38,6 +38,8 @@
 ---
 
 ## Commercial Software Development Services
+- [Hire Freelance Web Developer & Solution Architect](https://www.abinschandran.in/hire-web-developer): Commercial engagement models (Fixed-Scope MVP, Agile Sprints, Architecture Audits) for founders and businesses in Kerala and remote worldwide.
+- [Custom Web Application & Website Development](https://www.abinschandran.in/services/web-development): High-performance custom web application and website development with Next.js 15, React, Node.js, and PostgreSQL.
 - [Full-Stack Web & Mobile Development](https://www.abinschandran.in/services/full-stack-development): End-to-end custom web and mobile engineering from database architecture to responsive React/Next.js and Flutter frontends.
 - [Flutter & Mobile App Development](https://www.abinschandran.in/services/flutter-development): Cross-platform iOS and Android mobile apps with clean architecture and Node.js backend integrations.
 - [Node.js & Express Backend Development](https://www.abinschandran.in/services/nodejs-development): High-concurrency microservices, event queues, and scalable REST API architectures.
@@ -58,6 +60,7 @@
 ---
 
 ## Engineering Guides & Tech Blog
+- [Building Scalable Full-Stack Web Applications with Next.js 15, Node.js, and PostgreSQL](https://www.abinschandran.in/blog/scalable-full-stack-web-architecture-nextjs-nodejs-postgresql): Production blueprint for React 19 Server Components, pgBouncer connection pooling, BullMQ worker queues, and sub-10ms REST APIs.
 - [Flutter High-Performance Mobile App Architecture](https://www.abinschandran.in/blog/flutter-high-performance-mobile-app-architecture): Practical 60fps guide covering BLoC state management, isolate offloading, and low-latency API caching.
 - [Scaling Node.js REST APIs to 50k+ RPS](https://www.abinschandran.in/blog/scaling-nodejs-apis-50k-rps-architecture): Cluster mode, Redis multi-tier caching, connection pooling, and payload compression.
 - [Building Production SaaS with Next.js 15 & PostgreSQL](https://www.abinschandran.in/blog/building-production-saas-nextjs-15-postgresql): Multi-tenant architecture, Server Actions, Stripe subscription webhooks, and pgvector RAG.

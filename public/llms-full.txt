@@ -47,13 +47,26 @@
 
 ## 3. Commercial Services Catalog
 
-### Service 1: Flutter & Mobile Application Development
+### Flagship Hiring Page: Hire Freelance Web Developer & Solution Architect
+- **URL**: https://www.abinschandran.in/hire-web-developer
+- **Overview**: Dedicated commercial engagement portal for founders, startups, and enterprises seeking high-performance web development and software architecture consulting.
+- **Engagement Models**: Fixed-Scope MVP Delivery, Milestone-Based Sprints, Architecture & Code Quality Audits.
+- **Workflow**: 4-phase agile process: Discovery & Blueprint -> Architecture & Schema -> Sprint Execution -> Deployment & Handover.
+- **Location & Reach**: Based in Kerala, India — available worldwide for remote contracts.
+
+### Service 1: Custom Web Application & Website Development
+- **URL**: https://www.abinschandran.in/services/web-development
+- **Overview**: End-to-end custom web applications, responsive websites, and enterprise web portals built with Next.js 15, React, Node.js, and PostgreSQL.
+- **Target Audience**: Startups needing scalable web MVPs, businesses migrating from legacy stacks, enterprises needing bespoke web platforms.
+- **Deliverables**: Production-grade Next.js 15 application, server-rendered components, connection-pooled database layer, SEO optimization, responsive dark-mode UI.
+
+### Service 2: Flutter & Mobile Application Development
 - **URL**: https://www.abinschandran.in/services/flutter-development
 - **Overview**: Cross-platform iOS and Android mobile app development with Flutter, Dart, clean architecture, and seamless Node.js backend integration.
 - **Target Audience**: Startups building mobile MVPs, businesses expanding from web to mobile platforms.
 - **Deliverables**: Complete Flutter iOS & Android apps, Node.js REST API backend, state management with BLoC, offline caching, App Store & Google Play builds.
 
-### Service 2: Full-Stack Web & Mobile Application Development
+### Service 3: Full-Stack Web & Mobile Application Development
 - **URL**: https://www.abinschandran.in/services/full-stack-development
 - **Overview**: End-to-end custom web and mobile application engineering from database architecture to responsive React/Next.js and Flutter frontends.
 - **Target Audience**: Startups and businesses requiring a unified lead developer across web, mobile, and backend.
@@ -116,7 +129,21 @@
 
 ---
 
-## 5. Contact & Booking
+## 5. Engineering Guides & Architecture Articles
+- **Building Scalable Full-Stack Web Applications with Next.js 15, Node.js, and PostgreSQL**: https://www.abinschandran.in/blog/scalable-full-stack-web-architecture-nextjs-nodejs-postgresql
+  - *Summary*: Production blueprint covering React 19 Server Components, pgBouncer connection pooling, BullMQ asynchronous worker queues, and sub-10ms REST API design.
+- **Flutter High-Performance Mobile App Architecture**: https://www.abinschandran.in/blog/flutter-high-performance-mobile-app-architecture
+  - *Summary*: Practical 60fps guide covering BLoC state management, isolate offloading, and low-latency API caching.
+- **Node.js REST API Best Practices: Scaling Express with PostgreSQL**: https://www.abinschandran.in/blog/nodejs-rest-api-best-practices-scaling-express-postgresql
+  - *Summary*: Complete architecture guide covering connection pooling, JWT security, composite indexing, and rate-limiting.
+- **Building Production SaaS with Next.js 15 App Router**: https://www.abinschandran.in/blog/building-production-saas-nextjs-15-app-router
+  - *Summary*: Multi-tenant database design, Stripe subscription webhooks, Server Actions, and authentication.
+
+---
+
+## 6. Contact & Booking
+- **Commercial Hiring Portal**: https://www.abinschandran.in/hire-web-developer
 - **Portfolio & Interactive Terminal**: https://www.abinschandran.in/contact
 - **Direct WhatsApp**: https://wa.me/918086223804
 - **Email**: abinschandran1@gmail.com
+
