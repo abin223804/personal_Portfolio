@@ -399,7 +399,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "@type": "Organization",
     "name": "Abin S Chandran - Freelance Software Development & Solution Architecture",
     "url": "https://www.abinschandran.in",
-    "logo": "https://www.abinschandran.in/photo.png",
+    "logo": "https://www.abinschandran.in/logo.png",
     "sameAs": [
       "https://github.com/abin223804",
       "https://www.linkedin.com/in/abinschandran/",

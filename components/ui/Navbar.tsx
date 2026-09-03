@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { 
   Command, 
@@ -95,10 +96,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Ident */}
         <Link href="/" className="group flex items-center gap-3 shrink-0">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-obsidian-card border border-white/[0.08] flex items-center justify-center group-hover:border-cyan/60 transition-colors shadow-inner">
-            <span className="font-mono font-bold text-cyan group-hover:text-white transition-colors text-xs sm:text-sm">
-              ASC
-            </span>
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-obsidian-card border border-white/[0.08] flex items-center justify-center p-1 group-hover:border-cyan/60 group-hover:shadow-[0_0_15px_rgba(85,214,255,0.25)] transition-all shadow-inner overflow-hidden relative">
+            <Image
+              src="/logo.webp"
+              alt="Abin S Chandran Logo"
+              width={40}
+              height={40}
+              priority
+              className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-300"
+            />
           </div>
           <div className="flex flex-col">
             <span className="text-xs sm:text-sm font-semibold tracking-tight text-ivory group-hover:text-cyan transition-colors">

@@ -520,5 +520,13 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 - **Updated**: Complete component suite overhauled to the new color tokens: `PerformanceDashboard.tsx`, `ServicesSection.tsx`, `ProjectGrid.tsx`, `ProjectCard.tsx`, `SkillMatrixBento.tsx`, `CareerTimeline.tsx`, `InteractiveTerminal.tsx`, `ArchitecturePlayground.tsx`, `FaqSection.tsx`, `CommandPalette.tsx`, `HomeBlogSection.tsx`, `BlogCard.tsx`, `ConversionCtaSection.tsx`, `Footer.tsx`, and `KonamiEasterEgg.tsx`.
 - **Updated**: All secondary and detail pages updated: `/hire-web-developer`, `/about`, `/services`, `/services/[slug]`, `/projects`, `/projects/[slug]`, `/blog`, `/blog/[slug]`, and `/contact`.
 - **Added**: Lightweight GPU-accelerated glare passing sheen animation (`@keyframes glare-sweep` / `.animate-glare-sweep` in `app/globals.css`) scoped exclusively to the hero *"Discuss Your Project"* CTA via `glare={true}` in `components/ui/WhatsAppButton.tsx` and `components/hero/HeroSection.tsx` for enhanced conversion temptation.
-- **Verified**: Full production build validation passed (`npm run build`) with all 32 static pages generated in 2.7s with zero TypeScript or syntax errors.
-- **Rationale**: Replaces legacy copper/orange tones with an authoritative, quietly expensive international developer aesthetic (Midnight Ink + Electric Cyan + Soft Violet) that conveys technical mastery, high accessibility (WCAG AAA contrast), and modern software engineering sophistication while strictly preserving 100% of existing content, SEO structures, and URLs.
+- **Added**: New high-resolution 3D metallic architectural brand logo mark (`A + S` continuous ribbon in Electric Cyan `#55D6FF` and Soft Violet `#8B7CFF` on dark canvas) integrated across the system:
+  - High-res vector master and WebP format: `public/logo.png` (1024×1024) and `public/logo.webp`
+  - Multi-resolution browser favicon: `public/favicon.ico` (16×16, 32×32, 48×48)
+  - iOS home screen icon: `public/apple-touch-icon.png` (180×180)
+  - PWA manifest icon: `public/icon.png` (512×512)
+  - Interactive frosted glass Navbar brand mark: `components/ui/Navbar.tsx`
+  - System Footer brand mark: `components/ui/Footer.tsx`
+  - Structured Data / Knowledge Graph entity logo: `components/seo/JsonLd.tsx` (Organization schema `logo` pointing to `https://www.abinschandran.in/logo.png`)
+- **Verified**: Full production build validation passed (`npm run build`) with all 32 static pages generated in 2.5s with zero TypeScript or syntax errors.
+- **Rationale**: Replaces legacy text placeholder initials ("ASC") with a bespoke, international 3D metallic brand mark uniting the owner's initials ("A" & "S") with high-tech cyan/violet lighting, enhancing brand recognition, visual polish, and Schema.org entity authority.

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Github, Linkedin, Mail, ArrowUpRight, Terminal, ShieldCheck, Cpu, MapPin } from "lucide-react";
 
 export const Footer: React.FC = () => {
@@ -27,8 +28,14 @@ export const Footer: React.FC = () => {
           {/* Column 1: Brand & Positioning */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-obsidian-card border border-white/[0.08] flex items-center justify-center">
-                <Cpu className="w-4 h-4 text-cyan" />
+              <div className="w-8 h-8 rounded-lg bg-obsidian-card border border-white/[0.08] flex items-center justify-center p-1 overflow-hidden shadow-inner">
+                <Image
+                  src="/logo.webp"
+                  alt="Abin S Chandran Logo"
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="font-semibold text-ivory text-base tracking-tight">
                 Abin S Chandran
