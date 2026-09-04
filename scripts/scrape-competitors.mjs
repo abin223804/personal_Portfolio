@@ -16,6 +16,11 @@ const COMPETITOR_URLS = [
   'https://vaishnavprabhakaran.in',
   'https://soorya.is-a.dev',
   'https://www.rishabyadav.com',
+  'https://aditya-kumar-portfolio.onrender.com',
+  'https://3dportfolio.abmserver.duckdns.org',
+  'https://itsallwidgets.com/flutter-developer-portfolio',
+  'https://hubstafftalent.net/profiles/arun-chandran-2',
+  'https://hubstafftalent.net/profiles/arun-sadasivan-2',
   'https://sinanmcmalappuram.in',
   'https://nikhilsoman.in',
   'https://anzweb.in',
@@ -24,6 +29,7 @@ const COMPETITOR_URLS = [
   // Tier 2: Regional Kerala Dev Studios & Agencies (Kochi / Kerala)
   'https://agileblaze.com',
   'https://www.pitsolutions.com',
+  'https://beosoftware.com',
 ];
 
 async function fetchAndParse(url) {
