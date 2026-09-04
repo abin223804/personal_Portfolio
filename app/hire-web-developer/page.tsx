@@ -181,9 +181,13 @@ export default function HireWebDeveloperPage() {
               </div>
             </div>
 
-            {/* CTAs */}
             <div className="flex flex-col xs:flex-row flex-wrap items-stretch xs:items-center gap-3 pt-3">
-              <WhatsAppButton variant="primary" size="md" className="justify-center" />
+              <WhatsAppButton
+                variant="primary"
+                size="md"
+                className="justify-center"
+                message="Hi Abin, I'm interested in hiring you for full-stack web development (Next.js / Node.js). Can we discuss scope and availability?"
+              />
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-cyan hover:bg-cyan-light text-brand-bg text-xs font-bold font-mono shadow-lg shadow-cyan/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center"

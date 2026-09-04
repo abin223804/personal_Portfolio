@@ -16,6 +16,16 @@ export const FAQS: FaqItem[] = [
     category: "Location & Remote",
   },
   {
+    question: "Can I hire you as a freelance software developer near me in Kerala (Kochi, Trivandrum, Calicut)?",
+    answer: "Yes! Based in Kerala, I provide full-stack web engineering, Node.js API architecture, and Flutter mobile app development for founders and businesses across Kochi (Infopark & SmartCity), Trivandrum (Technopark), Calicut, Kannur, and remote teams globally.",
+    category: "Location & Remote",
+  },
+  {
+    question: "How does your modern tech stack compare to legacy WordPress or PHP developers?",
+    answer: "Unlike traditional template-based WordPress or legacy PHP sites, I architect custom web and backend systems using Next.js 15, React 19, TypeScript, Node.js, and PostgreSQL. This ensures sub-second page loads, resilient API architectures, high-concurrency database throughput, and zero plugin-vulnerability bloat.",
+    category: "Stack",
+  },
+  {
     question: "Can you build a custom web application or MVP completely from scratch?",
     answer: "Absolutely. I take custom software projects from initial concept and architecture blueprinting all the way to database modeling, REST API development, responsive UI implementation, and cloud deployment.",
     category: "Services",

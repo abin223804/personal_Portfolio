@@ -47,9 +47,13 @@ export const ConversionCtaSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: High Converting CTAs */}
             <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-end justify-center gap-3 shrink-0 w-full">
-              <WhatsAppButton variant="primary" size="lg" className="w-full sm:w-auto justify-center" />
+              <WhatsAppButton
+                variant="primary"
+                size="lg"
+                className="w-full sm:w-auto justify-center"
+                message="Hi Abin, I'm ready to start a software project and would like to discuss scope and timelines."
+              />
 
               <Link
                 href="/contact"
