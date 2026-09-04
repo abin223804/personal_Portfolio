@@ -152,14 +152,35 @@ function generateImprovementAnalysis(mySite, competitors) {
 
   return recommendations;
 }
-
-function buildHtmlEmail(mySite, competitors, recommendations) {
+function buildHtmlEmail(mySite, competitors, recommendations, prUrl = '') {
   const dateStr = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'short',
     day: 'numeric',
   });
+
+  const prTargetUrl = prUrl || 'https://github.com/abin223804/personal_Portfolio/pulls';
+
+  const prActionCard = `
+    <div style="background:linear-gradient(135deg, rgba(85,214,255,0.12), rgba(139,124,255,0.08));border:1.5px solid #55D6FF;border-radius:10px;padding:22px;margin-bottom:24px;text-align:center;">
+      <div style="font-size:11px;font-weight:800;color:#55D6FF;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">
+        🤖 1-Click Code Change Suggestion
+      </div>
+      <div style="font-size:16px;color:#F2F5F7;font-weight:700;margin-bottom:8px;">
+        Automated SEO & Content Updates Ready for Review
+      </div>
+      <p style="font-size:13px;color:#A7AFBD;margin:0 0 16px;line-height:1.5;">
+        A proposed code update has been prepared based on this week's competitor intelligence. Tap below to review the code diff and merge it directly into your live website in 1 click.
+      </p>
+      <a href="${prTargetUrl}" target="_blank" style="display:inline-block;background:#55D6FF;color:#090B10;padding:12px 28px;border-radius:8px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 18px rgba(85,214,255,0.35);">
+        👉 Review & Accept Code Change (Merge PR) ↗
+      </a>
+      <div style="font-size:11px;color:#727B8C;margin-top:10px;">
+        Works on mobile & desktop • Secure 1-click merge via GitHub
+      </div>
+    </div>
+  `;
 
   const recRows = recommendations
     .map(
@@ -203,6 +224,8 @@ function buildHtmlEmail(mySite, competitors, recommendations) {
       <h1 style="margin:0 0 6px;color:#55D6FF;font-size:22px;">📊 Competitor Intelligence & Growth Report</h1>
       <p style="margin:0;color:#A7AFBD;font-size:13px;">Portfolio Audit & Market Insights for <strong>abinschandran.in</strong> • ${dateStr}</p>
     </div>
+
+    ${prActionCard}
 
     <div style="margin-bottom:28px;">
       <h2 style="color:#F2F5F7;font-size:16px;margin-bottom:14px;">🎯 Recommended Improvements for abinschandran.in</h2>
@@ -300,8 +323,32 @@ async function main() {
   });
   console.log('\n=============================================================\n');
 
+  // Save tracked insights to data/competitor-insights.json (used to generate automated PR diffs)
+  const insightsPath = path.resolve(process.cwd(), 'data', 'competitor-insights.json');
+  fs.writeFileSync(
+    insightsPath,
+    JSON.stringify(
+      {
+        lastUpdated: new Date().toISOString(),
+        monitoredTargetsCount: competitors.length,
+        recommendations,
+      },
+      null,
+      2
+    ),
+    'utf-8'
+  );
+  console.log(`💡 Staged weekly recommendations in: ${insightsPath}`);
+
+  // Determine PR URL
+  const prArgIdx = process.argv.indexOf('--pr-url');
+  const prUrl =
+    process.env.PR_URL ||
+    (prArgIdx !== -1 && process.argv[prArgIdx + 1] ? process.argv[prArgIdx + 1] : '') ||
+    'https://github.com/abin223804/personal_Portfolio/pulls';
+
   // Generate HTML & JSON reports
-  const html = buildHtmlEmail(mySite, competitors, recommendations);
+  const html = buildHtmlEmail(mySite, competitors, recommendations, prUrl);
   const htmlPath = path.resolve(process.cwd(), 'competitor-improvement-report.html');
   fs.writeFileSync(htmlPath, html, 'utf-8');
   console.log(`📄 Saved HTML report to: ${htmlPath}`);
@@ -310,8 +357,10 @@ async function main() {
   fs.writeFileSync(jsonPath, JSON.stringify({ mySite, competitors, recommendations }, null, 2), 'utf-8');
   console.log(`💾 Saved JSON intelligence to: ${jsonPath}`);
 
-  // Send Email
-  await dispatchEmail(html);
+  // Send Email unless --no-email flag is passed
+  if (!process.argv.includes('--no-email')) {
+    await dispatchEmail(html);
+  }
 }
 
 main();

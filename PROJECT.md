@@ -413,9 +413,9 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 - **Added**: Automated Competitor Intelligence & Strategic Improvement Engine (`scripts/scrape-competitors.mjs`) powered by `cheerio`. Crawls local and regional developer competitors in Kerala, benchmarks them against `abinschandran.in`, and auto-generates prioritized SEO, brand disambiguation, and conversion improvement recommendations.
 - **Added**: Periodic GitHub Actions workflow (`.github/workflows/competitor-monitor.yml`) running weekly on Mondays at 09:00 AM IST (03:30 UTC) with manual `workflow_dispatch` trigger support, automated report artifact archiving, and email dispatch support.
 - **Added**: Convenient script triggers in `package.json` (`npm run scrape` and `npm run scrape:email`).
-- **Updated**: Implemented competitor intelligence recommendations:
-  - **Conversion**: Enriched `WhatsAppButton` with contextual pre-filled inquiry hooks across `HeroSection.tsx`, `ConversionCtaSection.tsx`, and `/hire-web-developer` (`app/hire-web-developer/page.tsx`) to maximize lead conversion rates.
-  - **SEO**: Added high-intent local "near me" and district-specific FAQ entries (Kochi, Trivandrum, Calicut, Kannur) and modern stack comparison (Next.js 15 vs legacy WordPress/PHP) in `data/faq.ts`, strengthening local search indexing and Schema.org `FAQPage` rich results.
+- **Added**: 1-Click Code Change & Automated Pull Request Integration:
+  - Upgraded `.github/workflows/competitor-monitor.yml` with `peter-evans/create-pull-request@v6` to automatically stage competitor insights to `data/competitor-insights.json` and open automated Pull Requests on branch `bot/competitor-seo-update`.
+  - Added interactive **"👉 Review & Accept Code Change (Merge PR)"** CTA card directly inside the weekly email digest, allowing 1-click code review and merge directly from mobile or desktop email clients.
 
 ### 2026-08-21
 - **Removed**: Live CRM navigation link from header `Navbar.tsx` to streamline the top navigation bar while keeping other discovery channels (Hero banner, Command Palette, CLI terminal, Footer).

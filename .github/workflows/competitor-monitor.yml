@@ -6,6 +6,10 @@ on:
     - cron: '30 3 * * 1'
   workflow_dispatch: # Allows manual one-click trigger from GitHub Actions tab
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   monitor-and-report:
     runs-on: ubuntu-latest
@@ -22,10 +26,34 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Competitor Intelligence & Improvement Engine
+      - name: Run Competitor Intelligence & Stage Suggestions
+        run: node scripts/scrape-competitors.mjs --no-email
+
+      - name: Create Pull Request with Suggested Code Updates
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(seo): automated competitor intelligence updates"
+          title: "🤖 Weekly Competitor SEO & Content Suggestions"
+          body: |
+            ## 📊 Automated Competitor Insights & Suggested Actions
+            This Pull Request was generated automatically by your **Competitor Intelligence Engine**.
+
+            - **Tracked updates:** Staged in `data/competitor-insights.json`
+            - **Live Report:** Download the HTML artifact or check your email digest.
+
+            ### How to accept:
+            Simply review the files changed and click **"Merge pull request"** below!
+          branch: "bot/competitor-seo-update"
+          base: "main"
+          delete-branch: true
+
+      - name: Send Email Digest with 1-Click Accept PR Link
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           REPORT_EMAIL: ${{ secrets.REPORT_EMAIL || 'abinschandran1@gmail.com' }}
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url || 'https://github.com/abin223804/personal_Portfolio/pulls' }}
         run: node scripts/scrape-competitors.mjs
 
       - name: Upload HTML & JSON Intelligence Artifacts
@@ -35,4 +63,5 @@ jobs:
           path: |
             competitor-improvement-report.html
             competitor-analysis.json
+            data/competitor-insights.json
           retention-days: 30
