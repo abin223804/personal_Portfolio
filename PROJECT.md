@@ -409,6 +409,12 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 
 ## 20. Architecture Change Log
 
+### 2026-09-04
+- **Added**: Automated Competitor Intelligence & Strategic Improvement Engine (`scripts/scrape-competitors.mjs`) powered by `cheerio`. Crawls local and regional developer competitors in Kerala, benchmarks them against `abinschandran.in`, and auto-generates prioritized SEO, brand disambiguation, and conversion improvement recommendations.
+- **Added**: Periodic GitHub Actions workflow (`.github/workflows/competitor-monitor.yml`) running weekly on Mondays at 09:00 AM IST (03:30 UTC) with manual `workflow_dispatch` trigger support, automated report artifact archiving, and email dispatch support.
+- **Added**: Convenient script triggers in `package.json` (`npm run scrape` and `npm run scrape:email`).
+- **Updated**: Added `competitor-analysis.json` and `competitor-improvement-report.html` to `.gitignore` to maintain local market research privacy.
+
 ### 2026-08-21
 - **Removed**: Live CRM navigation link from header `Navbar.tsx` to streamline the top navigation bar while keeping other discovery channels (Hero banner, Command Palette, CLI terminal, Footer).
 

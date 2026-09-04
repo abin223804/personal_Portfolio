@@ -1,0 +1,38 @@
+name: Weekly Competitor Intelligence & Improvement Monitor
+
+on:
+  schedule:
+    # Runs every Monday at 03:30 UTC (09:00 AM IST)
+    - cron: '30 3 * * 1'
+  workflow_dispatch: # Allows manual one-click trigger from GitHub Actions tab
+
+jobs:
+  monitor-and-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Competitor Intelligence & Improvement Engine
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          REPORT_EMAIL: ${{ secrets.REPORT_EMAIL || 'abinschandran1@gmail.com' }}
+        run: node scripts/scrape-competitors.mjs
+
+      - name: Upload HTML & JSON Intelligence Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: competitor-intelligence-reports
+          path: |
+            competitor-improvement-report.html
+            competitor-analysis.json
+          retention-days: 30
