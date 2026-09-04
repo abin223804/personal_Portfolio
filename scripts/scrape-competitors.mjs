@@ -11,12 +11,19 @@ import path from 'path';
 const MY_SITE_URL = 'https://abinschandran.in';
 
 const COMPETITOR_URLS = [
+  // Tier 1: Direct Local & National Tech Peers
   'https://abinantony.io',
   'https://vaishnavprabhakaran.in',
-  'https://nikhilsoman.in',
+  'https://soorya.is-a.dev',
+  'https://www.rishabyadav.com',
   'https://sinanmcmalappuram.in',
+  'https://nikhilsoman.in',
   'https://anzweb.in',
   'https://freelancerkochi.com',
+
+  // Tier 2: Regional Kerala Dev Studios & Agencies (Kochi / Kerala)
+  'https://agileblaze.com',
+  'https://www.pitsolutions.com',
 ];
 
 async function fetchAndParse(url) {

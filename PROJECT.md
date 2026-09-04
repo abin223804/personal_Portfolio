@@ -416,6 +416,7 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 - **Added**: 1-Click Code Change & Automated Pull Request Integration:
   - Upgraded `.github/workflows/competitor-monitor.yml` with `peter-evans/create-pull-request@v6` to automatically stage competitor insights to `data/competitor-insights.json` and open automated Pull Requests on branch `bot/competitor-seo-update`.
   - Added interactive **"👉 Review & Accept Code Change (Merge PR)"** CTA card directly inside the weekly email digest, allowing 1-click code review and merge directly from mobile or desktop email clients.
+- **Updated**: Expanded monitored competitor suite in `scripts/scrape-competitors.mjs` to 10 verified high-signal targets across Tier 1 (Kerala/India Next.js and Flutter peers: `soorya.is-a.dev`, `rishabyadav.com`) and Tier 2 (Kerala dev studios: `agileblaze.com`, `pitsolutions.com`).
 
 ### 2026-08-21
 - **Removed**: Live CRM navigation link from header `Navbar.tsx` to streamline the top navigation bar while keeping other discovery channels (Hero banner, Command Palette, CLI terminal, Footer).
