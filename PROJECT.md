@@ -639,3 +639,7 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
   - Added direct Call button alongside WhatsApp and Project Brief across Hero and Footer CTAs in Karunagappally (`/freelance-software-developer-karunagappally`), Kollam (`/freelance-software-developer-kollam`), and Kerala (`/freelance-software-developer-kerala`).
   - Updated `components/conversion/ProjectBriefBlock.tsx` to support optional/default direct phone calling (`showCallButton`, `directPhone`) and professional availability hours disclosure (*Mon–Sat, 9:30 AM–7:30 PM IST · WhatsApp 24/7*).
 - **Verified**: Full static production build validation passed (`npm run build`) with all 48 static routes compiled successfully with exit code 0.
+- **Added**: Unified Floating Quick-Contact Capsule (`components/ui/FloatingContactCapsule.tsx`, mounted in `app/AppShell.tsx`):
+  - Grouped direct Call (`tel:+918086223804`) and direct WhatsApp CTA into a sleek, floating glassmorphic dock capsule at `bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] right-4 sm:right-6 z-40`.
+  - Responsive behavior: Compact circular 44x44px touch targets on mobile (<640px) ensuring no overflow at 320px viewport; expands with Framer Motion hover/focus transitions on tablet/desktop (≥640px) to reveal labels and an interactive number preview popover with 1-click clipboard copy.
+  - Full keyboard accessibility with visible focus rings and WCAG-compliant color contrast against obsidian background.

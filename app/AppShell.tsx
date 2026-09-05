@@ -6,7 +6,7 @@ import { Footer } from "@/components/ui/Footer";
 import { CommandPalette } from "@/components/ui/CommandPalette";
 import { KonamiEasterEgg } from "@/components/ui/KonamiEasterEgg";
 import { SmoothScrollProvider } from "@/components/ui/SmoothScrollProvider";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { FloatingContactCapsule } from "@/components/ui/FloatingContactCapsule";
 
 export const AppShell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
@@ -31,8 +31,8 @@ export const AppShell: React.FC<{ children: React.ReactNode }> = ({ children }) 
 
         <Footer />
 
-        {/* Floating Mobile Sticky WhatsApp CTA & Global Modals */}
-        <WhatsAppButton variant="floating" />
+        {/* Global Floating Quick-Contact Capsule (Direct Call & WhatsApp) */}
+        <FloatingContactCapsule />
         
         <CommandPalette
           isOpen={isCommandPaletteOpen}
