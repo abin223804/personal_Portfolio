@@ -39,6 +39,7 @@
 
 ## Commercial Software Development Services
 - [Hire Freelance Web Developer & Solution Architect](https://www.abinschandran.in/hire-web-developer): Commercial engagement models (Fixed-Scope MVP, Agile Sprints, Architecture Audits) for founders and businesses in Kerala and remote worldwide.
+- [AI Integration & RAG Development Services](https://www.abinschandran.in/services/ai-integration-rag-development): Production-ready AI integrations, private document intelligence, pgvector semantic search, and streaming LLM workflows.
 - [Custom Web Application & Website Development](https://www.abinschandran.in/services/web-development): High-performance custom web application and website development with Next.js 15, React, Node.js, and PostgreSQL.
 - [Full-Stack Web & Mobile Development](https://www.abinschandran.in/services/full-stack-development): End-to-end custom web and mobile engineering from database architecture to responsive React/Next.js and Flutter frontends.
 - [Flutter & Mobile App Development](https://www.abinschandran.in/services/flutter-development): Cross-platform iOS and Android mobile apps with clean architecture and Node.js backend integrations.
@@ -47,23 +48,26 @@
 - [REST API Development & Integrations](https://www.abinschandran.in/services/api-development-integration): Payment gateway integrations (Stripe, Razorpay), webhook queues, and OpenAPI endpoints.
 - [Custom SaaS Product Development](https://www.abinschandran.in/services/saas-development): Multi-tenant database design, automated subscription billing, and role-based access controls.
 - [Admin Dashboards & Internal Tools](https://www.abinschandran.in/services/admin-dashboard-development): Data-rich operational dashboards, analytics tables, and real-time management panels.
-- [Application Maintenance & Performance Optimization](https://www.abinschandran.in/services/performance-optimization): Database indexing, query acceleration, bundle size reduction, and bug patching.
+- [Performance Audit & Optimization for Web Applications](https://www.abinschandran.in/services/performance-optimization): 10-point diagnostic audit, Core Web Vitals remediation, database query acceleration, and validated before/after benchmarks.
 
 ---
 
 ## Featured Architectural Case Studies
+- [Enterprise AI Knowledge Mesh & RAG Pipeline](https://www.abinschandran.in/projects/enterprise-ai-knowledge-mesh): Semantic search engine over 10M+ documents with pgvector, RBAC vector filtering, and sub-400ms streaming tokens.
 - [PulseFit Mobile SaaS App](https://www.abinschandran.in/projects/flutter-mobile-saas-app): Cross-platform Flutter iOS/Android app with Node.js REST API, offline BLoC caching, and Stripe subscriptions.
-- [OmniScale Enterprise Cloud Gateway](https://www.abinschandran.in/projects/omniscale-cloud-gateway): High-throughput multi-region API router managing 50k+ RPS with sub-15ms latency.
-- [AuraStore AI E-Commerce Platform](https://www.abinschandran.in/projects/aurastore-ecommerce-platform): AI-powered visual search, automated product recommendations, and real-time inventory engine.
-- [DataPulse Real-Time Telemetry Dashboard](https://www.abinschandran.in/projects/datapulse-realtime-dashboard): Enterprise analytics dashboard processing 100k events/sec with WebSocket data streaming.
+- [OmniScale Enterprise Cloud Gateway](https://www.abinschandran.in/projects/omniscale-cloud-gateway): High-throughput multi-region API router managing 50k+ RPS with sub-8ms latency and 35% cost reduction.
+- [Real-Time FinTech Settlement Engine](https://www.abinschandran.in/projects/fintech-settlement-engine): Event-driven ledger processing $12M+ daily volume with sub-10ms validation and zero reconciliation drift.
+- [HyperDrive Design System](https://www.abinschandran.in/projects/hyperdrive-design-system): Zero-runtime CSS design system adopted across 12 core web applications with 100/100 WCAG 2.2 AA accessibility.
 
 ---
 
 ## Engineering Guides & Tech Blog
+- [SaaS MVP Development in India: Scope, Timeline, and Cost Drivers](https://www.abinschandran.in/blog/saas-mvp-development-india-cost-timeline): Essential vs deferred features, multi-tenant databases, Stripe billing, and choosing between freelancers and agencies.
+- [Node.js REST API Audit: A Checklist for Slow or Unreliable Backends](https://www.abinschandran.in/blog/nodejs-rest-api-audit-checklist): Diagnosing P95 latency spikes, connection pool starvation, pgBouncer, and Redis caching.
+- [Next.js Core Web Vitals Optimization: What to Measure Before Rewriting](https://www.abinschandran.in/blog/nextjs-core-web-vitals-optimization): Diagnosing LCP, INP, and CLS, Server Component streaming, image decoding, and bundle code splitting.
+- [Flutter MVP Development: From Product Scope to iOS and Android Release](https://www.abinschandran.in/blog/flutter-mvp-development-guide): Cross-platform mobile architecture, BLoC pattern, offline Hive caching, Apple Sign-In, and store release checklists.
 - [Building Scalable Full-Stack Web Applications with Next.js 15, Node.js, and PostgreSQL](https://www.abinschandran.in/blog/scalable-full-stack-web-architecture-nextjs-nodejs-postgresql): Production blueprint for React 19 Server Components, pgBouncer connection pooling, BullMQ worker queues, and sub-10ms REST APIs.
 - [Flutter High-Performance Mobile App Architecture](https://www.abinschandran.in/blog/flutter-high-performance-mobile-app-architecture): Practical 60fps guide covering BLoC state management, isolate offloading, and low-latency API caching.
-- [Scaling Node.js REST APIs to 50k+ RPS](https://www.abinschandran.in/blog/scaling-nodejs-apis-50k-rps-architecture): Cluster mode, Redis multi-tier caching, connection pooling, and payload compression.
-- [Building Production SaaS with Next.js 15 & PostgreSQL](https://www.abinschandran.in/blog/building-production-saas-nextjs-15-postgresql): Multi-tenant architecture, Server Actions, Stripe subscription webhooks, and pgvector RAG.
 
 ---
 

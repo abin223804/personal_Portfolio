@@ -14,9 +14,12 @@ import {
   MapPin, 
   Calendar,
   Sparkles,
-  Briefcase,
   HelpCircle,
-  Code2
+  Code2,
+  Lock,
+  XCircle,
+  ExternalLink,
+  FileCheck
 } from "lucide-react";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
@@ -409,6 +412,132 @@ export default function HireWebDeveloperPage() {
               <p className="text-xs text-titanium leading-relaxed">
                 Production cloud deployment on AWS / Vercel, SSL setup, automated backup verification, comprehensive documentation, and 100% source code repository handover.
               </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Authentic Collaboration Standards & Trust Signals */}
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-3xl p-8 sm:p-10 space-y-8">
+          <div>
+            <div className="text-xs font-mono text-cyan uppercase tracking-wider font-semibold">
+              Authentic Collaboration Standards
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-ivory tracking-tight mt-1">
+              Trust Signals, Project Fit &amp; Client Guarantees
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+            {/* Project Fit vs Non-Fit */}
+            <div className="p-6 rounded-2xl bg-obsidian-surface border border-white/[0.06] space-y-4">
+              <h3 className="text-base font-bold text-ivory font-mono flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                Ideal Project Fit
+              </h3>
+              <ul className="space-y-2.5 text-xs text-titanium leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
+                  <span>Startups and digital businesses needing custom Next.js 15, Node.js, and PostgreSQL web platforms.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
+                  <span>Founders building multi-tenant SaaS MVPs, private document RAG pipelines, or Flutter mobile apps.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
+                  <span>Teams seeking direct collaboration with a senior architect rather than junior agency subcontractors.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-obsidian-surface border border-white/[0.06] space-y-4">
+              <h3 className="text-base font-bold text-ivory font-mono flex items-center gap-2">
+                <XCircle className="w-4 h-4 text-rose-400" />
+                Not a Good Fit
+              </h3>
+              <ul className="space-y-2.5 text-xs text-titanium leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0 mt-1.5" />
+                  <span>Low-budget WordPress template modifications, theme tweaking, or no-code page builders.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0 mt-1.5" />
+                  <span>Requests for clone scripts without defined business logic or custom architecture requirements.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0 mt-1.5" />
+                  <span>Speculative equity-only projects without allocated development budgets.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Guarantees Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 font-sans text-xs">
+            <div className="p-4 rounded-xl bg-obsidian-surface border border-white/[0.06] space-y-1.5">
+              <div className="font-mono font-bold text-cyan flex items-center gap-1.5">
+                <Lock className="w-4 h-4" />
+                <span>100% IP Ownership &amp; NDA</span>
+              </div>
+              <p className="text-titanium leading-relaxed">
+                Mutual NDA executed before project kickoff. All proprietary code, database schemas, and documentation transfer 100% to you.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-obsidian-surface border border-white/[0.06] space-y-1.5">
+              <div className="font-mono font-bold text-emerald-400 flex items-center gap-1.5">
+                <Clock className="w-4 h-4" />
+                <span>&lt; 24h Direct Communication</span>
+              </div>
+              <p className="text-titanium leading-relaxed">
+                Direct Slack, WhatsApp, or Google Meet communication with Abin S Chandran. Zero sales reps or intermediaries.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-obsidian-surface border border-white/[0.06] space-y-1.5">
+              <div className="font-mono font-bold text-violet flex items-center gap-1.5">
+                <FileCheck className="w-4 h-4" />
+                <span>30-Day Launch Warranty</span>
+              </div>
+              <p className="text-titanium leading-relaxed">
+                Every delivered milestone includes 30 days of post-launch technical bug fixes, documentation handoff, and staging support.
+              </p>
+            </div>
+          </div>
+
+          {/* Verified Profiles Banner */}
+          <div className="pt-2 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-titanium-muted">Verified Technical Profiles:</span>
+              <a
+                href="https://github.com/abin223804"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ivory hover:text-cyan flex items-center gap-1 transition-colors"
+              >
+                <span>GitHub (abin223804)</span>
+                <ExternalLink className="w-3 h-3 text-cyan" />
+              </a>
+              <span className="text-white/20">•</span>
+              <a
+                href="https://www.linkedin.com/in/abinschandran/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ivory hover:text-cyan flex items-center gap-1 transition-colors"
+              >
+                <span>LinkedIn</span>
+                <ExternalLink className="w-3 h-3 text-cyan" />
+              </a>
+              <span className="text-white/20">•</span>
+              <a
+                href="https://crm.abinschandran.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors font-bold"
+              >
+                <span>Live SaaS Demo</span>
+                <ExternalLink className="w-3 h-3 text-emerald-400" />
+              </a>
             </div>
           </div>
         </div>

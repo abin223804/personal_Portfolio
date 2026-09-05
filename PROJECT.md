@@ -15,10 +15,10 @@ It is a **living architecture document** that continuously evolves alongside the
 - **Current Development Status**: Production Active / Continuous Maintenance
 - **Architecture Pattern**: Component-Based, Static Site Generation (SSG), React Server Components (RSC), API-Driven Integrations
 - **Core Features**:
-  - Commercial Software Development Services Catalog (`/services`, `/services/[slug]`)
-  - Dedicated Commercial Hiring Landing Page (`/hire-web-developer`)
-  - Architectural Case Studies Showcase (`/projects`, `/projects/[slug]`)
-  - Engineering Tech Blog & System Architecture Guides (`/blog`, `/blog/[slug]`)
+  - Commercial Software Development Services Catalog (`/services`, `/services/[slug]`) featuring 10 commercial offerings including dedicated AI & RAG Integration (`/services/ai-integration-rag-development`) and 10-Point Measurable Performance Audits (`/services/performance-optimization`)
+  - Dedicated Commercial Hiring Landing Page (`/hire-web-developer`) with transparent fit/non-fit criteria, IP guarantees, and authentic trust signals
+  - Architectural Case Studies Showcase (`/projects`, `/projects/[slug]`) built around an 8-part verifiable proof schema with tested environments (Production, Staging, Benchmark, Lab) and project-specific CTAs
+  - Engineering Tech Blog & System Architecture Guides (`/blog`, `/blog/[slug]`) with 10 technical deep-dives including buyer-focused commercial guides
   - Interactive CLI Terminal Shell for Lead Capture & Email Dispatch (`/contact`)
   - Interactive System Load & Architecture Playground (`/`)
   - Command Palette (`⌘K`), Konami Code Easter Egg, and Lenis Hardware-Accelerated Smooth Scroll
@@ -232,13 +232,19 @@ classDiagram
         +string title
         +string subtitle
         +string category
+        +string projectType
+        +string industry
+        +string clientContextNote
         +string summary
+        +string theProblem
+        +CaseStudyScope scopeAndResponsibilities
+        +CaseStudyDecision[] architectureDecisionsDetailed
+        +VerifiedOutcome[] outcomes
+        +CaseStudyEvidence evidence
+        +string[] limitations
+        +CaseStudyCta cta
         +Metric[] metrics
         +string[] techStack
-        +string architectureOverview
-        +string[] keyChallenges
-        +Decision[] architecturalDecisions
-        +string fullNarrative
     }
 
     class ServiceOffering {
@@ -248,11 +254,25 @@ classDiagram
         +string fullDescription
         +string[] deliverables
         +string[] techStack
+        +string h1
+        +string seoTitle
+        +string heroCopy
+        +ServiceModule[] serviceModules
+        +EngagementType[] engagementTypes
+        +ProcessStep[] processSteps
+        +ProofCaseStudy proofCaseStudy
+        +ServiceFaq[] faqs
+        +string[] auditDeliverables
+        +AuditComparisonRow[] auditComparisonTable
+        +LabVsFieldInfo labVsFieldNotes
+        +InternalCrossLink[] internalCrossLinks
     }
 
     BlogPost -- Author
-    CaseStudy -- Metric
-    CaseStudy -- Decision
+    CaseStudy -- VerifiedOutcome
+    CaseStudy -- CaseStudyDecision
+    ServiceOffering -- ServiceModule
+    ServiceOffering -- ServiceFaq
 ```
 
 ---
@@ -539,3 +559,33 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
   - Structured Data / Knowledge Graph entity logo: `components/seo/JsonLd.tsx` (Organization schema `logo` pointing to `https://www.abinschandran.in/logo.png`)
 - **Verified**: Full production build validation passed (`npm run build`) with all 32 static pages generated in 2.5s with zero TypeScript or syntax errors.
 - **Rationale**: Replaces legacy text placeholder initials ("ASC") with a bespoke, international 3D metallic brand mark uniting the owner's initials ("A" & "S") with high-tech cyan/violet lighting, enhancing brand recognition, visual polish, and Schema.org entity authority.
+
+### 2026-09-05
+- **Added**: Commercial AI/RAG Service Page (`/services/ai-integration-rag-development`, `data/services.ts`, `app/services/[slug]/page.tsx`) capturing high-intent enterprise search traffic (*"AI integration services"*, *"RAG development"*, *"document search LLM"*). Features 8 modular capability breakdowns, 5 engagement tiers, a 6-phase evaluation process, a spotlight proof case study with context tag (*Representative Architecture & Anonymized Enterprise Engagement*), 7 comprehensive FAQs with `FAQPage` JSON-LD schema, and bidirectional internal cross-links.
+- **Updated**: Application Maintenance & Performance Optimization service (`/services/performance-optimization`, `data/services.ts`) repackaged as a 10-point measurable performance audit. Added formal definitions separating synthetic lab data (Lighthouse/DevTools), field telemetry (RUM/CrUX), and staging server benchmarks (k6/Autocannon), alongside a verified public anonymized before/after comparison table (LCP: 4.2s ➔ 1.1s, API P95: 1,850ms ➔ 42ms, JS payload: 840 KiB ➔ 148 KiB, error rate: 4.8% ➔ 0.01%).
+- **Rebuilt**: All 5 architectural case studies in `data/projects.ts` (`enterprise-ai-knowledge-mesh`, `flutter-mobile-saas-app`, `omniscale-cloud-gateway`, `fintech-settlement-engine`, `hyperdrive-design-system`) rebuilt around an 8-part verifiable proof architecture:
+  1. Project Summary Header (Role, Industry, Project Type, Date, Client Context/Anonymization Note).
+  2. The Business & Technical Problem in plain language.
+  3. 7-part Scope & Responsibilities (Architecture, Backend/API, Frontend/Mobile, Database, Auth/RBAC, Infra, Monitoring).
+  4. Architecture Decisions, Rejected Alternatives & Accepted Trade-Offs.
+  5. Verified Outcomes Table with explicit environment classification (`Production`, `Staging`, `Lab`, `Benchmark`), measurement methods, and Abin's role contribution.
+  6. Evidence & Confidentiality Notice (transparent qualification without unpermissioned claims).
+  7. Limitations Box (candid disclosure of benchmark boundaries).
+  8. Project-Specific Conversion CTAs (e.g. *"Plan an Enterprise AI Knowledge System"*, *"Plan a Mobile SaaS MVP"*).
+- **Added**: 4 long-form buyer-focused articles in `data/blog.ts`:
+  1. `saas-mvp-development-india-cost-timeline` (*SaaS MVP Development in India: Scope, Timeline, and Cost Drivers*, ~1,280 words).
+  2. `nodejs-rest-api-audit-checklist` (*Node.js REST API Audit: A Checklist for Slow or Unreliable Backends*, ~1,390 words).
+  3. `nextjs-core-web-vitals-optimization` (*Next.js Core Web Vitals Optimization: What to Measure Before Rewriting*, ~1,220 words).
+  4. `flutter-mvp-development-guide` (*Flutter MVP Development: From Product Scope to iOS and Android Release*, ~1,310 words).
+- **Added**: Authentic trust signals and collaboration standards across commercial landing pages (`app/hire-web-developer/page.tsx`, `components/hero/HeroSection.tsx`):
+  - Transparent project fit vs non-fit guidelines.
+  - 100% IP ownership, NDA execution, and 30-day post-launch warranty terms.
+  - Direct technical communication guarantee (< 24-hour turnaround directly with Abin S Chandran).
+  - Verified public proof links to live SaaS platform (`crm.abinschandran.in`), GitHub (`github.com/abin223804`), LinkedIn, and DEV.to.
+- **Updated**: `components/hero/HeroSection.tsx` bio copy and capability chips converted into high-value crawlable internal links (`/services/web-development`, `/services/ai-integration-rag-development`, `/services/nodejs-development`, `/services/react-nextjs-development`, `/services/flutter-development`).
+- **Updated**: Structured Data in `components/seo/JsonLd.tsx` enriching `Person` and `AboutPage` `knowsAbout` schemas with `Retrieval-Augmented Generation (RAG)`, `pgvector & Vector Databases`, and `Web Performance & Core Web Vitals Optimization`.
+- **Updated**: Dynamic XML Sitemap (`app/sitemap.ts`) refreshed with `lastModified: now` for all services with priority `0.95`.
+- **Updated**: Generative Engine Optimization (GEO) specs `public/llms.txt` and `public/llms-full.txt` updated with the new service offering and buyer guides for AI search engine discoverability.
+- **Verified**: Full static production build validation passed (`npm run build`) with all 37 static pages generated with zero errors.
+- **Rationale**: Executed the highest-priority content and SEO audit implementation brief for abinschandran.in, establishing verifiable proof, transparent qualification notes, high-intent buyer research content, and clear commercial conversion pathways.
+

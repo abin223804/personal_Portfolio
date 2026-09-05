@@ -61,7 +61,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Supporting Bio Copy */}
             <p className="text-sm xs:text-base sm:text-lg text-titanium leading-relaxed max-w-2xl font-sans">
-              Hi, I&apos;m <strong className="text-ivory font-semibold">Abin</strong> (Abin S Chandran). I help startups, founders, and businesses build scalable full-stack web applications, Node.js REST APIs, Next.js SaaS platforms, and cross-platform Flutter mobile apps.
+              Hi, I&apos;m <strong className="text-ivory font-semibold">Abin</strong> (Abin S Chandran). I help startups, founders, and businesses build scalable full-stack web applications, Node.js REST APIs, Next.js SaaS platforms, AI/RAG knowledge systems, and cross-platform Flutter mobile apps.
             </p>
 
             {/* Action Buttons with Ergonomic Touch Targets */}
@@ -91,24 +91,43 @@ export const HeroSection: React.FC = () => {
               </Link>
             </div>
 
-            {/* Core Capability Chips */}
-            <div className="pt-6 border-t border-white/[0.08] grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs font-mono text-titanium">
-              <div className="flex items-center gap-2.5 bg-obsidian-card p-2.5 rounded-xl border border-white/[0.08]">
+            {/* Core Capability Chips with Crawlable Internal Links */}
+            <div className="pt-6 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-2.5 text-xs font-mono text-titanium">
+              <Link 
+                href="/services/web-development" 
+                className="flex items-center gap-2 bg-obsidian-card p-2.5 rounded-xl border border-white/[0.08] hover:border-cyan/40 hover:text-cyan transition-colors"
+              >
                 <Globe className="w-4 h-4 text-cyan shrink-0" />
-                <span className="truncate">Full-Stack &amp; Web</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-obsidian-card p-2.5 rounded-xl border border-white/[0.08]">
+                <span className="truncate">Web Apps</span>
+              </Link>
+              <Link 
+                href="/services/ai-integration-rag-development" 
+                className="flex items-center gap-2 bg-obsidian-card p-2.5 rounded-xl border border-white/[0.08] hover:border-cyan/40 hover:text-cyan transition-colors"
+              >
+                <Cpu className="w-4 h-4 text-cyan-light shrink-0" />
+                <span className="truncate">AI &amp; RAG</span>
+              </Link>
+              <Link 
+                href="/services/nodejs-development" 
+                className="flex items-center gap-2 bg-obsidian-card p-2.5 rounded-xl border border-white/[0.08] hover:border-cyan/40 hover:text-cyan transition-colors"
+              >
                 <Server className="w-4 h-4 text-cyan-light shrink-0" />
-                <span className="truncate">Node.js / Express</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-obsidian-card p-2.5 rounded-xl border border-white/[0.08]">
+                <span className="truncate">Node.js APIs</span>
+              </Link>
+              <Link 
+                href="/services/react-nextjs-development" 
+                className="flex items-center gap-2 bg-obsidian-card p-2.5 rounded-xl border border-white/[0.08] hover:border-cyan/40 hover:text-cyan transition-colors"
+              >
                 <Zap className="w-4 h-4 text-violet shrink-0" />
-                <span className="truncate">React / Next.js 15</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-obsidian-card p-2.5 rounded-xl border border-white/[0.08]">
+                <span className="truncate">Next.js 15</span>
+              </Link>
+              <Link 
+                href="/services/flutter-development" 
+                className="flex items-center gap-2 bg-obsidian-card p-2.5 rounded-xl border border-white/[0.08] hover:border-cyan/40 hover:text-cyan transition-colors col-span-2 sm:col-span-1"
+              >
                 <Smartphone className="w-4 h-4 text-titanium shrink-0" />
-                <span className="truncate">Flutter / Mobile</span>
-              </div>
+                <span className="truncate">Flutter Apps</span>
+              </Link>
             </div>
 
           </div>

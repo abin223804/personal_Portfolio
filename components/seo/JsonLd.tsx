@@ -73,6 +73,9 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
     "knowsAbout": [
       "Freelance Software Development",
       "AI-Powered Web Applications",
+      "AI Integration & RAG Development",
+      "Retrieval-Augmented Generation (RAG)",
+      "pgvector & Vector Databases",
       "AI-Integrated Node.js REST APIs",
       "Full-Stack Web Development",
       "Flutter Mobile App Development",
@@ -84,7 +87,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
       "Admin Dashboard Development",
       "PostgreSQL & MongoDB",
       "Solution Architecture",
-      "Performance Optimization"
+      "Web Performance & Core Web Vitals Optimization"
     ],
     "image": {
       "@type": "ImageObject",
@@ -220,13 +223,17 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
         "knowsAbout": [
           "Freelance Software Development",
           "AI-Powered Web Applications",
+          "AI Integration & RAG Development",
+          "Retrieval-Augmented Generation (RAG)",
+          "pgvector & Vector Databases",
           "Node.js Backend Architecture",
           "React.js & Next.js 15 Frontend Development",
           "Flutter Mobile App Development",
           "PostgreSQL & MongoDB",
           "RESTful API Integration",
           "SaaS Application Architecture",
-          "Solution Architecture"
+          "Solution Architecture",
+          "Web Performance & Core Web Vitals Optimization"
         ]
       }
     };

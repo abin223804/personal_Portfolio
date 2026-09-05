@@ -16,9 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const serviceUrls = SERVICES.map((service) => ({
     url: `${baseUrl}/services/${service.slug}`,
-    lastModified: new Date("2025-08-01"),
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.95,
   }));
 
   const blogUrls = BLOG_POSTS.map((post) => ({
