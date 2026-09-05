@@ -49,26 +49,50 @@ export const metadata: Metadata = {
 export default function ReviewsPage() {
   const jsonLdData = {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Client Reviews & Verified Delivery Outcomes | Abin S Chandran",
-    url: "https://www.abinschandran.in/reviews",
-    description:
-      "Authentic client reviews, technical delivery outcomes, and milestones for Abin S Chandran.",
-    review: CLIENT_REVIEWS.map((r) => ({
-      "@type": "Review",
-      itemReviewed: {
-        "@type": "Person",
-        name: "Abin S Chandran",
-        jobTitle: "Freelance Software Developer & Solution Architect",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.abinschandran.in/#service",
+        name: "Abin S Chandran — Freelance Software Developer & Solution Architect",
         url: "https://www.abinschandran.in",
+        image: "https://www.abinschandran.in/abin-s-chandran.png",
+        telephone: "+91-95444-93821",
+        priceRange: "$$ - $$$",
+        address: {
+          "@type": "PostalAddress",
+          addressRegion: "Kerala",
+          addressCountry: "IN",
+        },
       },
-      author: {
-        "@type": "Person",
-        name: `${r.clientTitle}, ${r.role}`,
-      },
-      reviewBody: r.quote,
-      datePublished: r.date,
-    })),
+      ...CLIENT_REVIEWS.map((r) => ({
+        "@type": "Review",
+        itemReviewed: {
+          "@type": "ProfessionalService",
+          name: "Abin S Chandran — Freelance Software Developer & Solution Architect",
+          image: "https://www.abinschandran.in/abin-s-chandran.png",
+          telephone: "+91-95444-93821",
+          url: "https://www.abinschandran.in",
+          priceRange: "$$ - $$$",
+          address: {
+            "@type": "PostalAddress",
+            addressRegion: "Kerala",
+            addressCountry: "IN",
+          },
+        },
+        author: {
+          "@type": "Person",
+          name: `${r.clientTitle} (${r.role})`,
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        reviewBody: r.quote,
+        datePublished: r.date.length === 7 ? `${r.date}-15` : r.date,
+      })),
+    ],
   };
 
   return (
