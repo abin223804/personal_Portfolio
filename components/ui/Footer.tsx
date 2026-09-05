@@ -24,9 +24,9 @@ export const Footer: React.FC = () => {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan/4 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-white/[0.08]">
           {/* Column 1: Brand & Positioning */}
-          <div className="md:col-span-2 space-y-4">
+          <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-obsidian-card border border-white/[0.08] flex items-center justify-center p-1 overflow-hidden shadow-inner">
                 <Image
@@ -42,18 +42,17 @@ export const Footer: React.FC = () => {
                 Abin S Chandran
               </span>
             </div>
-            <p className="text-titanium text-xs leading-relaxed max-w-md">
+            <p className="text-titanium text-xs leading-relaxed">
               Freelance Full-Stack Software Developer &amp; Solution Architect based in Kerala, India. Engineering custom web applications, Node.js REST APIs, Next.js SaaS platforms, and performance optimizations for startups and global businesses.
             </p>
-            <div className="flex items-center gap-4 text-xs text-titanium font-mono pt-2">
+            <div className="flex flex-col gap-2 text-xs text-titanium font-mono pt-2">
               <span className="flex items-center gap-1.5 text-emerald-400">
                 <ShieldCheck className="w-4 h-4" />
                 99.99% Architecture SLA
               </span>
-              <span>•</span>
               <span className="flex items-center gap-1 text-ivory">
                 <MapPin className="w-3.5 h-3.5 text-cyan" />
-                Kerala, India &amp; Remote Worldwide
+                Kerala, India · Remote Worldwide
               </span>
             </div>
           </div>
@@ -61,7 +60,7 @@ export const Footer: React.FC = () => {
           {/* Column 2: Quick Links */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-ivory">
-              Navigation &amp; Services
+              Services &amp; Work
             </h4>
             <ul aria-label="Footer navigation links" className="space-y-2 text-xs text-titanium">
               <li>
@@ -83,23 +82,28 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/" className="hover:text-cyan transition-colors">
-                  Overview
+                <Link href="/services/ai-integration-rag-development" className="text-violet hover:text-violet-light font-semibold transition-colors">
+                  AI &amp; RAG Development
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-cyan transition-colors">
-                  Freelance Services
+                <Link href="/services/performance-optimization" className="hover:text-cyan transition-colors">
+                  Performance &amp; Core Web Vitals
                 </Link>
               </li>
               <li>
-                <Link href="/services/web-development" className="hover:text-cyan transition-colors">
-                  Custom Web Development
+                <Link href="/services/react-nextjs-development" className="hover:text-cyan transition-colors">
+                  React &amp; Next.js 15
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/flutter-development" className="hover:text-cyan transition-colors">
+                  Flutter Mobile Apps
                 </Link>
               </li>
               <li>
                 <Link href="/projects" className="hover:text-cyan transition-colors">
-                  Case Studies &amp; Projects
+                  Case Studies &amp; Verifiable Proof
                 </Link>
               </li>
               <li>
@@ -107,20 +111,59 @@ export const Footer: React.FC = () => {
                   Engineering Tech Blog
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Kerala & Integrations */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-ivory">
+              Kerala &amp; Integrations
+            </h4>
+            <ul className="space-y-2 text-xs text-titanium">
               <li>
-                <Link href="/about" className="hover:text-cyan transition-colors">
-                  About &amp; Philosophy
+                <Link href="/freelance-software-developer-kerala" className="hover:text-cyan transition-colors font-medium text-slate-200">
+                  Kerala Software Developer Hub
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-cyan transition-colors">
-                  Contact &amp; CLI Shell
+                <Link href="/freelance-software-developer-kollam" className="hover:text-cyan transition-colors">
+                  Kollam District Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/freelance-software-developer-karunagappally" className="hover:text-cyan transition-colors">
+                  Karunagappally Taluk Hub
+                </Link>
+              </li>
+              <li>
+                <Link href="/integrations" className="hover:text-cyan transition-colors font-medium text-cyan">
+                  Third-Party Integrations ➔
+                </Link>
+              </li>
+              <li>
+                <Link href="/integrations/stripe" className="hover:text-cyan transition-colors pl-2 border-l border-white/10 text-slate-400">
+                  Stripe SaaS Billing
+                </Link>
+              </li>
+              <li>
+                <Link href="/integrations/razorpay" className="hover:text-cyan transition-colors pl-2 border-l border-white/10 text-slate-400">
+                  Razorpay &amp; UPI
+                </Link>
+              </li>
+              <li>
+                <Link href="/integrations/whatsapp-business-api" className="hover:text-cyan transition-colors pl-2 border-l border-white/10 text-slate-400">
+                  WhatsApp Business API
+                </Link>
+              </li>
+              <li>
+                <Link href="/reviews" className="text-amber-400 hover:text-amber-300 font-medium transition-colors flex items-center gap-1 pt-1">
+                  <span>★ Client Reviews &amp; Outcomes</span>
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Connect & Legal */}
+          {/* Column 4: Connect & Legal */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-ivory">
               Connect &amp; Legal

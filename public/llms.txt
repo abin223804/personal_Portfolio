@@ -61,7 +61,30 @@
 
 ---
 
+## Regional & Local Engineering Hubs (Kerala, India)
+- [Freelance Software Developer & Solution Architect in Kerala](https://www.abinschandran.in/freelance-software-developer-kerala): Statewide engineering hub serving startups, businesses, and remote global clients across all 14 districts in Kerala.
+- [Freelance Software Developer in Kollam](https://www.abinschandran.in/freelance-software-developer-kollam): Dedicated software engineering for Kollam businesses across export logistics, healthcare, retail ERP, and SaaS products.
+- [Freelance Software Developer in Karunagappally](https://www.abinschandran.in/freelance-software-developer-karunagappally): Custom web portals, Flutter mobile apps, billing software, and digital automation for local commerce in Karunagappally, Oachira, and Chavara.
+
+---
+
+## Production Third-Party API & Payment Integrations
+- [Third-Party Integrations Directory](https://www.abinschandran.in/integrations): Overview of production-grade API, webhook, and payment gateway engineering.
+- [Stripe & SaaS Billing Integration](https://www.abinschandran.in/integrations/stripe): Tiered subscriptions, usage metering, idempotent webhook handling, customer portal, and SCA compliance.
+- [Razorpay & Indian UPI Integration](https://www.abinschandran.in/integrations/razorpay): High-converting UPI checkout, QR flows, cryptographic HMAC-SHA256 signature verification, and automated refunds.
+- [WhatsApp Business Cloud API Integration](https://www.abinschandran.in/integrations/whatsapp-business-api): Meta Cloud API automation, two-way conversational bots, interactive buttons, and transactional alerts.
+- [Google Maps Platform & Geolocation](https://www.abinschandran.in/integrations/google-maps): Places Autocomplete session caching, Distance Matrix, real-time driver tracking, and server geocoding.
+
+---
+
+## Verified Proof & Client Reviews
+- [Client Reviews & Verified Delivery Outcomes](https://www.abinschandran.in/reviews): Authentic feedback, verified milestone sign-offs, and technical delivery outcomes across SaaS, Fintech, and mobile applications.
+
+---
+
 ## Engineering Guides & Tech Blog
+- [Freelance Software Developer vs Agency for a SaaS Product: Cost, Speed, and Architecture Control](https://www.abinschandran.in/blog/freelance-developer-vs-agency-saas): Pragmatic breakdown of budget allocation, communication latency, junior churn, and architectural ownership.
+- [What Does a Production RAG System Need? Vector Search, Chunking, Guardrails, and Cost Controls](https://www.abinschandran.in/blog/production-rag-system-requirements): Deep-dive into semantic chunking, PostgreSQL pgvector hybrid search, RBAC metadata filtering, and hallucination defense.
 - [SaaS MVP Development in India: Scope, Timeline, and Cost Drivers](https://www.abinschandran.in/blog/saas-mvp-development-india-cost-timeline): Essential vs deferred features, multi-tenant databases, Stripe billing, and choosing between freelancers and agencies.
 - [Node.js REST API Audit: A Checklist for Slow or Unreliable Backends](https://www.abinschandran.in/blog/nodejs-rest-api-audit-checklist): Diagnosing P95 latency spikes, connection pool starvation, pgBouncer, and Redis caching.
 - [Next.js Core Web Vitals Optimization: What to Measure Before Rewriting](https://www.abinschandran.in/blog/nextjs-core-web-vitals-optimization): Diagnosing LCP, INP, and CLS, Server Component streaming, image decoding, and bundle code splitting.

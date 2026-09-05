@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { PROJECTS } from "@/data/projects";
 import { SERVICES } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog";
+import { INTEGRATIONS } from "@/data/integrations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.abinschandran.in";
@@ -19,6 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.95,
+  }));
+
+  const integrationUrls = INTEGRATIONS.map((integration) => ({
+    url: `${baseUrl}/integrations/${integration.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
   }));
 
   const blogUrls = BLOG_POSTS.map((post) => ({
@@ -85,8 +93,44 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
       images: [`${baseUrl}/og-image.png`],
     },
+    {
+      url: `${baseUrl}/freelance-software-developer-kerala`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+      images: [`${baseUrl}/og-image.png`],
+    },
+    {
+      url: `${baseUrl}/freelance-software-developer-kollam`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+      images: [`${baseUrl}/og-image.png`],
+    },
+    {
+      url: `${baseUrl}/freelance-software-developer-karunagappally`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+      images: [`${baseUrl}/og-image.png`],
+    },
+    {
+      url: `${baseUrl}/integrations`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+      images: [`${baseUrl}/og-image.png`],
+    },
+    {
+      url: `${baseUrl}/reviews`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+      images: [`${baseUrl}/og-image.png`],
+    },
     ...blogUrls,
     ...serviceUrls,
+    ...integrationUrls,
     ...projectUrls,
   ];
 }
