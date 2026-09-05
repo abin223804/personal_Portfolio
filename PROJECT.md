@@ -631,3 +631,7 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
   - Rich Structured Data: Added complete `ProfessionalService`, `FAQPage` (8 visible FAQs), and `BreadcrumbList` JSON-LD schemas.
   - Conversion flows: Integrated direct WhatsApp chat with Karunagappally context and `/contact` project brief routing.
 - **Verified**: Full static production build validation passed (`npm run build`) with all 48 static routes compiled successfully with exit code 0.
+- **Updated**: Competitor Intelligence & Monitoring Suite (`scripts/scrape-competitors.mjs`, `data/competitor-insights.json`):
+  - Expanded monitored targets to 30 competitors by adding Tier 3 Karunagappally and Kollam regional software agencies and web studios (`techaxlabs.com`, `webxcrafting.in`, `somskilltech.in`, `websitevale.com`, `orangedice.org`, `tiffanysoftwaresolutions.com`, `innogreets.com`, `a1webdesignteam.com`, `inspirezesttechnologies.com`, `t7labs.com`, `webtraze.com`, `srvinfotech.com`, `softverses.com`).
+  - Added localized keyword opportunity detection for Karunagappally & Kollam commercial software, ERP, billing systems, and custom web development.
+  - Executed automated benchmark crawl and staged refreshed intelligence in `data/competitor-insights.json`.

@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-05T05:35:09.541Z",
-  "monitoredTargetsCount": 17,
+  "lastUpdated": "2026-09-05T06:51:14.006Z",
+  "monitoredTargetsCount": 30,
   "recommendations": [
     {
       "priority": "HIGH",
@@ -10,7 +10,7 @@
     {
       "priority": "MEDIUM",
       "area": "SEO Keyword Expansion",
-      "action": "Competitors are capturing long-tail searches you can incorporate into blog posts or FAQ schema: \"near me\" local intent (e.g. Flutter/Web developer near me Kerala); District-specific landing pages (Calicut, Kochi, Trivandrum, Kannur)."
+      "action": "Competitors are capturing long-tail searches you can incorporate into blog posts or FAQ schema: \"near me\" local intent (e.g. Flutter/Web developer near me Kerala); District-specific landing pages (Calicut, Kochi, Trivandrum, Kannur); Local software & ERP keywords (Karunagappally, Kollam, retail billing, custom software)."
     },
     {
       "priority": "HIGH",

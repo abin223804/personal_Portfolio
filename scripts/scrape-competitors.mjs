@@ -31,6 +31,21 @@ const COMPETITOR_URLS = [
   'https://agileblaze.com',
   'https://www.pitsolutions.com',
   'https://beosoftware.com',
+
+  // Tier 3: Karunagappally & Kollam Local Software & Web Studios
+  'https://techaxlabs.com/custom-software-development/india/kerala/kollam/karunagappally',
+  'https://www.webxcrafting.in/locations/web-development-company-in-karunagappally',
+  'https://somskilltech.in/develop-erp-software-in-karunagappally',
+  'https://www.websitevale.com/website-designing-company-in-karunagappally-north',
+  'https://orangedice.org/',
+  'http://tiffanysoftwaresolutions.com/',
+  'https://innogreets.com/',
+  'https://a1webdesignteam.com/',
+  'https://www.inspirezesttechnologies.com/',
+  'https://t7labs.com/',
+  'https://webtraze.com/about.php',
+  'https://srvinfotech.com/',
+  'https://softverses.com/',
 ];
 
 async function fetchAndParse(url) {
@@ -122,6 +137,9 @@ function generateImprovementAnalysis(mySite, competitors) {
     }
     if (combinedText.includes('malappuram') || combinedText.includes('calicut') || combinedText.includes('kannur')) {
       keywordOpportunities.add('District-specific landing pages (Calicut, Kochi, Trivandrum, Kannur)');
+    }
+    if (combinedText.includes('karunagappally') || combinedText.includes('kollam')) {
+      keywordOpportunities.add('Local software & ERP keywords (Karunagappally, Kollam, retail billing, custom software)');
     }
     if (combinedText.includes('quote') || combinedText.includes('free consultation') || combinedText.includes('estimate')) {
       ctaPatterns.push(`${comp.domain} offers "Free Consultation / Quote" upfront`);
