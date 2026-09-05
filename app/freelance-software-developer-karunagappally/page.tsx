@@ -22,6 +22,7 @@ import {
   Mail,
   UserCheck,
   Zap,
+  Phone,
 } from "lucide-react";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { ProjectBriefBlock } from "@/components/conversion/ProjectBriefBlock";
@@ -393,18 +394,30 @@ export default function KarunagappallyLandingPage() {
                   size="lg"
                   message="Hi Abin, I'm looking for a software developer for a project in Karunagappally or Kollam."
                 />
+                <a
+                  href="tel:+918086223804"
+                  className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3.5 text-xs font-mono font-bold text-ivory hover:border-cyan/40 hover:bg-white/10 transition-all shadow-lg"
+                >
+                  <Phone className="h-4 w-4 text-cyan" />
+                  <span>Call: +91 80862 23804</span>
+                </a>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-xs font-mono font-bold text-ivory hover:border-cyan/40 hover:bg-white/10 transition-all shadow-lg"
+                  className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3.5 text-xs font-mono font-bold text-ivory hover:border-cyan/40 hover:bg-white/10 transition-all shadow-lg"
                 >
                   <span>Start a Project</span>
                   <ArrowRight className="h-4 w-4 text-cyan" />
                 </Link>
               </div>
 
-              <p className="text-xs font-mono text-slate-400 pt-2 border-t border-white/[0.06]">
-                ℹ️ Remote-first delivery is available for Karunagappally and the wider Kollam district. Meeting arrangements should be confirmed based on the project and location.
-              </p>
+              <div className="space-y-1.5 pt-2 border-t border-white/[0.06]">
+                <p className="text-xs font-mono text-slate-400">
+                  ℹ️ Remote-first delivery is available for Karunagappally and the wider Kollam district. Meeting arrangements should be confirmed based on the project and location.
+                </p>
+                <p className="text-[11px] font-mono text-slate-400">
+                  📞 Direct Call Hours: Mon–Sat, 9:30 AM–7:30 PM IST · WhatsApp open 24/7
+                </p>
+              </div>
             </div>
 
             {/* Right Column: Original Architecture Visual Asset */}
@@ -779,6 +792,13 @@ export default function KarunagappallyLandingPage() {
                   size="lg"
                   message="Hi Abin, I'm looking for a software developer for a project in Karunagappally or Kollam."
                 />
+                <a
+                  href="tel:+918086223804"
+                  className="inline-flex items-center gap-2 rounded-xl border border-cyan/30 bg-cyan/10 px-5 py-3.5 text-xs font-mono font-bold text-cyan hover:bg-cyan/20 transition-all shadow-lg"
+                >
+                  <Phone className="h-4 w-4 text-cyan" />
+                  <span>Call: +91 80862 23804</span>
+                </a>
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 rounded-xl bg-cyan px-6 py-3.5 text-xs font-mono font-extrabold text-brand-bg hover:bg-cyan-light transition-all shadow-xl shadow-cyan/20"
@@ -794,6 +814,10 @@ export default function KarunagappallyLandingPage() {
                   <span>abinschandran1@gmail.com</span>
                 </a>
               </div>
+
+              <p className="text-xs font-mono text-slate-400 pt-1">
+                📞 Direct Phone: Mon–Sat, 9:30 AM–7:30 PM IST · WhatsApp inquiries open 24/7
+              </p>
             </div>
           </div>
         </div>

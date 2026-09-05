@@ -635,3 +635,7 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
   - Expanded monitored targets to 30 competitors by adding Tier 3 Karunagappally and Kollam regional software agencies and web studios (`techaxlabs.com`, `webxcrafting.in`, `somskilltech.in`, `websitevale.com`, `orangedice.org`, `tiffanysoftwaresolutions.com`, `innogreets.com`, `a1webdesignteam.com`, `inspirezesttechnologies.com`, `t7labs.com`, `webtraze.com`, `srvinfotech.com`, `softverses.com`).
   - Added localized keyword opportunity detection for Karunagappally & Kollam commercial software, ERP, billing systems, and custom web development.
   - Executed automated benchmark crawl and staged refreshed intelligence in `data/competitor-insights.json`.
+- **Added**: Direct Telephone Call Conversion Channel (`tel:+918086223804`):
+  - Added direct Call button alongside WhatsApp and Project Brief across Hero and Footer CTAs in Karunagappally (`/freelance-software-developer-karunagappally`), Kollam (`/freelance-software-developer-kollam`), and Kerala (`/freelance-software-developer-kerala`).
+  - Updated `components/conversion/ProjectBriefBlock.tsx` to support optional/default direct phone calling (`showCallButton`, `directPhone`) and professional availability hours disclosure (*Mon–Sat, 9:30 AM–7:30 PM IST · WhatsApp 24/7*).
+- **Verified**: Full static production build validation passed (`npm run build`) with all 48 static routes compiled successfully with exit code 0.

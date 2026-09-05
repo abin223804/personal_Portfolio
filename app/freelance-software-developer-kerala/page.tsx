@@ -15,6 +15,7 @@ import {
   HelpCircle,
   Building2,
   Globe2,
+  Phone,
 } from "lucide-react";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { ProjectBriefBlock } from "@/components/conversion/ProjectBriefBlock";
@@ -170,15 +171,22 @@ export default function KeralaSoftwareDeveloperPage() {
               Direct access to a senior software engineer and architect for scalable web applications, SaaS products, Node.js APIs, cross-platform Flutter mobile apps, and enterprise AI integrations.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3.5 pt-2">
               <WhatsAppButton
                 variant="primary"
                 size="lg"
                 message="Hi Abin, I am looking for a freelance software developer in Kerala for my project."
               />
+              <a
+                href="tel:+918086223804"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3.5 text-xs font-mono font-bold text-ivory hover:border-cyan/40 hover:bg-white/10 transition-all shadow-lg"
+              >
+                <Phone className="h-4 w-4 text-cyan" />
+                <span>Call: +91 80862 23804</span>
+              </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-xs font-mono font-bold text-ivory hover:border-cyan/40 hover:bg-white/10 transition-all"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3.5 text-xs font-mono font-bold text-ivory hover:border-cyan/40 hover:bg-white/10 transition-all"
               >
                 <span>Send Project Brief</span>
                 <ArrowRight className="h-4 w-4 text-cyan" />

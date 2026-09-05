@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles, ArrowRight, ShieldCheck, Clock, FileCode, CheckCircle2 } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldCheck, Clock, FileCode, CheckCircle2, Phone } from "lucide-react";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 interface ProjectBriefBlockProps {
@@ -10,6 +10,8 @@ interface ProjectBriefBlockProps {
   subtitle?: string;
   contextTag?: string;
   prefilledWhatsAppMessage?: string;
+  showCallButton?: boolean;
+  directPhone?: string;
   className?: string;
 }
 
@@ -18,6 +20,8 @@ export const ProjectBriefBlock: React.FC<ProjectBriefBlockProps> = ({
   subtitle = "Tell me what you are building, what is currently blocked, and what outcome you need. I will review the brief and suggest the right next step: discovery, architecture, a fixed-scope build, or a technical audit.",
   contextTag = "Direct-to-Developer Consultation",
   prefilledWhatsAppMessage = "Hi Abin, I have a project brief I'd like to discuss with you directly.",
+  showCallButton = true,
+  directPhone = "+918086223804",
   className = "",
 }) => {
   return (
@@ -73,6 +77,16 @@ export const ProjectBriefBlock: React.FC<ProjectBriefBlockProps> = ({
             message={prefilledWhatsAppMessage}
           />
 
+          {showCallButton && (
+            <a
+              href={`tel:${directPhone}`}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-center text-xs font-mono font-bold text-ivory transition-all hover:border-cyan/40 hover:bg-white/10 shadow-lg"
+            >
+              <Phone className="h-4 w-4 text-cyan" />
+              <span>Direct Call: +91 80862 23804</span>
+            </a>
+          )}
+
           <Link
             href="/contact"
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-cyan px-6 py-3.5 text-center text-xs font-mono font-extrabold tracking-wide text-brand-bg shadow-xl shadow-cyan/25 transition-all hover:bg-cyan-light hover:-translate-y-0.5"
@@ -80,6 +94,12 @@ export const ProjectBriefBlock: React.FC<ProjectBriefBlockProps> = ({
             <span>Send Project Brief</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
+
+          {showCallButton && (
+            <p className="text-[11px] font-mono text-center text-slate-400 pt-1">
+              📞 Direct Call: Mon–Sat, 9:30 AM–7:30 PM IST · WhatsApp 24/7
+            </p>
+          )}
         </div>
       </div>
     </div>
