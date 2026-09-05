@@ -22,6 +22,9 @@ const CareerTimeline = dynamic(
 const FaqSection = dynamic(
   () => import("@/components/faq/FaqSection").then((mod) => mod.FaqSection)
 );
+const HomeReviewsSection = dynamic(
+  () => import("@/components/reviews/HomeReviewsSection").then((mod) => mod.HomeReviewsSection)
+);
 const ConversionCtaSection = dynamic(
   () => import("@/components/cta/ConversionCtaSection").then((mod) => mod.ConversionCtaSection)
 );
@@ -45,6 +48,7 @@ export default function Home() {
       <ProjectGrid limit={2} />
       <HomeBlogSection />
       <CareerTimeline />
+      <HomeReviewsSection />
       <FaqSection />
       <ConversionCtaSection />
       <InteractiveTerminal />

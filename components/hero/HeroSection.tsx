@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Cpu, ShieldCheck, Terminal, Layers, Sparkles, Server, Zap, Database, MapPin, Briefcase, Smartphone, Globe } from "lucide-react";
+import { ArrowRight, Cpu, ShieldCheck, Terminal, Layers, Sparkles, Server, Zap, Database, MapPin, Briefcase, Smartphone, Globe, CheckCircle2 } from "lucide-react";
 import { BlueprintCanvas } from "./BlueprintCanvas";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
@@ -61,7 +61,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Supporting Bio Copy */}
             <p className="text-sm xs:text-base sm:text-lg text-titanium leading-relaxed max-w-2xl font-sans">
-              Hi, I&apos;m <strong className="text-ivory font-semibold">Abin</strong> (Abin S Chandran). I help startups, founders, and businesses build scalable full-stack web applications, Node.js REST APIs, Next.js SaaS platforms, AI/RAG knowledge systems, and cross-platform Flutter mobile apps.
+              Direct access to <strong className="text-ivory font-semibold">Abin S Chandran</strong> — Freelance Software Developer &amp; Solution Architect for scalable Next.js web applications, SaaS products, Node.js REST APIs, cross-platform Flutter mobile apps, and enterprise AI/RAG systems. One technical owner from discovery to deployment with zero agency overhead.
             </p>
 
             {/* Action Buttons with Ergonomic Touch Targets */}
@@ -89,6 +89,24 @@ export const HeroSection: React.FC = () => {
                 <Layers className="w-4 h-4 text-cyan shrink-0" />
                 <span>Explore Services</span>
               </Link>
+            </div>
+
+            {/* Direct Technical Partnership Trust Signals */}
+            <div className="flex flex-wrap items-center gap-y-2 gap-x-3 pt-3 text-xs font-mono text-slate-300">
+              <span className="flex items-center gap-1.5 text-emerald-400">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                Direct Technical Ownership
+              </span>
+              <span className="text-white/20 hidden sm:inline">•</span>
+              <span className="flex items-center gap-1.5 text-cyan">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                Architecture Before Code
+              </span>
+              <span className="text-white/20 hidden sm:inline">•</span>
+              <span className="flex items-center gap-1.5 text-violet">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                100% IP &amp; Git Handover
+              </span>
             </div>
 
             {/* Core Capability Chips with Crawlable Internal Links */}
