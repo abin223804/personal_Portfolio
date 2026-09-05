@@ -13,6 +13,7 @@ const MY_SITE_URL = 'https://abinschandran.in';
 const COMPETITOR_URLS = [
   // Tier 1: Direct Local & National Tech Peers
   'https://abinantony.io',
+  'https://abin.edgesys.tech',
   'https://vaishnavprabhakaran.in',
   'https://soorya.is-a.dev',
   'https://www.rishabyadav.com',
@@ -128,13 +129,15 @@ function generateImprovementAnalysis(mySite, competitors) {
   });
 
   // Name collision alert check
-  const abinAntony = competitors.find((c) => c.domain.includes('abinantony'));
+  const abinAntony = competitors.find(
+    (c) => c.domain.includes('abinantony') || c.domain.includes('abin.edgesys.tech')
+  );
   if (abinAntony) {
     recommendations.push({
       priority: 'HIGH',
       area: 'Brand & Knowledge Graph Disambiguation',
       action:
-        'Abin Antony (abinantony.io) is targeting "Freelance Mobile App Developer Kerala". Ensure abinschandran.in continuously emphasizes "Abin S Chandran" and "Software Solution Architect / High-Performance Full-Stack Engineer" to prevent entity blending on Google.',
+        'Abin Antony (abinantony.io / abin.edgesys.tech) is targeting "Freelance Laravel & PHP Developer in Kerala" and "Freelance Mobile App Developer Kerala". Ensure abinschandran.in continuously emphasizes "Abin S Chandran" and "Software Solution Architect / High-Performance Full-Stack & AI Engineer" (Next.js 15, Flutter, Node.js, AI/RAG) to prevent entity blending on Google.',
     });
   }
 

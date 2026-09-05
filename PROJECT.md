@@ -587,5 +587,9 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
 - **Updated**: Dynamic XML Sitemap (`app/sitemap.ts`) refreshed with `lastModified: now` for all services with priority `0.95`.
 - **Updated**: Generative Engine Optimization (GEO) specs `public/llms.txt` and `public/llms-full.txt` updated with the new service offering and buyer guides for AI search engine discoverability.
 - **Verified**: Full static production build validation passed (`npm run build`) with all 37 static pages generated with zero errors.
-- **Rationale**: Executed the highest-priority content and SEO audit implementation brief for abinschandran.in, establishing verifiable proof, transparent qualification notes, high-intent buyer research content, and clear commercial conversion pathways.
+- **Updated**: Competitor Intelligence & Strategic Improvement Engine (`scripts/scrape-competitors.mjs`):
+  - Added `https://abin.edgesys.tech` (Abin Antony — Freelance Laravel & PHP Developer, Kochi Kerala) to Tier 1 monitored targets (17 total targets).
+  - Enhanced name collision and disambiguation analysis logic to explicitly monitor both `abinantony.io` and `abin.edgesys.tech`, ensuring `abinschandran.in` dominates searches for modern high-performance engineering (Next.js 15, Node.js, Flutter, AI/RAG) while isolating legacy PHP/Laravel freelancer queries.
+  - Automatically re-benchmarked and staged updated insights to `data/competitor-insights.json`.
+- **Rationale**: Executed the highest-priority content and SEO audit implementation brief for abinschandran.in, establishing verifiable proof, transparent qualification notes, high-intent buyer research content, clear commercial conversion pathways, and expanded competitor monitoring scope.
 

@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-09-04T13:04:00.130Z",
-  "monitoredTargetsCount": 16,
+  "lastUpdated": "2026-09-05T05:35:09.541Z",
+  "monitoredTargetsCount": 17,
   "recommendations": [
     {
       "priority": "HIGH",
       "area": "Brand & Knowledge Graph Disambiguation",
-      "action": "Abin Antony (abinantony.io) is targeting \"Freelance Mobile App Developer Kerala\". Ensure abinschandran.in continuously emphasizes \"Abin S Chandran\" and \"Software Solution Architect / High-Performance Full-Stack Engineer\" to prevent entity blending on Google."
+      "action": "Abin Antony (abinantony.io / abin.edgesys.tech) is targeting \"Freelance Laravel & PHP Developer in Kerala\" and \"Freelance Mobile App Developer Kerala\". Ensure abinschandran.in continuously emphasizes \"Abin S Chandran\" and \"Software Solution Architect / High-Performance Full-Stack & AI Engineer\" (Next.js 15, Flutter, Node.js, AI/RAG) to prevent entity blending on Google."
     },
     {
       "priority": "MEDIUM",
