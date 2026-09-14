@@ -1,0 +1,65 @@
+name: Ping Google & Bing — Sitemap Update Notification
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allow manual trigger from GitHub Actions tab
+
+jobs:
+  ping-search-engines:
+    name: Notify Search Engines of Sitemap Update
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wait for deployment to propagate
+        # Give Vercel/hosting ~60s to deploy before pinging
+        run: sleep 60
+
+      - name: Ping Google Sitemap
+        run: |
+          echo "📡 Pinging Google with sitemap URL..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://www.google.com/ping?sitemap=https://www.abinschandran.in/sitemap.xml")
+          echo "Google ping response: $STATUS"
+          if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 300 ]; then
+            echo "✅ Google notified successfully"
+          else
+            echo "⚠️ Google ping returned $STATUS (non-critical)"
+          fi
+
+      - name: Ping Bing Sitemap
+        run: |
+          echo "📡 Pinging Bing with sitemap URL..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://www.bing.com/ping?sitemap=https://www.abinschandran.in/sitemap.xml")
+          echo "Bing ping response: $STATUS"
+          if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 300 ]; then
+            echo "✅ Bing notified successfully"
+          else
+            echo "⚠️ Bing ping returned $STATUS (non-critical)"
+          fi
+
+      - name: Verify sitemap is accessible
+        run: |
+          echo "🔍 Verifying sitemap is reachable..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://www.abinschandran.in/sitemap.xml")
+          echo "Sitemap status: $STATUS"
+          if [ "$STATUS" = "200" ]; then
+            echo "✅ Sitemap is live and accessible"
+          else
+            echo "❌ Sitemap returned $STATUS — check deployment"
+            exit 1
+          fi
+
+      - name: Summary
+        run: |
+          echo "## 🗺️ Sitemap Ping Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Engine | Sitemap URL |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Google | https://www.abinschandran.in/sitemap.xml |" >> $GITHUB_STEP_SUMMARY
+          echo "| Bing   | https://www.abinschandran.in/sitemap.xml |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Triggered by push to \`main\` at $(date -u '+%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
