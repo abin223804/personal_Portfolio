@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import { Quote, ArrowRight, CheckCircle2, FileCheck, MapPin, Sparkles } from "lucide-react";

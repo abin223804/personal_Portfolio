@@ -72,8 +72,8 @@ export const SkillMatrixBento: React.FC = () => {
         {/* Bento Grid View */}
         {viewMode === "bento" ? (
           <div className="space-y-8">
-            {/* Pillar Selector Tabs */}
-            <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
+            {/* Pillar Selector Tabs - Swipeable snap rail on mobile, grid on desktop */}
+            <div className="flex lg:grid overflow-x-auto no-scrollbar lg:grid-cols-6 gap-2 sm:gap-3 pb-1.5 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x">
               {SKILL_PILLARS.map((pillar, idx) => {
                 const Icon = iconsMap[pillar.iconName] || Cpu;
                 const isSelected = selectedPillarIndex === idx;
@@ -82,7 +82,7 @@ export const SkillMatrixBento: React.FC = () => {
                     key={pillar.title}
                     onClick={() => setSelectedPillarIndex(idx)}
                     aria-label={`Select skill category: ${pillar.title}`}
-                    className={`p-3 sm:p-3.5 rounded-xl border text-left font-mono transition-all duration-200 ${
+                    className={`p-3 sm:p-3.5 rounded-xl border text-left font-mono transition-all duration-200 min-w-[135px] sm:min-w-[145px] lg:min-w-0 snap-start shrink-0 lg:shrink select-none active:scale-95 ${
                       isSelected
                         ? "bg-obsidian-hover border-cyan/50 text-ivory ring-1 ring-cyan/40 shadow-lg shadow-cyan/10"
                         : "bg-obsidian-card border-white/[0.08] text-titanium hover:border-cyan/30 hover:text-ivory"
@@ -90,7 +90,7 @@ export const SkillMatrixBento: React.FC = () => {
                   >
                     <Icon className={`w-4 h-4 mb-2 ${isSelected ? "text-cyan" : "text-titanium"}`} />
                     <div className="text-xs font-semibold truncate">{pillar.title}</div>
-                    <div className="text-[10px] text-titanium-muted mt-1">{pillar.skills.length} core skills</div>
+                    <div className="text-[10px] text-titanium-muted mt-0.5">{pillar.skills.length} core skills</div>
                   </button>
                 );
               })}

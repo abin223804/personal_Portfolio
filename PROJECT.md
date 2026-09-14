@@ -122,9 +122,10 @@ Personal _Portfolio/
 │   │   ├── [slug]/
 │   │   │   └── page.tsx             # Dynamic Service Detail Page (/services/[slug])
 │   │   └── page.tsx                 # Service Catalog Page
-│   ├── AppShell.tsx                 # Persistent Global Layout Shell
-│   ├── globals.css                  # Midnight Ink & Electric Cyan Design Tokens & Styles
-│   ├── layout.tsx                   # Root Layout (Font Loaders & JsonLd)
+│   ├── AppShell.tsx                 # Persistent Global Layout Shell (Desktop & Mobile App Shell)
+│   ├── globals.css                  # Midnight Ink & Electric Cyan Design Tokens & Safe Area Styles
+│   ├── layout.tsx                   # Root Layout (Font Loaders, Viewport & JsonLd)
+│   ├── manifest.ts                  # Dynamic Web App Manifest (/manifest.webmanifest)
 │   ├── page.tsx                     # System Overview Homepage (/)
 │   ├── robots.ts                    # Dynamic robots.txt handler
 │   └── sitemap.ts                   # Dynamic sitemap.xml handler
@@ -141,7 +142,7 @@ Personal _Portfolio/
 │   ├── skills/                      # SkillMatrixBento Component
 │   ├── terminal/                    # Interactive CLI Terminal Component
 │   ├── timeline/                    # Career & Work Timeline Component
-│   └── ui/                          # Global Navigation, Footer, Modals, Smooth Scroll
+│   └── ui/                          # Global Navigation, MobileBottomNav, MobileMenuSheet, Footer, Modals
 ├── data/                            # Strongly-Typed Static Data Store
 │   ├── blog.ts                      # Engineering articles dataset & types
 │   ├── faq.ts                       # Frequently Asked Questions
@@ -172,7 +173,7 @@ Personal _Portfolio/
 ## 5. Application Modules
 
 ### 1. Navigation & AppShell Module (`app/AppShell.tsx`, `components/ui/`)
-- **Responsibilities**: Persistent header navigation, footer, `⌘K` command palette modal, Konami easter egg, WhatsApp button, and smooth scroll wrapper.
+- **Responsibilities**: Persistent header navigation (`Navbar.tsx`) with contextual back navigation on mobile sub-pages (`← Services`, `← Projects`, `← Blog`, `← Integrations`) and quick search (no redundant top hamburger clutter on mobile), native 5-tab mobile bottom navigation bar (`MobileBottomNav.tsx`) with thumb-accessible "More" drawer trigger, native slide-up menu sheet (`MobileMenuSheet.tsx`), mobile standalone floating WhatsApp button (`FloatingContactCapsule.tsx` mobile FAB), desktop quick-contact dual capsule dock (`FloatingContactCapsule.tsx`), `⌘K` command palette modal (`CommandPalette.tsx`), Konami easter egg, and smooth scroll wrapper (`SmoothScrollProvider.tsx`).
 
 ### 2. Commercial Services Module (`app/services/`, `data/services.ts`)
 - **Responsibilities**: Displays commercial software services. Generates SSG static detail pages per service slug.
@@ -643,3 +644,31 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
   - Grouped direct Call (`tel:+918086223804`) and direct WhatsApp CTA into a sleek, floating glassmorphic dock capsule at `bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] right-4 sm:right-6 z-40`.
   - Responsive behavior: Compact circular 44x44px touch targets on mobile (<640px) ensuring no overflow at 320px viewport; expands with Framer Motion hover/focus transitions on tablet/desktop (≥640px) to reveal labels and an interactive number preview popover with 1-click clipboard copy.
   - Full keyboard accessibility with visible focus rings and WCAG-compliant color contrast against obsidian background.
+- **Added & Transformed**: Mobile App-Like Experience & PWA Shell (`2026-09-14`):
+  - **PWA Web App Manifest (`app/manifest.ts`)**: Generates dynamic `/manifest.webmanifest` with `standalone` display mode, `#090B10` background and theme color, and high-res adaptive touch icons.
+  - **Root Viewport & Safe-Area Foundation (`app/layout.tsx`, `app/globals.css`)**: Configured Next.js 15 `viewportFit: "cover"`, `themeColor: "#090B10"`, `-webkit-tap-highlight-color: transparent`, `touch-action: manipulation`, and utility classes `pb-safe`, `bottom-safe`, `animate-sheet-up`.
+  - **Native Mobile Bottom Navigation Bar (`components/ui/MobileBottomNav.tsx`)**: 5-tab sticky glassmorphic bottom bar (`Overview`, `Services`, `Projects`, `Blog`, `More`) with active tab ambient glow, iOS safe-area bottom inset padding (`pb-[env(safe-area-inset-bottom,0.25rem)]`), and thumb-accessible "More" drawer trigger.
+  - **Native Mobile Menu Sheet (`components/ui/MobileMenuSheet.tsx`)**: Native slide-up bottom sheet drawer mounted in `app/AppShell.tsx` and triggered directly via the 5th bottom tab ("More") with grab handle, body scroll lock, Escape dismiss, featured commercial action card (`/hire-web-developer`), live CRM SaaS callout (`crm.abinschandran.in`), Kerala regional hubs, interactive CLI terminal, client reviews, integrations, and direct contact channels.
+  - **Clean Mobile App Header (`components/ui/Navbar.tsx`)**: Eliminated redundant top-right mobile hamburger menu icon to avoid split-navigation anti-pattern; features contextual back button (`← Services`, `← Projects`, `← Blog`, `← Integrations`) on deep routes and quick search button triggering Command Palette.
+  - **Mobile Layout Clearance & Floating Contact Repositioning (`app/AppShell.tsx`, `components/ui/FloatingContactCapsule.tsx`)**: Added `pb-[calc(4.85rem+env(safe-area-inset-bottom,0px))] md:pb-0` to `<main>` container and elevated the floating contact capsule on mobile to prevent overlapping bottom navigation.
+  - **Responsive Data Table Transformations (`app/services/[slug]/page.tsx`, `app/projects/[slug]/page.tsx`)**:
+    - Replaced 5-column technical audit table on mobile (`block md:hidden`) with stacked, touch-friendly before/after metric cards while strictly preserving the desktop layout (`hidden md:block`).
+    - Replaced 6-column project outcomes table on mobile (`block md:hidden`) with verified outcome cards with environment badges and proof indicators while preserving desktop tables.
+  - **Interactive Widget Ergonomics (`components/architecture/ArchitecturePlayground.tsx`, `components/skills/SkillMatrixBento.tsx`, `components/timeline/CareerTimeline.tsx`)**:
+    - Architecture Playground: Converted desktop horizontal flex into touch-snap rail with step indicator, auto-scrolling to active node, and full-width 48px simulation CTA.
+    - Skill Matrix: Added touch-friendly swipeable horizontal tab rail on mobile for pillars.
+    - Career Timeline: Added touch-friendly milestone stepper.
+  - **Mobile Dual Floating FABs → MD3 Speed Dial FAB (`components/ui/FloatingContactCapsule.tsx`)**:
+    - Replaced 2-stacked-FAB pattern with Material Design 3 Speed Dial: single `<button id="mobile-contact-fab">` (WhatsApp FAB when closed, X when open) that expands upward to reveal labeled Call + WhatsApp mini-FABs above.
+    - Backdrop scrim (`bg-black/35 backdrop-blur-[2px]`) dismisses dial on tap-outside; Escape key closes it; icon rotates WhatsApp↔X via spring animation (`AnimatePresence mode="wait"`).
+    - **SEO Fix**: Speed dial action `<a>` tags are **always rendered in the SSR HTML DOM** — never conditionally mounted/unmounted. Visibility controlled via CSS (`opacity`, `visibility`, `transform`, `pointer-events`) instead of React mount/unmount, ensuring Googlebot discovers both `tel:+918086223804` and `wa.me/918086223804` links regardless of JS execution.
+
+  - **SEO — Structured Data Phone Consistency Fixes**:
+    - **4 pages corrected**: Replaced stale `+91-95444-93821` (old phone) with `+918086223804` (correct) in: `app/reviews/page.tsx` (×2 occurrences), `app/freelance-software-developer-kollam/page.tsx`, `app/freelance-software-developer-kerala/page.tsx`, `app/freelance-software-developer-karunagappally/page.tsx`.
+    - **Person schema enhanced** (`components/seo/JsonLd.tsx`): Added `telephone: "+918086223804"` and `contactPoint: { @type: ContactPoint, telephone, contactType, availableLanguage, areaServed }` to the `Person` schema so Google's Knowledge Panel shows the correct number from the root entity.
+    - **Homepage ProfessionalService schema added** (`app/page.tsx`): Added `<JsonLd type="ProfessionalService" />` to the homepage so the homepage emits the full `ProfessionalService` structured data (including `telephone`, `hasOfferCatalog`, `geo`, `areaServed`) alongside `Person`, `WebSite`, `Organization`, `FAQPage`, and `BreadcrumbList` schemas.
+
+  - **Verified**: TypeScript (`tsc --noEmit`) passes with 0 errors after all changes.
+
+
+

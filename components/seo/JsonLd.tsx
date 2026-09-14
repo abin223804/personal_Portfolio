@@ -101,7 +101,16 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type = "Person", projectData, se
       "width": 400,
       "height": 400
     },
-    "mainEntityOfPage": "https://www.abinschandran.in"
+    "mainEntityOfPage": "https://www.abinschandran.in",
+    "telephone": "+918086223804",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+918086223804",
+      "contactType": "customer service",
+      "availableLanguage": ["English", "Malayalam"],
+      "contactOption": "TollFree",
+      "areaServed": "IN"
+    }
   };
 
   const professionalServiceSchema = {

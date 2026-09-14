@@ -56,7 +56,7 @@ export default function ReviewsPage() {
         name: "Abin S Chandran — Freelance Software Developer & Solution Architect",
         url: "https://www.abinschandran.in",
         image: "https://www.abinschandran.in/abin-s-chandran.png",
-        telephone: "+91-95444-93821",
+        telephone: "+918086223804",
         priceRange: "$$ - $$$",
         address: {
           "@type": "PostalAddress",
@@ -70,7 +70,7 @@ export default function ReviewsPage() {
           "@type": "ProfessionalService",
           name: "Abin S Chandran — Freelance Software Developer & Solution Architect",
           image: "https://www.abinschandran.in/abin-s-chandran.png",
-          telephone: "+91-95444-93821",
+          telephone: "+918086223804",
           url: "https://www.abinschandran.in",
           priceRange: "$$ - $$$",
           address: {

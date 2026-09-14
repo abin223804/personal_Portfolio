@@ -18,7 +18,7 @@ export const ProjectCard: React.FC<{ project: CaseStudy }> = ({ project }) => {
   return (
     <div
       onMouseMove={handleMouseMove}
-      className="relative group bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 hover:bg-brand-elevated rounded-2xl p-5 sm:p-7 transition-all duration-300 shadow-xl flex flex-col justify-between overflow-hidden font-sans"
+      className="relative group bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 hover:bg-brand-elevated rounded-2xl p-4 xs:p-5 sm:p-7 transition-all duration-300 shadow-xl flex flex-col justify-between overflow-hidden font-sans"
     >
       {/* Dynamic Cursor Spotlight Effect (Subtle Cyan) */}
       <div
@@ -83,12 +83,12 @@ export const ProjectCard: React.FC<{ project: CaseStudy }> = ({ project }) => {
       </div>
 
       {/* Card Action Link */}
-      <div className="pt-6 mt-4 border-t border-white/[0.08] flex items-center justify-between relative z-10">
-        <span className="text-xs font-mono text-titanium truncate max-w-[50%]">Role: {project.role}</span>
+      <div className="pt-4 sm:pt-6 mt-4 border-t border-white/[0.08] flex items-center justify-between relative z-10">
+        <span className="text-xs font-mono text-titanium truncate max-w-[45%]">Role: {project.role}</span>
 
         <Link
           href={`/projects/${project.slug}`}
-          className="inline-flex items-center gap-1.5 text-xs font-bold font-mono text-cyan hover:text-white transition-colors group/link shrink-0"
+          className="min-h-[44px] inline-flex items-center gap-1.5 text-xs font-bold font-mono text-cyan hover:text-white transition-colors group/link shrink-0 select-none active:scale-95"
         >
           <span>Read Case Study</span>
           <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />

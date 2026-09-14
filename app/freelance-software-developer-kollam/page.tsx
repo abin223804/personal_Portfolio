@@ -135,7 +135,7 @@ export default function KollamSoftwareDeveloperPage() {
           { "@type": "City", name: "Paravur" },
         ],
         priceRange: "$$ - $$$",
-        telephone: "+91-95444-93821",
+        telephone: "+918086223804",
         email: "abinschandran1@gmail.com",
       },
       {

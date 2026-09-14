@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/hero/HeroSection";
 import { ServicesSection } from "@/components/services/ServicesSection";
 import { ProjectGrid } from "@/components/projects/ProjectGrid";
 import { HomeBlogSection } from "@/components/blog/HomeBlogSection";
+import { HomeReviewsSection } from "@/components/reviews/HomeReviewsSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 // Dynamically import below-the-fold interactive components to eliminate unused initial JS payload
@@ -22,9 +23,6 @@ const CareerTimeline = dynamic(
 const FaqSection = dynamic(
   () => import("@/components/faq/FaqSection").then((mod) => mod.FaqSection)
 );
-const HomeReviewsSection = dynamic(
-  () => import("@/components/reviews/HomeReviewsSection").then((mod) => mod.HomeReviewsSection)
-);
 const ConversionCtaSection = dynamic(
   () => import("@/components/cta/ConversionCtaSection").then((mod) => mod.ConversionCtaSection)
 );
@@ -36,6 +34,7 @@ export default function Home() {
   return (
     <>
       <JsonLd type="FAQPage" />
+      <JsonLd type="ProfessionalService" />
       <JsonLd
         type="BreadcrumbList"
         breadcrumbs={[{ name: "Home", item: "https://www.abinschandran.in" }]}

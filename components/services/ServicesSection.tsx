@@ -109,10 +109,10 @@ export const ServicesSection: React.FC<{ limit?: number }> = ({ limit }) => {
                 </div>
 
                 {/* Card Action Link */}
-                <div className="pt-6 mt-4 border-t border-white/[0.08] flex items-center justify-between gap-2">
+                <div className="pt-4 sm:pt-6 mt-4 border-t border-white/[0.08] flex items-center justify-between gap-2">
                   <Link
                     href={`/services/${service.slug}`}
-                    className="text-xs font-mono text-cyan hover:text-white transition-colors flex items-center gap-1 group/link"
+                    className="min-h-[44px] inline-flex items-center text-xs font-mono font-bold text-cyan hover:text-white transition-colors gap-1 group/link select-none active:scale-95"
                   >
                     <span>Service Details</span>
                     <ArrowRight className="w-3.5 h-3.5 text-cyan group-hover/link:translate-x-0.5 transition-transform" />

@@ -69,7 +69,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) =>
   }
 
   return (
-    <article className="group bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 hover:bg-brand-elevated rounded-xl p-6 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative overflow-hidden">
+    <article className="group bg-obsidian-card border border-white/[0.08] hover:border-cyan/40 hover:bg-brand-elevated rounded-xl p-4 sm:p-6 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative overflow-hidden">
       <div className="space-y-3">
         <div className="flex items-center justify-between text-xs text-titanium font-mono">
           <span className="px-2.5 py-0.5 rounded-full bg-obsidian-surface border border-white/[0.08] text-cyan text-[11px] font-bold">
@@ -96,8 +96,8 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) =>
         </p>
       </div>
 
-      <div className="pt-5 mt-4 border-t border-white/[0.08] flex items-center justify-between">
-        <div className="flex flex-wrap gap-1.5 max-w-[75%]">
+      <div className="pt-4 sm:pt-5 mt-4 border-t border-white/[0.08] flex items-center justify-between">
+        <div className="flex flex-wrap gap-1.5 max-w-[70%]">
           {post.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
@@ -110,7 +110,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) =>
 
         <Link
           href={`/blog/${post.slug}`}
-          className="text-cyan group-hover:text-white transition-colors text-xs font-mono font-semibold flex items-center gap-1"
+          className="min-h-[44px] inline-flex items-center text-cyan group-hover:text-white transition-colors text-xs font-mono font-semibold gap-1 select-none active:scale-95"
         >
           <span>Read</span>
           <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

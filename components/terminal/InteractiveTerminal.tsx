@@ -296,9 +296,9 @@ export const InteractiveTerminal: React.FC = () => {
               <span className="text-[10px] font-mono text-cyan font-bold">TTY /dev/pts/0</span>
             </div>
 
-            {/* Quick Command Chips */}
-            <div className="bg-obsidian-surface px-4 py-2 border-b border-white/[0.08] flex flex-wrap gap-2 text-[11px] font-mono">
-              <span className="text-titanium">Quick commands:</span>
+            {/* Quick Command Chips - Swipeable on mobile */}
+            <div className="bg-obsidian-surface px-3 sm:px-4 py-2 border-b border-white/[0.08] flex items-center overflow-x-auto no-scrollbar gap-1.5 text-[11px] font-mono">
+              <span className="text-titanium-muted shrink-0 hidden xs:inline">Quick:</span>
               {[
                 { label: "crm (live saas)", cmd: "crm" },
                 { label: "whatsapp", cmd: "whatsapp" },
@@ -312,7 +312,7 @@ export const InteractiveTerminal: React.FC = () => {
                 <button
                   key={item.label}
                   onClick={() => handleCommand(item.cmd)}
-                  className="px-2 py-0.5 rounded bg-obsidian-card hover:bg-cyan/15 hover:text-cyan border border-white/[0.08] text-titanium transition-colors"
+                  className="px-2.5 py-1 rounded-lg bg-obsidian-card hover:bg-cyan/15 hover:text-cyan border border-white/[0.08] text-titanium transition-all shrink-0 active:scale-95"
                 >
                   {item.label}
                 </button>
@@ -320,7 +320,7 @@ export const InteractiveTerminal: React.FC = () => {
             </div>
 
             {/* Terminal Content Screen */}
-            <div className="p-4 sm:p-6 min-h-[320px] max-h-[420px] overflow-y-auto space-y-4 font-mono">
+            <div className="p-4 sm:p-6 min-h-[300px] sm:min-h-[320px] max-h-[420px] overflow-y-auto space-y-4 font-mono">
               {history.map((h, i) => (
                 <div key={i} className="space-y-1">
                   <div className="flex items-center gap-2 text-xs">
@@ -334,19 +334,23 @@ export const InteractiveTerminal: React.FC = () => {
             </div>
 
             {/* Terminal Command Input Bar */}
-            <form onSubmit={handleSubmit} className="border-t border-white/[0.08] p-3 bg-obsidian-card flex items-center gap-2 font-mono">
-              <span className="text-emerald-400 font-bold text-xs pl-2">asc@developer:~$</span>
+            <form onSubmit={handleSubmit} className="border-t border-white/[0.08] p-2.5 sm:p-3 bg-obsidian-card flex items-center gap-2 font-mono">
+              <span className="text-emerald-400 font-bold text-xs pl-1 sm:pl-2 shrink-0">asc@dev:~$</span>
               <input
                 ref={inputRef}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type command like 'whatsapp' or 'send hello'..."
+                placeholder="Type command ('whatsapp', 'send hello')..."
                 aria-label="Terminal CLI command prompt input"
-                className="w-full bg-transparent text-xs text-ivory placeholder-titanium focus:outline-none"
+                className="w-full bg-transparent text-[16px] sm:text-xs text-ivory placeholder-titanium focus:outline-none"
               />
-              <button type="submit" aria-label="Execute Terminal Command" className="p-1.5 rounded-lg bg-cyan text-brand-bg hover:bg-cyan-light transition-colors">
-                <CornerDownLeft className="w-3.5 h-3.5" />
+              <button
+                type="submit"
+                aria-label="Execute Terminal Command"
+                className="p-2 rounded-lg bg-cyan text-brand-bg hover:bg-cyan-light transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center shrink-0"
+              >
+                <CornerDownLeft className="w-4 h-4" />
               </button>
             </form>
           </div>
@@ -404,33 +408,40 @@ export const InteractiveTerminal: React.FC = () => {
               )}
 
               {/* Form Input */}
-              <form onSubmit={handleFormSubmit} className="space-y-3 font-sans">
+              <form onSubmit={handleFormSubmit} className="space-y-3.5 font-sans">
                 <div>
-                  <label htmlFor="contact-name" className="block text-xs font-mono text-titanium mb-1">Your Name / Organization</label>
+                  <label htmlFor="contact-name" className="block text-xs font-mono text-titanium mb-1.5">
+                    Your Name / Organization
+                  </label>
                   <input
                     id="contact-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Jane Doe (Founder / Lead Architect)"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-white/[0.08] text-xs text-ivory placeholder-titanium focus:outline-none focus:border-cyan transition-colors"
+                    className="w-full px-3.5 py-3 rounded-xl bg-obsidian-surface border border-white/[0.08] text-[16px] sm:text-xs text-ivory placeholder-titanium focus:outline-none focus:border-cyan transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="contact-email" className="block text-xs font-mono text-titanium mb-1">Your Email Address</label>
+                  <label htmlFor="contact-email" className="block text-xs font-mono text-titanium mb-1.5">
+                    Your Email Address
+                  </label>
                   <input
                     id="contact-email"
                     type="email"
+                    inputMode="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="jane@company.com"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-white/[0.08] text-xs text-ivory placeholder-titanium focus:outline-none focus:border-cyan transition-colors"
+                    className="w-full px-3.5 py-3 rounded-xl bg-obsidian-surface border border-white/[0.08] text-[16px] sm:text-xs text-ivory placeholder-titanium focus:outline-none focus:border-cyan transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="contact-scope" className="block text-xs font-mono text-titanium mb-1">Project Scope *</label>
+                  <label htmlFor="contact-scope" className="block text-xs font-mono text-titanium mb-1.5">
+                    Project Scope *
+                  </label>
                   <textarea
                     id="contact-scope"
                     required
@@ -438,23 +449,23 @@ export const InteractiveTerminal: React.FC = () => {
                     value={scope}
                     onChange={(e) => setScope(e.target.value)}
                     placeholder="Describe your web application, Node.js API, or Next.js SaaS requirement..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-surface border border-white/[0.08] text-xs text-ivory placeholder-titanium focus:outline-none focus:border-cyan transition-colors"
+                    className="w-full px-3.5 py-3 rounded-xl bg-obsidian-surface border border-white/[0.08] text-[16px] sm:text-xs text-ivory placeholder-titanium focus:outline-none focus:border-cyan transition-colors"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting || !scope.trim()}
-                  className="w-full py-3 rounded-xl bg-cyan hover:bg-cyan-light disabled:opacity-50 text-brand-bg text-xs font-mono font-extrabold transition-all shadow-lg shadow-cyan/20 flex items-center justify-center gap-2"
+                  className="w-full min-h-[48px] py-3.5 rounded-xl bg-cyan hover:bg-cyan-light disabled:opacity-50 text-brand-bg text-xs font-mono font-extrabold transition-all shadow-lg shadow-cyan/20 flex items-center justify-center gap-2 active:scale-[0.99]"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      <Loader2 className="w-4 h-4 animate-spin" />
                       <span>Transmitting Packet...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-3.5 h-3.5" />
+                      <Send className="w-4 h-4" />
                       <span>Transmit Inquiry to Inbox</span>
                     </>
                   )}

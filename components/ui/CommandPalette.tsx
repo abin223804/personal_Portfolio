@@ -20,10 +20,15 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
+      document.body.style.overflow = "hidden";
     } else {
       setQuery("");
       setSelectedIndex(0);
+      document.body.style.overflow = "";
     }
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -97,42 +102,54 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-obsidian-bg/80 backdrop-blur-xl transition-all animate-in fade-in duration-200">
-      {/* Backdrop overlay */}
-      <div className="fixed inset-0" onClick={onClose} />
+    <div className="fixed inset-0 z-50 flex flex-col sm:items-center sm:justify-start sm:pt-20 bg-obsidian-bg/85 backdrop-blur-2xl transition-all animate-in fade-in duration-200">
+      {/* Backdrop overlay for desktop click-away */}
+      <div className="hidden sm:block fixed inset-0" onClick={onClose} />
 
-      {/* Modal Content */}
+      {/* Modal / Native Sheet Content */}
       <div
-        className="relative w-full max-w-2xl bg-obsidian-card border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden z-10 font-sans"
+        className="relative w-full sm:max-w-2xl h-full sm:h-auto sm:max-h-[80vh] bg-brand-bg sm:bg-obsidian-card border-b sm:border border-white/[0.08] sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden z-10 font-sans"
         onKeyDown={handleKeyDown}
       >
-        {/* Search Header */}
-        <div className="flex items-center gap-3 px-4 py-4 border-b border-white/[0.08] bg-brand-bg/50">
+        {/* Search Header - Native App-style with safe area support */}
+        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/[0.08] bg-obsidian-card/80 pt-[max(0.85rem,env(safe-area-inset-top,0.85rem))] sm:pt-3.5">
           <Search className="w-5 h-5 text-cyan shrink-0" />
           <input
             ref={inputRef}
             type="text"
-            placeholder="Type a command, project name, or route..."
+            placeholder="Search commands, projects, articles..."
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
               setSelectedIndex(0);
             }}
-            className="w-full bg-transparent text-ivory placeholder-titanium text-sm focus:outline-none font-medium"
+            className="w-full bg-transparent text-ivory placeholder-titanium text-[16px] sm:text-sm focus:outline-none font-medium"
           />
+          {query && (
+            <button
+              onClick={() => {
+                setQuery("");
+                inputRef.current?.focus();
+              }}
+              aria-label="Clear search input"
+              className="p-1 text-titanium hover:text-ivory text-xs"
+            >
+              Clear
+            </button>
+          )}
           <button
             onClick={onClose}
             aria-label="Close Command Palette"
-            className="p-1 rounded-lg hover:bg-obsidian-hover text-titanium hover:text-ivory transition-colors"
+            className="flex items-center justify-center w-8 h-8 rounded-lg bg-obsidian-surface hover:bg-obsidian-hover text-titanium hover:text-ivory transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Results List */}
-        <div className="max-h-96 overflow-y-auto p-2 space-y-1">
+        <div className="flex-1 sm:flex-initial max-h-none sm:max-h-96 overflow-y-auto p-2 space-y-1">
           {filtered.length === 0 ? (
-            <div className="py-8 text-center text-titanium text-xs font-mono">
+            <div className="py-12 text-center text-titanium text-xs font-mono">
               No matching commands or case studies found.
             </div>
           ) : (
@@ -144,28 +161,28 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   key={item.id}
                   onClick={() => handleSelect(item)}
                   onMouseEnter={() => setSelectedIndex(index)}
-                  className={`flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${
+                  className={`flex items-center justify-between px-3.5 py-3 sm:py-2.5 min-h-[48px] rounded-xl cursor-pointer transition-all select-none active:scale-[0.99] ${
                     isSelected
-                      ? "bg-cyan/15 border border-cyan/40 text-ivory"
+                      ? "bg-cyan/15 border border-cyan/40 text-ivory shadow-sm"
                       : "text-titanium hover:bg-obsidian-hover hover:text-ivory border border-transparent"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
                         isSelected ? "bg-cyan text-brand-bg" : "bg-obsidian-surface text-titanium"
                       }`}
                     >
                       <Icon className="w-4 h-4" />
                     </div>
-                    <div>
-                      <div className="text-xs font-semibold text-ivory">{item.title}</div>
+                    <div className="truncate">
+                      <div className="text-xs sm:text-xs font-semibold text-ivory truncate">{item.title}</div>
                       <div className="text-[10px] font-mono text-titanium-muted">{item.category}</div>
                     </div>
                   </div>
                   <ArrowRight
-                    className={`w-4 h-4 transition-transform ${
-                      isSelected ? "text-cyan translate-x-1" : "text-titanium/40 opacity-0"
+                    className={`w-4 h-4 shrink-0 transition-transform ${
+                      isSelected ? "text-cyan translate-x-1" : "text-titanium/40 opacity-40 sm:opacity-0"
                     }`}
                   />
                 </div>
@@ -174,8 +191,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           )}
         </div>
 
-        {/* Footer shortcuts */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-brand-bg/80 border-t border-white/[0.08] text-[11px] text-titanium-muted font-mono">
+        {/* Desktop Footer Shortcuts */}
+        <div className="hidden sm:flex items-center justify-between px-4 py-2.5 bg-brand-bg/80 border-t border-white/[0.08] text-[11px] text-titanium-muted font-mono">
           <div className="flex items-center gap-3">
             <span>
               <kbd className="px-1.5 py-0.5 bg-obsidian-surface rounded border border-white/[0.08] text-ivory">↑↓</kbd> navigate
@@ -188,9 +205,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
             </span>
           </div>
           <span className="flex items-center gap-1 text-cyan font-semibold">
-            <Sparkles className="w-3 h-3" /> Solution Architect CLI
+            <Sparkles className="w-3 h-3" /> Architecture CLI
           </span>
         </div>
+
+        {/* Mobile Safe Area Bottom Spacer */}
+        <div className="sm:hidden pb-[env(safe-area-inset-bottom,0.5rem)] bg-brand-bg" />
       </div>
     </div>
   );

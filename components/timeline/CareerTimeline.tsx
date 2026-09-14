@@ -28,8 +28,8 @@ export const CareerTimeline: React.FC = () => {
           </div>
         </div>
 
-        {/* Horizontal Timeline Bar */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        {/* Timeline Milestone Selector - Swipeable on mobile, grid on desktop */}
+        <div className="flex md:grid overflow-x-auto no-scrollbar md:grid-cols-4 gap-2.5 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 mb-6 snap-x">
           {CAREER_TIMELINE.map((m, idx) => {
             const isActive = activeIdx === idx;
             return (
@@ -37,7 +37,7 @@ export const CareerTimeline: React.FC = () => {
                 key={m.year}
                 onClick={() => setActiveIdx(idx)}
                 aria-label={`Select timeline milestone: ${m.year} ${m.role}`}
-                className={`p-3.5 sm:p-4 rounded-xl border text-left font-mono transition-all duration-200 relative ${
+                className={`p-3.5 sm:p-4 rounded-xl border text-left font-mono transition-all duration-200 relative min-w-[200px] sm:min-w-0 snap-start shrink-0 md:shrink select-none active:scale-95 ${
                   isActive
                     ? "bg-obsidian-hover border-cyan text-ivory ring-1 ring-cyan/40 shadow-xl shadow-cyan/15"
                     : "bg-obsidian-card border-white/[0.08] text-titanium hover:border-cyan/30 hover:text-ivory"

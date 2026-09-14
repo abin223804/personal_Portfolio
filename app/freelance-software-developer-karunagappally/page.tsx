@@ -282,7 +282,7 @@ export default function KarunagappallyLandingPage() {
         image: "https://www.abinschandran.in/abin-s-chandran.png",
         description:
           "Hire a freelance software developer serving Karunagappally and Kollam for web apps, SaaS, APIs, mobile apps and AI solutions. Direct project consultation.",
-        telephone: "+91-95444-93821",
+        telephone: "+918086223804",
         email: "abinschandran1@gmail.com",
         priceRange: "$$ - $$$",
         address: {

@@ -289,7 +289,52 @@ export default async function ServiceDetailPage({ params }: Props) {
               </p>
             </div>
 
-            <div className="overflow-x-auto">
+            {/* Mobile Cards Transformation (Option A - Touch-friendly card stack) */}
+            <div className="block md:hidden space-y-3 font-sans">
+              {service.auditComparisonTable.map((row, rIdx) => (
+                <div
+                  key={rIdx}
+                  className="p-4 rounded-xl bg-obsidian-surface border border-white/[0.08] space-y-3 shadow-md"
+                >
+                  <div className="flex items-start justify-between gap-2 border-b border-white/[0.06] pb-2">
+                    <span className="font-mono font-bold text-ivory text-xs leading-snug">
+                      {row.measure}
+                    </span>
+                    <span className="text-[10px] font-mono text-cyan bg-cyan/10 px-2 py-0.5 rounded border border-cyan/30 shrink-0">
+                      {row.measurementMethod}
+                    </span>
+                  </div>
+
+                  {/* Side-by-side Before vs After metrics */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="p-2 rounded-lg bg-rose-500/10 border border-rose-500/25">
+                      <div className="text-[10px] font-mono text-rose-400 font-semibold uppercase tracking-wide">
+                        Baseline (Before)
+                      </div>
+                      <div className="text-xs font-mono font-bold text-rose-300 mt-0.5">
+                        {row.before}
+                      </div>
+                    </div>
+                    <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/25">
+                      <div className="text-[10px] font-mono text-emerald-400 font-semibold uppercase tracking-wide">
+                        Optimized (After)
+                      </div>
+                      <div className="text-xs font-mono font-bold text-emerald-400 mt-0.5">
+                        {row.after}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="text-[11px] text-titanium leading-relaxed pl-2.5 border-l-2 border-cyan/40">
+                    <span className="text-slate-300 font-semibold">Remediation: </span>
+                    {row.changeMade}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Full Table View */}
+            <div className="hidden md:block overflow-x-auto">
               <table className="w-full text-left text-xs font-sans border-collapse">
                 <thead>
                   <tr className="border-b border-white/[0.12] text-titanium font-mono text-[11px] uppercase tracking-wider">

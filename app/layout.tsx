@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
@@ -17,8 +17,27 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#090B10" },
+    { media: "(prefers-color-scheme: light)", color: "#090B10" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.abinschandran.in"),
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Abin Portfolio",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   title: {
     default: "Abin S Chandran (Abin) | Freelance Software Developer & Solution Architect",
     template: "%s | Abin S Chandran (Abin) - Freelance Software Developer",

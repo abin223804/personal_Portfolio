@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Cpu, ShieldCheck, Database, Layers, Cloud, Server, Activity, ArrowRight, Play, CheckCircle2, Zap } from "lucide-react";
 
 interface NodeDetail {
@@ -18,6 +18,16 @@ export const ArchitecturePlayground: React.FC = () => {
   const [activeNodeId, setActiveNodeId] = useState<string>("gateway");
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
   const [currentStep, setCurrentStep] = useState<number>(0);
+  const railRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isSimulating && railRef.current) {
+      const activeEl = railRef.current.querySelector(`[data-node-id="${activeNodeId}"]`) as HTMLElement | null;
+      if (activeEl) {
+        activeEl.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    }
+  }, [activeNodeId, isSimulating]);
 
   const nodes: NodeDetail[] = [
     {
@@ -126,7 +136,7 @@ export const ArchitecturePlayground: React.FC = () => {
             onClick={triggerSimulation}
             disabled={isSimulating}
             aria-label="Simulate live request flow across distributed architecture nodes"
-            className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-extrabold transition-all shadow-lg ${
+            className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-mono text-xs font-extrabold min-h-[48px] transition-all shadow-lg active:scale-95 ${
               isSimulating
                 ? "bg-amber-500/20 text-amber-400 border border-amber-500/40 cursor-not-allowed"
                 : "bg-cyan text-brand-bg hover:bg-cyan-light shadow-cyan/20 hover:shadow-cyan/30"
@@ -137,8 +147,19 @@ export const ArchitecturePlayground: React.FC = () => {
           </button>
         </div>
 
-        {/* Nodes Interactive Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+        {/* Pipeline Stage Step Indicator on Mobile */}
+        <div className="flex md:hidden items-center justify-between text-[11px] font-mono text-titanium-muted mb-2 px-0.5">
+          <span>Pipeline Stage:</span>
+          <span className="text-cyan font-bold">
+            Step {nodes.findIndex((n) => n.id === activeNodeId) + 1} of {nodes.length}
+          </span>
+        </div>
+
+        {/* Nodes Interactive Snap Rail on Mobile / Grid on Desktop */}
+        <div
+          ref={railRef}
+          className="flex md:grid overflow-x-auto no-scrollbar md:grid-cols-3 lg:grid-cols-6 gap-2.5 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 mb-8 snap-x scroll-smooth"
+        >
           {nodes.map((node, index) => {
             const Icon = node.icon;
             const isActive = activeNodeId === node.id;
@@ -147,9 +168,10 @@ export const ArchitecturePlayground: React.FC = () => {
             return (
               <button
                 key={node.id}
+                data-node-id={node.id}
                 onClick={() => setActiveNodeId(node.id)}
                 aria-label={`Inspect architectural node: ${node.name}`}
-                className={`p-4 rounded-xl border text-left transition-all duration-300 relative group ${
+                className={`p-3.5 sm:p-4 rounded-xl border text-left transition-all duration-300 relative group min-w-[155px] sm:min-w-0 snap-start shrink-0 md:shrink select-none active:scale-95 ${
                   isActive
                     ? "bg-obsidian-card border-cyan shadow-xl shadow-cyan/15 ring-1 ring-cyan/40"
                     : isPassed
@@ -158,7 +180,7 @@ export const ArchitecturePlayground: React.FC = () => {
                 }`}
               >
                 {/* Node Status Indicator */}
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
                   <div
                     className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
                       isActive ? "bg-cyan text-brand-bg" : "bg-obsidian-surface text-titanium group-hover:text-ivory"
@@ -184,7 +206,7 @@ export const ArchitecturePlayground: React.FC = () => {
         </div>
 
         {/* Active Node Deep-Dive Inspector Panel */}
-        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+        <div className="bg-obsidian-card border border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-cyan/4 rounded-full blur-3xl pointer-events-none" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">

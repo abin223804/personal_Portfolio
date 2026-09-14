@@ -329,7 +329,59 @@ export default async function CaseStudyPage({ params }: Props) {
             </p>
           </div>
 
-          <div className="overflow-x-auto">
+          {/* Mobile Cards Transformation (Option A - App-like outcomes list) */}
+          <div className="block md:hidden space-y-3 font-sans">
+            {project.outcomes.map((row, rIdx) => (
+              <div
+                key={rIdx}
+                className="p-4 rounded-xl bg-obsidian-surface border border-white/[0.08] space-y-3 shadow-md"
+              >
+                <div className="flex items-start justify-between gap-2 border-b border-white/[0.06] pb-2">
+                  <span className="font-mono font-bold text-ivory text-xs leading-snug">
+                    {row.metricName}
+                  </span>
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-mono border font-semibold shrink-0 ${getEnvBadgeStyle(row.environment)}`}>
+                    {row.environment}
+                  </span>
+                </div>
+
+                {/* Baseline vs Final Outcome */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="p-2 rounded-lg bg-obsidian-card border border-white/[0.06]">
+                    <div className="text-[10px] font-mono text-titanium-muted uppercase tracking-wide">
+                      Baseline
+                    </div>
+                    <div className="text-xs font-mono font-medium text-titanium mt-0.5">
+                      {row.baseline || "—"}
+                    </div>
+                  </div>
+                  <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
+                    <div className="text-[10px] font-mono text-emerald-400 font-semibold uppercase tracking-wide">
+                      Verified Result
+                    </div>
+                    <div className="text-xs font-mono font-bold text-emerald-400 mt-0.5">
+                      {row.finalValue}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-1 pt-1 text-[11px] font-sans">
+                  <div className="text-titanium">
+                    <span className="text-slate-300 font-semibold">Method: </span>
+                    {row.measurementMethod}{" "}
+                    <span className="text-titanium-muted font-mono text-[10px]">({row.measurementDateOrPeriod})</span>
+                  </div>
+                  <div className="text-titanium leading-relaxed pl-2.5 border-l-2 border-cyan/40">
+                    <span className="text-slate-300 font-semibold">Abin&apos;s Contribution: </span>
+                    {row.roleContribution}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Full Table View */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left text-xs font-sans border-collapse">
               <thead>
                 <tr className="border-b border-white/[0.12] text-titanium font-mono text-[11px] uppercase tracking-wider">

@@ -34,6 +34,12 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fast tap response on touch devices */
+a, button, input, select, textarea {
+  touch-action: manipulation;
 }
 
 /* Custom Midnight Scrollbar */
@@ -117,6 +123,36 @@ body {
 
 .animate-glare-sweep {
   animation: glare-sweep 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Safe Area Inset Utility Classes */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.bottom-safe {
+  bottom: env(safe-area-inset-bottom, 0px);
+}
+.top-safe {
+  top: env(safe-area-inset-top, 0px);
+}
+
+/* Mobile App Sheet Backdrop & Slide */
+@keyframes sheet-slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-sheet-up {
+  animation: sheet-slide-up 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Respect user's motion preferences */
