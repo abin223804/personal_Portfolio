@@ -701,6 +701,12 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
     - `components/ui/CommandPalette.tsx`: Added *"Freelance Software Developer Kochi & Infopark"* action under Regional Hubs.
     - `app/freelance-software-developer-kerala/page.tsx`: Linked Kochi in the district coverage table and updated the Priority Service Corridors spotlight to a 3-column grid featuring Kochi, Kollam, and Karunagappally.
   - **Verification**: Full static production build validation (`npm run build`) passed with all 50 static pages generated successfully with exit code 0.
+  - **Updated**: Competitor Intelligence Pipeline Direct Auto-Deployment (`.github/workflows/competitor-monitor.yml`, `scripts/scrape-competitors.mjs`):
+    - Removed Pull Request generation (`peter-evans/create-pull-request@v6`) and manual merge requirement.
+    - Upgraded `.github/workflows/competitor-monitor.yml` to automatically commit changes (`data/competitor-insights.json`, `competitor-analysis.json`, `competitor-improvement-report.html`) and push directly to `origin/main` as `github-actions[bot]`.
+    - Integrated direct post-crawl ping to Google and Bing sitemap notification endpoints.
+    - Updated HTML email report and subject (`scripts/scrape-competitors.mjs`) to notify user of automated live deployment with 1-click links to the live portfolio and GitHub commit history.
+
 
 
 

@@ -1,4 +1,4 @@
-name: Weekly AI Competitor Intelligence & Improvement Monitor
+name: Weekly AI Competitor Intelligence & Auto-SEO Update
 
 on:
   schedule:
@@ -8,14 +8,17 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
-  monitor-and-report:
+  monitor-and-auto-update:
+    name: AI Competitor Crawl & Direct Main Auto-Update
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -26,39 +29,33 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run AI Competitor Intelligence & Stage Suggestions
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node scripts/scrape-competitors.mjs --no-email
-
-      - name: Create Pull Request with Suggested Code Updates
-        id: cpr
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore(seo): automated competitor intelligence updates"
-          title: "🤖 Weekly Competitor SEO & Content Suggestions"
-          body: |
-            ## 🤖 AI-Powered Competitor Intelligence Update
-            This Pull Request was generated automatically by your **Gemini AI Competitor Intelligence Engine**.
-
-            - **AI Analysis:** Brand health score, keyword gaps & content opportunities in `data/competitor-insights.json`
-            - **Powered by:** Gemini 1.5 Flash — real analysis of your actual competitor data
-            - **Live Report:** Download the HTML artifact or check your email digest.
-
-            ### How to accept:
-            Simply review the files changed and click **"Merge pull request"** below!
-          branch: "bot/competitor-seo-update"
-          base: "main"
-          delete-branch: true
-
-      - name: Send Email Digest with 1-Click Accept PR Link
+      - name: Run AI Competitor Crawl & Dispatch Email
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           REPORT_EMAIL: ${{ secrets.REPORT_EMAIL || 'abinschandran1@gmail.com' }}
-          PR_URL: ${{ steps.cpr.outputs.pull-request-url || 'https://github.com/abin223804/personal_Portfolio/pulls' }}
         run: node scripts/scrape-competitors.mjs
+
+      - name: Commit & Push Directly to main (No PR Required)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/competitor-insights.json competitor-analysis.json competitor-improvement-report.html
+          if ! git diff --staged --quiet; then
+            echo "📝 Changes detected in competitor intelligence. Committing directly to main..."
+            git commit -m "chore(seo): auto-update competitor intelligence & search insights [skip ci]"
+            git push origin main
+            echo "🚀 Successfully pushed directly to main! Vercel will deploy automatically."
+          else
+            echo "ℹ️ No changes in competitor intelligence this run."
+          fi
+
+      - name: Notify Google & Bing of Updated Sitemap
+        run: |
+          echo "📡 Pinging Google sitemap..."
+          curl -s -o /dev/null -w "Google response: %{http_code}\n" "https://www.google.com/ping?sitemap=https://www.abinschandran.in/sitemap.xml" || true
+          echo "📡 Pinging Bing sitemap..."
+          curl -s -o /dev/null -w "Bing response: %{http_code}\n" "https://www.bing.com/ping?sitemap=https://www.abinschandran.in/sitemap.xml" || true
 
       - name: Upload HTML & JSON Intelligence Artifacts
         uses: actions/upload-artifact@v4

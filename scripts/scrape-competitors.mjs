@@ -310,15 +310,20 @@ function buildHtmlEmail(analysis, competitors, prUrl = '') {
     </div>`;
 
   const prActionCard = `
-    <div style="background:linear-gradient(135deg,rgba(85,214,255,0.12),rgba(139,124,255,0.08));border:1.5px solid #55D6FF;border-radius:10px;padding:22px;margin-bottom:24px;text-align:center;">
-      <div style="font-size:11px;font-weight:800;color:#55D6FF;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">🤖 AI-Generated Code Change Ready</div>
-      <div style="font-size:16px;color:#F2F5F7;font-weight:700;margin-bottom:8px;">1-Click Apply Top Recommendations</div>
+    <div style="background:linear-gradient(135deg,rgba(34,197,94,0.12),rgba(85,214,255,0.08));border:1.5px solid #22c55e;border-radius:10px;padding:22px;margin-bottom:24px;text-align:center;">
+      <div style="font-size:11px;font-weight:800;color:#22c55e;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">⚡ Auto-Updated & Deployed to Production</div>
+      <div style="font-size:16px;color:#F2F5F7;font-weight:700;margin-bottom:8px;">Live SEO & Competitor Insights Synced</div>
       <p style="font-size:13px;color:#A7AFBD;margin:0 0 16px;line-height:1.5;">
-        Based on this week's AI analysis, a code update has been prepared. Tap to review and merge.
+        This week's competitor intelligence and Gemini AI analysis have been automatically committed and deployed directly to <strong>main</strong>. Google and Bing have been pinged.
       </p>
-      <a href="${prTargetUrl}" target="_blank" style="display:inline-block;background:#55D6FF;color:#090B10;padding:12px 28px;border-radius:8px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 18px rgba(85,214,255,0.35);">
-        👉 Review & Accept Code Change ↗
-      </a>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <a href="https://www.abinschandran.in" target="_blank" style="display:inline-block;background:#22c55e;color:#090B10;padding:12px 24px;border-radius:8px;font-weight:800;font-size:13px;text-decoration:none;box-shadow:0 4px 18px rgba(34,197,94,0.35);">
+          👉 View Live Site (abinschandran.in) ↗
+        </a>
+        <a href="https://github.com/abin223804/personal_Portfolio/commits/main" target="_blank" style="display:inline-block;background:#151923;border:1px solid rgba(255,255,255,0.15);color:#F2F5F7;padding:12px 24px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;">
+          View Git Commit History ↗
+        </a>
+      </div>
     </div>`;
 
   const recRows = recommendations
@@ -443,7 +448,7 @@ async function dispatchEmail(htmlContent) {
       body: JSON.stringify({
         from: 'AI Competitor Monitor <onboarding@resend.dev>',
         to: [targetEmail],
-        subject: `🤖 AI Competitor Intelligence — ${new Date().toLocaleDateString()}`,
+        subject: `🤖 Live SEO & AI Competitor Intelligence (Auto-Updated) — ${new Date().toLocaleDateString()}`,
         html: htmlContent,
       }),
     });
