@@ -1,0 +1,83 @@
+name: DEV.to High-Authority Backlink & Content Syndication
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Syndication Mode'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - 'all'
+          - 'single'
+          - 'status'
+          - 'dry-run'
+      post_slug:
+        description: 'Specific blog post slug (if action is "single")'
+        required: false
+        type: string
+        default: ''
+      draft_mode:
+        description: 'Publish as draft on DEV.to (uncheck for live publication)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  syndicate:
+    name: Syndicate Articles to DEV.to (DA 91)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run DEV.to Syndication
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+        run: |
+          FLAGS=""
+          if [ "${{ inputs.action }}" = "dry-run" ]; then
+            FLAGS="--dry-run"
+          elif [ "${{ inputs.action }}" = "status" ]; then
+            FLAGS="--status"
+          elif [ "${{ inputs.action }}" = "single" ] && [ -n "${{ inputs.post_slug }}" ]; then
+            FLAGS="--post=${{ inputs.post_slug }}"
+          else
+            FLAGS="--all"
+          fi
+
+          if [ "${{ inputs.draft_mode }}" = "true" ]; then
+            FLAGS="$FLAGS --draft"
+          fi
+
+          echo "Running: npx tsx scripts/syndicate-devto.mjs $FLAGS"
+          npx tsx scripts/syndicate-devto.mjs $FLAGS
+
+      - name: Commit Updated Syndication Status
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/syndication-status.json
+          if ! git diff --staged --quiet; then
+            echo "Committing updated syndication status..."
+            git commit -m "chore(seo): update DEV.to syndication tracking [skip ci]"
+            git push origin main
+          else
+            echo "No status changes to commit."
+          fi

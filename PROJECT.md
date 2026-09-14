@@ -707,6 +707,14 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
     - Integrated direct post-crawl ping to Google and Bing sitemap notification endpoints.
     - Updated HTML email report and subject (`scripts/scrape-competitors.mjs`) to notify user of automated live deployment with 1-click links to the live portfolio and GitHub commit history.
     - Added dedicated **"What Was Updated in This Run"** changelog table to the email digest showing score delta vs. previous run, count and badges of newly discovered keywords, new AI content suggestions, file paths modified, deployment status, and dynamic subject lines reflecting weekly changes.
+  - **Added**: Automated High-Authority Content Syndication & Backlink Engine (`scripts/syndicate-devto.mjs`, `.github/workflows/syndicate-content.yml`):
+    - Automatically syndicates engineering deep-dives from `data/blog.ts` to DEV.to (Domain Authority 91).
+    - Preserves canonical authority via official `canonical_url: https://www.abinschandran.in/blog/[slug]` so Google attributes original authorship and link equity to the portfolio domain.
+    - Contextual Backlink Injection: Dynamically embeds keyword-rich author attribution footers linking to the root domain (`abinschandran.in`), regional hubs (`/freelance-software-developer-kochi`, `/freelance-software-developer-kerala`), and commercial hiring (`/hire-web-developer`).
+    - State Tracking: Automatically tracks published DEV.to article IDs, live URLs, and publication timestamps in `data/syndication-status.json` to prevent duplicates.
+    - CLI & NPM Tooling: Added `npm run syndicate:devto`, `npm run syndicate:status`, and `npm run syndicate:dry`.
+    - Workflow: Created `.github/workflows/syndicate-content.yml` with manual `workflow_dispatch` options for bulk, single-post, status check, or dry-run execution.
+
 
 
 
