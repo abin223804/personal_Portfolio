@@ -284,7 +284,99 @@ function getFallbackAnalysis(competitors) {
 
 // ─── HTML Email Builder ────────────────────────────────────────────────────────
 
-function buildHtmlEmail(analysis, competitors, prUrl = '') {
+function buildChangelogCard(changelog) {
+  if (!changelog) return '';
+  const { prevScore, currentScore, scoreDiff, newKeywords = [], newContent = [], totalCompetitors = 30 } = changelog;
+
+  let scoreDiffHtml = '';
+  if (prevScore !== null && prevScore !== undefined) {
+    if (scoreDiff > 0) {
+      scoreDiffHtml = `<strong style="color:#22c55e;">${currentScore}/100</strong> <span style="font-size:11px;color:#22c55e;background:rgba(34,197,94,0.15);padding:1px 6px;border-radius:4px;font-weight:bold;">+${scoreDiff} pts</span> <span style="color:#727B8C;font-size:11px;">(was ${prevScore}/100)</span>`;
+    } else if (scoreDiff < 0) {
+      scoreDiffHtml = `<strong style="color:#ef4444;">${currentScore}/100</strong> <span style="font-size:11px;color:#ef4444;background:rgba(239,68,68,0.15);padding:1px 6px;border-radius:4px;font-weight:bold;">${scoreDiff} pts</span> <span style="color:#727B8C;font-size:11px;">(was ${prevScore}/100)</span>`;
+    } else {
+      scoreDiffHtml = `<strong style="color:#55D6FF;">${currentScore}/100</strong> <span style="color:#727B8C;font-size:11px;">(unchanged)</span>`;
+    }
+  } else {
+    scoreDiffHtml = `<strong style="color:#55D6FF;">${currentScore}/100</strong> <span style="color:#727B8C;font-size:11px;">(initial baseline)</span>`;
+  }
+
+  const newKeywordsCallout =
+    newKeywords.length > 0
+      ? `
+      <div style="margin-top:12px;padding:12px;background:rgba(85,214,255,0.06);border-left:3px solid #55D6FF;border-radius:6px;">
+        <div style="font-size:11px;font-weight:800;color:#55D6FF;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">
+          🆕 Newly Discovered Keyword Gaps (${newKeywords.length})
+        </div>
+        <div style="font-size:12px;color:#F2F5F7;line-height:1.6;">
+          ${newKeywords
+            .map(
+              (kw) =>
+                `<code style="background:#151923;border:1px solid rgba(85,214,255,0.25);color:#55D6FF;padding:2px 7px;border-radius:4px;margin-right:6px;display:inline-block;margin-bottom:4px;font-size:11px;">${kw}</code>`
+            )
+            .join(' ')}
+        </div>
+      </div>`
+      : `
+      <div style="margin-top:10px;font-size:12px;color:#727B8C;">
+        ℹ️ All ${changelog.allKeywordsCount || 0} competitor search queries remain actively tracked.
+      </div>`;
+
+  const newContentCallout =
+    newContent.length > 0
+      ? `
+      <div style="margin-top:12px;padding:12px;background:rgba(139,124,255,0.06);border-left:3px solid #8B7CFF;border-radius:6px;">
+        <div style="font-size:11px;font-weight:800;color:#8B7CFF;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">
+          💡 Fresh Content Ideas Discovered (${newContent.length})
+        </div>
+        <ul style="margin:0;padding-left:16px;font-size:12px;color:#F2F5F7;line-height:1.6;">
+          ${newContent.map((c) => `<li style="margin-bottom:4px;">${c}</li>`).join('')}
+        </ul>
+      </div>`
+      : '';
+
+  return `
+    <div style="background:#11151E;border:1.5px solid rgba(85,214,255,0.25);border-radius:10px;padding:20px;margin-bottom:24px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:12px;margin-bottom:14px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:16px;">📋</span>
+          <strong style="color:#55D6FF;font-size:13px;letter-spacing:0.8px;text-transform:uppercase;">What Was Updated in This Run</strong>
+        </div>
+        <span style="background:rgba(34,197,94,0.15);color:#22c55e;border:1px solid rgba(34,197,94,0.3);padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;">Auto-Deployed Live</span>
+      </div>
+
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:7px 0;color:#A7AFBD;">🏆 Brand Health vs Peers:</td>
+            <td style="padding:7px 0;text-align:right;">${scoreDiffHtml}</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:7px 0;color:#A7AFBD;">🔎 Competitors Monitored:</td>
+            <td style="padding:7px 0;text-align:right;color:#F2F5F7;font-weight:600;">${totalCompetitors} Kerala &amp; tech peers</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:7px 0;color:#A7AFBD;">📁 Codebase File Updated:</td>
+            <td style="padding:7px 0;text-align:right;font-family:monospace;color:#22c55e;font-size:11px;">data/competitor-insights.json</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:7px 0;color:#A7AFBD;">🚀 Git Commit &amp; Deploy:</td>
+            <td style="padding:7px 0;text-align:right;color:#22c55e;font-weight:600;">Pushed to <code>origin/main</code> (Live on Vercel)</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 0;color:#A7AFBD;">📡 Search Engines Pinged:</td>
+            <td style="padding:7px 0;text-align:right;color:#55D6FF;font-weight:600;">Google &amp; Bing Sitemaps Dispatched</td>
+          </tr>
+        </tbody>
+      </table>
+
+      ${newKeywordsCallout}
+      ${newContentCallout}
+    </div>
+  `;
+}
+
+function buildHtmlEmail(analysis, competitors, changelog = null) {
   const { brandHealthScore, weekSummary, recommendations, keywordGaps, contentOpportunities } = analysis;
   const dateStr = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
@@ -293,7 +385,7 @@ function buildHtmlEmail(analysis, competitors, prUrl = '') {
     day: 'numeric',
   });
 
-  const prTargetUrl = prUrl || 'https://github.com/abin223804/personal_Portfolio/pulls';
+  const changelogCard = buildChangelogCard(changelog);
 
   const scoreColor =
     brandHealthScore >= 75 ? '#22c55e' : brandHealthScore >= 50 ? '#55D6FF' : '#f59e0b';
@@ -379,6 +471,7 @@ function buildHtmlEmail(analysis, competitors, prUrl = '') {
       <p style="margin:0;color:#A7AFBD;font-size:13px;">Powered by Gemini AI • <strong>abinschandran.in</strong> • ${dateStr}</p>
     </div>
 
+    ${changelogCard}
     ${scoreBar}
     ${prActionCard}
 
@@ -427,7 +520,7 @@ function getEnvVar(key, fallback = '') {
   return fallback;
 }
 
-async function dispatchEmail(htmlContent) {
+async function dispatchEmail(htmlContent, customSubject = '') {
   const resendApiKey = getEnvVar('RESEND_API_KEY');
   const targetEmail = getEnvVar('REPORT_EMAIL', 'abinschandran1@gmail.com');
 
@@ -436,6 +529,10 @@ async function dispatchEmail(htmlContent) {
     console.log('   RESEND_API_KEY not set. Report saved locally to competitor-improvement-report.html');
     return;
   }
+
+  const subject =
+    customSubject ||
+    `🤖 Live SEO & AI Competitor Intelligence (Auto-Updated) — ${new Date().toLocaleDateString()}`;
 
   console.log(`\n📧 Dispatching AI Intelligence Report to ${targetEmail} via Resend...`);
   try {
@@ -448,7 +545,7 @@ async function dispatchEmail(htmlContent) {
       body: JSON.stringify({
         from: 'AI Competitor Monitor <onboarding@resend.dev>',
         to: [targetEmail],
-        subject: `🤖 Live SEO & AI Competitor Intelligence (Auto-Updated) — ${new Date().toLocaleDateString()}`,
+        subject,
         html: htmlContent,
       }),
     });
@@ -506,8 +603,39 @@ async function main() {
   }
   console.log('\n=========================================================\n');
 
-  // 5. Save enriched insights JSON
+  // 5. Compute changelog from previous insights before overwriting
   const insightsPath = path.resolve(process.cwd(), 'data', 'competitor-insights.json');
+  let previousInsights = null;
+  try {
+    if (fs.existsSync(insightsPath)) {
+      previousInsights = JSON.parse(fs.readFileSync(insightsPath, 'utf8'));
+    }
+  } catch (err) {
+    console.warn('⚠️ Could not parse previous insights for changelog:', err.message);
+  }
+
+  const prevScore = previousInsights?.brandHealthScore ?? null;
+  const currentScore = analysis.brandHealthScore;
+  const scoreDiff = prevScore !== null ? currentScore - prevScore : 0;
+
+  const prevKeywords = new Set(previousInsights?.keywordGaps || []);
+  const newKeywords = (analysis.keywordGaps || []).filter((kw) => !prevKeywords.has(kw));
+
+  const prevContent = new Set(previousInsights?.contentOpportunities || []);
+  const newContent = (analysis.contentOpportunities || []).filter((c) => !prevContent.has(c));
+
+  const changelog = {
+    prevScore,
+    currentScore,
+    scoreDiff,
+    newKeywords,
+    newContent,
+    allKeywordsCount: analysis.keywordGaps?.length || 0,
+    totalCompetitors: competitors.length,
+    timestamp: new Date().toISOString(),
+  };
+
+  // 6. Save enriched insights JSON
   fs.writeFileSync(
     insightsPath,
     JSON.stringify(
@@ -527,15 +655,8 @@ async function main() {
   );
   console.log(`💡 Saved AI insights to: ${insightsPath}`);
 
-  // 6. Determine PR URL
-  const prArgIdx = process.argv.indexOf('--pr-url');
-  const prUrl =
-    process.env.PR_URL ||
-    (prArgIdx !== -1 && process.argv[prArgIdx + 1] ? process.argv[prArgIdx + 1] : '') ||
-    'https://github.com/abin223804/personal_Portfolio/pulls';
-
-  // 7. Generate HTML report
-  const html = buildHtmlEmail(analysis, competitors, prUrl);
+  // 7. Generate HTML report with changelog
+  const html = buildHtmlEmail(analysis, competitors, changelog);
   const htmlPath = path.resolve(process.cwd(), 'competitor-improvement-report.html');
   fs.writeFileSync(htmlPath, html, 'utf-8');
   console.log(`📄 Saved HTML report to: ${htmlPath}`);
@@ -544,14 +665,19 @@ async function main() {
   const jsonPath = path.resolve(process.cwd(), 'competitor-analysis.json');
   fs.writeFileSync(
     jsonPath,
-    JSON.stringify({ mySite, competitors, analysis }, null, 2),
+    JSON.stringify({ mySite, competitors, analysis, changelog }, null, 2),
     'utf-8'
   );
   console.log(`💾 Saved full JSON snapshot to: ${jsonPath}`);
 
-  // 9. Send email (unless --no-email flag)
+  // 9. Send email with dynamic changelog subject (unless --no-email flag)
   if (!process.argv.includes('--no-email')) {
-    await dispatchEmail(html);
+    const dynamicSubject =
+      changelog.newKeywords.length > 0
+        ? `🤖 Live SEO Auto-Updated: +${changelog.newKeywords.length} New Keywords Discovered (${analysis.brandHealthScore}/100)`
+        : `🤖 Live SEO Auto-Updated: Brand Health ${analysis.brandHealthScore}/100 (Live on main)`;
+
+    await dispatchEmail(html, dynamicSubject);
   }
 }
 

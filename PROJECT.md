@@ -706,6 +706,8 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
     - Upgraded `.github/workflows/competitor-monitor.yml` to automatically commit changes (`data/competitor-insights.json`, `competitor-analysis.json`, `competitor-improvement-report.html`) and push directly to `origin/main` as `github-actions[bot]`.
     - Integrated direct post-crawl ping to Google and Bing sitemap notification endpoints.
     - Updated HTML email report and subject (`scripts/scrape-competitors.mjs`) to notify user of automated live deployment with 1-click links to the live portfolio and GitHub commit history.
+    - Added dedicated **"What Was Updated in This Run"** changelog table to the email digest showing score delta vs. previous run, count and badges of newly discovered keywords, new AI content suggestions, file paths modified, deployment status, and dynamic subject lines reflecting weekly changes.
+
 
 
 
