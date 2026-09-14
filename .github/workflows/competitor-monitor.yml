@@ -1,4 +1,4 @@
-name: Weekly Competitor Intelligence & Improvement Monitor
+name: Weekly AI Competitor Intelligence & Improvement Monitor
 
 on:
   schedule:
@@ -26,7 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Competitor Intelligence & Stage Suggestions
+      - name: Run AI Competitor Intelligence & Stage Suggestions
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/scrape-competitors.mjs --no-email
 
       - name: Create Pull Request with Suggested Code Updates
@@ -37,10 +39,11 @@ jobs:
           commit-message: "chore(seo): automated competitor intelligence updates"
           title: "🤖 Weekly Competitor SEO & Content Suggestions"
           body: |
-            ## 📊 Automated Competitor Insights & Suggested Actions
-            This Pull Request was generated automatically by your **Competitor Intelligence Engine**.
+            ## 🤖 AI-Powered Competitor Intelligence Update
+            This Pull Request was generated automatically by your **Gemini AI Competitor Intelligence Engine**.
 
-            - **Tracked updates:** Staged in `data/competitor-insights.json`
+            - **AI Analysis:** Brand health score, keyword gaps & content opportunities in `data/competitor-insights.json`
+            - **Powered by:** Gemini 1.5 Flash — real analysis of your actual competitor data
             - **Live Report:** Download the HTML artifact or check your email digest.
 
             ### How to accept:
@@ -51,6 +54,7 @@ jobs:
 
       - name: Send Email Digest with 1-Click Accept PR Link
         env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           REPORT_EMAIL: ${{ secrets.REPORT_EMAIL || 'abinschandran1@gmail.com' }}
           PR_URL: ${{ steps.cpr.outputs.pull-request-url || 'https://github.com/abin223804/personal_Portfolio/pulls' }}

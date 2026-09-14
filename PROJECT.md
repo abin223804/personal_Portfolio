@@ -53,7 +53,7 @@ It is a **living architecture document** that continuously evolves alongside the
 - **Direct Messaging**: WhatsApp Web API (`https://wa.me/`)
 
 ### AI / ML Stack & Booming Technologies Matrix
-- **Frontier LLM Integration**: OpenAI (GPT-4o), Anthropic Claude, Google Gemini API endpoints with JSON mode and function calling.
+- **Frontier LLM Integration**: Google Gemini API via `@google/generative-ai` (`^0.24.1`) with JSON mode and structured output for weekly automated competitive analysis, OpenAI (GPT-4o), Anthropic Claude.
 - **RAG & Vector Storage**: `pgvector` extension for PostgreSQL, embedding retrieval pipelines, and semantic search integration.
 - **AI Agent Frameworks**: LangChain, prompt engineering, multi-step tool execution pipelines.
 - **SEO & Discoverability**: Schema.org `Person`, `ProfessionalService`, `BlogPosting`, and `BreadcrumbList` JSON-LD structured data.
@@ -669,6 +669,27 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
     - **Homepage ProfessionalService schema added** (`app/page.tsx`): Added `<JsonLd type="ProfessionalService" />` to the homepage so the homepage emits the full `ProfessionalService` structured data (including `telephone`, `hasOfferCatalog`, `geo`, `areaServed`) alongside `Person`, `WebSite`, `Organization`, `FAQPage`, and `BreadcrumbList` schemas.
 
   - **Verified**: TypeScript (`tsc --noEmit`) passes with 0 errors after all changes.
+
+- **Added & Upgraded**: Continuous SEO Engine & AI Competitor Intelligence (`2026-09-14`):
+  - **Automated Search Engine Sitemap Notification (`.github/workflows/sitemap-ping.yml`)**:
+    - Automatic ping workflow triggering on every push to `main` and via `workflow_dispatch`.
+    - Includes 60s propagation delay for Vercel edge deployment before hitting `google.com/ping?sitemap=...` and `bing.com/ping?sitemap=...`.
+    - Automatically verifies `https://www.abinschandran.in/sitemap.xml` responds with HTTP 200, rendering execution summary to GitHub Step Summary.
+  - **Gemini AI-Powered Competitor Intelligence Upgrade (`scripts/scrape-competitors.mjs`, `data/competitor-insights.json`, `.github/workflows/competitor-monitor.yml`)**:
+    - Integrated `@google/generative-ai` (`^0.24.1`) utilizing `gemini-1.5-flash` model with structured JSON prompting.
+    - Upgraded analysis data model from static rules to live AI evaluation returning:
+      - `brandHealthScore` (0–100 numerical ranking vs. active market peers).
+      - `weekSummary` (2–3 sentence executive competitive overview).
+      - `recommendations` (Prioritized HIGH/MEDIUM/LOW actionable engineering & positioning items).
+      - `keywordGaps` (5–8 specific high-intent search queries competitors target that require coverage).
+      - `contentOpportunities` (3–5 concrete article and landing page titles based on competitor content voids).
+    - Robust fallback mechanism (`getFallbackAnalysis`) ensuring zero CI crashes when `GEMINI_API_KEY` is not set.
+    - Enriched HTML email template (`competitor-improvement-report.html`) with dynamic health score progress meter, keyword gap tags, content opportunities, and 1-click GitHub PR review card.
+    - Updated `.github/workflows/competitor-monitor.yml` to supply `GEMINI_API_KEY` secret across extraction and dispatch steps.
+  - **Mobile Navbar UI Polish (`components/ui/Navbar.tsx`)**:
+    - Adjusted responsive title in header branding so mobile view displays *"Software Architect"* instead of truncating to *"Architect"*, maintaining full *"Freelance Software Architect"* on larger screens.
+  - **Verification**: Validated crawler execution with full 30-site scrape, verified fallback execution path, and confirmed clean TypeScript compile (`tsc --noEmit`) with 0 errors.
+
 
 
 

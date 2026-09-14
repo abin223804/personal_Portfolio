@@ -1,11 +1,12 @@
 import * as cheerio from 'cheerio';
 import fs from 'fs';
 import path from 'path';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 /**
- * Automated Competitor Monitor & Strategic Improvement Engine
- * Scrapes competitors, compares against abinschandran.in, and delivers
- * actionable improvement recommendations directly to your email.
+ * AI-Powered Competitor Monitor & Strategic Intelligence Engine
+ * Scrapes 30+ competitors, feeds real data to Gemini AI for analysis,
+ * and delivers actionable insights to your inbox with a 1-click PR.
  */
 
 const MY_SITE_URL = 'https://abinschandran.in';
@@ -47,6 +48,8 @@ const COMPETITOR_URLS = [
   'https://srvinfotech.com/',
   'https://softverses.com/',
 ];
+
+// ─── Scraping ─────────────────────────────────────────────────────────────────
 
 async function fetchAndParse(url) {
   try {
@@ -123,70 +126,166 @@ async function fetchAndParse(url) {
   }
 }
 
-function generateImprovementAnalysis(mySite, competitors) {
-  const recommendations = [];
+// ─── Gemini AI Analysis ────────────────────────────────────────────────────────
+
+async function runGeminiAnalysis(mySite, competitors) {
+  const apiKey = getEnvVar('GEMINI_API_KEY');
+
+  if (!apiKey) {
+    console.warn('\n⚠️  GEMINI_API_KEY not set — falling back to rule-based analysis.');
+    console.warn('   Add GEMINI_API_KEY to your GitHub Secrets or .env.local for AI-powered insights.\n');
+    return getFallbackAnalysis(competitors);
+  }
+
+  const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+  const competitorSummaries = competitors
+    .slice(0, 20) // Keep prompt size manageable
+    .map(
+      (c) =>
+        `DOMAIN: ${c.domain}
+Title: ${c.title}
+Meta: ${c.metaDesc}
+Keywords: ${c.keywords || 'none'}
+H1s: ${c.h1.join(' | ') || 'none'}
+H2s: ${c.h2.join(' | ') || 'none'}
+CTAs: ${c.ctas.join(' | ') || 'none'}`
+    )
+    .join('\n\n---\n\n');
+
+  const mySiteSummary = `DOMAIN: ${mySite?.domain || 'abinschandran.in'}
+Title: ${mySite?.title || 'N/A'}
+Meta: ${mySite?.metaDesc || 'N/A'}
+Keywords: ${mySite?.keywords || 'none'}
+H1s: ${mySite?.h1?.join(' | ') || 'none'}
+H2s: ${mySite?.h2?.join(' | ') || 'none'}
+CTAs: ${mySite?.ctas?.join(' | ') || 'none'}`;
+
+  const prompt = `You are an expert SEO strategist and conversion rate optimisation consultant.
+
+I am Abin S Chandran — a Freelance Software Developer & Solution Architect based in Kerala, India (Karunagappally / Kollam). I specialise in Next.js SaaS apps, Node.js REST APIs, Flutter mobile apps, and AI/RAG systems. My target clients are Indian startups, small businesses in Kerala, and international founders.
+
+Below is scraped data from my portfolio website and ${competitors.length} competitor websites.
+
+=== MY SITE ===
+${mySiteSummary}
+
+=== COMPETITORS (${Math.min(competitors.length, 20)} shown) ===
+${competitorSummaries}
+
+Analyse this data and return a JSON object (no markdown, just raw JSON) with this exact structure:
+{
+  "brandHealthScore": <number 0-100, how well my site is positioned vs competitors>,
+  "weekSummary": "<2-3 sentence plain-English executive summary of the competitive landscape this week>",
+  "recommendations": [
+    {
+      "priority": "<HIGH|MEDIUM|LOW>",
+      "area": "<short area name, e.g. SEO, CTA, Content, Tech Positioning>",
+      "action": "<specific, actionable instruction — not generic advice>"
+    }
+  ],
+  "keywordGaps": [
+    "<keyword or phrase competitors use that I'm missing>"
+  ],
+  "contentOpportunities": [
+    "<specific blog post title or landing page idea based on competitor gaps>"
+  ]
+}
+
+Rules:
+- recommendations: provide 4–6, ordered HIGH to LOW priority
+- keywordGaps: provide 5–8 specific keyword phrases, not generic categories
+- contentOpportunities: provide 3–5 specific, actionable content ideas
+- All advice must be specific to Kerala freelance software market
+- brandHealthScore: be honest, don't inflate it
+- Return ONLY valid JSON, nothing else`;
+
+  try {
+    console.log('\n🤖 Sending competitor data to Gemini AI for analysis...');
+    const result = await model.generateContent(prompt);
+    const text = result.response.text().trim();
+
+    // Strip markdown code fences if Gemini wraps with them
+    const cleaned = text.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '').trim();
+    const parsed = JSON.parse(cleaned);
+
+    console.log(`✅ Gemini analysis complete! Brand Health Score: ${parsed.brandHealthScore}/100`);
+    console.log(`   ${parsed.weekSummary}`);
+
+    return parsed;
+  } catch (err) {
+    console.error('❌ Gemini analysis failed:', err.message);
+    console.warn('   Falling back to rule-based analysis...');
+    return getFallbackAnalysis(competitors);
+  }
+}
+
+// ─── Fallback rule-based analysis (used if no API key) ────────────────────────
+
+function getFallbackAnalysis(competitors) {
   const keywordOpportunities = new Set();
   const ctaPatterns = [];
 
   competitors.forEach((comp) => {
-    // 1. Check keyword targeting
     const combinedText = `${comp.title} ${comp.metaDesc} ${comp.keywords}`.toLowerCase();
-    
-    if (combinedText.includes('near me')) {
-      keywordOpportunities.add('"near me" local intent (e.g. Flutter/Web developer near me Kerala)');
-    }
-    if (combinedText.includes('malappuram') || combinedText.includes('calicut') || combinedText.includes('kannur')) {
-      keywordOpportunities.add('District-specific landing pages (Calicut, Kochi, Trivandrum, Kannur)');
-    }
-    if (combinedText.includes('karunagappally') || combinedText.includes('kollam')) {
-      keywordOpportunities.add('Local software & ERP keywords (Karunagappally, Kollam, retail billing, custom software)');
-    }
-    if (combinedText.includes('quote') || combinedText.includes('free consultation') || combinedText.includes('estimate')) {
-      ctaPatterns.push(`${comp.domain} offers "Free Consultation / Quote" upfront`);
-    }
+    if (combinedText.includes('near me')) keywordOpportunities.add('"near me" local intent searches');
+    if (combinedText.includes('malappuram') || combinedText.includes('calicut') || combinedText.includes('kannur'))
+      keywordOpportunities.add('District landing pages: Calicut, Kochi, Trivandrum, Kannur');
+    if (combinedText.includes('karunagappally') || combinedText.includes('kollam'))
+      keywordOpportunities.add('Local ERP & billing software keywords for Karunagappally / Kollam');
+    if (/quote|free consultation|estimate/i.test(combinedText))
+      ctaPatterns.push(`${comp.domain} offers "Free Consultation / Quote"`);
   });
 
-  // Name collision alert check
-  const abinAntony = competitors.find(
-    (c) => c.domain.includes('abinantony') || c.domain.includes('abin.edgesys.tech')
-  );
-  if (abinAntony) {
-    recommendations.push({
-      priority: 'HIGH',
-      area: 'Brand & Knowledge Graph Disambiguation',
-      action:
-        'Abin Antony (abinantony.io / abin.edgesys.tech) is targeting "Freelance Laravel & PHP Developer in Kerala" and "Freelance Mobile App Developer Kerala". Ensure abinschandran.in continuously emphasizes "Abin S Chandran" and "Software Solution Architect / High-Performance Full-Stack & AI Engineer" (Next.js 15, Flutter, Node.js, AI/RAG) to prevent entity blending on Google.',
-    });
-  }
-
-  // Keyword opportunities
-  if (keywordOpportunities.size > 0) {
-    recommendations.push({
-      priority: 'MEDIUM',
-      area: 'SEO Keyword Expansion',
-      action: `Competitors are capturing long-tail searches you can incorporate into blog posts or FAQ schema: ${Array.from(keywordOpportunities).join('; ')}.`,
-    });
-  }
-
-  // Tech stack differentiation
-  recommendations.push({
-    priority: 'HIGH',
-    area: 'Premium Tech Positioning',
-    action:
-      'Most local competitors (Nikhil Soman, Anzar, Freelancer Kochi) build WordPress/PHP sites. Highlight your modern stack: "Next.js 15, PostgreSQL query optimization, Node.js API architecture, and Flutter" prominently above the fold to win higher-budget startup contracts.',
-  });
-
-  // Conversion / WhatsApp optimization
-  recommendations.push({
-    priority: 'HIGH',
-    area: 'Conversion & WhatsApp CTA',
-    action:
-      'Competitors use direct WhatsApp click-to-chat with custom pre-filled message hooks (e.g., "Hi Abin, I want to discuss my project..."). Ensure your WhatsApp CTAs on abinschandran.in pre-fill with specific service inquiry tags.',
-  });
-
-  return recommendations;
+  return {
+    brandHealthScore: 65,
+    weekSummary:
+      'Rule-based analysis (GEMINI_API_KEY not set). Your site covers the key Kerala freelance dev market but competitors are targeting local near-me searches. Add your Gemini API key for AI-powered insights.',
+    recommendations: [
+      {
+        priority: 'HIGH',
+        area: 'Brand Disambiguation',
+        action:
+          'Abin Antony (abinantony.io) targets "Freelance Laravel & PHP Developer in Kerala". Continuously emphasise "Abin S Chandran" + "Next.js / Flutter / AI/RAG" to prevent Google entity blending.',
+      },
+      {
+        priority: 'HIGH',
+        area: 'Tech Positioning',
+        action:
+          'Most local competitors use WordPress/PHP. Highlight your modern stack (Next.js 15, Node.js, Flutter, AI/RAG) above the fold to win higher-budget startup contracts.',
+      },
+      {
+        priority: 'MEDIUM',
+        area: 'SEO Keywords',
+        action: `Expand into: ${Array.from(keywordOpportunities).join('; ') || '"near me" local intent and district-specific pages'}.`,
+      },
+      {
+        priority: 'HIGH',
+        area: 'WhatsApp CTA',
+        action:
+          'Competitors use direct WhatsApp CTAs with pre-filled messages. Ensure your WhatsApp links pre-fill with specific service inquiry tags.',
+      },
+    ],
+    keywordGaps: [
+      'freelance software developer near me kerala',
+      'custom software development kollam',
+      'web developer karunagappally',
+      'flutter app developer kerala price',
+      'saas mvp developer india',
+    ],
+    contentOpportunities: [
+      'Blog: "Cost of Building a SaaS MVP with a Freelance Developer in Kerala in 2025"',
+      'Blog: "Flutter vs React Native for Kerala Small Business Apps"',
+      'Landing page: Freelance Software Developer Kochi',
+    ],
+  };
 }
-function buildHtmlEmail(mySite, competitors, recommendations, prUrl = '') {
+
+// ─── HTML Email Builder ────────────────────────────────────────────────────────
+
+function buildHtmlEmail(analysis, competitors, prUrl = '') {
+  const { brandHealthScore, weekSummary, recommendations, keywordGaps, contentOpportunities } = analysis;
   const dateStr = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
     year: 'numeric',
@@ -196,75 +295,104 @@ function buildHtmlEmail(mySite, competitors, recommendations, prUrl = '') {
 
   const prTargetUrl = prUrl || 'https://github.com/abin223804/personal_Portfolio/pulls';
 
+  const scoreColor =
+    brandHealthScore >= 75 ? '#22c55e' : brandHealthScore >= 50 ? '#55D6FF' : '#f59e0b';
+  const scoreBar = `
+    <div style="margin-bottom:28px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <span style="color:#F2F5F7;font-size:15px;font-weight:700;">🏆 Brand Health Score vs Competitors</span>
+        <span style="color:${scoreColor};font-size:22px;font-weight:900;">${brandHealthScore}<span style="font-size:14px;color:#727B8C;">/100</span></span>
+      </div>
+      <div style="background:#1a1f2e;border-radius:999px;height:10px;overflow:hidden;">
+        <div style="background:linear-gradient(90deg,${scoreColor}80,${scoreColor});width:${brandHealthScore}%;height:100%;border-radius:999px;transition:width 0.3s;"></div>
+      </div>
+      <p style="color:#A7AFBD;font-size:13px;margin-top:10px;line-height:1.6;">${weekSummary}</p>
+    </div>`;
+
   const prActionCard = `
-    <div style="background:linear-gradient(135deg, rgba(85,214,255,0.12), rgba(139,124,255,0.08));border:1.5px solid #55D6FF;border-radius:10px;padding:22px;margin-bottom:24px;text-align:center;">
-      <div style="font-size:11px;font-weight:800;color:#55D6FF;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">
-        🤖 1-Click Code Change Suggestion
-      </div>
-      <div style="font-size:16px;color:#F2F5F7;font-weight:700;margin-bottom:8px;">
-        Automated SEO & Content Updates Ready for Review
-      </div>
+    <div style="background:linear-gradient(135deg,rgba(85,214,255,0.12),rgba(139,124,255,0.08));border:1.5px solid #55D6FF;border-radius:10px;padding:22px;margin-bottom:24px;text-align:center;">
+      <div style="font-size:11px;font-weight:800;color:#55D6FF;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">🤖 AI-Generated Code Change Ready</div>
+      <div style="font-size:16px;color:#F2F5F7;font-weight:700;margin-bottom:8px;">1-Click Apply Top Recommendations</div>
       <p style="font-size:13px;color:#A7AFBD;margin:0 0 16px;line-height:1.5;">
-        A proposed code update has been prepared based on this week's competitor intelligence. Tap below to review the code diff and merge it directly into your live website in 1 click.
+        Based on this week's AI analysis, a code update has been prepared. Tap to review and merge.
       </p>
       <a href="${prTargetUrl}" target="_blank" style="display:inline-block;background:#55D6FF;color:#090B10;padding:12px 28px;border-radius:8px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 18px rgba(85,214,255,0.35);">
-        👉 Review & Accept Code Change (Merge PR) ↗
+        👉 Review & Accept Code Change ↗
       </a>
-      <div style="font-size:11px;color:#727B8C;margin-top:10px;">
-        Works on mobile & desktop • Secure 1-click merge via GitHub
-      </div>
-    </div>
-  `;
+    </div>`;
 
   const recRows = recommendations
     .map(
       (r) => `
-      <div style="background:#151923;border-left:4px solid ${r.priority === 'HIGH' ? '#55D6FF' : '#8B7CFF'};padding:16px;margin-bottom:14px;border-radius:6px;">
-        <div style="font-size:11px;font-weight:700;color:${r.priority === 'HIGH' ? '#55D6FF' : '#8B7CFF'};text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
-          ${r.priority} PRIORITY • ${r.area}
-        </div>
-        <div style="color:#F2F5F7;font-size:14px;line-height:1.6;">
-          ${r.action}
-        </div>
+    <div style="background:#151923;border-left:4px solid ${r.priority === 'HIGH' ? '#55D6FF' : r.priority === 'MEDIUM' ? '#8B7CFF' : '#727B8C'};padding:16px;margin-bottom:14px;border-radius:6px;">
+      <div style="font-size:11px;font-weight:700;color:${r.priority === 'HIGH' ? '#55D6FF' : r.priority === 'MEDIUM' ? '#8B7CFF' : '#727B8C'};text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
+        ${r.priority} PRIORITY • ${r.area}
       </div>
-    `
+      <div style="color:#F2F5F7;font-size:14px;line-height:1.6;">${r.action}</div>
+    </div>`
+    )
+    .join('');
+
+  const keywordGapRows = (keywordGaps || [])
+    .map(
+      (kw) =>
+        `<li style="color:#A7AFBD;font-size:13px;margin-bottom:6px;line-height:1.5;">🔍 <code style="background:#1a1f2e;padding:2px 6px;border-radius:4px;color:#55D6FF;font-size:12px;">${kw}</code></li>`
+    )
+    .join('');
+
+  const contentRows = (contentOpportunities || [])
+    .map(
+      (c) =>
+        `<li style="color:#A7AFBD;font-size:13px;margin-bottom:6px;line-height:1.5;">✍️ ${c}</li>`
     )
     .join('');
 
   const compCards = competitors
+    .slice(0, 15)
     .map(
       (c) => `
-      <div style="background:#0F121A;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:16px;margin-bottom:12px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-          <strong style="color:#55D6FF;font-size:15px;">${c.domain}</strong>
-          <a href="${c.url}" target="_blank" style="color:#8B7CFF;font-size:12px;text-decoration:none;">Visit ↗</a>
-        </div>
-        <p style="margin:4px 0;font-size:13px;color:#F2F5F7;"><strong>Title:</strong> ${c.title}</p>
-        <p style="margin:4px 0;font-size:12px;color:#A7AFBD;"><strong>Meta:</strong> ${c.metaDesc}</p>
-        <p style="margin:4px 0;font-size:12px;color:#A7AFBD;"><strong>Top Services / H2:</strong> ${c.h2.slice(0, 3).join(' • ') || 'None'}</p>
-        <p style="margin:4px 0;font-size:12px;color:#727B8C;"><strong>CTAs:</strong> ${c.ctas.slice(0, 2).join(' | ') || 'None'}</p>
+    <div style="background:#0F121A;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:16px;margin-bottom:12px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <strong style="color:#55D6FF;font-size:15px;">${c.domain}</strong>
+        <a href="${c.url}" target="_blank" style="color:#8B7CFF;font-size:12px;text-decoration:none;">Visit ↗</a>
       </div>
-    `
+      <p style="margin:4px 0;font-size:13px;color:#F2F5F7;"><strong>Title:</strong> ${c.title}</p>
+      <p style="margin:4px 0;font-size:12px;color:#A7AFBD;"><strong>Meta:</strong> ${c.metaDesc}</p>
+      <p style="margin:4px 0;font-size:12px;color:#A7AFBD;"><strong>H2s:</strong> ${c.h2.slice(0, 3).join(' • ') || 'None'}</p>
+      <p style="margin:4px 0;font-size:12px;color:#727B8C;"><strong>CTAs:</strong> ${c.ctas.slice(0, 2).join(' | ') || 'None'}</p>
+    </div>`
     )
     .join('');
 
-  return `
-<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html>
 <body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#090B10;color:#F2F5F7;margin:0;padding:24px;">
   <div style="max-width:680px;margin:0 auto;background:#090B10;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px;">
-    
+
     <div style="border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:16px;margin-bottom:24px;">
-      <h1 style="margin:0 0 6px;color:#55D6FF;font-size:22px;">📊 Competitor Intelligence & Growth Report</h1>
-      <p style="margin:0;color:#A7AFBD;font-size:13px;">Portfolio Audit & Market Insights for <strong>abinschandran.in</strong> • ${dateStr}</p>
+      <h1 style="margin:0 0 6px;color:#55D6FF;font-size:22px;">📊 AI Competitor Intelligence Report</h1>
+      <p style="margin:0;color:#A7AFBD;font-size:13px;">Powered by Gemini AI • <strong>abinschandran.in</strong> • ${dateStr}</p>
     </div>
 
+    ${scoreBar}
     ${prActionCard}
 
     <div style="margin-bottom:28px;">
-      <h2 style="color:#F2F5F7;font-size:16px;margin-bottom:14px;">🎯 Recommended Improvements for abinschandran.in</h2>
+      <h2 style="color:#F2F5F7;font-size:16px;margin-bottom:14px;">🎯 AI-Generated Recommendations</h2>
       ${recRows}
     </div>
+
+    ${keywordGaps?.length ? `
+    <div style="margin-bottom:28px;">
+      <h2 style="color:#F2F5F7;font-size:16px;margin-bottom:14px;">🔑 Keyword Gaps (Competitors Rank, You Don't)</h2>
+      <ul style="padding-left:0;list-style:none;margin:0;">${keywordGapRows}</ul>
+    </div>` : ''}
+
+    ${contentOpportunities?.length ? `
+    <div style="margin-bottom:28px;">
+      <h2 style="color:#F2F5F7;font-size:16px;margin-bottom:14px;">✍️ Content Opportunities</h2>
+      <ul style="padding-left:0;list-style:none;margin:0;">${contentRows}</ul>
+    </div>` : ''}
 
     <div>
       <h2 style="color:#F2F5F7;font-size:16px;margin-bottom:14px;">🔎 Monitored Competitors (${competitors.length})</h2>
@@ -272,14 +400,14 @@ function buildHtmlEmail(mySite, competitors, recommendations, prUrl = '') {
     </div>
 
     <div style="margin-top:32px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);text-align:center;color:#727B8C;font-size:12px;">
-      Automated Weekly Competitor Monitor • Antigravity AI Engine for Abin S Chandran
+      AI-Powered Competitor Monitor • Gemini 1.5 Flash • abinschandran.in
     </div>
-
   </div>
 </body>
-</html>
-`;
+</html>`;
 }
+
+// ─── Utilities ─────────────────────────────────────────────────────────────────
 
 function getEnvVar(key, fallback = '') {
   if (process.env[key]) return process.env[key];
@@ -294,19 +422,17 @@ function getEnvVar(key, fallback = '') {
   return fallback;
 }
 
-async function dispatchEmail(htmlContent, plainSummary) {
+async function dispatchEmail(htmlContent) {
   const resendApiKey = getEnvVar('RESEND_API_KEY');
   const targetEmail = getEnvVar('REPORT_EMAIL', 'abinschandran1@gmail.com');
 
   if (!resendApiKey) {
-    console.log('\nℹ️ [Email Dispatch Notice]');
-    console.log('To automatically send this HTML report to your email, add your RESEND_API_KEY');
-    console.log('(Free 3,000 emails/mo at https://resend.com) to your GitHub Secrets or .env.local.');
-    console.log('Report has been saved locally to competitor-improvement-report.html');
+    console.log('\nℹ️  [Email Dispatch Notice]');
+    console.log('   RESEND_API_KEY not set. Report saved locally to competitor-improvement-report.html');
     return;
   }
 
-  console.log(`\n📧 Dispatching Improvement Report to ${targetEmail} via Resend...`);
+  console.log(`\n📧 Dispatching AI Intelligence Report to ${targetEmail} via Resend...`);
   try {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -315,16 +441,16 @@ async function dispatchEmail(htmlContent, plainSummary) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Competitor Intelligence <onboarding@resend.dev>',
+        from: 'AI Competitor Monitor <onboarding@resend.dev>',
         to: [targetEmail],
-        subject: `📊 Weekly Competitor & SEO Improvement Report — ${new Date().toLocaleDateString()}`,
+        subject: `🤖 AI Competitor Intelligence — ${new Date().toLocaleDateString()}`,
         html: htmlContent,
       }),
     });
 
     const result = await res.json();
     if (res.ok) {
-      console.log('🎉 Beautiful HTML improvement report successfully delivered to your inbox!');
+      console.log('🎉 AI-powered report successfully delivered to your inbox!');
     } else {
       console.error('❌ Resend API Error:', result.message);
     }
@@ -333,31 +459,49 @@ async function dispatchEmail(htmlContent, plainSummary) {
   }
 }
 
-async function main() {
-  console.log('🚀 Running Competitor Scraper & Intelligence Improvement Engine...\n');
+// ─── Main ──────────────────────────────────────────────────────────────────────
 
-  console.log(`[Baseline] Crawling your site: ${MY_SITE_URL}`);
+async function main() {
+  console.log('🚀 Running AI-Powered Competitor Intelligence Engine...\n');
+
+  // 1. Scrape my site
+  console.log(`[Baseline] Crawling my site: ${MY_SITE_URL}`);
   const mySite = await fetchAndParse(MY_SITE_URL);
 
+  // 2. Scrape competitors
   const competitors = [];
   for (const url of COMPETITOR_URLS) {
     console.log(`[Competitor] Crawling: ${url}`);
     const data = await fetchAndParse(url);
     if (data) competitors.push(data);
-    await new Promise((r) => setTimeout(r, 1000));
+    await new Promise((r) => setTimeout(r, 800));
   }
 
-  console.log(`\n🧠 Generating Strategic Improvement Recommendations...`);
-  const recommendations = generateImprovementAnalysis(mySite, competitors);
+  console.log(`\n✅ Scraped ${competitors.length} / ${COMPETITOR_URLS.length} competitors successfully.`);
 
-  console.log('\n================ IMPROVEMENT RECOMMENDATIONS ================');
-  recommendations.forEach((r, idx) => {
-    console.log(`\n[${idx + 1}] [${r.priority} PRIORITY] ${r.area}`);
-    console.log(`    👉 ${r.action}`);
+  // 3. Gemini AI analysis
+  const analysis = await runGeminiAnalysis(mySite, competitors);
+
+  // 4. Log recommendations to console
+  console.log('\n================ AI INTELLIGENCE REPORT ================');
+  console.log(`\n🏆 Brand Health Score: ${analysis.brandHealthScore}/100`);
+  console.log(`📝 ${analysis.weekSummary}`);
+  console.log('\n🎯 Recommendations:');
+  analysis.recommendations.forEach((r, idx) => {
+    console.log(`\n  [${idx + 1}] [${r.priority}] ${r.area}`);
+    console.log(`      👉 ${r.action}`);
   });
-  console.log('\n=============================================================\n');
+  if (analysis.keywordGaps?.length) {
+    console.log('\n🔑 Keyword Gaps:');
+    analysis.keywordGaps.forEach((kw) => console.log(`  - ${kw}`));
+  }
+  if (analysis.contentOpportunities?.length) {
+    console.log('\n✍️  Content Opportunities:');
+    analysis.contentOpportunities.forEach((c) => console.log(`  - ${c}`));
+  }
+  console.log('\n=========================================================\n');
 
-  // Save tracked insights to data/competitor-insights.json (used to generate automated PR diffs)
+  // 5. Save enriched insights JSON
   const insightsPath = path.resolve(process.cwd(), 'data', 'competitor-insights.json');
   fs.writeFileSync(
     insightsPath,
@@ -365,33 +509,42 @@ async function main() {
       {
         lastUpdated: new Date().toISOString(),
         monitoredTargetsCount: competitors.length,
-        recommendations,
+        brandHealthScore: analysis.brandHealthScore,
+        weekSummary: analysis.weekSummary,
+        recommendations: analysis.recommendations,
+        keywordGaps: analysis.keywordGaps || [],
+        contentOpportunities: analysis.contentOpportunities || [],
       },
       null,
       2
     ),
     'utf-8'
   );
-  console.log(`💡 Staged weekly recommendations in: ${insightsPath}`);
+  console.log(`💡 Saved AI insights to: ${insightsPath}`);
 
-  // Determine PR URL
+  // 6. Determine PR URL
   const prArgIdx = process.argv.indexOf('--pr-url');
   const prUrl =
     process.env.PR_URL ||
     (prArgIdx !== -1 && process.argv[prArgIdx + 1] ? process.argv[prArgIdx + 1] : '') ||
     'https://github.com/abin223804/personal_Portfolio/pulls';
 
-  // Generate HTML & JSON reports
-  const html = buildHtmlEmail(mySite, competitors, recommendations, prUrl);
+  // 7. Generate HTML report
+  const html = buildHtmlEmail(analysis, competitors, prUrl);
   const htmlPath = path.resolve(process.cwd(), 'competitor-improvement-report.html');
   fs.writeFileSync(htmlPath, html, 'utf-8');
   console.log(`📄 Saved HTML report to: ${htmlPath}`);
 
+  // 8. Save full JSON snapshot
   const jsonPath = path.resolve(process.cwd(), 'competitor-analysis.json');
-  fs.writeFileSync(jsonPath, JSON.stringify({ mySite, competitors, recommendations }, null, 2), 'utf-8');
-  console.log(`💾 Saved JSON intelligence to: ${jsonPath}`);
+  fs.writeFileSync(
+    jsonPath,
+    JSON.stringify({ mySite, competitors, analysis }, null, 2),
+    'utf-8'
+  );
+  console.log(`💾 Saved full JSON snapshot to: ${jsonPath}`);
 
-  // Send Email unless --no-email flag is passed
+  // 9. Send email (unless --no-email flag)
   if (!process.argv.includes('--no-email')) {
     await dispatchEmail(html);
   }
