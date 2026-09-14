@@ -134,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
               <span className="text-[10px] sm:text-xs font-mono text-titanium-muted flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-                <span className="hidden xs:inline">Freelance </span>Architect
+                <span className="hidden xs:inline">Freelance </span>Software Architect
               </span>
             </div>
           </Link>
