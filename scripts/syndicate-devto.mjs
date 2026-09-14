@@ -120,7 +120,7 @@ async function publishToDevTo(post, isDraft = false, isDryRun = false) {
     };
   }
 
-  const apiKey = getEnvVar('DEVTO_API_KEY');
+  const apiKey = getEnvVar('DEVTO_API_KEY') || getEnvVar('DEVT0_API_KEY');
   if (!apiKey) {
     console.error('\n❌ DEVTO_API_KEY is not set!');
     console.log('   To get your free DEV.to API key in 10 seconds:');
