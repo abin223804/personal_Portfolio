@@ -11,7 +11,8 @@
     "scrape:email": "node scripts/scrape-competitors.mjs --email",
     "syndicate:devto": "npx tsx scripts/syndicate-devto.mjs --all",
     "syndicate:status": "npx tsx scripts/syndicate-devto.mjs --status",
-    "syndicate:dry": "npx tsx scripts/syndicate-devto.mjs --dry-run"
+    "syndicate:dry": "npx tsx scripts/syndicate-devto.mjs --dry-run",
+    "syndicate:email": "npx tsx scripts/syndicate-devto.mjs --test-email"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

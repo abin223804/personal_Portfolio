@@ -1,6 +1,14 @@
 name: DEV.to High-Authority Backlink & Content Syndication
 
 on:
+  push:
+    paths:
+      - 'data/blog.ts'
+    branches:
+      - main
+  schedule:
+    # Run every Monday at 05:30 UTC (11:00 AM IST) to syndicate any new engineering posts
+    - cron: '30 5 * * 1'
   workflow_dispatch:
     inputs:
       action:
@@ -50,6 +58,8 @@ jobs:
       - name: Run DEV.to Syndication
         env:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          REPORT_EMAIL: ${{ secrets.REPORT_EMAIL || 'abinschandran1@gmail.com' }}
         run: |
           FLAGS=""
           if [ "${{ inputs.action }}" = "dry-run" ]; then

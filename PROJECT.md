@@ -712,8 +712,10 @@ The AI assistant **must update `PROJECT.md` during the same task** and record an
     - Preserves canonical authority via official `canonical_url: https://www.abinschandran.in/blog/[slug]` so Google attributes original authorship and link equity to the portfolio domain.
     - Contextual Backlink Injection: Dynamically embeds keyword-rich author attribution footers linking to the root domain (`abinschandran.in`), regional hubs (`/freelance-software-developer-kochi`, `/freelance-software-developer-kerala`), and commercial hiring (`/hire-web-developer`).
     - State Tracking: Automatically tracks published DEV.to article IDs, live URLs, and publication timestamps in `data/syndication-status.json` to prevent duplicates.
-    - CLI & NPM Tooling: Added `npm run syndicate:devto`, `npm run syndicate:status`, and `npm run syndicate:dry`.
-    - Workflow: Created `.github/workflows/syndicate-content.yml` with manual `workflow_dispatch` options for bulk, single-post, status check, or dry-run execution.
+    - Rate-Limit Guard & Retry: Configured with 31-second inter-post spacing and automatic 429 rate-limit backoff retry (32-second cooldown) to stay within DEV.to API limits.
+    - Automated Email Notification System: Integrated Resend email dispatch (`buildSyndicationEmailHtml`, `dispatchSyndicationEmail`) delivering a dark-cyber formatted notification to `REPORT_EMAIL` (`abinschandran1@gmail.com`) whenever new articles are published. Shows live DEV.to URL, canonical URL, and verified target backlinks.
+    - CLI & NPM Tooling: Added `npm run syndicate:devto`, `npm run syndicate:status`, `npm run syndicate:dry`, and `npm run syndicate:email`.
+    - Workflow Automation (`.github/workflows/syndicate-content.yml`): Triggers automatically on `push` to `data/blog.ts` and on weekly schedule (`30 5 * * 1`), injecting `DEVTO_API_KEY`, `RESEND_API_KEY`, and `REPORT_EMAIL` secrets and committing updated `data/syndication-status.json` directly back to `main`.
 
 
 

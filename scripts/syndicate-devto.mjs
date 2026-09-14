@@ -142,32 +142,234 @@ async function publishToDevTo(post, isDraft = false, isDryRun = false) {
     },
   };
 
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const res = await fetch('https://dev.to/api/articles', {
+        method: 'POST',
+        headers: {
+          'api-key': apiKey,
+          'Content-Type': 'application/json',
+          'User-Agent': 'AbinSChandran-Portfolio-Syndicator/1.0',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (res.status === 429) {
+        console.warn(`⏳ Rate limit reached (429). Waiting 32 seconds before attempt ${attempt + 1}/3...`);
+        await new Promise((r) => setTimeout(r, 32000));
+        continue;
+      }
+
+      if (!res.ok) {
+        console.error(`❌ DEV.to Error (${res.status}):`, data.error || data.message || data);
+        return { success: false, error: data };
+      }
+
+      console.log(`🎉 Successfully published on DEV.to!`);
+      console.log(`🔗 Live Article URL: ${data.url}`);
+      console.log(`🆔 Article ID: ${data.id}`);
+
+      return { success: true, data, post, tags, canonicalUrl };
+    } catch (err) {
+      console.error('❌ Network error syndicating to DEV.to:', err.message);
+      if (attempt < 3) {
+        console.log('Retrying in 5 seconds...');
+        await new Promise((r) => setTimeout(r, 5000));
+      } else {
+        return { success: false, error: err.message };
+      }
+    }
+  }
+  return { success: false, error: 'RATE_LIMIT_EXCEEDED' };
+}
+
+/**
+ * Generate responsive, dark-cyber HTML email for syndication notifications
+ */
+function buildSyndicationEmailHtml(articles) {
+  const count = articles.length;
+  const status = loadSyndicationStatus();
+  const totalDevTo = Object.keys(status.devto || {}).length;
+
+  const articleCards = articles
+    .map((item) => {
+      const title = item.title || item.post?.title;
+      const tags = item.tags || normalizeTags(item.post || {});
+      const tagsHtml = tags
+        .map(
+          (t) =>
+            `<span style="display: inline-block; background: #1e293b; color: #38bdf8; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 6px; margin-bottom: 4px;">#${t}</span>`
+        )
+        .join('');
+
+      return `
+    <div style="background: #0d121f; border: 1px solid #1e293b; border-radius: 12px; padding: 18px; margin-bottom: 16px;">
+      <div style="font-size: 16px; font-weight: 700; color: #ffffff; line-height: 1.4; margin-bottom: 8px;">
+        ${title}
+      </div>
+      <div style="margin-bottom: 12px;">
+        ${tagsHtml}
+      </div>
+      <div style="font-size: 12px; color: #94a3b8; margin-bottom: 14px; line-height: 1.6;">
+        <strong style="color: #cbd5e1;">Canonical Source:</strong><br/>
+        <a href="${item.canonicalUrl}" style="color: #38bdf8; text-decoration: none; word-break: break-all;">${item.canonicalUrl}</a>
+      </div>
+      <table cellpadding="0" cellspacing="0" border="0" style="margin-top: 6px;">
+        <tr>
+          <td style="padding-right: 10px;">
+            <a href="${item.url}" target="_blank" style="display: inline-block; background: #00E5FF; color: #07090e; font-size: 12px; font-weight: 700; padding: 9px 16px; border-radius: 6px; text-decoration: none;">
+              Read on DEV.to (DA 91) ↗
+            </a>
+          </td>
+          <td>
+            <a href="${item.canonicalUrl}" target="_blank" style="display: inline-block; background: #1e293b; color: #e2e8f0; font-size: 12px; font-weight: 600; padding: 9px 16px; border-radius: 6px; text-decoration: none; border: 1px solid #334155;">
+              View on Portfolio ↗
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>`;
+    })
+    .join('');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New High-Authority Backlink Published on DEV.to</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #06080d; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #e2e8f0; line-height: 1.6;">
+  <div style="max-width: 640px; margin: 0 auto; padding: 32px 20px;">
+    <!-- Top Badge & Header -->
+    <div style="text-align: center; margin-bottom: 28px;">
+      <div style="display: inline-block; padding: 6px 14px; background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 9999px; font-size: 11px; font-weight: 700; color: #00E5FF; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px;">
+        🚀 High-Authority Backlink Engine
+      </div>
+      <h1 style="margin: 0; font-size: 24px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">
+        ${count} New Article${count > 1 ? 's' : ''} Published on DEV.to
+      </h1>
+      <p style="margin: 8px 0 0; font-size: 14px; color: #94a3b8;">
+        Domain Authority 91 Backlinks & Canonical Equity Synced to <strong style="color: #ffffff;">abinschandran.in</strong>
+      </p>
+    </div>
+
+    <!-- SEO Metric Grid -->
+    <div style="background: linear-gradient(145deg, #0d121f, #090d16); border: 1px solid #1e293b; border-radius: 14px; padding: 18px 12px; margin-bottom: 24px;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+        <tr>
+          <td align="center" style="padding: 6px; border-right: 1px solid #1e293b; width: 33%;">
+            <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">Platform DA</div>
+            <div style="font-size: 22px; font-weight: 800; color: #00E5FF; margin-top: 2px;">DA 91</div>
+            <div style="font-size: 11px; color: #10b981; font-weight: 600;">High Authority</div>
+          </td>
+          <td align="center" style="padding: 6px; border-right: 1px solid #1e293b; width: 33%;">
+            <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">Canonical Status</div>
+            <div style="font-size: 22px; font-weight: 800; color: #10b981; margin-top: 2px;">Active</div>
+            <div style="font-size: 11px; color: #10b981; font-weight: 600;">100% Link Equity</div>
+          </td>
+          <td align="center" style="padding: 6px; width: 33%;">
+            <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">Total Live</div>
+            <div style="font-size: 22px; font-weight: 800; color: #a855f7; margin-top: 2px;">${totalDevTo} / ${BLOG_POSTS.length}</div>
+            <div style="font-size: 11px; color: #94a3b8;">Articles Synced</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Article Cards List -->
+    <div style="margin-bottom: 24px;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin: 0 0 12px 4px;">
+        Published Technical Guides
+      </div>
+      ${articleCards}
+    </div>
+
+    <!-- Contextual Backlinks Verified -->
+    <div style="background: #0d121f; border: 1px solid #1e293b; border-radius: 12px; padding: 18px 20px; margin-bottom: 24px;">
+      <div style="font-size: 13px; font-weight: 700; color: #ffffff; margin-bottom: 10px;">
+        🏛️ Verified Backlinks Injected in Every Article:
+      </div>
+      <table cellpadding="0" cellspacing="0" width="100%" style="font-size: 12px; line-height: 1.8;">
+        <tr>
+          <td style="color: #64748b; width: 22px; vertical-align: top;">•</td>
+          <td style="color: #cbd5e1;"><strong style="color: #ffffff;">Root Portfolio:</strong> <a href="${BASE_URL}" style="color: #00E5FF; text-decoration: none;">abinschandran.in</a> <span style="color: #64748b;">(Brand Equity)</span></td>
+        </tr>
+        <tr>
+          <td style="color: #64748b; width: 22px; vertical-align: top;">•</td>
+          <td style="color: #cbd5e1;"><strong style="color: #ffffff;">Kochi Regional Hub:</strong> <a href="${BASE_URL}/freelance-software-developer-kochi" style="color: #00E5FF; text-decoration: none;">/freelance-software-developer-kochi</a> <span style="color: #64748b;">(Infopark Ranking)</span></td>
+        </tr>
+        <tr>
+          <td style="color: #64748b; width: 22px; vertical-align: top;">•</td>
+          <td style="color: #cbd5e1;"><strong style="color: #ffffff;">Kerala Regional Hub:</strong> <a href="${BASE_URL}/freelance-software-developer-kerala" style="color: #00E5FF; text-decoration: none;">/freelance-software-developer-kerala</a> <span style="color: #64748b;">(Statewide Geo-Targeting)</span></td>
+        </tr>
+        <tr>
+          <td style="color: #64748b; width: 22px; vertical-align: top;">•</td>
+          <td style="color: #cbd5e1;"><strong style="color: #ffffff;">Commercial Inquiry:</strong> <a href="${BASE_URL}/hire-web-developer" style="color: #00E5FF; text-decoration: none;">/hire-web-developer</a> <span style="color: #64748b;">(Architecture Consultation)</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; border-top: 1px solid #1e293b; padding-top: 20px;">
+      <p style="margin: 0; font-size: 12px; color: #64748b;">
+        Automated High-Authority Backlink Engine • Abin S Chandran Portfolio
+      </p>
+      <p style="margin: 6px 0 0; font-size: 11px; color: #475569;">
+        Powered by Resend & DEV.to Syndicator • Zero-effort automated ranking boost
+      </p>
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
+async function dispatchSyndicationEmail(articles) {
+  const resendApiKey = getEnvVar('RESEND_API_KEY');
+  const targetEmail = getEnvVar('REPORT_EMAIL', 'abinschandran1@gmail.com');
+
+  if (!resendApiKey) {
+    console.log('\nℹ️  [Syndication Email Notice]');
+    console.log('   RESEND_API_KEY not set in .env.local or environment. Skipping email dispatch.');
+    return;
+  }
+
+  const count = articles.length;
+  const firstTitle = articles[0]?.title || articles[0]?.post?.title || 'Technical Guide';
+  const subject =
+    count === 1
+      ? `🚀 [DEV.to DA 91 Backlink] "${firstTitle.slice(0, 45)}..." is Live!`
+      : `🚀 [DEV.to DA 91] ${count} New Technical Articles Published & Backlinked!`;
+
+  console.log(`\n📧 Dispatching syndication notification to ${targetEmail} via Resend...`);
+
+  const html = buildSyndicationEmailHtml(articles);
+
   try {
-    const res = await fetch('https://dev.to/api/articles', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'api-key': apiKey,
+        Authorization: `Bearer ${resendApiKey}`,
         'Content-Type': 'application/json',
-        'User-Agent': 'AbinSChandran-Portfolio-Syndicator/1.0',
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        from: 'Backlink Engine <onboarding@resend.dev>',
+        to: [targetEmail],
+        subject,
+        html,
+      }),
     });
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      console.error(`❌ DEV.to Error (${res.status}):`, data.error || data.message || data);
-      return { success: false, error: data };
+    const result = await res.json();
+    if (res.ok) {
+      console.log(`🎉 Syndication notification successfully delivered to ${targetEmail}!`);
+    } else {
+      console.error('❌ Resend API Error:', result.message || result);
     }
-
-    console.log(`🎉 Successfully published on DEV.to!`);
-    console.log(`🔗 Live Article URL: ${data.url}`);
-    console.log(`🆔 Article ID: ${data.id}`);
-
-    return { success: true, data };
   } catch (err) {
-    console.error('❌ Network error syndicating to DEV.to:', err.message);
-    return { success: false, error: err.message };
+    console.error('❌ Failed to dispatch syndication email:', err.message);
   }
 }
 
@@ -202,6 +404,7 @@ async function main() {
   const isDryRun = args.includes('--dry-run');
   const isDraft = args.includes('--draft');
   const isAll = args.includes('--all');
+  const isTestEmail = args.includes('--test-email');
   const targetSlugArg = args.find((a) => a.startsWith('--post='));
   const targetSlug = targetSlugArg ? targetSlugArg.split('=')[1] : null;
 
@@ -210,10 +413,34 @@ async function main() {
     return;
   }
 
-  console.log('🚀 DEV.to Backlink & Content Syndication Engine Starting...\n');
-
   const status = loadSyndicationStatus();
   status.devto = status.devto || {};
+
+  if (isTestEmail) {
+    const slugs = Object.keys(status.devto);
+    if (slugs.length === 0) {
+      console.log('No syndicated posts found to test email.');
+      return;
+    }
+    const sampleSlugs = slugs.slice(-2);
+    const sampleItems = sampleSlugs.map((slug) => {
+      const item = status.devto[slug];
+      const post = BLOG_POSTS.find((p) => p.slug === slug);
+      return {
+        title: post?.title || slug,
+        tags: post ? normalizeTags(post) : ['architecture', 'saas'],
+        url: item.url,
+        canonicalUrl: item.canonicalUrl,
+        post,
+      };
+    });
+
+    console.log(`🧪 Sending test syndication notification for ${sampleItems.length} article(s)...`);
+    await dispatchSyndicationEmail(sampleItems);
+    return;
+  }
+
+  console.log('🚀 DEV.to Backlink & Content Syndication Engine Starting...\n');
 
   let postsToProcess = [];
 
@@ -246,6 +473,7 @@ async function main() {
   }
 
   let publishedCount = 0;
+  const newlyPublished = [];
 
   for (const post of postsToProcess) {
     const result = await publishToDevTo(post, isDraft, isDryRun);
@@ -260,10 +488,18 @@ async function main() {
       saveSyndicationStatus(status);
       publishedCount++;
 
-      // Rate-limit pause if syndicating multiple
-      if (postsToProcess.length > 1) {
-        console.log('⏳ Pausing 3 seconds to respect DEV.to rate limits...');
-        await new Promise((r) => setTimeout(r, 3000));
+      newlyPublished.push({
+        title: post.title,
+        tags: result.tags || normalizeTags(post),
+        url: result.data.url,
+        canonicalUrl: `${BASE_URL}/blog/${post.slug}`,
+        post,
+      });
+
+      // Rate-limit pause if syndicating multiple (DEV.to limits to 1 post per 30s)
+      if (postsToProcess.length > 1 && publishedCount < postsToProcess.length) {
+        console.log('⏳ Pausing 31 seconds to respect DEV.to rate limits...');
+        await new Promise((r) => setTimeout(r, 31000));
       }
     } else if (!result.success) {
       console.warn(`⚠️ Skipped recording status for "${post.slug}" due to error.`);
@@ -273,6 +509,11 @@ async function main() {
   console.log(`\n🏁 Done! Published ${publishedCount} article(s) to DEV.to.`);
   if (isDryRun) {
     console.log('ℹ️  Run was in --dry-run mode. Add DEVTO_API_KEY to publish live.');
+  }
+
+  if (newlyPublished.length > 0 && !isDryRun) {
+    console.log(`\n📧 Dispatching automatic notification email for ${newlyPublished.length} new article(s)...`);
+    await dispatchSyndicationEmail(newlyPublished);
   }
 }
 

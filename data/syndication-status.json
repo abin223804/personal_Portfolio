@@ -1,0 +1,78 @@
+{
+  "devto": {
+    "flutter-high-performance-mobile-app-architecture": {
+      "id": 4649954,
+      "url": "https://dev.to/abinschandran/how-to-build-high-performance-flutter-mobile-apps-60fps-architecture-guide-2b5p",
+      "publishedAt": "2026-09-14T11:17:14.401Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/flutter-high-performance-mobile-app-architecture"
+    },
+    "nodejs-rest-api-best-practices-scaling-express-postgresql": {
+      "id": 4649956,
+      "url": "https://dev.to/abinschandran/nodejs-rest-api-best-practices-scaling-express-postgresql-for-enterprise-apps-1ia4",
+      "publishedAt": "2026-09-14T11:17:20.643Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/nodejs-rest-api-best-practices-scaling-express-postgresql"
+    },
+    "building-production-saas-nextjs-15-app-router": {
+      "id": 4649961,
+      "url": "https://dev.to/abinschandran/building-production-saas-platforms-with-nextjs-15-app-router-server-actions-36a9",
+      "publishedAt": "2026-09-14T11:18:04.138Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/building-production-saas-nextjs-15-app-router"
+    },
+    "flutter-google-maps-integration-high-performance-guide": {
+      "id": 4649962,
+      "url": "https://dev.to/abinschandran/flutter-google-maps-integration-building-high-performance-map-apps-2025-guide-a8a",
+      "publishedAt": "2026-09-14T11:18:10.888Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/flutter-google-maps-integration-high-performance-guide"
+    },
+    "flutter-app-architecture-guide-clean-architecture-bloc": {
+      "id": 4649970,
+      "url": "https://dev.to/abinschandran/flutter-app-architecture-guide-clean-architecture-with-bloc-repository-pattern-2025-4oc8",
+      "publishedAt": "2026-09-14T11:18:46.109Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/flutter-app-architecture-guide-clean-architecture-bloc"
+    },
+    "scalable-full-stack-web-architecture-nextjs-nodejs-postgresql": {
+      "id": 4563625,
+      "url": "https://dev.to/abinschandran/building-scalable-full-stack-web-applications-with-nextjs-15-nodejs-and-postgresql-112i",
+      "publishedAt": "2026-08-25T10:00:00.000Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/scalable-full-stack-web-architecture-nextjs-nodejs-postgresql"
+    },
+    "saas-mvp-development-india-cost-timeline": {
+      "id": 4649974,
+      "url": "https://dev.to/abinschandran/saas-mvp-development-in-india-scope-timeline-and-cost-drivers-57bh",
+      "publishedAt": "2026-09-14T11:19:19.598Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/saas-mvp-development-india-cost-timeline"
+    },
+    "nodejs-rest-api-audit-checklist": {
+      "id": 4649979,
+      "url": "https://dev.to/abinschandran/nodejs-rest-api-audit-a-checklist-for-slow-or-unreliable-backends-2521",
+      "publishedAt": "2026-09-14T11:19:52.188Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/nodejs-rest-api-audit-checklist"
+    },
+    "nextjs-core-web-vitals-optimization": {
+      "id": 4649982,
+      "url": "https://dev.to/abinschandran/nextjs-core-web-vitals-optimization-what-to-measure-before-rewriting-22",
+      "publishedAt": "2026-09-14T11:20:24.846Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/nextjs-core-web-vitals-optimization"
+    },
+    "flutter-mvp-development-guide": {
+      "id": 4649988,
+      "url": "https://dev.to/abinschandran/flutter-mvp-development-from-product-scope-to-ios-and-android-release-1j29",
+      "publishedAt": "2026-09-14T11:20:57.337Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/flutter-mvp-development-guide"
+    },
+    "freelance-developer-vs-agency-saas": {
+      "id": 4649995,
+      "url": "https://dev.to/abinschandran/freelance-software-developer-vs-agency-for-a-saas-product-cost-speed-and-architecture-control-4dlo",
+      "publishedAt": "2026-09-14T11:21:29.615Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/freelance-developer-vs-agency-saas"
+    },
+    "production-rag-system-requirements": {
+      "id": 4650004,
+      "url": "https://dev.to/abinschandran/what-does-a-production-rag-system-need-vector-search-chunking-guardrails-and-cost-controls-1dke",
+      "publishedAt": "2026-09-14T11:22:01.951Z",
+      "canonicalUrl": "https://www.abinschandran.in/blog/production-rag-system-requirements"
+    }
+  },
+  "hashnode": {},
+  "medium": {}
+}
