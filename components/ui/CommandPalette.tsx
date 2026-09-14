@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Search, FileText, Briefcase, User, Terminal, ArrowRight, X, Cpu, Github, Linkedin, Sparkles, BookOpen, Layers, Globe } from "lucide-react";
+import { Search, FileText, Briefcase, User, Terminal, ArrowRight, X, Cpu, Github, Linkedin, Sparkles, BookOpen, Layers, Globe, MapPin } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
 import { BLOG_POSTS } from "@/data/blog";
 
@@ -36,6 +36,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   const actions = [
     { id: "hire", title: "Hire Freelance Web Developer & Solution Architect", category: "Commercial Engagement", href: "/hire-web-developer", icon: Sparkles },
     { id: "crm-saas", title: "Launch Live CRM SaaS Platform (crm.abinschandran.in)", category: "Live SaaS Products", external: "https://crm.abinschandran.in/", icon: Sparkles },
+    { id: "kochi", title: "Freelance Software Developer Kochi & Infopark", category: "Regional Hubs", href: "/freelance-software-developer-kochi", icon: MapPin },
+    { id: "kerala", title: "Kerala Statewide Software Engineering Hub", category: "Regional Hubs", href: "/freelance-software-developer-kerala", icon: MapPin },
+    { id: "kollam", title: "Kollam District Software Developer", category: "Regional Hubs", href: "/freelance-software-developer-kollam", icon: MapPin },
+    { id: "karunagappally", title: "Karunagappally Software Developer Hub", category: "Regional Hubs", href: "/freelance-software-developer-karunagappally", icon: MapPin },
     { id: "services", title: "Browse Commercial Services Catalog", category: "Navigation", href: "/services", icon: Layers },
     { id: "home", title: "Go to System Overview (Home)", category: "Navigation", href: "/", icon: Cpu },
     { id: "projects", title: "Browse All Projects & Case Studies", category: "Navigation", href: "/projects", icon: Briefcase },

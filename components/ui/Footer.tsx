@@ -126,6 +126,11 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/freelance-software-developer-kochi" className="hover:text-cyan transition-colors text-cyan/90 font-medium">
+                  Kochi &amp; Infopark Hub
+                </Link>
+              </li>
+              <li>
                 <Link href="/freelance-software-developer-kollam" className="hover:text-cyan transition-colors">
                   Kollam District Services
                 </Link>

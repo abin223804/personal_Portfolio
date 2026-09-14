@@ -115,6 +115,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [`${baseUrl}/og-image.png`],
     },
     {
+      url: `${baseUrl}/freelance-software-developer-kochi`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+      images: [`${baseUrl}/og-image.png`],
+    },
+    {
       url: `${baseUrl}/integrations`,
       lastModified: now,
       changeFrequency: "weekly" as const,

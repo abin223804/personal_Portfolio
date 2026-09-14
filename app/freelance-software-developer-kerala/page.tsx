@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 const KERALA_DISTRICTS = [
   { name: "Kollam", slug: "freelance-software-developer-kollam", focus: "Primary Hub: Cashew & seafood export software, logistics, retail ERP, clinical systems & custom SaaS." },
   { name: "Karunagappally", slug: "freelance-software-developer-karunagappally", focus: "Taluk Hub: E-commerce, customer portals, billing platforms, mobile MVPs & local business automation." },
-  { name: "Ernakulam / Kochi", focus: "Fintech, startup MVPs, enterprise APIs, Infopark & SmartCity tech ecosystems." },
+  { name: "Ernakulam / Kochi", slug: "freelance-software-developer-kochi", focus: "Fintech, startup MVPs, enterprise APIs, Infopark & SmartCity tech ecosystems." },
   { name: "Thiruvananthapuram", focus: "Technopark startups, government tech solutions, educational portals & health systems." },
   { name: "Kozhikode (Calicut)", focus: "Food delivery apps, retail distribution systems, medical tech & regional e-commerce." },
   { name: "Thrissur", focus: "Jewellery ERP, micro-finance tech, distribution networks & business automation." },
@@ -268,20 +268,40 @@ export default function KeralaSoftwareDeveloperPage() {
           <div className="max-w-3xl space-y-4 mb-12">
             <span className="text-xs font-mono uppercase tracking-widest text-cyan font-semibold">Priority Service Corridors</span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-ivory">
-              Local Service Focus: Kollam District &amp; Karunagappally
+              Local Service Focus: Kochi, Kollam &amp; Karunagappally
             </h2>
             <p className="text-sm sm:text-base text-titanium leading-relaxed">
-              While I serve clients throughout Kerala and across global timezones remotely, Kollam and Karunagappally represent priority local regions where on-site technical discussions and local business alignments are readily arranged.
+              While I serve clients throughout Kerala and across global timezones remotely, Kochi (Infopark / Kakkanad), Kollam, and Karunagappally represent priority local regions where on-site technical discussions and architectural consultations are readily arranged.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
-            <div className="rounded-3xl border border-cyan/30 bg-gradient-to-br from-brand-secondary to-brand-surface p-8 space-y-5 relative overflow-hidden group hover:border-cyan/60 transition-all">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+            <div className="rounded-3xl border border-cyan/40 bg-gradient-to-br from-brand-secondary to-brand-surface p-7 space-y-4 relative overflow-hidden group hover:border-cyan/70 transition-all">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan text-xs font-mono font-semibold">
+                <MapPin className="h-3.5 w-3.5" />
+                <span>Tech &amp; Startup Capital</span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-ivory">
+                Freelance Software Developer in Kochi
+              </h3>
+              <p className="text-xs sm:text-sm text-titanium leading-relaxed">
+                Next.js 15 SaaS platforms, Flutter cross-platform mobile apps, sub-10ms Node.js REST APIs, and AI/RAG systems for Infopark startups, Kakkanad tech ventures, and overseas founders.
+              </p>
+              <Link
+                href="/freelance-software-developer-kochi"
+                className="inline-flex items-center gap-2 text-xs font-mono font-bold text-cyan hover:text-cyan-light pt-2"
+              >
+                <span>Explore Kochi &amp; Infopark Hub</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-brand-secondary to-brand-surface p-7 space-y-4 relative overflow-hidden group hover:border-cyan/40 transition-all">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-cyan text-xs font-mono font-semibold">
                 <MapPin className="h-3.5 w-3.5" />
                 <span>District Hub</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-ivory">
+              <h3 className="text-lg sm:text-xl font-bold text-ivory">
                 Freelance Software Developer in Kollam
               </h3>
               <p className="text-xs sm:text-sm text-titanium leading-relaxed">
@@ -291,17 +311,17 @@ export default function KeralaSoftwareDeveloperPage() {
                 href="/freelance-software-developer-kollam"
                 className="inline-flex items-center gap-2 text-xs font-mono font-bold text-cyan hover:text-cyan-light pt-2"
               >
-                <span>Explore Kollam Services &amp; Projects</span>
+                <span>Explore Kollam Services</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
-            <div className="rounded-3xl border border-violet/30 bg-gradient-to-br from-brand-secondary to-brand-surface p-8 space-y-5 relative overflow-hidden group hover:border-violet/60 transition-all">
+            <div className="rounded-3xl border border-violet/30 bg-gradient-to-br from-brand-secondary to-brand-surface p-7 space-y-4 relative overflow-hidden group hover:border-violet/60 transition-all">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet/10 border border-violet/30 text-violet text-xs font-mono font-semibold">
                 <MapPin className="h-3.5 w-3.5" />
                 <span>Taluk &amp; Commerce Hub</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-ivory">
+              <h3 className="text-lg sm:text-xl font-bold text-ivory">
                 Freelance Software Developer in Karunagappally
               </h3>
               <p className="text-xs sm:text-sm text-titanium leading-relaxed">
