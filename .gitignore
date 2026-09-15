@@ -6,3 +6,5 @@ node_modules
 .DS_Store
 competitor-analysis.json
 competitor-improvement-report.html
+gsc-credentials.json
+gsc-performance-report.html

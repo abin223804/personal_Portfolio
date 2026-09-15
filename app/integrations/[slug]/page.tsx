@@ -13,8 +13,11 @@ import {
   ArrowLeft,
   Server,
   Lock,
+  Check,
+  FileCode,
 } from "lucide-react";
 import { INTEGRATIONS, IntegrationService } from "@/data/integrations";
+import { getEnrichedFaqs } from "@/data/seo-enrichments";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { ProjectBriefBlock } from "@/components/conversion/ProjectBriefBlock";
 
@@ -38,14 +41,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const title =
+    integration.seoTitle || `${integration.name} Integration Services | Abin S Chandran`;
+
   return {
-    title: `${integration.name} | Abin S Chandran`,
+    title,
     description: integration.metaDescription,
     alternates: {
       canonical: `https://www.abinschandran.in/integrations/${integration.slug}`,
     },
     openGraph: {
-      title: `${integration.name} | Abin S Chandran`,
+      title,
       description: integration.metaDescription,
       url: `https://www.abinschandran.in/integrations/${integration.slug}`,
       images: [
@@ -68,6 +74,8 @@ export default async function IntegrationDetailPage({ params }: Props) {
     notFound();
   }
 
+  const allFaqs = getEnrichedFaqs(`/integrations/${integration.slug}`, integration.faqs);
+
   const jsonLdData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -84,7 +92,7 @@ export default async function IntegrationDetailPage({ params }: Props) {
       },
       {
         "@type": "FAQPage",
-        mainEntity: integration.faqs.map((faq) => ({
+        mainEntity: allFaqs.map((faq) => ({
           "@type": "Question",
           name: faq.question,
           acceptedAnswer: {
@@ -273,6 +281,100 @@ export default async function IntegrationDetailPage({ params }: Props) {
         </div>
       </section>
 
+      {/* Direct vs Third-Party Comparison (If Available) */}
+      {integration.comparison && (
+        <section className="py-20 border-b border-white/[0.06] bg-brand-surface/40">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl space-y-4 mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-cyan font-semibold">
+                Architecture &amp; Cost Analysis
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-ivory">
+                {integration.comparison.title}
+              </h2>
+              {integration.comparison.subtitle && (
+                <p className="text-sm sm:text-base text-slate-300">
+                  {integration.comparison.subtitle}
+                </p>
+              )}
+            </div>
+
+            <div className="overflow-x-auto rounded-2xl border border-white/10 bg-brand-surface">
+              <table className="w-full text-left text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-white/10 bg-white/[0.02]">
+                    <th className="p-4 sm:p-5 font-mono text-slate-400 font-semibold uppercase tracking-wider w-1/3">
+                      Feature / Dimension
+                    </th>
+                    <th className="p-4 sm:p-5 font-mono text-cyan font-bold uppercase tracking-wider w-1/3 bg-cyan/5 border-x border-cyan/20">
+                      {integration.comparison.directName}
+                    </th>
+                    <th className="p-4 sm:p-5 font-mono text-slate-400 font-semibold uppercase tracking-wider w-1/3">
+                      {integration.comparison.thirdPartyName}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {integration.comparison.features.map((feat, idx) => (
+                    <tr key={idx} className="hover:bg-white/[0.01] transition-colors">
+                      <td className="p-4 sm:p-5 font-semibold text-ivory">
+                        {feat.name}
+                      </td>
+                      <td className="p-4 sm:p-5 text-cyan font-mono bg-cyan/5 border-x border-cyan/20">
+                        {feat.direct}
+                      </td>
+                      <td className="p-4 sm:p-5 text-slate-400 font-mono">
+                        {feat.thirdParty}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Production Code Snippet (If Available) */}
+      {integration.codeSnippet && (
+        <section className="py-20 border-b border-white/[0.06] bg-brand-secondary/40">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl space-y-4 mb-10">
+              <span className="text-xs font-mono uppercase tracking-widest text-cyan font-semibold">
+                Implementation Proof
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-ivory">
+                {integration.codeSnippet.title}
+              </h2>
+              <p className="text-sm sm:text-base text-slate-300">
+                {integration.codeSnippet.description}
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-[#0B0F17] overflow-hidden shadow-2xl">
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <span className="h-3 w-3 rounded-full bg-rose-500/80 inline-block" />
+                    <span className="h-3 w-3 rounded-full bg-amber-500/80 inline-block" />
+                    <span className="h-3 w-3 rounded-full bg-emerald-500/80 inline-block" />
+                  </div>
+                  <span className="ml-2 font-mono text-xs text-slate-400">
+                    {integration.codeSnippet.filename}
+                  </span>
+                </div>
+                <span className="text-[11px] font-mono text-cyan bg-cyan/10 px-2 py-0.5 rounded border border-cyan/20">
+                  Production Ready
+                </span>
+              </div>
+              <pre className="p-5 sm:p-6 text-xs sm:text-sm font-mono text-slate-200 overflow-x-auto leading-relaxed">
+                <code>{integration.codeSnippet.code}</code>
+              </pre>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Real-World Use Cases */}
       <section className="py-20 border-b border-white/[0.06] bg-brand-secondary/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -315,7 +417,7 @@ export default async function IntegrationDetailPage({ params }: Props) {
           </div>
 
           <div className="space-y-4">
-            {integration.faqs.map((faq, index) => (
+            {allFaqs.map((faq, index) => (
               <div
                 key={index}
                 className="rounded-2xl border border-white/10 bg-brand-surface p-6 space-y-2 hover:border-cyan/30 transition-all"

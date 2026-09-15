@@ -1,0 +1,70 @@
+name: Weekly Google Search Console Radar & Striking Distance Engine
+
+on:
+  schedule:
+    # Runs every Monday at 04:00 UTC (09:30 AM IST)
+    - cron: '0 4 * * 1'
+  workflow_dispatch: # Allows manual one-click trigger from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  gsc-radar:
+    name: Search Console Radar & Striking Distance Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run GSC Intelligence & Dispatch Email
+        env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+          GSC_CLIENT_EMAIL: ${{ secrets.GSC_CLIENT_EMAIL }}
+          GSC_PRIVATE_KEY: ${{ secrets.GSC_PRIVATE_KEY }}
+          GSC_SITE_URL: ${{ secrets.GSC_SITE_URL || 'https://www.abinschandran.in/' }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          REPORT_EMAIL: ${{ secrets.REPORT_EMAIL || 'abinschandran1@gmail.com' }}
+        run: node scripts/gsc-monitor.mjs
+
+      - name: Run Autonomous SEO Content Enricher (Gemini AI)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          REPORT_EMAIL: ${{ secrets.REPORT_EMAIL || 'abinschandran1@gmail.com' }}
+        run: node scripts/auto-seo-enricher.mjs
+
+      - name: Commit & Push Updated Search Snapshot & Enrichments Directly to main
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/gsc-insights.json data/seo-enrichments.json
+          if ! git diff --staged --quiet; then
+            echo "📝 Changes detected in GSC snapshot or auto-enrichments. Committing to main..."
+            git commit -m "chore(seo): autonomous GSC & AI content enrichment [skip ci]"
+            git push origin main
+            echo "🚀 Successfully pushed directly to main! Vercel will deploy automatically."
+          else
+            echo "ℹ️ No changes in GSC search snapshot or enrichments this run."
+          fi
+
+      - name: Upload HTML & JSON Intelligence Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: gsc-intelligence-reports
+          path: |
+            gsc-performance-report.html
+            data/gsc-insights.json
+          retention-days: 30

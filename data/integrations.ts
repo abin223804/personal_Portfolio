@@ -4,9 +4,30 @@ export interface IntegrationWorkflow {
   technicalSteps: string[];
 }
 
+export interface IntegrationComparison {
+  title: string;
+  subtitle: string;
+  directName: string;
+  thirdPartyName: string;
+  features: {
+    name: string;
+    direct: string;
+    thirdParty: string;
+    advantage: boolean;
+  }[];
+}
+
+export interface IntegrationCodeSnippet {
+  title: string;
+  filename: string;
+  description: string;
+  code: string;
+}
+
 export interface IntegrationService {
   slug: string;
   name: string;
+  seoTitle?: string;
   badge: string;
   category: "Payments & Billing" | "Messaging & Alerts" | "Geolocation & Maps";
   shortDescription: string;
@@ -19,6 +40,8 @@ export interface IntegrationService {
     title: string;
     description: string;
   }[];
+  comparison?: IntegrationComparison;
+  codeSnippet?: IntegrationCodeSnippet;
   supportedWorkflows: IntegrationWorkflow[];
   exampleUseCases: {
     industry: string;
@@ -202,60 +225,161 @@ export const INTEGRATIONS: IntegrationService[] = [
   {
     slug: "whatsapp-business-api",
     name: "WhatsApp Business Cloud API",
-    badge: "Conversational Automation",
+    seoTitle: "WhatsApp Business Cloud API Integration Services & Setup | Abin S Chandran",
+    badge: "Conversational Automation & Meta Cloud API",
     category: "Messaging & Alerts",
     shortDescription:
       "Enterprise WhatsApp Business Cloud API integration for automated order alerts, customer support bots, appointment confirmations, and transactional updates.",
     h1: "WhatsApp Business Cloud API Integration Services",
     metaDescription:
-      "Custom WhatsApp Business Cloud API integration by Abin S Chandran. Automated notifications, conversational bots, webhook listeners, and CRM sync.",
+      "Direct Meta WhatsApp Business Cloud API integration & setup services by Abin S Chandran. Automated notifications, conversational AI bots, secure webhooks, and CRM sync.",
     heroPitch:
-      "I build custom, reliable WhatsApp Business Cloud API integrations that connect directly to your backend applications, CRMs, and e-commerce stores. Deliver high-engagement transactional alerts, customer support flows, and lead qualification bots with 98% open rates.",
+      "I engineer production-ready WhatsApp Business Cloud API integrations directly with Meta's official Graph endpoints. Eliminate third-party SaaS markups (WATI, Twilio, Interakt), automate mission-critical transactional alerts, and deploy high-converting interactive bots with 98% open rates.",
     businessProblem:
-      "Transactional emails suffer from low open rates (18-22%) and spam filters. Customers expect real-time notifications, delivery updates, and support on WhatsApp. Integrating Meta's Cloud API requires handling rate limits, webhook verification tokens, HSM template approvals, and message status callbacks.",
+      "Transactional emails suffer from 18-22% open rates, while SMS suffers from low engagement and high carrier filtering. Modern businesses require direct WhatsApp communication. However, building directly on Meta's WhatsApp Cloud API requires mastering permanent System User tokens, SHA-256 webhook signature verification, HSM template approval workflows, phone number verification, and asynchronous status tracking.",
     technicalScope: [
-      "Meta WhatsApp Cloud API setup and system user token management",
-      "Two-way interactive webhook listener with SHA-256 payload verification",
-      "Template message submission and parameter mapping (order status, appointment, OTP)",
-      "Interactive message elements: Quick Reply buttons, List menus, and Call-to-Action links",
-      "Media message delivery: PDF invoices, tickets, catalogs, and images",
-      "Conversational state machine for customer support and automated qualification",
-      "Fallback SMS routing when WhatsApp delivery fails",
-      "Seamless integration with internal databases, PostgreSQL, and CRM webhooks",
+      "Meta WhatsApp Cloud API setup, Business Manager verification & Permanent System User access tokens",
+      "Two-way interactive webhook listener with SHA-256 signature verification (X-Hub-Signature-256)",
+      "High-throughput transactional notifications: OTPs, order updates, invoices, and payment links",
+      "Template message drafting & approval optimization (HSM parameter mapping for marketing, utility, and auth)",
+      "Rich interactive messaging: Quick-Reply buttons, List selectors, CTA links, and catalog products",
+      "Media dispatch pipeline: Automated PDF invoice generation, tickets, dynamic images, and documents",
+      "Conversational state machine and AI/LLM bot integration for 24/7 automated qualification & support",
+      "BullMQ / Redis queued delivery pipeline with automatic retry on rate-limiting or delivery failures",
+      "Bi-directional synchronization with PostgreSQL, Supabase, internal CRMs, and ERP webhooks",
+      "Fallback routing: Automated SMS failover dispatch when WhatsApp delivery fails",
     ],
     securityAndReliability: [
       {
-        title: "Webhook Hub Verification",
+        title: "Strict Webhook Verification",
         description:
-          "Robust endpoint handling Meta's `hub.verify_token` challenge and continuous verification of incoming `X-Hub-Signature-256` headers.",
+          "Zero-trust endpoint handling Meta's hub.verify_token challenge and strict cryptographic validation of incoming X-Hub-Signature-256 headers using HMAC-SHA256.",
       },
       {
-        title: "Rate Limit Buffering",
+        title: "Rate Limit Buffering & Idempotency",
         description:
-          "Message queuing system (BullMQ / Redis) ensuring bursts of notifications never exceed Meta API tier quotas.",
+          "Distributed Redis / BullMQ message queues buffer outbound bursts, strictly honoring Meta Cloud API tier limits (80–1,000 msgs/sec) with per-message idempotency.",
       },
       {
-        title: "Delivery Status Tracking",
+        title: "Lifecycle Status Reconciliation",
         description:
-          "Automatic tracking of `sent`, `delivered`, and `read` receipts directly into your database for transparent delivery analytics.",
+          "Continuous tracking of sent, delivered, read, and failed statuses stored directly into database audit logs for 100% transparency on deliverability.",
       },
     ],
+    comparison: {
+      title: "Direct Meta Cloud API vs. Third-Party BSP Aggregators",
+      subtitle: "Why building directly on Meta's Cloud API provides maximum control and massive cost savings.",
+      directName: "Direct Meta Cloud API (My Integration)",
+      thirdPartyName: "Aggregators (Twilio, WATI, AiSensy)",
+      features: [
+        {
+          name: "Monthly Platform Fee",
+          direct: "$0 / month (No subscription fees)",
+          thirdParty: "$49 – $399 / month recurring software license",
+          advantage: true,
+        },
+        {
+          name: "Per-Message Markup",
+          direct: "0% markup (Pay Meta's exact conversation rates)",
+          thirdParty: "20% – 50% markup on top of Meta fees",
+          advantage: true,
+        },
+        {
+          name: "Data Privacy & Compliance",
+          direct: "Customer data stays in your own database / cloud",
+          thirdParty: "Customer chats stored on 3rd-party SaaS databases",
+          advantage: true,
+        },
+        {
+          name: "Custom Bot Logic & AI",
+          direct: "Full control: Custom Next.js, Node, Python, or LLMs",
+          thirdParty: "Constrained to rigid vendor visual flow-builders",
+          advantage: true,
+        },
+        {
+          name: "Throughput & Rate Limits",
+          direct: "Direct access to Tier 1-3 Meta limits (up to 1,000 msg/sec)",
+          thirdParty: "Shared queue throttling across vendor customers",
+          advantage: true,
+        },
+      ],
+    },
+    codeSnippet: {
+      title: "Production Meta Webhook Listener & Signature Verification",
+      filename: "api/webhooks/whatsapp/route.ts",
+      description: "Next.js / Node.js webhook handler implementing hub verification and HMAC-SHA256 payload integrity check.",
+      code: `import { NextRequest, NextResponse } from "next/server";
+import crypto from "crypto";
+
+// 1. Webhook Challenge Verification (GET)
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const mode = searchParams.get("hub.mode");
+  const token = searchParams.get("hub.verify_token");
+  const challenge = searchParams.get("hub.challenge");
+
+  if (mode === "subscribe" && token === process.env.META_VERIFY_TOKEN) {
+    return new Response(challenge, { status: 200 });
+  }
+  return new Response("Forbidden", { status: 403 });
+}
+
+// 2. Incoming Event & Signature Verification (POST)
+export async function POST(req: NextRequest) {
+  const rawBody = await req.text();
+  const signature = req.headers.get("x-hub-signature-256");
+
+  const expectedSig = "sha256=" + crypto
+    .createHmac("sha256", process.env.META_APP_SECRET!)
+    .update(rawBody)
+    .digest("hex");
+
+  if (signature !== expectedSig) {
+    return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+  }
+
+  const payload = JSON.parse(rawBody);
+  // Queue incoming message or delivery status to Redis / BullMQ for async processing
+  await messageQueue.add("whatsapp-event", payload);
+
+  return NextResponse.json({ status: "success" });
+}`,
+    },
     supportedWorkflows: [
       {
-        title: "Transactional Order Confirmation & Dispatch",
-        description: "Instant notification sequence triggered by backend purchase events.",
+        title: "Transactional Order Confirmation & Dispatch Notifications",
+        description: "Instant notification sequence triggered by backend purchase and dispatch events.",
         technicalSteps: [
-          "Customer completes order on web or mobile app",
-          "Backend worker renders dynamic parameters into pre-approved WhatsApp HSM template",
-          "WhatsApp Cloud API delivers message with clickable tracking button",
-          "Delivery and read statuses synchronize back to customer history log",
+          "Customer completes checkout on web or mobile application",
+          "Backend worker renders dynamic parameters into pre-approved Meta HSM template",
+          "WhatsApp Cloud API delivers message with clickable tracking link and support button",
+          "Delivery receipts (sent, delivered, read) synchronize in real-time to internal audit log",
+        ],
+      },
+      {
+        title: "Two-Way AI Support & Lead Qualification Bot",
+        description: "Automated conversational agent answering customer queries and qualifying leads 24/7.",
+        technicalSteps: [
+          "Customer sends inbound message or clicks 'Click to WhatsApp' ad",
+          "Webhook validates signature and passes customer intent to state machine or LLM backend",
+          "Bot sends dynamic Quick-Reply buttons or interactive List menu options",
+          "Warm qualified leads are automatically routed to sales reps with CRM sync",
+        ],
+      },
+      {
+        title: "Automated Appointment & Payment Reminders",
+        description: "Scheduled recurring triggers reducing customer no-shows and outstanding invoices.",
+        technicalSteps: [
+          "Cron scheduler identifies appointments or overdue balances 24 hours prior",
+          "WhatsApp Cloud API dispatches interactive notification with 'Confirm', 'Reschedule', or 'Pay Now' action",
+          "Customer tap updates appointment state instantly in database without human intervention",
         ],
       },
     ],
     exampleUseCases: [
       {
         industry: "Healthcare Clinics & Diagnostics",
-        scenario: "Automating lab test report PDF delivery and appointment reminder confirmations.",
+        scenario: "Automating lab test report PDF delivery and appointment reminder confirmations via direct WhatsApp Cloud API.",
         outcome: "Eliminated no-shows by 38% and removed manual WhatsApp sending by clinic reception staff.",
       },
       {
@@ -263,17 +387,42 @@ export const INTEGRATIONS: IntegrationService[] = [
         scenario: "Automated dispatch notifications with PDF invoice attachments sent to retail store owners.",
         outcome: "100% automated invoice delivery with instant payment reminder buttons.",
       },
+      {
+        industry: "Direct-to-Consumer (D2C) & E-Commerce",
+        scenario: "Abandoned cart recovery alerts and automated COD confirmation buttons directly over WhatsApp.",
+        outcome: "Recovered 19% of abandoned checkouts and reduced Return-to-Origin (RTO) courier losses by 27%.",
+      },
     ],
     faqs: [
       {
+        question: "How does Meta's WhatsApp Business Cloud API differ from On-Premises or 3rd-party BSPs?",
+        answer:
+          "Meta hosts the Cloud API directly on their global infrastructure, offering higher throughput, 99.9% uptime, and zero server maintenance. Unlike third-party BSPs (Twilio, WATI, Interakt), you pay no recurring SaaS monthly license fees and no per-message markups—you pay Meta directly at official wholesale conversation rates.",
+      },
+      {
+        question: "Can I migrate my existing WhatsApp Business number to the Cloud API without losing it?",
+        answer:
+          "Yes. If your number is currently on the regular WhatsApp Business app or another provider, we can back up the data, delete the old business account association, and immediately register the number onto Meta's Cloud API under your official Meta Business Manager.",
+      },
+      {
         question: "Do I need to pay monthly fees to third-party providers like Twilio or Wati?",
         answer:
-          "No. I integrate directly with Meta's official WhatsApp Business Cloud API, eliminating third-party per-message markup fees. You only pay Meta's standard low per-conversation rates.",
+          "No. By integrating directly with Meta's official WhatsApp Business Cloud API, you eliminate third-party per-message markup fees. You only pay Meta's standard transparent per-conversation rates (with 1,000 free service conversations per month).",
+      },
+      {
+        question: "How do template message approvals (HSM) work?",
+        answer:
+          "Meta requires proactive outbound messages to use pre-approved templates categorized as Utility, Authentication (OTP), or Marketing. We set up automated template submission through Meta Graph API or Business Manager, ensuring quick approval within minutes while adhering to Meta's strict formatting guidelines.",
       },
       {
         question: "Can you build an automated chat bot to answer customer questions?",
         answer:
-          "Yes. I build custom conversational state machines or connect intelligent AI/RAG backends to answer frequently asked business questions and collect customer inquiry details before routing to a human team member.",
+          "Yes. I build custom conversational state machines or connect intelligent AI/LLM backends to answer frequently asked business questions, query product catalogs from your database, and collect lead details before seamlessly handing off to human support.",
+      },
+      {
+        question: "How do we prevent WhatsApp from banning our phone number?",
+        answer:
+          "Meta assigns a quality rating to each phone number. We protect your rating by strictly implementing opt-in consent mechanisms, honoring user opt-outs, categorizing templates accurately, and using queue-based rate limiting to prevent spam flagging.",
       },
     ],
   },

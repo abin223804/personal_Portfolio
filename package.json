@@ -12,7 +12,14 @@
     "syndicate:devto": "npx tsx scripts/syndicate-devto.mjs --all",
     "syndicate:status": "npx tsx scripts/syndicate-devto.mjs --status",
     "syndicate:dry": "npx tsx scripts/syndicate-devto.mjs --dry-run",
-    "syndicate:email": "npx tsx scripts/syndicate-devto.mjs --test-email"
+    "syndicate:email": "npx tsx scripts/syndicate-devto.mjs --test-email",
+    "gsc:monitor": "node scripts/gsc-monitor.mjs",
+    "gsc:dry": "node scripts/gsc-monitor.mjs --dry-run",
+    "gsc:email": "node scripts/gsc-monitor.mjs --email",
+    "gsc:status": "node scripts/gsc-monitor.mjs --status",
+    "seo:enrich": "node scripts/auto-seo-enricher.mjs",
+    "seo:dry": "node scripts/auto-seo-enricher.mjs --dry-run",
+    "seo:force": "node scripts/auto-seo-enricher.mjs --force"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
